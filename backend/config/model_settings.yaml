@@ -1,0 +1,28 @@
+# 模型名称
+DEFAULT_MODEL: 
+  api_key: 'sk-324f8210e73a40a59ce9901efcf3eb5f'
+  llm_model: 'qwen-plus'
+  base_url: 'https://dashscope.aliyuncs.com/compatible-mode/v1'
+  temperature: 0.0
+  max_retries: 3
+
+VL_MODEL:
+  api_key: 'sk-324f8210e73a40a59ce9901efcf3eb5f'
+  llm_model: 'qwen-vl-plus'
+  base_url: 'https://dashscope.aliyuncs.com/compatible-mode/v1'
+  temperature: 0.0
+  max_retries: 3
+
+
+embed_model: './data/models/embed/models--BAAI--bge-large-zh-v1.5/snapshots/79e7739b6ab944e86d6171e44d24c997fc1e0116'
+
+# 向量模型缓存路径
+cache_folder: './data/models/embed'
+
+# 向量数据路径
+data_root: './data/raw_manuals'
+persist_directory: './data/vector_store_json'
+
+# FLASK配置
+FLASK_SECRET_KEY: 'ad09ba2a7ede8fedb9fcf5a6b482c5e4'  
+
