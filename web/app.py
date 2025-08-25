@@ -10,7 +10,6 @@ import os
 import uuid
 from langchain_community.chat_message_histories import ChatMessageHistory
 
-
 # 添加项目根目录到系统路径
 root_dir = Path(__file__).parent.parent
 sys.path.append(str(root_dir))
@@ -119,4 +118,4 @@ def medical_qa():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=8801)
