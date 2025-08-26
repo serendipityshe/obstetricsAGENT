@@ -3,8 +3,7 @@
 """
 
 from sqlalchemy import Column, Integer, String, Date, Text, ForeignKey, Boolean, DateTime
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, declarative_base
 from sqlalchemy.orm import sessionmaker
 from backend.config.settings import SQLALCHEMY_DATABASE_URL
 from datetime import datetime
