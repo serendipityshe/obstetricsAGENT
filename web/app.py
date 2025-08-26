@@ -10,6 +10,11 @@ import os
 import uuid
 from langchain_community.chat_message_histories import ChatMessageHistory
 
+from backend.api.v1.routes.chat_routes import chat_bp
+from backend.api.v1.routes.auth_routes import auth_bp
+from backend.api.v1.routes.maternal_routes import maternal_bp
+
+
 # 添加项目根目录到系统路径
 root_dir = Path(__file__).parent.parent
 sys.path.append(str(root_dir))
@@ -119,3 +124,6 @@ def medical_qa():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8801)
+    app.register_blueprint(chat_bp)
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(maternal_bp)
