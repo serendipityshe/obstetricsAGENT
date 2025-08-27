@@ -97,10 +97,12 @@ class ObstetricsAgent:
             return template_tool_rules
         
         # 通用工具规则
-        return """1. 知识库查询（疾病知识、指南等）：使用【{}】
-2. 计算/功能操作（风险评估等）：使用【{}】
-3. 必须基于工具返回结果回答，禁止编造信息
-4. 多轮对话中无需重复调用已使用过的工具""".format(self.rag_tool_name, self.maternal_tool_name)
+        return """
+                    1. 知识库查询（疾病知识、指南等）：使用【{}】
+                    2. 计算/功能操作（风险评估等）：使用【{}】
+                    3. 必须基于工具返回结果回答，禁止编造信息
+                    4. 多轮对话中无需重复调用已使用过的工具
+                """.format(self.rag_tool_name, self.maternal_tool_name)
 
     def clear_memory(self) -> None:
         """清空对话记忆"""

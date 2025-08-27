@@ -10,9 +10,6 @@ import os
 import uuid
 from langchain_community.chat_message_histories import ChatMessageHistory
 
-from backend.api.v1.routes.chat_routes import chat_bp
-from backend.api.v1.routes.auth_routes import auth_bp
-from backend.api.v1.routes.maternal_routes import maternal_bp
 
 
 # 添加项目根目录到系统路径
@@ -21,14 +18,12 @@ sys.path.append(str(root_dir))
 
 
 from backend.agent.core import ObstetricsAgent
-from backend.rag.generation import RAGLLMGeneration
 from backend.knowledge_base.loader import DocumentLoader
 
 app = Flask(__name__)
 app.secret_key = 'ad09ba2a7ede8fedb9fcf5a6b482c5e4'  # 请在生产环境中使用随机生成的安全密钥
 
 obstetrics_agent = ObstetricsAgent()
-ragllm_singleton = RAGLLMGeneration()
 
 user_sessions = {}
 SESSION_TIMEOUT = 3600
@@ -100,10 +95,6 @@ def medical_qa():
                 documents = loader.load()
                 document_content = "\n\n".join([doc.page_content for doc in documents])
         
-        # 调用RAG模型
-        # ragllm_singleton.history = history
-        # ragllm_singleton.document_content = document_content
-        # response = ragllm_singleton.generate(query=query, image=image_path, user_type=user_type)
 
         obstetrics_agent.memory.chat_memory = history
         response = obstetrics_agent.invoke(query, user_type=user_type)
@@ -124,6 +115,3 @@ def medical_qa():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8801)
-    app.register_blueprint(chat_bp)
-    app.register_blueprint(auth_bp)
-    app.register_blueprint(maternal_bp)

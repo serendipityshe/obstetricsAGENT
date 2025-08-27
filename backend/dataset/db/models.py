@@ -4,6 +4,7 @@
 
 from sqlalchemy import Column, Integer, String, Date, Text, ForeignKey, Boolean, DateTime
 from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from backend.config.settings import SQLALCHEMY_DATABASE_URL
 from datetime import datetime
@@ -99,7 +100,6 @@ class MaternalMedicalFiles(Base):
 
 # 数据库引擎及会话工具
 def get_db_engine():
-    from sqlalchemy import create_engine
     engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True)
     return engine
 
