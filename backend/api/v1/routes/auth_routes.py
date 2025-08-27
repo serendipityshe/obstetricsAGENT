@@ -6,7 +6,7 @@ import jwt
 from datetime import datetime, timedelta
 # from backend.config.model_settings import FLASK_SECRET_KEY
 
-auth_bp = Blueprint('auth', __name__, url_prefix='/api/auth')
+auth_bp = Blueprint('auth', __name__, url_prefix='/api/v1/auth')
 
 # 实际应用中应该从数据库获取用户信息
 # 这里仅作为示例

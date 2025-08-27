@@ -2,8 +2,9 @@
 from flask import Blueprint, request, jsonify, session
 from backend.api.v1.services.chat_service import ChatService
 import os
+from uuid import uuid4
 
-chat_bp = Blueprint('chat', __name__, url_prefix='/api/chat')
+chat_bp = Blueprint('chat', __name__, url_prefix='/api/v1/chat')
 chat_service = ChatService()
 
 @chat_bp.route('/new_session', methods=['POST'])
@@ -23,9 +24,9 @@ def new_session():
 
 @chat_bp.route('/qa', methods=['POST'])
 def medical_qa():
-    """处理医疗问答请求"""
+    """处理医疗问答请求，支持文件上传"""
     try:
-        # 获取请求参数
+        # 获取请求参数（form-data格式）
         query = request.form.get('query')
         user_type = request.form.get('user_type', 'doctor')
         session_id = request.form.get('session_id') or session.get('chat_session_id')
@@ -39,19 +40,49 @@ def medical_qa():
             session_id = chat_service.create_new_session()
             session['chat_session_id'] = session_id
         
-        # 获取上传的文件对象
+        # 处理上传的文件
         uploaded_file = request.files.get('file')
+        image_path = None
+        document_content = None
         
-        # 调用服务处理问答答（文件处理逻辑已迁移到service层）
+        if uploaded_file and uploaded_file.filename:
+            # 确保上传目录存在（使用服务层定义的路径）
+            upload_dir = chat_service.UPLOAD_DIR
+            os.makedirs(upload_dir, exist_ok=True)
+            
+            # 生成唯一文件名避免冲突
+            file_ext = uploaded_file.filename.split('.')[-1].lower() if '.' in uploaded_file.filename else 'bin'
+            filename = f"{uuid4()}.{file_ext}"
+            file_path = os.path.join(upload_dir, filename)
+            
+            # 保存文件到本地
+            uploaded_file.save(file_path)
+            
+            # 根据文件类型处理
+            if file_ext in ['jpg', 'jpeg', 'png', 'gif', 'bmp']:
+                # 图片文件 - 传递路径
+                image_path = file_path
+            else:
+                # 文档文件 - 读取内容（简化处理，实际可能需要解析PDF等）
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        document_content = f.read(10000)  # 限制读取长度
+                except UnicodeDecodeError:
+                    # 二进制文件处理
+                    document_content = f"二进制文件: {uploaded_file.filename} (类型: {file_ext})"
+        
+        # 调用服务处理问答
         result = chat_service.handle_qa_request(
             session_id=session_id,
             query=query,
             user_type=user_type,
-            uploaded_file=uploaded_file  # 直接传递文件对象给服务层处理
+            image_path=image_path,
+            document_content=document_content
         )
         
         return jsonify({
-            'status': 'success',** result
+            'status': 'success',
+            **result
         })
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
@@ -63,7 +94,7 @@ def get_session_history(session_id):
         history = chat_service.get_session_history(session_id)
         messages = [
             {
-                'type': 'human' if isinstance(msg, type(history.messages[0])) and msg.type == 'human' else 'ai',
+                'type': 'human' if msg.type == 'human' else 'ai',
                 'content': msg.content
             }
             for msg in history.messages

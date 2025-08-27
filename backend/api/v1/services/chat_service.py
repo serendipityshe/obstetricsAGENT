@@ -19,6 +19,8 @@ class ChatService:
             "..", "..", "..", "..", "data", "uploads"
         )
         os.makedirs(self.UPLOAD_DIR, exist_ok=True)
+        # 初始化历史记录（防止为None的情况）
+        self.rag_llm.history = ChatMessageHistory()
 
     def _cleanup_expired_sessions(self):
         """清理过期会话"""
@@ -52,6 +54,9 @@ class ChatService:
     def _encode_image_to_base64(self, image_path: str) -> str:
         """将图片文件编码为base64格式"""
         try:
+            if not os.path.exists(image_path):
+                raise FileNotFoundError(f"图片文件不存在: {image_path}")
+            
             with open(image_path, "rb") as f:
                 image_data = f.read()
             return base64.b64encode(image_data).decode("utf-8")
@@ -60,26 +65,29 @@ class ChatService:
 
     def _retrieve_knowledge(self, query: str, document_content: Optional[str] = None) -> List[dict]:
         """融合检索专家知识库和用户文档内容"""
-        # 1. 检索专家知识库
-        docs = self.rag_retrieval.retrieve(query, top_k=3)
-        knowledge_fragments = [
-            {
-                "source": doc.metadata.get('source', '专家知识库'),
-                "priority": doc.metadata.get('priority', 1),
-                "content": doc.page_content
-            } 
-            for doc in docs
-        ]
-        
-        # 2. 若有用户文档，添加到知识片段
-        if document_content:
-            knowledge_fragments.append({
-                "source": "用户上传文档",
-                "priority": 2,  # 用户文档优先级高于专家库
-                "content": document_content
-            })
-        
-        return knowledge_fragments
+        try:
+            # 1. 检索专家知识库
+            docs = self.rag_retrieval.retrieve(query, top_k=3)
+            knowledge_fragments = [
+                {
+                    "source": doc.metadata.get('source', '专家知识库'),
+                    "priority": doc.metadata.get('priority', 1),
+                    "content": doc.page_content
+                } 
+                for doc in docs
+            ]
+            
+            # 2. 若有用户文档，添加到知识片段
+            if document_content:
+                knowledge_fragments.append({
+                    "source": "用户上传文档",
+                    "priority": 2,  # 用户文档优先级高于专家库
+                    "content": document_content
+                })
+            
+            return knowledge_fragments
+        except Exception as e:
+            raise Exception(f"知识检索失败: {str(e)}")
 
     def handle_qa_request(
         self, 
@@ -96,7 +104,7 @@ class ChatService:
             
             # 处理图片（转换为base64）
             image_base64 = None
-            if image_path and os.path.exists(image_path):
+            if image_path:
                 image_base64 = self._encode_image_to_base64(image_path)
             
             # 检索知识（融合专家库和用户文档）
@@ -123,5 +131,9 @@ class ChatService:
                 "history_length": len(history.messages),
                 "sources": [frag["source"] for frag in knowledge_fragments]  # 返回知识来源
             }
+        except ValueError as e:
+            raise Exception(f"会话处理错误: {str(e)}")
+        except FileNotFoundError as e:
+            raise Exception(f"文件处理错误: {str(e)}")
         except Exception as e:
             raise Exception(f"处理问答请求失败: {str(e)}")

@@ -4,7 +4,7 @@ from datetime import datetime
 from backend.api.v1.services.maternal_service import MaternalService
 from backend.api.common.auth import verify_token  # 假设存在此认证工具
 
-maternal_bp = Blueprint('maternal', __name__, url_prefix='/api/maternal')
+maternal_bp = Blueprint('maternal', __name__, url_prefix='/api/v1/maternal')
 maternal_service = MaternalService()
 
 # 认证装饰器

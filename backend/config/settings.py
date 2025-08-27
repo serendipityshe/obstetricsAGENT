@@ -11,7 +11,7 @@ load_dotenv()
 # 数据库配置
 DATABASE_CONFIG = {
     'host': os.getenv('POSTGRES_HOST', 'localhost'),
-    'port': int(os.getenv('POSTGRES_PORT', 5432)),
+    'port': int(os.getenv('POSTGRES_PORT', 8802)),
     'user': os.getenv('POSTGRES_USER', 'maternal_user'),
     'password': os.getenv('POSTGRES_PASSWORD', '021030'),
     'database': os.getenv('POSTGRES_DATABASE', 'maternal_db'),
