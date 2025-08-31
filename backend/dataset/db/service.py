@@ -6,10 +6,12 @@ from typing import List, Optional
 from sqlalchemy.orm import Session
 from datetime import date, datetime
 from .models import (
+    User,
     MaternalInfo,
     MaternalPregnancyHistory,
     MaternalHealthCondition,
     MaternalMedicalFiles,
+    MaternalDialogue,
     get_db_engine,
     create_tables,
     get_session
@@ -30,6 +32,31 @@ class MaternalService:
     def _get_session(self) -> Session:
         """获取数据库会话（内部工具方法）"""
         return get_session(self.engine)
+
+    # ------------------------------
+    # 用户基本信息服务
+    # ------------------------------
+    def create_user_info(self, user_name: str, password: str, user_type: str) -> User:
+        """创建用户基本信息"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            return repo.create_user_info(
+                user_name=user_name,
+                password=password,
+                user_type=user_type
+            )
+        finally:
+            db_session.close()
+
+    def get_user_info_by_username(self, username: str) -> Optional[User]:
+        """根据用户名获取用户信息"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            return repo.get_user_info_by_username(username)
+        finally:
+            db_session.close()
     
     # ------------------------------
     # 孕妇基本信息服务
@@ -223,5 +250,28 @@ class MaternalService:
         try:
             repo = MaternalRepository(db_session)
             return repo.get_medical_files(maternal_id)
+        finally:
+            db_session.close()
+
+    # ------------------------------
+    # 对话记录服务
+    # ------------------------------
+    def create_dialogue(
+        self,
+        maternal_id: int,
+        dialogue_content: str,
+        vector_store_path: Optional[str] = None
+    ) -> MaternalDialogue:
+        db_session = self._get_session()
+        repo = MaternalRepository(db_session)
+        try:
+            if not repo.get_maternal_info_by_id(maternal_id):
+                raise ValueError(f"孕妇ID {maternal_id} 不存在")
+
+            return repo.create_dialogue(
+                maternal_id=maternal_id,
+                dialogue_content=dialogue_content,
+                vector_store_path=vector_store_path
+            )
         finally:
             db_session.close()

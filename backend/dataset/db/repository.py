@@ -6,10 +6,12 @@ from typing import List, Optional
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 from .models import (
+    User,
     MaternalInfo,
     MaternalPregnancyHistory,
     MaternalHealthCondition,
-    MaternalMedicalFiles
+    MaternalMedicalFiles,
+    MaternalDialogue,
 )
 from datetime import date, datetime
 
@@ -21,6 +23,38 @@ class MaternalRepository:
     
     def __init__(self, db_session: Session):
         self.db_session = db_session
+
+    # ------------------------------
+    # 用户基本信息操作
+    # ------------------------------
+    def create_user_info(
+        self,
+        user_name: str,
+        password: str,
+        user_type: str
+    ) -> User:
+        """创建用户基本信息"""
+        user = User(
+            user_name=user_name,
+            password=password,
+            user_type=user_type
+        )
+        self.db_session.add(user)
+        self.db_session.commit()
+        self.db_session.refresh(user)
+        return user
+    
+    def get_user_info_by_username(self, username: str) -> Optional[User]:
+        """根据用户名获取用户信息"""
+        return self.db_session.query(User).filter(
+            User.username == username
+        ).all()
+
+    def get_user_info_by_id(self, user_id: int) -> Optional[User]:
+        """根据ID获取用户信息"""
+        return self.db_session.query(User).filter(
+            User.id == user_id
+        ).all()
     
     # ------------------------------
     # 孕妇基本信息操作
@@ -55,13 +89,19 @@ class MaternalRepository:
         """根据ID获取孕妇基本信息（包含关联表数据）"""
         return self.db_session.query(MaternalInfo).filter(
             MaternalInfo.id == info_id
-        ).first()
+        ).all()
     
     def get_maternal_info_by_id_card(self, id_card: str) -> Optional[MaternalInfo]:
         """新增：根据身份证号获取孕妇信息（唯一标识）"""
         return self.db_session.query(MaternalInfo).filter(
             MaternalInfo.id_card == id_card
         ).first()
+
+    def get_maternal_info_by_user_id(self, user_id: int) -> Optional[MaternalInfo]:
+        """新增：根据用户ID获取孕妇信息"""
+        return self.db_session.query(MaternalInfo).filter(
+            MaternalInfo.user_id == user_id
+        ).all()
     
     def get_all_maternal_infos(self) -> List[MaternalInfo]:
         """获取所有孕妇基本信息"""
@@ -235,4 +275,33 @@ class MaternalRepository:
         """获取指定孕妇的所有医疗文件记录"""
         return self.db_session.query(MaternalMedicalFiles).filter(
             MaternalMedicalFiles.maternal_id == maternal_id
+        ).all()
+
+    # ------------------------------
+    # 对话记录服务
+    # ------------------------------
+    def create_dialogue(
+        self, 
+        maternal_id: int,
+        dialogue_content: str,
+        vector_store_path: Optional[str] = None
+    ) -> MaternalDialogue:
+        dialogue = MaternalDialogue(
+            maternal_id=maternal_id,
+            dialogue_content=dialogue_content,
+            vector_store_path=vector_store_path
+        )
+        try:
+            self.db_session.add(dialogue)
+            self.db_session.commit()
+            self.db_session.refresh(dialogue)
+            return dialogue
+        except SQLAlchemyError as e:
+            self.db_session.rollback()
+            raise e
+
+    def get_dialogues(self, maternal_id: int) -> List[MaternalDialogue]:
+        """获取指定孕妇的所有对话记录"""
+        return self.db_session.query(MaternalDialogue).filter(
+            MaternalDialogue.maternal_id == maternal_id
         ).all()

@@ -64,7 +64,6 @@ class KnowledgeBase:
 
     def build_vector_store(self, rebuild : bool = False):
         '''构建向量存储
-        
         Args:
             rebuild (bool): 是否重新构建向量存储
         

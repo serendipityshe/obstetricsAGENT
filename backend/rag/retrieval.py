@@ -18,12 +18,10 @@ class RAGRetrieval:
     Returns:
         List[Document]: 文档列表
     '''
-    def __init__(self, persist_directory : str = 'data/vector_store', data_root : str = "data/raw_manuals"):
-        with open('backend/config/model_settings.yaml', 'r', encoding= 'utf-8') as f:
-            model_settings = yaml.safe_load(f)
+    def __init__(self, persist_directory : str = 'data/vector_store_json', data_root : str = "data/raw_manuals"):
         self.knowledge_base = KnowledgeBase(
-            data_root=model_settings['data_root'],
-            persist_directory=model_settings['persist_directory'],
+            data_root=data_root,
+            persist_directory=persist_directory,
         )
         self.knowledge_base.build_vector_store(rebuild=False)
 

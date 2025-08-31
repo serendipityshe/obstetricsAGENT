@@ -70,7 +70,7 @@ qa_model = api.model('QARequest', {
 })
 
 # 孕妇信息相关模型
-maternal_model = api.model('MaternalInfo', {
+maternal_model = api.model('Mater nalInfo', {
     'id_card': fields.String(required=True, description='身份证号'),
     'phone': fields.String(description='联系电话'),
     'current_gestational_week': fields.Integer(description='当前孕周'),
