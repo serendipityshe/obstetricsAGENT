@@ -1,4 +1,7 @@
 """孕妇信息及用户相关接口"""
+import os
+import uuid
+
 from crypt import methods
 from flask import Blueprint, request, jsonify
 from datetime import datetime
@@ -194,41 +197,64 @@ def get_health_conditions(maternal_id):
 # ------------------------------
 @maternal_bp.route('/<int:maternal_id>/files', methods=['POST'])
 @require_auth
-def create_medical_file(maternal_id):
-    """添加医疗文件记录"""
-    data = request.json
-    required_fields = ['file_name', 'file_path', 'file_type']
-    for field in required_fields:
-        if field not in data:
-            return jsonify({'status': 'error', 'message': f'缺少必要字段: {field}'}), 400
-
+def upload_medical_file(maternal_id):
+    """上传医疗文件（接收二进制文件内容，保存到服务器并记录数据库）"""
     try:
-        # 解析日期和时间
-        upload_time = None
-        if 'upload_time' in data and data['upload_time']:
-            upload_time = datetime.strptime(data['upload_time'], '%Y-%m-%d %H:%M:%S')
-        
-        check_date = None
-        if 'check_date' in data and data['check_date']:
-            check_date = datetime.strptime(data['check_date'], '%Y-%m-%d').date()
+        # 1. 获取上传的文件对象（微信小程序上传的二进制文件）
+        file = request.files.get('file')
+        if not file or file.filename == '':
+            return jsonify({'status': 'error', 'message': '未选择文件'}), 400
 
+        # 2. 获取其他表单参数（从 form-data 中获取，而非 JSON）
+        file_desc = request.form.get('file_desc')
+        check_date_str = request.form.get('check_date')
+
+        # 3. 处理文件存储
+        # 3.1 定义存储目录（按孕妇ID分目录）
+        base_upload_dir = "uploads/maternal_files"
+        user_dir = os.path.join(base_upload_dir, str(maternal_id))
+        os.makedirs(user_dir, exist_ok=True)  # 确保目录存在
+
+        # 3.2 生成唯一文件名（避免冲突）
+        file_ext = os.path.splitext(file.filename)[1].lower()  # 保留文件后缀
+        unique_filename = f"{uuid.uuid4()}{file_ext}"  # 使用UUID生成唯一文件名
+        file_path = os.path.join(user_dir, unique_filename)
+
+        # 3.3 保存文件到服务器
+        file.save(file_path)
+
+        # 4. 处理日期参数
+        check_date = None
+        if check_date_str:
+            check_date = datetime.strptime(check_date_str, '%Y-%m-%d').date()
+
+        # 5. 获取文件元信息
+        file_size = os.path.getsize(file_path)  # 文件大小（字节）
+        file_type = file.content_type or file_ext.lstrip('.')  # 文件类型（MIME类型或后缀）
+
+        # 6. 调用服务层，将文件信息存入数据库
         result = maternal_service.create_medical_file(
             maternal_id=maternal_id,
-            file_name=data['file_name'],
-            file_path=data['file_path'],
-            file_type=data['file_type'],
-            file_size=data.get('file_size'),
-            upload_time=upload_time,
-            file_desc=data.get('file_desc'),
+            file_name=file.filename,  # 原始文件名
+            file_path=file_path,      # 服务器保存的路径
+            file_type=file_type,
+            file_size=file_size,
+            upload_time=datetime.now(),
+            file_desc=file_desc,
             check_date=check_date
         )
+
         return jsonify({
             'status': 'success',
-            'message': '医疗文件记录添加成功',
+            'message': '文件上传成功',
             'data': result
         }), 201
+
     except Exception as e:
-        return jsonify({'status': 'error', 'message': str(e)}), 500
+        # 出错时清理已保存的文件
+        if 'file_path' in locals() and os.path.exists(file_path):
+            os.remove(file_path)
+        return jsonify({'status': 'error', 'message': f'文件上传失败: {str(e)}'}), 500
 
 @maternal_bp.route('/<int:maternal_id>/files', methods=['GET'])
 @require_auth

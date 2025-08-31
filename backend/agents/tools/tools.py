@@ -34,17 +34,31 @@ def rag_tool(
     description="处理.doc .txt .docx .excel .pdf文件，返回文件内容",
 )
 def docproc_tool(file_path: Annotated[str, "文件路径"]) -> dict:
-    """处理.doc .txt .docx .excel .pdf文件，返回文件内容"""
+    """处理.doc .txt .docx .excel .pdf .json文件，返回文件内容"""
     loader = DocumentLoader(file_path)
     docs = loader.load()
     return {"content": docs}
 
 @tool(
     name_or_callable="imgproc_tool",
-    description="处理图片文件，返回图片内容",
+    description="处理图片文件，返回base64编码内容（用于大模型解析图片）",
 )
 def imgproc_tool(file_path: Annotated[str, "图片文件路径"]) -> dict:
-    """处理图片文件，返回图片内容"""
+    """处理图片文件，返回base64编码内容"""
+    try:
+        with open(file_path, "rb") as image_file:
+            # 读取图片二进制内容并转为base64
+            base64_str = base64.b64encode(image_file.read()).decode("utf-8")
+        return {
+            "status": "success",
+            "content": base64_str,
+            "file_path": file_path
+        }
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": f"图片处理失败: {str(e)}"
+        }
     
 
 @tool(
