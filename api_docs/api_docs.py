@@ -94,6 +94,15 @@ class AuthLogout(Resource):
         """用户注销"""
         pass
 
+@auth_ns.route('/register')
+class AuthRegister(Resource):
+    @api.expect(login_model)
+    @api.marshal_with(response_model)
+    def post(self):
+        """用户注册"""
+        pass
+
+
 @auth_ns.route('/verify')
 class AuthVerify(Resource):
     @api.marshal_with(api.inherit('VerifyResponse', response_model, {'user_id': fields.String()}))
