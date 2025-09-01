@@ -6,6 +6,27 @@ import base64
 from backend.rag.retrieval import RAGRetrieval
 from backend.knowledge_base.manage import KnowledgeBase
 from backend.knowledge_base.loader import DocumentLoader
+from backend.llm.openai_wrapper import QwenAIWrap
+
+@tool(
+    name_or_callable="qwen_tool",
+    description="调用qwen模型",
+)
+def qwen_tool(
+    query: Annotated[str, "用户的原始问题"],
+    model_name: Annotated[str, "模型名称"],
+    api_key: Annotated[str, "模型api密钥"],
+    base_url: Annotated[str, "模型地址"],
+    temperature: Annotated[int, "模型温度"]
+) -> dict:
+    """调用qwen模型"""
+    qwen = QwenAIWrap(
+        model_name = model_name, 
+        api_key = api_key, 
+        base_url = base_url, 
+        temperature = temperature)
+    response = qwen.invoke(query)
+    return {"content": response}
 
 @tool(
     name_or_callable="rag_tool",
