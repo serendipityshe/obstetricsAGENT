@@ -1,5 +1,5 @@
 from langchain.tools import tool
-from typing import Annotated, str, int
+from typing import Annotated
 
 import base64
 

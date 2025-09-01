@@ -37,7 +37,7 @@ class KnowledgeBase:
     '''
     def __init__(
         self, 
-        data_root : str,
+        data_root : Union[str, list],
         persist_directory : str,
         **kwargs,
     ):

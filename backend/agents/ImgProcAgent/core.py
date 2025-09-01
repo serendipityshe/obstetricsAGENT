@@ -7,6 +7,8 @@ from typing import TypedDict, Optional, Dict, Annotated
 from langgraph.graph import StateGraph, END, START
 from backend.agents.tools.tools import imgproc_tool
 from backend.agents.tools.tools import qwen_tool
+from PIL import Image
+import os
 
 
 class ImgProcState(TypedDict):
@@ -15,20 +17,44 @@ class ImgProcState(TypedDict):
     专注于图片解析结果.
     """
     file_path: Annotated[str, "图片路径"]
-    content: Optional[Annotated[str, "图片内容"]]
-    meatadata: Optional[Annotated[str, '图片元数据']]
+    content: Optional[Annotated[str, "图片解析内容"]]
+    metadata: Optional[Annotated[str, '图片元数据']]
+    file_type: Optional[Annotated[str, '图片格式']]
     error: Optional[Annotated[str, "错误信息"]]
 
 #-------------------------定义节点----------------------------
+def extract_image_metadata(file_path: str) -> Dict:
+    try:
+        with Image.open(file_path) as img:
+            return {
+                "format": img.format,
+                "size": img.size,
+                "mode": img.mode,
+                "file_size": os.path.getsize(file_path),
+                "file_path": file_path
+            }
+    except Exception as e:
+        return {"error": f"提取元数据失败: {str(e)}"}
+
+
 def change_image_format(state: ImgProcState) -> ImgProcState:
     """
     检测图片格式节点
     """
     try:
+        with Image.open(state["file_path"]) as img:
+            metadata =  {
+                "format": img.format,
+                "size": img.size,
+                "mode": img.mode,
+                "file_size": os.path.getsize(state["file_path"]),
+                "file_path": state["file_path"]
+            }
+            state["metadata"] = metadata
         img_path = imgproc_tool(state["file_path"])
         state["file_path"] = img_path
     except Exception as e:
-        state["error"] = f"图片格式转换失败: {str(e)}"
+        state["error"] = f"图片格式或者元素据提取/转换失败: {str(e)}"
     return state
 
 def extract_image_content(state: ImgProcState) -> ImgProcState:

@@ -25,6 +25,8 @@ def save_memory_node(state: MeMState) -> MeMState:
     """
     try:
         save_memory(state['chat_history'], state['persist_directory'])
+        state['content'] = f"成功存储{len(state['chat_history'])}条记忆"
+        state['metadata'] = {"persist_directory": state['persist_directory']}
         return state
     except Exception as e:
         state['error'] = str(e)
