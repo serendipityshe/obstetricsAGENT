@@ -23,6 +23,7 @@ USER_CREDENTIALS = {
 JWT_SECRET = 'ad09ba2a7ede8fedb9fcf5a6b482c5e4'
 JWT_EXPIRATION_DELTA = 86400  # 24小时
 
+
 def generate_token(user_id):
     """生成JWT令牌"""
     payload = {
@@ -67,14 +68,14 @@ def register():
     # 创建用户
     try:
         user = maternal_service.create_user_info(
-            user_name=username,
+            username=username,
             password=password_hash,
             user_type=user_type
         )
         return jsonify({
             'status': 'success',
             'message': '注册成功',
-            'user_id': user.id
+            'user_id': user['id']
         }), 201
     except Exception as e:
         return jsonify({'status': 'error', 'message': f'注册失败：{str(e)}'}), 500

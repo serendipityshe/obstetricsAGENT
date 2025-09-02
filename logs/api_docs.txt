@@ -3970,3 +3970,93 @@ API文档服务启动: http://0.0.0.0:8803/docs/
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/MixAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/ImgProcAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/ImgProcAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/ImgProcAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/ImgProcAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/DocProcAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/tools/tools.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/MixAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/MixAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/MixAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 393-761-062

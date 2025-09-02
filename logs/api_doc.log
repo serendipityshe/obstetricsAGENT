@@ -1,0 +1,537 @@
+nohup: 忽略输入
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Serving Flask app 'api_docs2'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8803
+ * Running on http://192.168.122.2:8803
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+183.46.65.148 - - [01/Sep/2025 17:21:54] "GET /docs/ HTTP/1.1" 200 -
+183.46.65.148 - - [01/Sep/2025 17:21:54] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+183.46.65.148 - - [01/Sep/2025 17:21:54] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+183.46.65.148 - - [01/Sep/2025 17:21:54] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+183.46.65.148 - - [01/Sep/2025 17:21:54] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+183.46.65.148 - - [01/Sep/2025 17:21:54] "GET /swagger.json HTTP/1.1" 200 -
+183.46.65.148 - - [01/Sep/2025 17:21:54] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/knowledge_base/loader.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/knowledge_base/loader.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/tests/unit/manager_test.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/tests/unit/manager_test.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/tests/unit/manager_test.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/tests/unit/manager_test.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/tests/unit/manager_test.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/tests/unit/manager_test.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/tests/unit/manager_test.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/tests/unit/manager_test.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/tests/unit/manager_test.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/tests/unit/manager_test.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/tests/unit/manager_test.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/tests/unit/manager_test.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/tools/tools.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/tools/tools.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/agents/MeMAgent/core.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+39.144.55.113 - - [01/Sep/2025 21:19:17] "GET /docs/ HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 21:19:17] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:19:17] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:19:17] "GET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 21:19:17] "GET /swaggerui/swagger-ui-bundle.js HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 21:19:20] "GET /swagger.json HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 21:19:20] "[36mGET /swaggerui/favicon-16x16.png HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:19:20] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:19:56] "GET /docs/ HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 21:19:56] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:19:56] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:19:56] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:19:56] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:19:56] "GET /swagger.json HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 21:19:56] "[36mGET /swaggerui/favicon-16x16.png HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:19:56] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:20:00] "GET /swagger.json HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 21:20:00] "[36mGET /swaggerui/favicon-16x16.png HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:20:00] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:20:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+39.144.55.113 - - [01/Sep/2025 21:20:04] "GET /swaggerui/favicon-16x16.png HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 21:20:04] "GET /swaggerui/favicon-32x32.png HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 21:20:05] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:20:05] "[36mGET /swaggerui/favicon-16x16.png HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:20:06] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 21:20:06] "[36mGET /swaggerui/favicon-16x16.png HTTP/1.1[0m" 304 -
+120.230.77.154 - - [01/Sep/2025 21:21:54] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.154 - - [01/Sep/2025 21:21:54] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.154 - - [01/Sep/2025 21:21:54] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.154 - - [01/Sep/2025 21:21:55] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.154 - - [01/Sep/2025 21:21:55] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.154 - - [01/Sep/2025 21:21:55] "GET /swagger.json HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/maternal_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/maternal_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/common/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/common/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/common/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/common/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/common/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/common/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/common/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/common/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/common/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/common/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/maternal_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+120.230.77.154 - - [01/Sep/2025 22:09:55] "[31m[1mGET /api/v1/auth/register HTTP/1.1[0m" 405 -
+120.230.77.154 - - [01/Sep/2025 22:09:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+39.144.55.113 - - [01/Sep/2025 22:10:21] "GET /docs/ HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 22:10:22] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 22:10:22] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 22:10:22] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 22:10:22] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 22:10:22] "GET /swagger.json HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 22:10:22] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 22:10:22] "[36mGET /swaggerui/favicon-16x16.png HTTP/1.1[0m" 304 -
+219.217.147.170 - - [01/Sep/2025 22:17:54] "[31m[1mGET /api/v1/auth/register HTTP/1.1[0m" 405 -
+219.217.147.170 - - [01/Sep/2025 22:17:54] "[31m[1mGET /api/v1/auth/register HTTP/1.1[0m" 405 -
+219.217.147.170 - - [01/Sep/2025 22:17:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+125.78.51.253 - - [01/Sep/2025 22:18:08] "[31m[1mGET /api/v1/auth/register HTTP/1.1[0m" 405 -
+125.78.51.253 - - [01/Sep/2025 22:18:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+125.78.51.253 - - [01/Sep/2025 22:18:59] "[33mOPTIONS /auth/register HTTP/1.1[0m" 404 -
+125.78.51.253 - - [01/Sep/2025 22:19:00] "[33mOPTIONS /auth/register HTTP/1.1[0m" 404 -
+125.78.51.253 - - [01/Sep/2025 22:19:31] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+125.78.51.253 - - [01/Sep/2025 22:19:45] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+120.230.77.154 - - [01/Sep/2025 22:22:27] "[33mGET /api/docs HTTP/1.1[0m" 404 -
+120.230.77.154 - - [01/Sep/2025 22:22:32] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.154 - - [01/Sep/2025 22:22:32] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.154 - - [01/Sep/2025 22:22:32] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.154 - - [01/Sep/2025 22:22:32] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.154 - - [01/Sep/2025 22:22:32] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.154 - - [01/Sep/2025 22:22:32] "GET /swagger.json HTTP/1.1" 200 -
+103.56.52.120 - - [01/Sep/2025 22:24:37] "[31m[1mGET /api/v1/auth/register HTTP/1.1[0m" 405 -
+103.56.52.120 - - [01/Sep/2025 22:24:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+45.90.208.252 - - [01/Sep/2025 22:34:35] "POST /api/v1/auth/register HTTP/1.1" 200 -
+120.26.61.193 - - [01/Sep/2025 22:39:17] "[31m[1mGET /api/v1/auth/register HTTP/1.1[0m" 405 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+120.230.77.154 - - [01/Sep/2025 22:44:46] "[31m[1mGET /api/v1/auth/register HTTP/1.1[0m" 405 -
+219.217.147.170 - - [01/Sep/2025 22:46:45] code 400, message Bad request version ('::\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06Mjj\x00\x00\x00\x12\x00\x00ÿ\x01\x00\x01\x00\x00')
+219.217.147.170 - - [01/Sep/2025 22:46:45] "[31m[1m\x16\x03\x01\x06º\x01\x00\x06¶\x03\x03k\x0fÐºD+ï¯18q¶R}æ\x97\x85\x82\x91(Û$ØÊÙþ\x08](ì{0 9Ú\x9aýí[®\x17`Kh\x0fò\x9bÌëD`"\x13O\x17Ë¤ÂL\x87\x02/ø\x80y\x00 ::\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06Mjj\x00\x00\x00\x12\x00\x00ÿ\x01\x00\x01\x00\x00[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:45] code 400, message Bad request syntax ('\x16\x03\x01\x06º\x01\x00\x06¶\x03\x039N%\x86')
+219.217.147.170 - - [01/Sep/2025 22:46:45] "[31m[1m\x16\x03\x01\x06º\x01\x00\x06¶\x03\x039N%\x86[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:45] code 400, message Bad request version ('ÐÁ,áÆ6L')
+219.217.147.170 - - [01/Sep/2025 22:46:45] "[31m[1m\x16\x03\x01\x06º\x01\x00\x06¶\x03\x03ke\x029ÐéýK\x09l\x8b1\x82{5+\x9etøE¯¤\x82\x9dÎ?\x9f\x1bô\x18ºW D9ð¥®\x92og\x80VÒFW(\x0b\x93Æ\x04Å\x9c®\x0cßõQ¬\x88¾hÚ\x0f%\x00 \x9a\x9a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06M\x1a\x1a\x00\x00\x00\x12\x00\x00\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1\x00+\x00\x07\x06\x9a\x9a\x03\x04\x03\x03\x003\x04ï\x04íÚÚ\x00\x01\x00\x11ì\x04Àû\x1c\x19\x8b`p\x00\x88Ê@\x01=¶Ò,ÒE\x02k»J#F\x86eçvú;\x89\x97³\x1eÐÁ,áÆ6L[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:46] code 400, message Bad request version ('j\x95\x03\x84£e+Ù\x87Yg\x00\x90\x9ab\x02\x8cÇÕââÿ<\x7f99øú\x02\x81Úñ\x05\x92Ø\x88!%dQ´:Û\x9a@¦çý±')
+219.217.147.170 - - [01/Sep/2025 22:46:46] "[31m[1m\x16\x03\x01\x06º\x01\x00\x06¶\x03\x03@è\x89»\x8f¯¤vw©F'@©\x08$Ù»4a\x90U¹¹¸CÃ\x87\x0dÅ$* \x93MÏ\x9dO¯7; e['{&Í±_hÔ\x95°v]\x8fÿÕY`¡\x88øÐ\x00 zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06Mºº\x00\x00þ\x0d\x00º\x00\x00\x01\x00\x01^\x00 è§`ë­sÖ\x9f5:ënM\x9fb¬µµ\x98\x02\x85j\x95\x03\x84£e+Ù\x87Yg\x00\x90\x9ab\x02\x8cÇÕââÿ<\x7f99øú\x02\x81Úñ\x05\x92Ø\x88!%dQ´:Û\x9a@¦çý±[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:47] code 400, message Bad request version ('\x90LwÞÂ^Àq\x9f.tÕ\x0eàîùä\x17Q')
+219.217.147.170 - - [01/Sep/2025 22:46:47] "[31m[1m\x16\x03\x01\x06º\x01\x00\x06¶\x03\x03\x1d°f@Â\x8f³\x06p¥`b±\x16T\x9a»)²\x1c\x85Ô;6\x96Âñ\x8enB\x97Ç \x04DÉÇZFý\x87*m¡\x0c?Î»cÅ©]vF<à+àfÌø\x18\x8b[¾\x00 úú\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06M\x9a\x9a\x00\x00\x00\x0b\x00\x02\x01\x00\x00\x1b\x00\x03\x02\x00\x02\x00-\x00\x02\x01\x01\x00#\x00\x00DÍ\x00\x05\x00\x03\x02h2\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1þ\x0d\x00º\x00\x00\x01\x00\x01\x98\x00 ¦:'sX\x8bhØ\x02\x0c,\x00çJn\x85\x8e´FXhIY`\x8dN@Ãv½\x90`\x00\x90\x8a}\\ÁLCPk=~\x9bq\x9c2øNc8%\x0e³ÚÜ\x02FÍ°°\x17ùí8å³æÒá\x9d»ßÌÎè\x85ýIÄì\x9ckð\x97¡\x19K\x1e}¡Ö\x1f©\x0cU\x88@âwÿ\x94æõÅÖy3\x8d\x045\x80gß4Ùx¯\x8e 9äQÒÁ7wDOö¼^\x1d\x90LwÞÂ^Àq\x9f.tÕ\x0eàîùä\x17Q[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:47] code 400, message Bad request version ('\x00\x02\x01\x00\x00\x00\x00\x16\x00\x14\x00\x00\x11js1.blockelite.cn\x00\x17\x00\x00\x00\x12\x00\x00\x00+\x00\x07\x06ZZ\x03\x04\x03\x03\x00')
+219.217.147.170 - - [01/Sep/2025 22:46:47] "[31m[1m\x16\x03\x01\x06º\x01\x00\x06¶\x03\x03&t\x7fm\x0f\x80srl70ù\x95Dé\x88J¿½t\x91Ýâó·\x0e=¦;[£c \x82_>_êgwv2öå\x06^¸Õ\x80\x1dæóô©^E®Ò;vÄÃ«ßX\x00 **\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06MÚÚ\x00\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00\x0b\x00\x02\x01\x00\x00\x00\x00\x16\x00\x14\x00\x00\x11js1.blockelite.cn\x00\x17\x00\x00\x00\x12\x00\x00\x00+\x00\x07\x06ZZ\x03\x04\x03\x03\x00[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:47] code 400, message Bad request syntax ('\x16\x03\x01\x07\x1a\x01\x00\x07\x16\x03\x03xáÛ¿K\x15`t¼Ï\x06øX6n\x130Ê\x96û\xad\x94ÚIÈ\x97ÂÜ¯\x87\x17¬ ')
+219.217.147.170 - - [01/Sep/2025 22:46:47] "[31m[1m\x16\x03\x01\x07\x1a\x01\x00\x07\x16\x03\x03xáÛ¿K\x15`t¼Ï\x06øX6n\x130Ê\x96û­\x94ÚIÈ\x97ÂÜ¯\x87\x17¬ [0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:47] code 400, message Bad request version ("JJ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x8dZZ\x00\x00\x003\x04ï\x04í\x1a\x1a\x00\x01\x00\x11ì\x04Àsá\x18f\x82\x91IEH½yqç\x03'-")
+219.217.147.170 - - [01/Sep/2025 22:46:47] "[31m[1m\x16\x03\x01\x06ú\x01\x00\x06ö\x03\x03)ï")3áQÒb|ûld\x90\x08$=f'\x02-n\x80\x8dþ¨#JGüÒª Å\x9d¥äÁbE\x80¶\x85Zm¬XZy2\x09\x94\x9eÖo\x93µ\x0c3û\x9d/¼v¶\x00 JJ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x8dZZ\x00\x00\x003\x04ï\x04í\x1a\x1a\x00\x01\x00\x11ì\x04Àsá\x18f\x82\x91IEH½yqç\x03'-[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:48] code 400, message Bad request syntax ('\x16\x03\x01\x06Ú\x01\x00\x06Ö\x03\x03\x96"\x9doé\x89\x89µ\x86ÚnÁ')
+219.217.147.170 - - [01/Sep/2025 22:46:48] "[31m[1m\x16\x03\x01\x06Ú\x01\x00\x06Ö\x03\x03\x96"\x9doé\x89\x89µ\x86ÚnÁ[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:48] code 400, message Bad request version ('Ë4\x90¥²HT')
+219.217.147.170 - - [01/Sep/2025 22:46:48] "[31m[1m\x16\x03\x01\x06Ú\x01\x00\x06Ö\x03\x03\x95\x1c\x9aK2\x9dËd\x0dHÔ\x85Cü\x0eÁ\x87>òBMoù¾¸\x8b®´\x84­Å³ ªV\x93\x19Ô=÷Í \x8c'\x09·c{\x91ño'_\x018ÐPö\x84\x16crn·\x94\x00 ZZ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06mªª\x00\x00ÿ\x01\x00\x01\x00\x00\x0b\x00\x02\x01\x00\x003\x04ï\x04ízz\x00\x01\x00\x11ì\x04ÀÖ3~øðªÌy\x00\x8a\x86N`\x89&mõÏÚj¯!\x947\x80È\x0c½y\x01\x18y8Y¶\x1bµ·kÍYW\x83».è8\x0e\x06\x13\x01ÓÆPþ¦»ñd\x85µ£: è5-*+\x92\x97²Ö¨#\x19\x16!\x82â\x9f?ÄU\x01é:ÌÈ îS¹\x09ÑPªê\x8fäÔ±\\!¸¯\x07Ì×L\x13F4\x02 \x1c¨¶v[örµ \x00Ì\x17\x09Gâ']¡\x97\x95\x87ù\x7fà\x9b\x19º¬x\x0c\x06¹Ï\x99oé0\x09¾`=X\x03k!Ázå\x012ì\x1bJÒúY¼è\x0eß\x84Ï5êÊ\x84\x90¦áFMº\x0b\x12Î\x19:Vì0Ð¹5|Â¥Ýw\x18ü\x86\x08HÙ¸\x10\x98ÌúÂ_=F\x8eQy1)W?§#\x02)7§Ó)wo\x86\x93@38§°¬\x8d$|%J¾ý;H¯\x14\x97\x93»~{Êº\x00µ\x86\x18\x84uå\x11pY¥©\x9d5\x908º¯ËÊ\x19¾ÒOîÁ»oØ\x03\x91L\x91\x9as}F·Í\x1bçO?\x08QMå`Ã6\x0f±\x86\x1f¦äwç\x89S\x94\x15si\x97²?\x15|íY0Ü&\x91¢P\x87·yuP\x93\x00\x94ö\x81.¸\x04\x98ÌK\x101\x9e\x17ªI¥)\x89B\x97½áæ\x18\x96K\x99\x9eF»\x12ÌÉÀ\x94\x04Ø\x82(³\x94fT°¢,\x00qiu+¸À-r\x001§Is\x0fV,-,\x0e\x1a¥f\x92¨\x17r$}/âH\x0dË4\x90¥²HT[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:48] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00-\x00\x02\x01\x01\x00')
+219.217.147.170 - - [01/Sep/2025 22:46:48] "[31m[1m\x16\x03\x01\x06Ú\x01\x00\x06Ö\x03\x03ý,óø`3ÁEò½ê}l\x7fÂ\x183J\x85ÏÌØMÊ\x1a\x92q´ÏËs  Æ\x0e÷\x89²#tÅ\x1c9µ´\x0c?ºvÑ\x9f\x09Ò¢FÑ\x0dß6ûlÜí;­\x00 **\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06mjj\x00\x00þ\x0d\x00Ú\x00\x00\x01\x00\x01õ\x00 \x12\x0b\x8fa\x9aæÐsëª<\x99×¶9\x0bÿólÒ\x98ÖD©_a\x09Æþo*-\x00°\x0c*[ç8M\x9bÿèn½ÿ\x8fe}QE@ìïj@\x1c\x0c\x98d\x88:\x1c\x0d\x83\x94{,´¤e\x88Q²¶)«ä\x83\x09Y@+Uc,a«\x8c\x17XÇ»g5Ègï/\x09\x86\x83U\x10¯»J\x06öÐ\x84#­B»=\x0eqgu4Ô\x03\x0c {j¯Îì­\x9c\x91×:\x0eÑvÍYoÉ\x9cT\x0b¼\x16 æ²\x88d\x17ûXD\x8e\x8d#\x84f§ûÇ\x9a\x16 fK¢¯á°¶oXUKzL§áÉï<ÃrF8¥À(#7¼\x84¢\x1f½\x92P:\x17UN\x19g\x08+W\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1ÿ\x01\x00\x01\x00DÍ\x00\x05\x00\x03\x02h2\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00-\x00\x02\x01\x01\x00[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:48] code 400, message Bad request version ('\x00º\x00\x00\x01\x00\x01¯\x00')
+219.217.147.170 - - [01/Sep/2025 22:46:48] "[31m[1m\x16\x03\x01\x06º\x01\x00\x06¶\x03\x03O\x12ÿF\x94n\x87\x140ÓZjÏÏ\x99¡¼ å\x12ÂªU}ãÓ0\x137\x94Yº =í¾\x9f\x8bqöéèHÊäÔÐ\x8a|¸Ø\x9bT\x9b\x80Þ\x87\x83Ì\x83sâ½\x14·\x00 zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06Múú\x00\x00þ\x0d\x00º\x00\x00\x01\x00\x01¯\x00 [0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:48] code 400, message Bad request version ('\x02h2\x08http/1.1\x00#\x00\x00\x00')
+219.217.147.170 - - [01/Sep/2025 22:46:48] "[31m[1m\x16\x03\x01\x07\x1a\x01\x00\x07\x16\x03\x03B«»\x92É¸Ò.Ktc\x01\x81m 6êÆ1 |Óo4%\x12W\x89H\x89£¦ \x165"!Ìu¸ð¹"3\x0b\x18¯%'RÜvßyô7\x9a\x12\x13\x86\x88\x0c,06\x00 ºº\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06­::\x00\x00ÿ\x01\x00\x01\x00\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1\x00#\x00\x00\x00[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:48] code 400, message Bad request version ('UT-Ç6\x0f\x9d\x96¦Ì¬R¿û\x14ë~\x00\x17\x00\x00DÍ\x00\x05\x00\x03\x02h2ÿ\x01\x00\x01\x00\x00#\x00\x00\x00')
+219.217.147.170 - - [01/Sep/2025 22:46:48] "[31m[1m\x16\x03\x01\x06º\x01\x00\x06¶\x03\x03\x8bt}KMVn\x09ßßIAþ%w\x98¦N\x81§)@\x16zÅÔ2\x8eG\x016Ñ õ\x8föÓ\x9c\x0f°Rñ\x0d[@aµÊ=wª\x93[¯\x98Æþc&\x90Í1IÞÌ\x00 **\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06Mzz\x00\x00\x00\x12\x00\x00þ\x0d\x00º\x00\x00\x01\x00\x01/\x00 \x96\x86Ë\x17`ÙxØ\x80\x01zô*ææ\x07$\x9b\x8b\x02Iþ\x8báF\x00¶£\x07^Û\x09\x00\x90¡~ia\x13<w_83\x08\x9dÓAnø4p\x97\x15û®Ä-ñ\x04¾½\x85»µ18B¡§®"?2\x02L=w&\x7fKºÒ\x974#\x99I/:tâÎ>9âc_á\x91p]lé\x89°\x1dÕØ\x03r2¾´bm\x84áÊû5_ËcÖ¡ù~\x16ÆÈK\x04p;ë\x9b]\x10^(à\x18 \x02\x88¯LÌ|\x18öju 4Ý\x18E¹\x1cUT-Ç6\x0f\x9d\x96¦Ì¬R¿û\x14ë~\x00\x17\x00\x00DÍ\x00\x05\x00\x03\x02h2ÿ\x01\x00\x01\x00\x00#\x00\x00\x00[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:49] code 400, message Bad request version ('ò³\x0e9jÁ<\x8a\x9bÉ')
+219.217.147.170 - - [01/Sep/2025 22:46:49] "[31m[1m\x16\x03\x01\x06ú\x01\x00\x06ö\x03\x03ül0\x89b·Ýíµèö\x91´)\x9f3\x0bÕMód#¹.øQ=áL)\x83¸ QtéyC¶\x96ßòÑWÛ1x«~¢ù7åÒ7""´\x11)íh®@f\x00 **\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x8d**\x00\x00\x00\x1b\x00\x03\x02\x00\x02\x00\x12\x00\x00\x00-\x00\x02\x01\x01\x003\x04ï\x04ízz\x00\x01\x00\x11ì\x04À>È\x05ÝàUå&ÅvÈJD`J[L¤1\x90\x80F¨JëÇd»\x02fÕ´\x9fél§/\x1aNm\\\x84ú¬.Ã©£íT\x17d\x1a\x05\x8dy\x120É¨<\x07Ï\x08ô\x9bÑ\x8a\x8f®Ú\x00À\x14\x0e©¡")w8Fe/[PÆ\x00\x17\x075\x83'Þl\\êì\x89Èø\x87ñêÎ\x9aÂ\x8b¶8A\x17tp¤GLÑ©\x1f\x0c¹h\x83ñN\x8fx\x97];\x01uÕ!\x17æ2î'\x1bd\x96¶ý¬\x97÷`´lÆ\x06É\x00«Wt\x16.7DÙJ¦ ê> \x1a\x1f'\x8aXí\x80\x98"¦e¨BR\x11c\x9f:\x88\x1cdf\x8aY,yOq\x15&ºnÒêbÛÅ\x06%µ\x9d\x7f·{¸«LÓÊ\x13f\x8c±hÉ\x8ab\x91\x8b~$\x1aÿé\x99QP ¼qÏ=\x93\x92ß|¾ä5¦ð7­Óú\x81\x09\x0c/T\x02`yV.\x00¦\x1fÚ`\x16@+oÞ°\x15\x9c\x15\x0cõ[\x01b¶\x06úUË\x8eà\x171Û\x8c\x84D´Î\x17\x040ø\x83ÓÒÈßd\x01÷8S"\x9as\x14ú§&Ð\x1d¦\x16\x03CÜÊKÆ`Ò\x8a)sÛ\x09$y\x90\x00HxZÁA\x8c\x1az\x8b\x196\x9b\x16V>\x97/°â\x8eEr\x09ÅL#8Ã"4øÁ\x0b\x99¦\x1e©\x93\x92Ærjð\x9c$Ê\x8a\x14\x9a\x15/\x09\x18YcÃ\x17\x011ZP+)A\x86ÿÀ\x85l!\x1d½°\x8b\x9eÑE9\x11Dþ(<³á\x07\x9dÒª\x01\x00\x02ð\x9b8<L\x97Ú\\a\x82J\x80´UD\x1cò³\x0e9jÁ<\x8a\x9bÉ[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:49] code 400, message Bad request version ('K')
+219.217.147.170 - - [01/Sep/2025 22:46:49] "[31m[1m\x16\x03\x01\x06Ú\x01\x00\x06Ö\x03\x03­¿\x0eß\x0bYü·ò\x86£ÕØ9\x17B\x1eøø®_D@\x0cÿãÄ\x87ªØ¢a ÅÓ{]ð\x81\x9b¿\x90ö WÄ]Ùõ\x19\x96ªßt\x15[ùTé\x1f±îõöß\x00 JJ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06mjj\x00\x00þ\x0d\x00Ú\x00\x00\x01\x00\x01*\x00 nþ\x00§\x1b.\x10Þlö\x09a\x89j·I¯ÖÈXSú4\x1dþ½\x14üÔ¿ek\x00°±x\x15òúÍ\x9eqR\x9c¦U\x90ÞE7?¬My*\x82ã¢m\x9f\x8ad\x03|O\x97I1\x98x\x1079§ªQ®b·\x94×kÂó\x07×g|\x98SýÜp*\x89ÒÈãÖ\x01\x1f\x93¸bu\x02\x93\x16&\x95ÏÛ\x0eÚ'1\x9e\x80S\x95òiH``d9y(Z2\x9césî\x99<\x84\x15µ-Äè\x1d[ø\x96\x8b\x95O©oz\x9e\x13µå\x8fÒ`&.wnÁWXÖG¤\x15É¥>=Îæî\x81Z\x80ÍæÁÔ}\x05t@\x12\x86W\x91Ó4Õ1i\x93\x90\x8aÆp\x94\x1d¼Û\x8a%Õ\x00\x00\x00\x16\x00\x14\x00\x00\x11js1.blockelite.cn\x00\x1b\x00\x03\x02\x00\x02\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01DÍ\x00\x05\x00\x03\x02h2\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1ÿ\x01\x00\x01\x00\x00-\x00\x02\x01\x01\x003\x04ï\x04í\x1a\x1a\x00\x01\x00\x11ì\x04À(ó2Öª\x165È´\x9c@\x81õhµQ©®¤Ë\x86\x0c\x81¨·\x0bXe¶\x9dù |\x15kXËsc§²AÌ·\x07tut&ã\x13\x97G°'f+¹@Y\x1f\x872«\x01Jº³ª\x84f\x12ëÚi¤@\x04QgwV\x91t\x18\x16Æq\x14\x8a\x1a\x06\x81ú¶\x11ò©Í|¡\x9d«s±ÞlÉÄ"%­F\x0bK[0m" 400 -
+219.217.147.170 - - [01/Sep/2025 22:46:53] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [01/Sep/2025 22:46:53] "GET /swaggerui/droid-sans.css HTTP/1.1" 200 -
+219.217.147.170 - - [01/Sep/2025 22:46:53] "GET /swaggerui/swagger-ui.css HTTP/1.1" 200 -
+219.217.147.170 - - [01/Sep/2025 22:46:53] "GET /swaggerui/swagger-ui-bundle.js HTTP/1.1" 200 -
+219.217.147.170 - - [01/Sep/2025 22:46:53] "GET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+219.217.147.170 - - [01/Sep/2025 22:46:54] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [01/Sep/2025 22:46:54] "GET /swaggerui/favicon-32x32.png HTTP/1.1" 200 -
+219.217.147.170 - - [01/Sep/2025 22:47:24] "POST /api/v1/auth/register HTTP/1.1" 200 -
+45.90.208.252 - - [01/Sep/2025 22:49:37] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+45.90.208.252 - - [01/Sep/2025 22:50:34] "POST /api/v1/auth/login HTTP/1.1" 200 -
+45.90.208.252 - - [01/Sep/2025 22:51:01] "POST /api/v1/auth/login HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 22:51:46] "GET /docs/ HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 22:51:46] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 22:51:46] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 22:51:46] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 22:51:46] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 22:51:46] "GET /swagger.json HTTP/1.1" 200 -
+39.144.55.113 - - [01/Sep/2025 22:51:46] "[36mGET /swaggerui/favicon-16x16.png HTTP/1.1[0m" 304 -
+39.144.55.113 - - [01/Sep/2025 22:51:46] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+45.90.208.252 - - [01/Sep/2025 22:56:30] "POST /api/v1/auth/login HTTP/1.1" 200 -
+106.52.78.48 - - [01/Sep/2025 23:09:32] "POST /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+106.52.78.48 - - [01/Sep/2025 23:14:48] "POST /api/v1/auth/register HTTP/1.1" 200 -
+45.90.208.252 - - [01/Sep/2025 23:15:07] "POST /api/v1/auth/login HTTP/1.1" 200 -
+45.90.208.252 - - [01/Sep/2025 23:15:26] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+45.90.208.252 - - [01/Sep/2025 23:15:26] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+45.90.208.252 - - [01/Sep/2025 23:15:29] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/services/maternal_service.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/services/maternal_service.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/services/maternal_service.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+120.230.77.154 - - [02/Sep/2025 00:41:39] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.154 - - [02/Sep/2025 00:41:39] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.154 - - [02/Sep/2025 00:41:39] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.154 - - [02/Sep/2025 00:41:39] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.154 - - [02/Sep/2025 00:41:39] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.154 - - [02/Sep/2025 00:41:40] "GET /swagger.json HTTP/1.1" 200 -
+47.111.20.202 - - [02/Sep/2025 09:33:38] "POST /api/v1/auth/register HTTP/1.1" 200 -
+45.90.208.252 - - [02/Sep/2025 10:07:00] "[31m[1mGET /api/v1/auth/login HTTP/1.1[0m" 405 -
+45.90.208.252 - - [02/Sep/2025 10:07:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+45.90.208.252 - - [02/Sep/2025 10:07:17] "POST /api/v1/auth/login HTTP/1.1" 200 -
+45.90.208.252 - - [02/Sep/2025 10:07:32] "POST /api/v1/auth/login HTTP/1.1" 200 -
+45.90.208.252 - - [02/Sep/2025 10:07:39] "POST /api/v1/auth/login HTTP/1.1" 200 -

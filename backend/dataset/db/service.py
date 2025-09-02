@@ -36,13 +36,13 @@ class MaternalService:
     # ------------------------------
     # 用户基本信息服务
     # ------------------------------
-    def create_user_info(self, user_name: str, password: str, user_type: str) -> User:
+    def create_user_info(self, username: str, password: str, user_type: str) -> User:
         """创建用户基本信息"""
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
             return repo.create_user_info(
-                user_name=user_name,
+                username=username,
                 password=password,
                 user_type=user_type
             )

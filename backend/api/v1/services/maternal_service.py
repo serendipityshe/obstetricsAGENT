@@ -19,11 +19,11 @@ class MaternalService:
     # ------------------------------
     # 用户信息相关服务
     # ------------------------------
-    def create_user_info(self, user_name: str, password: str, user_type: str) -> Dict[str, Any]:
+    def create_user_info(self, username: str, password: str, user_type: str) -> Dict[str, Any]:
         """创建用户信息"""
         try:
             result = self.dataset_service.create_user_info(
-                user_name=user_name,
+                username=username,
                 password=password,
                 user_type=user_type
             )
@@ -239,7 +239,7 @@ class MaternalService:
     def _user_to_dict(user: User) -> Dict[str, Any]:
         return {
             "id": user.id,
-            "user_name": user.user_name,
+            "username": user.username,
             "user_type": user.user_type,
             "created_at": user.created_at.isoformat() if user.created_at else None
         }

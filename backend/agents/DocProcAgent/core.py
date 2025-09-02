@@ -46,7 +46,7 @@ def extract_document_content(state: DocProcState) -> DocProcState:
     if state["error"] or not state["file_type"]:
         return state
     try:
-        result = docproc_tool(
+        result = docproc_tool.invoke(
             state["file_path"]
         )
         if "content" in result:

@@ -6,7 +6,7 @@ from crypt import methods
 from flask import Blueprint, request, jsonify
 from datetime import datetime
 from backend.api.v1.services.maternal_service import MaternalService
-from backend.api.common.auth import verify_token, generate_token  # 假设存在令牌生成工具
+from backend.api.common.auth import verify_token, generate_token, require_auth  # 假设存在令牌生成工具
 
 maternal_bp = Blueprint('maternal', __name__, url_prefix='/api/v1/maternal')
 maternal_service = MaternalService()

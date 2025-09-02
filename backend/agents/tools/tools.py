@@ -86,7 +86,7 @@ def imgproc_tool(file_path: Annotated[str, "图片文件路径"]) -> dict:
     name_or_callable="save_memory",
     description="将对话记录保存到向量数据库中用于后续的语义检索",
 )
-def save_memory(chat_history: Annotated[list, "对话记录"], persist_directory: Annotated[str, "向量数据库路径"]) -> dict:
+def save_memory(chat_history: Annotated[str, "对话记录路径"], persist_directory: Annotated[str, "向量数据库路径"]) -> dict:
     """将对话记录保存到向量数据库中用于后续的语义检索"""
     kb = KnowledgeBase(
         data_root=chat_history,

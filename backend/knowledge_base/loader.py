@@ -54,22 +54,47 @@ class DocumentLoader:
             print(f"转换 .doc 文件失败：{e.stderr.decode('utf-8')}")
             return None
 
-    def _json_loader_func(self, file_path : str):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+    def _conversation_json_parser(self, data, file_path: str) -> List[Document]:
+        """解析列表形式的对话记录JSON：[{"role": "user", "content": "..."}, ...]"""
+        if not isinstance(data, list):
+            return []
+        
+        # 过滤并格式化有效消息
+        messages = []
+        for i, msg in enumerate(data):
+            if isinstance(msg, dict) and "role" in msg and "content" in msg:
+                role = msg["role"]
+                content = str(msg["content"]) if not isinstance(msg["content"], str) else msg["content"]
+                messages.append(f"{role}: {content}")
+            else:
+                print(f"对话记录中第{i+1}条消息格式不正确，已跳过")
+        
+        return [Document(
+            page_content="\n\n".join(messages),
+            metadata={"source": file_path, "message_count": len(messages), "format": "conversation_list"}
+        )] if messages else []
 
-        documents = []
-        for item in data:
-            full_text = ''.join(item.get('dataText', []))
-            full_text = f"标题：{item.get('title', '')}\n描述：{item.get('metaDescription', '')}\n{full_text}"
+    def _original_json_parser(self, data, file_path: str) -> List[Document]:
+        """处理原始JSON格式"""
+        if not isinstance(data, list):
+            return []
+        
+        return [Document(
+            page_content=f"标题：{item.get('title', '')}\n描述：{item.get('metaDescription', '')}\n{''.join(item.get('dataText', [])) if isinstance(item.get('dataText'), list) else str(item.get('dataText', ''))}",
+            metadata={"source": file_path, "title": item.get('title', ''), "metaDescription": item.get('metaDescription', '')}
+        ) for item in data]
 
-            metadata = {
-                'source' : file_path,
-                'title' : item.get('title', ''),
-                'metaDescription' : item.get('metaDescription', ''),
-            }
-            documents.append(Document(page_content = full_text, metadata = metadata))
-        return documents
+    def _json_loader_func(self, file_path: str) -> List[Document]:
+        """加载JSON文件并选择合适的解析器"""
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+        except Exception as e:
+            print(f"解析JSON文件{file_path}时出错：{e}")
+            return []
+        
+        # 优先使用对话解析器，失败则使用原始解析器
+        return self._conversation_json_parser(data, file_path) or self._original_json_parser(data, file_path)
 
     def _process_single_file(self, file_path: str) -> List[Document]:
         """处理单个文件的加载逻辑"""

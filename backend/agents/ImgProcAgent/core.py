@@ -51,7 +51,7 @@ def change_image_format(state: ImgProcState) -> ImgProcState:
                 "file_path": state["file_path"]
             }
             state["metadata"] = metadata
-        img_path = imgproc_tool(state["file_path"])
+        img_path = imgproc_tool.invoke(state["file_path"])
         state["file_path"] = img_path
     except Exception as e:
         state["error"] = f"图片格式或者元素据提取/转换失败: {str(e)}"
@@ -62,7 +62,7 @@ def extract_image_content(state: ImgProcState) -> ImgProcState:
     提取图片内容节点
     """
     try:
-        img_content = qwen_tool(
+        img_content = qwen_tool.invoke(
             state["file_path"])
         state["content"] = img_content
     except Exception as e:

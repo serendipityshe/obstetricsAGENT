@@ -84,7 +84,7 @@ def process_memory(state: MixAgentState) -> MixAgentState:
             "chat_history": state["chat_history"],
             "persist_directory": state["persist_directory"]
         })
-        if result["error"]:
+        if result.get("error"):
             state["error"] = f"记忆处理错误: {result['error']}"
             return state
         # 统一格式

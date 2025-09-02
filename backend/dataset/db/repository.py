@@ -29,14 +29,14 @@ class MaternalRepository:
     # ------------------------------
     def create_user_info(
         self,
-        user_name: str,
+        username: str,
         password: str,
         user_type: str
     ) -> User:
         """创建用户基本信息"""
         user = User(
-            user_name=user_name,
-            password=password,
+            username=username,
+            password_hash=password,
             user_type=user_type
         )
         self.db_session.add(user)
@@ -48,13 +48,13 @@ class MaternalRepository:
         """根据用户名获取用户信息"""
         return self.db_session.query(User).filter(
             User.username == username
-        ).all()
+        ).first()
 
     def get_user_info_by_id(self, user_id: int) -> Optional[User]:
         """根据ID获取用户信息"""
         return self.db_session.query(User).filter(
             User.id == user_id
-        ).all()
+        ).first()
     
     # ------------------------------
     # 孕妇基本信息操作
