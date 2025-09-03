@@ -535,3 +535,2933 @@ API文档服务启动: http://0.0.0.0:8803/docs/
 45.90.208.252 - - [02/Sep/2025 10:07:17] "POST /api/v1/auth/login HTTP/1.1" 200 -
 45.90.208.252 - - [02/Sep/2025 10:07:32] "POST /api/v1/auth/login HTTP/1.1" 200 -
 45.90.208.252 - - [02/Sep/2025 10:07:39] "POST /api/v1/auth/login HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/fastapi_app/config.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/models/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/models/chat.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/models/__init__.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/routers/chat.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/main.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/routers/__init__.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/__init__.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/main.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/routers/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/routers/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/main.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/routers/chat.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/routers/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/routers/maternal.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/routers/maternal.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/models/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/models/chat.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/models/chat.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/models/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/auth.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/main_simple.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/fastapi_app/main_simple.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
