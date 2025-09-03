@@ -43,7 +43,7 @@ def extract_document_content(state: DocProcState) -> DocProcState:
     """
     提取文档内容节点
     """
-    if state["error"] or not state["file_type"]:
+    if state.get('error') or not state.get('file_type'):
         return state
     try:
         result = docproc_tool.invoke(

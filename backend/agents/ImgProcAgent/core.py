@@ -17,19 +17,17 @@ import os
 import yaml
 
 
-
-
 class ImgProcState(TypedDict):
     """
     图片处理智能体的状态结构
     专注于图片解析结果.
     """
     file_path: Annotated[str, "图片路径"]
-    base64_content: Annotated[str, "图片base64编码"]
-    content: Optional[Annotated[str, "图片解析内容"]]
-    metadata: Optional[Annotated[Dict, '图片元数据']]
-    file_type: Optional[Annotated[str, '图片格式']]
-    error: Optional[Annotated[str, "错误信息"]]
+    base64_content: Annotated[Optional[str], "图片base64编码"] = None
+    content: Optional[Annotated[str, "图片解析内容"]] = None
+    metadata: Optional[Annotated[Dict, '图片元数据']] = None
+    file_type: Optional[Annotated[str, '图片格式']] = None
+    error: Optional[Annotated[str, "错误信息"]] = None
 
 #-------------------------定义节点----------------------------
 def extract_image_metadata(file_path: str) -> Dict:
@@ -71,7 +69,7 @@ def extract_image_content(state: ImgProcState) -> ImgProcState:
     """
     提取图片内容节点
     """
-    if state["error"] or not state.get("base64_content"):
+    if state.get('error') or not state.get("base64_content"):
         return state
     try:
 
@@ -83,9 +81,12 @@ def extract_image_content(state: ImgProcState) -> ImgProcState:
         base_url = default_model['base_url']
         temperature = default_model['temperature']
 
+        prompt = "请描述图片内容"
         image_query = f"data:image/{state['file_type']};base64,{state['base64_content']}"
+        query = f"{prompt}\n{image_query}"
+        
         qwen_result = qwen_tool.invoke({
-            "input": image_query,
+            "query": query,
             "model_name": model_name,
             "api_key": api_key,
             "base_url": base_url,
@@ -120,10 +121,10 @@ if __name__ == "__main__":
     img_agent = create_imgproc_agent()
 
     result = img_agent.invoke({
-        "img_file_path": "test/OIP.png"
+        "file_path": "test/OIP.png"
     })
     # 输出结果（供后续智能体使用的格式）
-    if result["error"]:
+    if result.get("error"):
         print(f"图片处理失败: {result['error']}")
     else:
         print({
