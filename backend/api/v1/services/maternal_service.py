@@ -240,6 +240,7 @@ class MaternalService:
         return {
             "id": user.id,
             "username": user.username,
+            'password_hash': user.password_hash,
             "user_type": user.user_type,
             "created_at": user.created_at.isoformat() if user.created_at else None
         }

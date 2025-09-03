@@ -137,7 +137,7 @@ if __name__ == "__main__":
         "doc_file_path": "test/孕前和孕期保健指南.doc",
         "img_file_path": "test/OIP.png",
         "chat_history": "test/chat.json",
-        "persist_directory": "./test/vector_db"
+        "persist_directory": "test/vector_db"
     })
     
     if result["error"]:

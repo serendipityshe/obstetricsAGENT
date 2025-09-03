@@ -31,6 +31,7 @@ if __name__ == '__main__':
         app= 'app:app',
         host= '0.0.0.0',
         port= 8805,
-        reload= True
+        reload= True,
+        log_level="debug"
     )
 

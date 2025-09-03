@@ -3,12 +3,20 @@
 负责处理图片相关的任务
 """
 
+import sys
+from pathlib import Path
+root_dir = Path(__file__).parent.parent.parent.parent
+sys.path.append(str(root_dir))
+
 from typing import TypedDict, Optional, Dict, Annotated
 from langgraph.graph import StateGraph, END, START
 from backend.agents.tools.tools import imgproc_tool
 from backend.agents.tools.tools import qwen_tool
 from PIL import Image
 import os
+import yaml
+
+
 
 
 class ImgProcState(TypedDict):
@@ -17,8 +25,9 @@ class ImgProcState(TypedDict):
     专注于图片解析结果.
     """
     file_path: Annotated[str, "图片路径"]
+    base64_content: Annotated[str, "图片base64编码"]
     content: Optional[Annotated[str, "图片解析内容"]]
-    metadata: Optional[Annotated[str, '图片元数据']]
+    metadata: Optional[Annotated[Dict, '图片元数据']]
     file_type: Optional[Annotated[str, '图片格式']]
     error: Optional[Annotated[str, "错误信息"]]
 
@@ -42,17 +51,18 @@ def change_image_format(state: ImgProcState) -> ImgProcState:
     检测图片格式节点
     """
     try:
-        with Image.open(state["file_path"]) as img:
-            metadata =  {
-                "format": img.format,
-                "size": img.size,
-                "mode": img.mode,
-                "file_size": os.path.getsize(state["file_path"]),
-                "file_path": state["file_path"]
-            }
-            state["metadata"] = metadata
-        img_path = imgproc_tool.invoke(state["file_path"])
-        state["file_path"] = img_path
+        metadata = extract_image_metadata(state["file_path"])
+        if "error" in metadata:
+            state["error"] = f"图片元数据提取失败: {metadata['error']}"
+            return state
+        state['metadata'] = metadata
+        state['file_type'] = metadata["format"].lower()
+
+        imgproc_result = imgproc_tool.invoke({"file_path": state["file_path"]})
+        if imgproc_result['status'] != 'success':
+            state["error"] = f"图片格式转换失败: {imgproc_result['error']}"
+            return state
+        state["base64_content"] = imgproc_result["content"]
     except Exception as e:
         state["error"] = f"图片格式或者元素据提取/转换失败: {str(e)}"
     return state
@@ -61,10 +71,27 @@ def extract_image_content(state: ImgProcState) -> ImgProcState:
     """
     提取图片内容节点
     """
+    if state["error"] or not state.get("base64_content"):
+        return state
     try:
-        img_content = qwen_tool.invoke(
-            state["file_path"])
-        state["content"] = img_content
+
+        with open('backend/config/model_settings.yaml', 'r', encoding= 'utf-8') as f:
+            model_settings = yaml.safe_load(f)
+            default_model = model_settings['VL_MODEL']
+        model_name = default_model['llm_model']
+        api_key = default_model['api_key']
+        base_url = default_model['base_url']
+        temperature = default_model['temperature']
+
+        image_query = f"data:image/{state['file_type']};base64,{state['base64_content']}"
+        qwen_result = qwen_tool.invoke({
+            "input": image_query,
+            "model_name": model_name,
+            "api_key": api_key,
+            "base_url": base_url,
+            "temperature": temperature
+        })
+        state["content"] = qwen_result.get("content", "未提取到图片内容")
     except Exception as e:
         state["error"] = f"图片内容提取失败: {str(e)}"
     return state
@@ -93,7 +120,7 @@ if __name__ == "__main__":
     img_agent = create_imgproc_agent()
 
     result = img_agent.invoke({
-        "file_path": "medical_record.png"
+        "img_file_path": "test/OIP.png"
     })
     # 输出结果（供后续智能体使用的格式）
     if result["error"]:
