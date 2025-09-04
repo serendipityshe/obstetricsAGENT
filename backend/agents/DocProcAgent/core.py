@@ -6,6 +6,14 @@
     2. 根据文件特性增加ocr等功能。
 """
 
+import sys
+import traceback  # 新增：用于打印详细异常堆栈
+from pathlib import Path
+
+from langchain_core.documents import Document  # 新增：用于文件路径校验
+root_dir = Path(__file__).parent.parent.parent.parent
+sys.path.append(str(root_dir))
+
 from typing import TypedDict, Optional, Dict, Annotated
 from langgraph.graph import StateGraph, END, START
 from backend.agents.tools.tools import docproc_tool
@@ -49,12 +57,25 @@ def extract_document_content(state: DocProcState) -> DocProcState:
         result = docproc_tool.invoke(
             state["file_path"]
         )
-        if "content" in result:
-            state["content"] = result["content"]
-        else:
+        if "content" not in result:
             state["error"] = "文档处理工具未返回内容"
+            return state
+        
+        doc_list = result['content']
+        if not isinstance(doc_list, list) or not all(isinstance(doc, Document) for doc in doc_list):
+            state["error"] = "文档处理工具返回内容格式错误"
+            return state
+
+        page_contents = []
+        for doc in doc_list:
+            page_contents.append(doc.page_content)
+            metadata = doc.metadata
+        state["content"] = page_contents
+        state["metadata"] = metadata
+            
     except Exception as e:
-        state["error"] = f"文档内容提取失败: {str(e)}"
+        error_msg = f"文档内容提取失败: {str(e)}\n{traceback.format_exc()}"
+        state["error"] = error_msg
     return state
 
 
@@ -82,15 +103,15 @@ if __name__ == "__main__":
     doc_agent = create_docproc_agent()
 
     result = doc_agent.invoke({
-        "file_path": "medical_record.pdf"
+        "file_path": "test/孕前和孕期保健指南.doc"
     })
     # 输出结果（供后续智能体使用的格式）
-    if result["error"]:
+    if result.get("error"):
         print(f"文档处理失败: {result['error']}")
     else:
         print({
             "source_type": "document",
             "file_type": result["file_type"],
             "content": result["content"],
-            "metadata": result["metadata"]
+            "metadata": result['metadata'],
         })

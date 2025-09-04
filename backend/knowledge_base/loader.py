@@ -9,9 +9,9 @@ from langchain_community.document_loaders import (
     TextLoader,
     CSVLoader,
     UnstructuredWordDocumentLoader,
-    Docx2txtLoader,
     JSONLoader
 )
+from langchain_unstructured import UnstructuredLoader
 from langchain.schema import Document
 
 class DocumentLoader:
@@ -27,32 +27,6 @@ class DocumentLoader:
     def __init__(self, file_path : str):
         self.file_path = file_path
 
-    def _convert_doc_to_docx(self, doc_path: str) -> str:
-        """使用 LibreOffice 将 .doc 文件转换为 .docx，并返回临时文件路径"""
-        absolute_path = os.path.abspath(doc_path)
-        dir_name = os.path.dirname(absolute_path)
-        file_name = os.path.basename(absolute_path)
-        docx_name = os.path.splitext(file_name)[0] + ".docx"
-        docx_path = os.path.join(dir_name, docx_name)
-
-        try:
-            subprocess.run(
-                [
-                    "libreoffice",
-                    "--headless",
-                    "--convert-to", "docx",
-                    "--outdir", dir_name,
-                    absolute_path
-                ],
-                check=True,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE
-            )
-            print(f".doc 转换为 .docx 成功：{docx_path}")
-            return docx_path
-        except subprocess.CalledProcessError as e:
-            print(f"转换 .doc 文件失败：{e.stderr.decode('utf-8')}")
-            return None
 
     def _conversation_json_parser(self, data, file_path: str) -> List[Document]:
         """解析列表形式的对话记录JSON：[{"role": "user", "content": "..."}, ...]"""
@@ -101,30 +75,14 @@ class DocumentLoader:
         documents = []
         file_ext = os.path.splitext(file_path)[1].lower().lstrip('.')
 
-        # 处理.doc文件（先转换为docx）
-        if file_ext == 'doc':
-            temp_docx = self._convert_doc_to_docx(file_path)
-            if not temp_docx:
-                print(f"跳过无法转换的.doc文件：{file_path}")
-                return []
-            try:
-                loader = UnstructuredWordDocumentLoader(temp_docx)
-                docs = loader.load()
-                # 修正元数据中的source为原文件路径
-                for doc in docs:
-                    doc.metadata['source'] = file_path
-                documents.extend(docs)
-            finally:
-                os.unlink(temp_docx)  # 清理临时文件
-            return documents
-
         # 处理其他支持的文件类型
         loader_map = {
             'pdf' : PyPDFLoader,
             'txt' : TextLoader,
             'csv' : CSVLoader,
-            'docx' : UnstructuredWordDocumentLoader,
+            'docx' : UnstructuredLoader,
             'json' : JSONLoader,
+            'doc' : UnstructuredLoader,
         }
 
         if file_ext not in loader_map:
