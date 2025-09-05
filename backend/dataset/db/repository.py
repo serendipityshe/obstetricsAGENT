@@ -92,7 +92,7 @@ class MaternalRepository:
         """根据ID获取孕妇基本信息（包含关联表数据）"""
         return self.db_session.query(MaternalInfo).filter(
             MaternalInfo.id == info_id
-        ).all()
+        ).first()
     
     def get_maternal_info_by_id_card(self, id_card: str) -> Optional[MaternalInfo]:
         """新增：根据身份证号获取孕妇信息（唯一标识）"""

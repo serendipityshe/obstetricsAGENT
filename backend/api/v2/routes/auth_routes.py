@@ -75,7 +75,7 @@ def register(request: RegisterRequest):
         return {
             "status": "success",
             "message": "注册成功",
-            "user_id": user['id']
+            "user_id": user.get('id')
         }
     except Exception as e:
         raise HTTPException(

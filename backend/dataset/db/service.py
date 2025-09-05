@@ -46,43 +46,43 @@ class MaternalService:
                 password=password,
                 user_type=user_type
             )
-            if user_type == 'pregnant_mother':
-                maternal_info = repo.create_maternal_info(
-                    user_id=user.id,
-                    id_card=None,
-                    phone=None,
-                    current_gestational_week=None,
-                    expected_delivery_date=None,
-                    maternal_age=None,
-                )
-                repo.create_pregnancy_history(
-                    maternal_id=maternal_info.id,
-                    pregnancy_count=None,
-                    bad_pregnancy_history=None,
-                    delivery_method=None
-                )
-                repo.create_health_condition(
-                    maternal_id=maternal_info.id,
-                    has_hypertension=False,
-                    has_diabetes=False,
-                    has_thyroid_disease=False,
-                    has_heart_disease=False,
-                    has_liver_disease=False,
-                    allergy_history=None
-                )
-                repo.create_medical_file(
-                    maternal_id=maternal_info.id,
-                    file_name=f"init_{maternal_info.id}",  # 默认文件名
-                    file_path=f"/default/medical/{maternal_info.id}",  # 默认路径
-                    file_type="txt",  # 默认类型
-                    file_desc="初始默认文件"  # 描述
-                )
-                repo.create_dialogue(
-                    maternal_id=maternal_info.id,
-                    dialogue_content="{}",  # 空JSON字符串（符合字段要求）
-                    vector_store_path=None
-                )
-            db_session.commit()
+            # if user_type == 'pregnant_mother':
+            #     maternal_info = repo.create_maternal_info(
+            #         user_id=user.id,
+            #         id_card=None,
+            #         phone=None,
+            #         current_gestational_week=None,
+            #         expected_delivery_date=None,
+            #         maternal_age=None,
+            #     )
+            #     repo.create_pregnancy_history(
+            #         maternal_id=maternal_info.id,
+            #         pregnancy_count=None,
+            #         bad_pregnancy_history=None,
+            #         delivery_method=None
+            #     )
+            #     repo.create_health_condition(
+            #         maternal_id=maternal_info.id,
+            #         has_hypertension=False,
+            #         has_diabetes=False,
+            #         has_thyroid_disease=False,
+            #         has_heart_disease=False,
+            #         has_liver_disease=False,
+            #         allergy_history=None
+            #     )
+            #     repo.create_medical_file(
+            #         maternal_id=maternal_info.id,
+            #         file_name=f"init_{maternal_info.id}",  # 默认文件名
+            #         file_path=f"/default/medical/{maternal_info.id}",  # 默认路径
+            #         file_type="txt",  # 默认类型
+            #         file_desc="初始默认文件"  # 描述
+            #     )
+            #     repo.create_dialogue(
+            #         maternal_id=maternal_info.id,
+            #         dialogue_content="{}",  # 空JSON字符串（符合字段要求）
+            #         vector_store_path=None
+            #     )
+            # db_session.commit()
             return user
         except Exception as e:
             db_session.rollback()
