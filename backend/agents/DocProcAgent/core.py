@@ -9,6 +9,7 @@
 import sys
 import traceback  # 新增：用于打印详细异常堆栈
 from pathlib import Path
+import yaml
 
 from langchain_core.documents import Document  # 新增：用于文件路径校验
 root_dir = Path(__file__).parent.parent.parent.parent
@@ -16,7 +17,7 @@ sys.path.append(str(root_dir))
 
 from typing import TypedDict, Optional, Dict, Annotated
 from langgraph.graph import StateGraph, END, START
-from backend.agents.tools.tools import docproc_tool
+from backend.agents.tools.tools import docproc_tool, qwen_tool
 
 
 class DocProcState(TypedDict):
@@ -24,6 +25,7 @@ class DocProcState(TypedDict):
     文档处理智能体的状态结构
     专注于文档解析结果.
     """
+    input: Annotated[str, "用户输入"]
     file_path: Annotated[str, "文件路径"]
     file_type: Optional[Annotated[str, "文件类型"]]
     content: Optional[Annotated[str, "文件内容"]]
@@ -78,6 +80,33 @@ def extract_document_content(state: DocProcState) -> DocProcState:
         state["error"] = error_msg
     return state
 
+def qwen_answer(state: DocProcState) -> DocProcState:
+
+    prompt =  f"""
+            你是一个文档处理智能体，仅基于以下文档内容回答用户问题，禁止编造信息：
+            1. 用户问题：{state['input']}
+            2. 文档内容：{state['content']}
+
+            要求：
+            - 若文档中无相关答案，需明确说明“文档中未找到相关内容”；
+            - 若有相关答案，需引用文档原文。
+        """
+
+    with open("backend/config/model_settings.yaml", "r", encoding="utf-8") as f:
+        model_settings = yaml.safe_load(f)
+    default_model_config = model_settings.get("DEFAULT_MODEL")
+    qwen_result = qwen_tool.invoke({
+        "input": prompt,
+        "img_path": '',  
+        "model_name": default_model_config["llm_model"],
+        "api_key": default_model_config["api_key"],
+        "base_url": default_model_config["base_url"],
+        "temperature": default_model_config["temperature"]
+    })
+
+    state["content"] = qwen_result['content']
+    return state
+
 
 # --------------------定义流程------------------
 def create_docproc_agent():
@@ -90,11 +119,13 @@ def create_docproc_agent():
     #添加节点
     builder.add_node("detect_document_format", detect_document_format)
     builder.add_node("extract_document_content", extract_document_content)
+    builder.add_node("qwen_answer", qwen_answer)
 
     #添加边
     builder.add_edge(START, "detect_document_format")
     builder.add_edge("detect_document_format", "extract_document_content")
-    builder.add_edge("extract_document_content", END)
+    builder.add_edge("extract_document_content", "qwen_answer")
+    builder.add_edge("qwen_answer", END)
 
     return builder.compile()
 
@@ -103,6 +134,7 @@ if __name__ == "__main__":
     doc_agent = create_docproc_agent()
 
     result = doc_agent.invoke({
+        "input": "高龄孕妇的孕期保健?",
         "file_path": "test/孕前和孕期保健指南.doc"
     })
     # 输出结果（供后续智能体使用的格式）

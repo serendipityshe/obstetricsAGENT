@@ -8,9 +8,13 @@ from langgraph.graph import StateGraph, END, START
 from backend.agents.tools.tools import save_memory  # 确保该工具正确实现
 from datetime import datetime
 
+from backend.dataset.db.models import MaternalDialogue
+from backend.dataset.db.service import get_session, get_db_engine
+
 
 class MeMState(TypedDict):
     """完善长期记忆智能体状态定义"""
+    maternal_id: Annotated[str, '孕妇ID']
     chat_history: Annotated[str, "对话记录路径"]
     persist_directory: Annotated[str, "向量数据库路径"]
     error: Optional[Annotated[str, '错误信息']]
@@ -21,12 +25,22 @@ class MeMState(TypedDict):
 def save_memory_node(state: MeMState) -> MeMState:
     """长期记忆智能体节点：保存对话记录到向量数据库"""
     print("进入 save_memory_node 节点，开始处理...")  # 验证节点是否执行
+    user_vector_dir = Path(state["persist_directory"])/f"maternal_{state['maternal_id']}"
+    user_vector_dir.mkdir(parents=True, exist_ok=True)
     try:
         # 调用工具保存记忆（确保 save_memory.invoke 正确实现）
         save_memory.invoke({
             "chat_history": state['chat_history'], 
-            "persist_directory": state['persist_directory']
+            "persist_directory": str(user_vector_dir)
         })
+        db = get_session(get_db_engine())
+        new_dialogue = MaternalDialogue(
+            maternal_id=state["maternal_id"],
+            dialogue_content=state["chat_history"],
+            vector_store_path=str(user_vector_dir)
+        )
+        db.add(new_dialogue)
+        db.commit()
         
         # 完善状态信息（此时字段已在 MeMState 中定义，会被保留）
         state['content'] = f"成功存储对话记录到 {state['persist_directory']}"
@@ -59,6 +73,7 @@ if __name__ == '__main__':
     mem_agent = create_mem_agent()
     # 初始状态
     initial_state = {
+        "maternal_id": "1",
         "chat_history": "test/chat.json",  # 确保该路径存在实际文件
         "persist_directory": "test/vector_db",  # 确保该目录可写
         "error": None,

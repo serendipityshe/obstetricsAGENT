@@ -8,25 +8,83 @@ from backend.knowledge_base.manage import KnowledgeBase
 from backend.knowledge_base.loader import DocumentLoader
 from backend.llm.openai_wrapper import QwenAIWrap
 
+from langchain.schema import HumanMessage
+from pydantic import BaseModel, Field
+from typing import Optional, Annotated
+
+
+# 定义工具输入模型（可选，用于参数校验，增强可读性）
+class QwenToolInput(BaseModel):
+    input: str = Field(description="用户的原始问题或文本输入内容")
+    img_path: Optional[str] = Field(description="图片路径")
+    model_name: Optional[str] = Field(description="Qwen模型名称（如 qwen-max、qwen-plus 等）")
+    api_key: Optional[str] = Field(description="访问Qwen模型的API密钥")
+    base_url: Optional[str] = Field(description="Qwen模型的API请求地址（如 https://api.example.com/v1）")
+    temperature: Optional[float] = Field(description="模型生成的随机性（0.0-1.0，值越高随机性越强）", ge=0.0, le=1.0)
+
 @tool(
     name_or_callable="qwen_tool",
-    description="调用qwen模型",
+    description="调用Qwen大模型处理文本输入（支持可选图片输入），返回模型生成的响应内容",
+    args_schema=QwenToolInput  # 关联输入模型，实现参数校验
 )
 def qwen_tool(
-    query: Annotated[str, "用户的原始问题"],
-    model_name: Annotated[str, "模型名称"],
-    api_key: Annotated[str, "模型api密钥"],
-    base_url: Annotated[str, "模型地址"],
-    temperature: Annotated[int, "模型温度"]
+    input: Annotated[str, "用户的原始问题或文本输入内容"],
+    img_path: Annotated[Optional[str], "图片路径（为空时仅传递文本）"],
+    model_name: Annotated[Optional[str], "Qwen模型名称（如 qwen-max、qwen-plus）"],
+    api_key: Annotated[Optional[str], "访问Qwen模型的API密钥"],
+    base_url: Annotated[Optional[str], "Qwen模型的API请求地址"],
+    temperature: Annotated[Optional[float], "模型随机性（0.0-1.0，推荐0.7）"]
 ) -> dict:
-    """调用qwen模型"""
-    qwen = QwenAIWrap(
-        model_name = model_name, 
-        api_key = api_key, 
-        base_url = base_url, 
-        temperature = temperature)
-    response = qwen.invoke(query)
-    return {"content": response}
+    """
+    调用Qwen大模型处理文本输入（支持可选图片输入），返回结构化响应
+    
+    核心修改：
+    - 仅当img_path有效（非空、非空白）时，才添加图片信息到请求中
+    - 空img_path时仅传递文本，避免模型因无效图片参数报错
+    """
+    # 1. 初始化Qwen模型包装器
+    qwen_client = QwenAIWrap(
+        model_name=model_name,
+        api_key=api_key,
+        base_url=base_url,
+        temperature=temperature
+    )
+    
+    # 2. 构造消息（动态判断是否添加图片信息）
+    # 先添加必选的文本内容
+    message_content = [{"type": "text", "text": input}]
+    
+    # 仅当img_path有效（非None、非空字符串、非纯空白）时，添加图片信息
+    if img_path and str(img_path).strip():
+        message_content.append(
+            {"type": "image_url", "image_url": {"url": img_path}}
+        )
+    
+    # 组装完整的HumanMessage
+    messages = [HumanMessage(content=message_content)]
+    
+    # 3. 调用模型并处理响应
+    try:
+        response = qwen_client.invoke(messages)
+        # 验证响应有效性
+        if not response or not hasattr(response, "content") or len(str(response.content).strip()) == 0:
+            raise ValueError("Qwen模型返回无效响应（空内容或格式错误）")
+        # 返回标准化结果
+        return {
+            "status": "success",
+            "content": str(response.content).strip(),
+            "model_used": model_name,
+            "temperature": temperature,
+            "has_image": bool(img_path and str(img_path).strip())  # 新增：标识是否包含图片
+        }
+    except Exception as e:
+        # 异常处理
+        return {
+            "status": "error",
+            "content": f"调用Qwen模型失败：{str(e)}",
+            "model_used": model_name,
+            "has_image": bool(img_path and str(img_path).strip())
+        }
 
 @tool(
     name_or_callable="rag_tool",
