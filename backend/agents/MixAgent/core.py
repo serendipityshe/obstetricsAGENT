@@ -137,7 +137,7 @@ def combine_results(state: MixAgentState) -> dict:  # 返回类型改为dict（�
 
 
 # 创建混合智能体（逻辑不变）
-def create_mix_agent():
+def mix_agent():
     builder = StateGraph(MixAgentState)
     
     # 添加节点
@@ -171,7 +171,7 @@ if __name__ == "__main__":
         print(f"{key}: {value}")
     print("=" * 50)
     
-    mix_agent = create_mix_agent()
+    mix_agent = mix_agent()
     result = mix_agent.invoke(input_params)
     
     if result.get('error'):
