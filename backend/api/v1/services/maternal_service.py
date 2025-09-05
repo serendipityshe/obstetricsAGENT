@@ -27,6 +27,30 @@ class MaternalService:
                 password=password,
                 user_type=user_type
             )
+
+            if user_type == 'pregnant_mother':
+                maternal_info = self.dataset_service.create_maternal_info(
+                    user_id=result.id,  # 新增：用户ID关联
+                )
+                self.dataset_service.create_health_condition(
+                    maternal_id=maternal_info.id,
+                )
+
+                self.dataset_service.create_pregnancy_history(
+                    maternal_id=maternal_info.id,
+                )
+                self.dataset_service.create_medical_file(
+                    maternal_id=maternal_info.id,
+                    file_name=' health_conditions',
+                    file_path='',
+                    file_type='health_conditions',
+                )
+                self.dataset_service.create_dialogue(
+                    maternal_id=maternal_info.id,
+                    dialogue_content='',
+                    vector_store_path=''
+                )
+
             return self._user_to_dict(result)
         except Exception as e:
             raise Exception(f"创建用户信息失败: {str(e)}")

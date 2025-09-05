@@ -38,7 +38,7 @@ class MaternalInfo(Base):
     
     id = Column(Integer, primary_key=True, autoincrement=True, comment='主键ID（自增）')
     user_id = Column(Integer, ForeignKey("user.id"), unique=True, nullable=False, comment="关联用户ID(外键)")
-    id_card = Column(String(18), unique=True, nullable=False, comment='身份证号（唯一标识）')
+    id_card = Column(String(18), unique=True, nullable=True, comment='身份证号（唯一标识）')
     phone = Column(String(20), unique=True, nullable=True, comment='手机号（可选）')
     current_gestational_week = Column(Integer, nullable=True, comment='当前孕周')
     expected_delivery_date = Column(Date, nullable=True, comment='预产期')

@@ -63,7 +63,8 @@ class MaternalService:
     # ------------------------------
     def create_maternal_info(
         self,
-        id_card: str,
+        user_id: int,  # 新增：用户ID关联
+        id_card: str = None,
         phone: Optional[str] = None,
         current_gestational_week: Optional[int] = None,
         expected_delivery_date: Optional[date] = None,
@@ -74,6 +75,7 @@ class MaternalService:
         try:
             repo = MaternalRepository(db_session)
             return repo.create_maternal_info(
+                user_id=user_id,  # 新增：用户ID关联
                 id_card=id_card,
                 phone=phone,
                 current_gestational_week=current_gestational_week,
