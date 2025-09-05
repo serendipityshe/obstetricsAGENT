@@ -42,6 +42,7 @@ class MaternalRepository:
         self.db_session.add(user)
         self.db_session.commit()
         self.db_session.refresh(user)
+
         return user
     
     def get_user_info_by_username(self, username: str) -> Optional[User]:
@@ -61,29 +62,31 @@ class MaternalRepository:
     # ------------------------------
     def create_maternal_info(
         self,
-        id_card: str,  #
+        user_id: int,
+        id_card: Optional[str] = None,
         phone: Optional[str] = None,
         current_gestational_week: Optional[int] = None,
         expected_delivery_date: Optional[date] = None,
         maternal_age: Optional[int] = None
     ) -> MaternalInfo:
-        """创建孕妇基本信息记录（核心主表）"""
+        """创建孕妇基本信息（关联用户ID）"""
         maternal_info = MaternalInfo(
+            user_id=user_id,
             id_card=id_card,
             phone=phone,
             current_gestational_week=current_gestational_week,
             expected_delivery_date=expected_delivery_date,
             maternal_age=maternal_age
         )
-        
         try:
             self.db_session.add(maternal_info)
-            self.db_session.commit()
-            self.db_session.refresh(maternal_info)
+            self.db_session.flush()  # 触发数据库插入，捕获约束错误
             return maternal_info
-        except SQLAlchemyError as e:
+        except Exception as e:
+            # 关键：打印详细错误（包含数据库具体约束错误）
+            print(f"插入maternal_info失败！详细原因：{str(e)}")
             self.db_session.rollback()
-            raise e
+            raise e  # 重新抛出，让上层能捕获
     
     def get_maternal_info_by_id(self, info_id: int) -> Optional[MaternalInfo]:
         """根据ID获取孕妇基本信息（包含关联表数据）"""
