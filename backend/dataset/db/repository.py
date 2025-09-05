@@ -61,8 +61,7 @@ class MaternalRepository:
     # ------------------------------
     def create_maternal_info(
         self,
-        user_id: int,  # 新增：用户ID（必填）
-        id_card: str,  # 新增：身份证号（必填）
+        id_card: str,  #
         phone: Optional[str] = None,
         current_gestational_week: Optional[int] = None,
         expected_delivery_date: Optional[date] = None,
@@ -70,7 +69,6 @@ class MaternalRepository:
     ) -> MaternalInfo:
         """创建孕妇基本信息记录（核心主表）"""
         maternal_info = MaternalInfo(
-            user_id=user_id,  # 新增：用户ID关联
             id_card=id_card,
             phone=phone,
             current_gestational_week=current_gestational_week,
