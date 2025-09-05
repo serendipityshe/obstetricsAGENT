@@ -37,61 +37,73 @@ class MaternalService:
     # 用户基本信息服务
     # ------------------------------
     def create_user_info(self, username: str, password: str, user_type: str) -> User:
-        """创建用户基本信息"""
+        """创建用户基本信息（孕妇用户自动创建关联数据）"""
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
+            # 1. 创建用户（先提交获取user.id，用于后续关联）
             user = repo.create_user_info(
                 username=username,
                 password=password,
                 user_type=user_type
             )
-            # if user_type == 'pregnant_mother':
-            #     maternal_info = repo.create_maternal_info(
-            #         user_id=user.id,
-            #         id_card=None,
-            #         phone=None,
-            #         current_gestational_week=None,
-            #         expected_delivery_date=None,
-            #         maternal_age=None,
-            #     )
-            #     repo.create_pregnancy_history(
-            #         maternal_id=maternal_info.id,
-            #         pregnancy_count=None,
-            #         bad_pregnancy_history=None,
-            #         delivery_method=None
-            #     )
-            #     repo.create_health_condition(
-            #         maternal_id=maternal_info.id,
-            #         has_hypertension=False,
-            #         has_diabetes=False,
-            #         has_thyroid_disease=False,
-            #         has_heart_disease=False,
-            #         has_liver_disease=False,
-            #         allergy_history=None
-            #     )
-            #     repo.create_medical_file(
-            #         maternal_id=maternal_info.id,
-            #         file_name=f"init_{maternal_info.id}",  # 默认文件名
-            #         file_path=f"/default/medical/{maternal_info.id}",  # 默认路径
-            #         file_type="txt",  # 默认类型
-            #         file_desc="初始默认文件"  # 描述
-            #     )
-            #     repo.create_dialogue(
-            #         maternal_id=maternal_info.id,
-            #         dialogue_content="{}",  # 空JSON字符串（符合字段要求）
-            #         vector_store_path=None
-            #     )
-            # db_session.commit()
+            # 2. 若为孕妇用户，自动创建关联数据（同一Session内）
+            if user_type == 'pregnant_mother':
+                # 2.1 创建孕妇基本信息（必须传user_id关联用户）
+                maternal_info = repo.create_maternal_info(
+                    user_id=user.id,  # 关键：使用已创建用户的ID
+                    id_card=None,
+                    phone=None,
+                    current_gestational_week=None,
+                    expected_delivery_date=None,
+                    maternal_age=None,
+                )
+                # 2.2 创建关联的孕产史
+                repo.create_pregnancy_history(
+                    maternal_id=maternal_info.id,
+                    pregnancy_count=None,
+                    bad_pregnancy_history=None,
+                    delivery_method=None
+                )
+                # 2.3 创建关联的健康状况
+                repo.create_health_condition(
+                    maternal_id=maternal_info.id,
+                    has_hypertension=False,
+                    has_diabetes=False,
+                    has_thyroid_disease=False,
+                    has_heart_disease=False,
+                    has_liver_disease=False,
+                    allergy_history=None
+                )
+                # 2.4 创建关联的初始医疗文件
+                repo.create_medical_file(
+                    maternal_id=maternal_info.id,
+                    file_name=f"init_{maternal_info.id}",  # 默认文件名
+                    file_path=f"/default/medical/{maternal_info.id}",  # 默认路径
+                    file_type="txt",  # 默认类型
+                    file_desc="初始默认文件"  # 描述
+                )
+                # 2.5 创建关联的对话记录（空JSON）
+                repo.create_dialogue(
+                    maternal_id=maternal_info.id,
+                    dialogue_content="{}",  # 符合JSON格式的空内容
+                    vector_store_path=None
+                )
+            # 3. 统一提交Session（所有操作原子性，要么全成功要么全失败）
+            db_session.commit()
+            # 4. 刷新用户对象，确保关联数据可通过user.maternal_info访问
+            db_session.refresh(user)
             return user
         except Exception as e:
+            # 异常时回滚，避免部分数据残留
             db_session.rollback()
             raise Exception(f'创建用户信息失败：{str(e)}')
         finally:
+            # 无论成功失败，都关闭Session释放资源
             db_session.close()
 
     def get_user_info_by_username(self, username: str) -> Optional[User]:
-        """根据用户名获取用户信息"""
+        """根据用户名获取用户信息（包含关联的孕妇信息）"""
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
@@ -100,30 +112,43 @@ class MaternalService:
             db_session.close()
     
     # ------------------------------
-    # 孕妇基本信息服务
+    # 孕妇基本信息服务（修正：添加user_id参数）
     # ------------------------------
     def create_maternal_info(
         self,
+        user_id: int,  # 新增：关联User表的必需参数
         id_card: str = None,
         phone: Optional[str] = None,
         current_gestational_week: Optional[int] = None,
         expected_delivery_date: Optional[date] = None,
         maternal_age: Optional[int] = None
     ) -> MaternalInfo:
-        """创建孕妇基本信息"""
+        """创建孕妇基本信息（需关联已存在的用户）"""
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
-            return repo.create_maternal_info(
+            # 验证用户是否存在（避免无效user_id）
+            if not repo.get_user_info_by_id(user_id):
+                raise ValueError(f"关联的用户ID {user_id} 不存在")
+            # 调用Repository创建（传入user_id）
+            maternal_info = repo.create_maternal_info(
+                user_id=user_id,
                 id_card=id_card,
                 phone=phone,
                 current_gestational_week=current_gestational_week,
                 expected_delivery_date=expected_delivery_date,
                 maternal_age=maternal_age
             )
+            db_session.commit()
+            db_session.refresh(maternal_info)
+            return maternal_info
+        except Exception as e:
+            db_session.rollback()
+            raise Exception(f'创建孕妇信息失败：{str(e)}')
         finally:
             db_session.close()
     
+    # 以下方法保持不变（仅确保Session管理正确）
     def get_maternal_info_by_id(self, info_id: int) -> Optional[MaternalInfo]:
         """根据ID获取孕妇信息"""
         db_session = self._get_session()
@@ -164,7 +189,7 @@ class MaternalService:
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
-            return repo.update_maternal_info(
+            result = repo.update_maternal_info(
                 info_id=info_id,
                 id_card=id_card,
                 phone=phone,
@@ -172,6 +197,11 @@ class MaternalService:
                 expected_delivery_date=expected_delivery_date,
                 maternal_age=maternal_age
             )
+            db_session.commit()
+            return result
+        except Exception as e:
+            db_session.rollback()
+            raise Exception(f'更新孕妇信息失败：{str(e)}')
         finally:
             db_session.close()
     
@@ -180,12 +210,17 @@ class MaternalService:
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
-            return repo.delete_maternal_info(info_id)
+            result = repo.delete_maternal_info(info_id)
+            db_session.commit()
+            return result
+        except Exception as e:
+            db_session.rollback()
+            raise Exception(f'删除孕妇信息失败：{str(e)}')
         finally:
             db_session.close()
     
     # ------------------------------
-    # 孕产史服务
+    # 孕产史服务（补充Session提交逻辑）
     # ------------------------------
     def create_pregnancy_history(
         self,
@@ -198,12 +233,18 @@ class MaternalService:
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
-            return repo.create_pregnancy_history(
+            result = repo.create_pregnancy_history(
                 maternal_id=maternal_id,
                 pregnancy_count=pregnancy_count,
                 bad_pregnancy_history=bad_pregnancy_history,
                 delivery_method=delivery_method
             )
+            db_session.commit()
+            db_session.refresh(result)
+            return result
+        except Exception as e:
+            db_session.rollback()
+            raise Exception(f'添加孕产史失败：{str(e)}')
         finally:
             db_session.close()
     
@@ -217,7 +258,7 @@ class MaternalService:
             db_session.close()
     
     # ------------------------------
-    # 健康状况服务
+    # 健康状况服务（补充Session提交逻辑）
     # ------------------------------
     def create_health_condition(
         self,
@@ -233,7 +274,7 @@ class MaternalService:
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
-            return repo.create_health_condition(
+            result = repo.create_health_condition(
                 maternal_id=maternal_id,
                 has_hypertension=has_hypertension,
                 has_diabetes=has_diabetes,
@@ -242,6 +283,12 @@ class MaternalService:
                 has_liver_disease=has_liver_disease,
                 allergy_history=allergy_history
             )
+            db_session.commit()
+            db_session.refresh(result)
+            return result
+        except Exception as e:
+            db_session.rollback()
+            raise Exception(f'添加健康状况失败：{str(e)}')
         finally:
             db_session.close()
     
@@ -255,7 +302,7 @@ class MaternalService:
             db_session.close()
     
     # ------------------------------
-    # 医疗文件服务
+    # 医疗文件服务（补充Session提交逻辑）
     # ------------------------------
     def create_medical_file(
         self,
@@ -272,47 +319,21 @@ class MaternalService:
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
-            return repo.create_medical_file(
+            result = repo.create_medical_file(
                 maternal_id=maternal_id,
                 file_name=file_name,
                 file_path=file_path,
                 file_type=file_type,
                 file_size=file_size,
-                upload_time=upload_time,
+                upload_time=upload_time or datetime.now(),
                 file_desc=file_desc,
                 check_date=check_date
             )
-        finally:
-            db_session.close()
-    
-    def get_medical_files(self, maternal_id: int) -> List[MaternalMedicalFiles]:
-        """获取指定孕妇的医疗文件"""
-        db_session = self._get_session()
-        try:
-            repo = MaternalRepository(db_session)
-            return repo.get_medical_files(maternal_id)
-        finally:
-            db_session.close()
-
-    # ------------------------------
-    # 对话记录服务
-    # ------------------------------
-    def create_dialogue(
-        self,
-        maternal_id: int,
-        dialogue_content: str,
-        vector_store_path: Optional[str] = None
-    ) -> MaternalDialogue:
-        db_session = self._get_session()
-        repo = MaternalRepository(db_session)
-        try:
-            if not repo.get_maternal_info_by_id(maternal_id):
-                raise ValueError(f"孕妇ID {maternal_id} 不存在")
-
-            return repo.create_dialogue(
-                maternal_id=maternal_id,
-                dialogue_content=dialogue_content,
-                vector_store_path=vector_store_path
-            )
+            db_session.commit()
+            db_session.refresh(result)
+            return result
+        except Exception as e:
+            db_session.rollback()
+            raise Exception(f'添加医疗文件失败：{str(e)}')
         finally:
             db_session.close()
