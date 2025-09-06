@@ -391,11 +391,12 @@ class MaternalService:
         }
 
     @staticmethod
-    def _dialogue_to_dict(dialogue: MaternalDialogue) -> Dict[str, Any]:
+    def _dialogue_to_dict(self, dialogue: MaternalDialogue) -> dict:
+        """将MaternalDialogue对象转为字典（原方法不变）"""
         return {
             "id": dialogue.id,
             "maternal_id": dialogue.maternal_id,
             "dialogue_content": dialogue.dialogue_content,
             "vector_store_path": dialogue.vector_store_path,
-            "created_at": dialogue.created_at.isoformat() if dialogue.created_at else None
+            "created_at": dialogue.created_at.strftime("%Y-%m-%d %H:%M:%S")
         }
