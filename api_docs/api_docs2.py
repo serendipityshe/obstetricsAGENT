@@ -255,6 +255,6 @@ if __name__ == '__main__':
     parser.add_argument('--host', type=str, default='0.0.0.0', help='服务绑定的IP地址')
     parser.add_argument('--port', type=int, default=8803, help='服务监听的端口号')
     args = parser.parse_args()
-    
+    args.port = 8801
     print(f"API文档服务启动: http://{args.host}:{args.port}/docs/")
     app.run(host=args.host, port=args.port, debug=True)

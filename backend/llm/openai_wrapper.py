@@ -40,7 +40,7 @@ class QwenAIWrap(BaseChatModel):
                  **kwargs) -> None:
         super().__init__()
         # 1. 加载默认配置（你的核心新增能力）
-        with open('backend/config/model_settings.yaml', 'r', encoding='utf-8') as f:
+        with open('/root/project2/backend/config/model_settings.yaml', 'r', encoding='utf-8') as f:
             model_settings = yaml.safe_load(f)
         default = model_settings['DEFAULT_MODEL']
 

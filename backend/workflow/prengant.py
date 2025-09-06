@@ -13,6 +13,10 @@ class PrengantState(TypedDict):
     context: Annotated[Optional[List[dict]], '上下文']
     memory: Annotated[Optional[List[dict]], '记忆']
     retrieval: Annotated[Optional[List[dict]], '检索']
+    image_path: Annotated[Optional[str], '图片路径']
+    doc_path: Annotated[Optional[str], '文档路径']
+    chat_id: Annotated[Optional[str], '聊天id']
+    timestamp: Annotated[Optional[str], '时间戳'] 
 
 def mix_node(state: PrengantState) -> PrengantState:
     """

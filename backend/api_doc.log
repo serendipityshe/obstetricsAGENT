@@ -1,0 +1,2 @@
+nohup: 忽略输入
+python: can't open file '/root/project2/backend/api_docs/api_docs.py': [Errno 2] No such file or directory

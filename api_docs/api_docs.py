@@ -1,7 +1,8 @@
 """接口文档 - 使用Flask-RESTX生成Swagger文档"""
 import sys
 from pathlib import Path
-from flask import Flask
+from flask import Flask, jsonify
+from flask_cors import CORS
 from flask_restx import Api, Resource, fields
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -19,6 +20,14 @@ from backend.api.common.auth import verify_token
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)  # 支持代理环境
 app.secret_key = 'ad09ba2a7ede8fedb9fcf5a6b482c5e4'
+
+# CORS(app,
+#      resources={r"/*": {"origins": "*"}},  # 关键修改：使用 * 代替白名单
+#      supports_credentials=False,
+#      allow_headers=["Content-Type", "Authorization", "X-Requested-With"],
+#      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+#      max_age=3600
+# )
 
 # 注册蓝图（保持原有路由结构）
 app.register_blueprint(auth_bp)
@@ -209,12 +218,17 @@ class MaternalHealth(Resource):
         """添加健康状况"""
         pass
 
+
+
+
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description='启动API文档服务')
     parser.add_argument('--host', type=str, default='0.0.0.0', help='服务绑定的IP地址')
-    parser.add_argument('--port', type=int, default=8803, help='服务监听的端口号')
+    parser.add_argument('--port', type=int, default=8801, help='服务监听的端口号')
     args = parser.parse_args()
     
+    args.port = 5000
     print(f"API文档服务启动: http://{args.host}:{args.port}/docs/")
     app.run(host=args.host, port=args.port, debug=True)
+     

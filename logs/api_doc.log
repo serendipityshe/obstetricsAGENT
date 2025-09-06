@@ -10330,3 +10330,840 @@ API文档服务启动: http://0.0.0.0:8803/docs/
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/maternal_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/routes/chat_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/workflow/prengant.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+103.220.218.117 - - [05/Sep/2025 23:42:16] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+103.220.218.117 - - [05/Sep/2025 23:44:40] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [05/Sep/2025 23:44:43] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+103.220.218.117 - - [05/Sep/2025 23:54:38] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [05/Sep/2025 23:55:01] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [05/Sep/2025 23:55:41] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [05/Sep/2025 23:55:51] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [05/Sep/2025 23:55:53] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 00:00:02] "[33mGET / HTTP/1.1[0m" 404 -
+103.220.218.117 - - [06/Sep/2025 00:00:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+103.220.218.117 - - [06/Sep/2025 00:00:16] "[33mGET / HTTP/1.1[0m" 404 -
+219.217.147.170 - - [06/Sep/2025 00:01:47] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:01:47] "GET /swaggerui/droid-sans.css HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:01:47] "GET /swaggerui/swagger-ui.css HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:01:47] "GET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:01:47] "GET /swaggerui/swagger-ui-bundle.js HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:01:48] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:02:15] "POST /api/v1/auth/register HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:02:27] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 00:02:27] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 00:02:27] "GET /swaggerui/swagger-ui-bundle.js.map HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:02:27] "GET /swaggerui/swagger-ui-standalone-preset.js.map HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:02:27] "GET /swaggerui/swagger-ui.css.map HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:03:52] "POST /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/llm/openai_wrapper.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+120.230.77.239 - - [06/Sep/2025 00:40:00] "[32mGET /docs HTTP/1.1[0m" 308 -
+120.230.77.239 - - [06/Sep/2025 00:40:00] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 00:40:00] "GET /swaggerui/droid-sans.css HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 00:40:00] "GET /swaggerui/swagger-ui.css HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 00:40:01] "GET /swaggerui/swagger-ui-bundle.js HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 00:40:01] "GET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 00:40:01] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 00:40:01] "GET /swaggerui/favicon-32x32.png HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:42:07] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:42:07] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 00:42:07] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 00:42:07] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 00:42:07] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 00:42:08] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:42:08] "GET /swaggerui/favicon-32x32.png HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 00:46:29] "POST /api/v1/auth/register HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 00:47:33] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 00:49:53] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 00:51:08] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+104.28.156.205 - - [06/Sep/2025 00:51:13] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 00:53:17] "POST /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 00:56:59] "GET /docs/ HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 00:57:00] "GET /swaggerui/droid-sans.css HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 00:57:00] "GET /swaggerui/swagger-ui.css HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 00:57:00] "GET /swaggerui/swagger-ui-bundle.js HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+104.28.163.54 - - [06/Sep/2025 00:59:26] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+104.28.157.201 - - [06/Sep/2025 01:01:21] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:01:41] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:04:28] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:04:53] "POST /api/v1/auth/login HTTP/1.1" 200 -
+104.28.158.134 - - [06/Sep/2025 01:06:04] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:07:00] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+104.28.158.134 - - [06/Sep/2025 01:09:07] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+104.28.156.220 - - [06/Sep/2025 01:10:32] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+103.220.218.117 - - [06/Sep/2025 01:13:11] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+103.220.218.117 - - [06/Sep/2025 01:14:57] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:14:58] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:15:05] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+103.220.218.117 - - [06/Sep/2025 01:15:37] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+103.220.218.117 - - [06/Sep/2025 01:15:54] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+104.28.163.54 - - [06/Sep/2025 01:15:59] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+104.28.158.134 - - [06/Sep/2025 01:16:15] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:16:44] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+103.220.218.117 - - [06/Sep/2025 01:17:41] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:17:42] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:17:43] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:17:44] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:17:45] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:17:46] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:17:46] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:17:47] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:17:48] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:17:48] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:17:49] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:18:01] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/routes/auth_routes.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+103.220.218.117 - - [06/Sep/2025 01:19:35] "POST /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:19:38] "POST /api/v1/auth/login HTTP/1.1" 200 -
+104.28.158.134 - - [06/Sep/2025 01:19:49] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+103.220.218.117 - - [06/Sep/2025 01:20:20] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:20:21] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+104.28.163.52 - - [06/Sep/2025 01:21:22] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:24:44] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:24:49] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:25:24] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+104.28.163.52 - - [06/Sep/2025 01:26:45] "[33mGET / HTTP/1.1[0m" 404 -
+104.28.158.134 - - [06/Sep/2025 01:26:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+104.28.156.205 - - [06/Sep/2025 01:26:51] "[33mGET / HTTP/1.1[0m" 404 -
+104.28.156.205 - - [06/Sep/2025 01:26:52] "[33mGET / HTTP/1.1[0m" 404 -
+219.217.147.170 - - [06/Sep/2025 01:26:54] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:26:54] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:26:54] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:26:54] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:26:54] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:26:54] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:26:54] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+103.220.218.117 - - [06/Sep/2025 01:28:35] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+103.220.218.117 - - [06/Sep/2025 01:29:20] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:29:21] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:29:49] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:29:49] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:29:49] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:29:49] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:29:49] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:29:49] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:29:49] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:29:51] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:29:51] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:29:51] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:29:51] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:29:51] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:29:51] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:29:51] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+104.28.158.134 - - [06/Sep/2025 01:30:03] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+104.28.158.134 - - [06/Sep/2025 01:30:11] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:30:17] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:30:27] "[31m[1mGET /api/v1/auth/login HTTP/1.1[0m" 405 -
+103.220.218.117 - - [06/Sep/2025 01:30:28] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+219.217.147.170 - - [06/Sep/2025 01:32:49] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:32:49] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:32:49] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:32:49] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:32:49] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:32:49] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:32:49] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+219.217.147.170 - - [06/Sep/2025 01:35:33] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:35:33] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:35:33] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:35:33] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:35:34] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:35:35] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:35:35] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:35:41] "POST /api/v1/auth/logout HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:35:42] "POST /api/v1/auth/logout HTTP/1.1" 200 -
+104.28.158.134 - - [06/Sep/2025 01:36:12] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+104.28.158.134 - - [06/Sep/2025 01:38:19] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:39:35] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:40:02] "OPTIONS /api/v1/auth/login HTTP/1.1" 200 -
+104.28.156.205 - - [06/Sep/2025 01:41:55] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+103.220.218.117 - - [06/Sep/2025 01:44:33] "[33mGET / HTTP/1.1[0m" 404 -
+103.220.218.117 - - [06/Sep/2025 01:44:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+219.217.147.170 - - [06/Sep/2025 01:45:05] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:45:05] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:45:05] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:45:05] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:45:05] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:45:05] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:45:05] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:45:07] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:45:07] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:45:07] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:45:07] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:45:07] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:45:07] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:45:07] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [06/Sep/2025 01:50:10] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:50:52] "POST /api/v1/auth/login HTTP/1.1" 200 -
+121.40.216.110 - - [06/Sep/2025 01:52:17] "POST /api/v1/auth/register HTTP/1.1" 200 -
+116.62.235.49 - - [06/Sep/2025 01:52:36] "POST /api/v1/auth/register HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:56:03] "POST /api/v1/auth/logout HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:57:35] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:57:35] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:57:36] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:57:36] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:57:36] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:57:36] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 01:57:36] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 01:57:44] "POST /api/v1/auth/login HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 01:59:33] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 01:59:33] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 01:59:33] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 01:59:33] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 01:59:33] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 01:59:33] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 01:59:33] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 01:59:36] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 01:59:36] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 01:59:36] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 01:59:36] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 01:59:36] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 01:59:36] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 01:59:36] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:14] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:00:14] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:14] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:14] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:14] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:14] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:00:14] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:15] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:00:15] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:15] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:15] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:15] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:15] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:00:15] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:16] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:00:16] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:16] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:16] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:16] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:16] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:00:16] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:17] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:00:17] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:17] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:17] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:17] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:17] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:17] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:00:18] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:00:18] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:18] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:18] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:18] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:00:18] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:00:18] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:02] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:02] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:03] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:03] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:03] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:03] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:03] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:03] "GET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:04] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:04] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:04] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:04] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:04] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:04] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:04] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:04] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:05] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:05] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:05] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:05] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:05] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:05] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:05] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:05] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:05] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:06] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:06] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:06] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:06] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:06] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:06] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:06] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:01:06] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:01:06] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:01:07] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:01:07] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:01:07] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:01:07] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:01:07] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:07] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:07] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:07] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:07] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:07] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:07] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:07] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:08] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:08] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:08] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:08] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:08] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:08] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:08] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:09] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:09] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:09] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:09] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:09] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:09] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:09] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:09] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:10] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:10] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:10] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:10] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:10] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:10] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:10] "GET /docs/ HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:10] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:10] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:10] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:10] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+120.230.77.239 - - [06/Sep/2025 02:01:11] "GET /swagger.json HTTP/1.1" 200 -
+120.230.77.239 - - [06/Sep/2025 02:01:11] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:01:13] "POST /api/v1/auth/login HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:01:15] "POST /api/v1/auth/login HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:01:29] "POST /api/v1/auth/login HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:01:29] "POST /api/v1/auth/login HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v1/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+104.28.158.134 - - [06/Sep/2025 02:04:36] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:04:51] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:04:54] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+127.0.0.1 - - [06/Sep/2025 02:05:35] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:05:37] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:05:38] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:06:12] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+104.28.156.220 - - [06/Sep/2025 02:06:17] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+127.0.0.1 - - [06/Sep/2025 02:06:57] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:06:58] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:06:58] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:06:59] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:06:59] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:07:00] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:07:00] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:07:01] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:07:33] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+127.0.0.1 - - [06/Sep/2025 02:10:32] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+127.0.0.1 - - [06/Sep/2025 02:11:10] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+127.0.0.1 - - [06/Sep/2025 02:12:48] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:12:58] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/backend/api/v2/app.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+127.0.0.1 - - [06/Sep/2025 02:14:09] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:14:10] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:14:11] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:14:11] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:14:12] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:14:13] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:14:13] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+127.0.0.1 - - [06/Sep/2025 02:14:38] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+127.0.0.1 - - [06/Sep/2025 02:18:26] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:18:53] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+104.28.157.201 - - [06/Sep/2025 02:19:07] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+104.28.157.201 - - [06/Sep/2025 02:19:23] "POST /api/v1/auth/register HTTP/1.0" 200 -
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+219.217.147.170 - - [06/Sep/2025 02:22:00] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:22:00] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:22:00] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:22:00] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:22:00] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:22:00] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:22:00] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:22:55] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:23:22] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:23:24] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:23:46] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [06/Sep/2025 02:23:46] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+219.217.147.170 - - [06/Sep/2025 02:24:40] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:24:40] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:24:40] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:24:41] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:24:41] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:24:41] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:24:41] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:24:43] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:24:43] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:24:43] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:24:43] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:24:43] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:24:44] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:24:44] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:25:28] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:25:28] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:25:28] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:25:28] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:25:28] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:25:28] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:25:28] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+180.163.29.219 - - [06/Sep/2025 02:25:31] "GET /docs/ HTTP/1.1" 200 -
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+219.217.147.170 - - [06/Sep/2025 02:26:54] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:26:54] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:26:54] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:26:54] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:26:54] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:26:54] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:26:54] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+ * Detected change in '/root/project2/api_docs/api_docs2.py', reloading
+API文档服务启动: http://0.0.0.0:8803/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs2.py', reloading
+API文档服务启动: http://0.0.0.0:8801/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+219.217.147.170 - - [06/Sep/2025 02:29:03] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:29:03] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:29:03] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:29:03] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:29:03] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:29:03] "GET /swagger.json HTTP/1.1" 200 -
+ * Detected change in '/root/project2/api_docs/api_docs2.py', reloading
+API文档服务启动: http://0.0.0.0:8801/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+ * Detected change in '/root/project2/api_docs/api_docs.py', reloading
+API文档服务启动: http://0.0.0.0:8801/docs/
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 217-764-535
+219.217.147.170 - - [06/Sep/2025 02:29:56] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:29:56] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:29:56] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:29:56] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:29:56] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:29:56] "GET /swagger.json HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:29:56] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:30:14] "GET /docs/ HTTP/1.1" 200 -
+219.217.147.170 - - [06/Sep/2025 02:30:15] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:30:15] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:30:15] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:30:15] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 02:30:15] "GET /swagger.json HTTP/1.1" 200 -
+104.28.156.205 - - [06/Sep/2025 02:31:19] "OPTIONS /api/v1/auth/register HTTP/1.1" 200 -
