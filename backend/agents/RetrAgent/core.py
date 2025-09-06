@@ -2,6 +2,10 @@
 检索智能体
 负责从专家知识库和个人知识库中进行检索
 """
+import sys
+from pathlib import Path
+root_dir = Path(__file__).parent.parent.parent.parent
+sys.path.append(str(root_dir))
 
 from typing import TypedDict, Optional, List, Annotated
 from langgraph.graph import StateGraph, END, START
@@ -53,7 +57,7 @@ if __name__ == '__main__':
     agent = create_retr_agent()
     state = {
         "input": "孕妇如何预防感冒",
-        "vector_db_professor": "vector_db_professor",
+        "vector_db_professor": "./data/vector_store_json",
         "vector_db_pregnant": "vector_db_pregnant",
     }
     result = agent.invoke(state)

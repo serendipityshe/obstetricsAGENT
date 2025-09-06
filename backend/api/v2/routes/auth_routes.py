@@ -9,7 +9,7 @@ import bcrypt
 from datetime import datetime, timedelta
 from backend.api.v1.services.maternal_service import MaternalService
 
-router = APIRouter(tags=["认证管理"])
+router = APIRouter(tags=["认证管理服务"])
 maternal_service = MaternalService()
 
 JWT_SECRET = "ad09ba2a7ede8fedb9fcf5a6b482c5e4"

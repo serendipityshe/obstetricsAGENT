@@ -256,6 +256,31 @@ class MaternalService:
             return repo.get_pregnancy_histories(maternal_id)
         finally:
             db_session.close()
+
+    def update_pregnancy_history(
+        self,
+        maternal_id: int,
+        pregnancy_count: Optional[int] = None,
+        bad_pregnancy_history: Optional[str] = None,
+        delivery_method: Optional[str] = None
+    ) -> Optional[MaternalPregnancyHistory]:
+        """更新孕产史记录"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            result = repo.update_pregnancy_history(
+                maternal_id=maternal_id,
+                pregnancy_count=pregnancy_count,
+                bad_pregnancy_history=bad_pregnancy_history,
+                delivery_method=delivery_method
+            )
+            db_session.commit()
+            return result
+        except Exception as e:
+            db_session.rollback()
+            raise Exception(f'更新孕产史失败：{str(e)}')
+        finally:
+            db_session.close()
     
     # ------------------------------
     # 健康状况服务（补充Session提交逻辑）
@@ -300,6 +325,37 @@ class MaternalService:
             return repo.get_health_conditions(maternal_id)
         finally:
             db_session.close()
+
+    def update_health_condition(
+        self,
+        maternal_id: int,
+        has_hypertension: Optional[bool] = None,
+        has_diabetes: Optional[bool] = None,
+        has_thyroid_disease: Optional[bool] = None,
+        has_heart_disease: Optional[bool] = None,
+        has_liver_disease: Optional[bool] = None,
+        allergy_history: Optional[str] = None
+    ) -> Optional[MaternalHealthCondition]:
+        """更新健康状况记录"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            result = repo.update_health_condition(
+                maternal_id=maternal_id,
+                has_hypertension=has_hypertension,
+                has_diabetes=has_diabetes,
+                has_thyroid_disease=has_thyroid_disease,
+                has_heart_disease=has_heart_disease,
+                has_liver_disease=has_liver_disease,
+                allergy_history=allergy_history
+            )
+            db_session.commit()
+            return result
+        except Exception as e:
+            db_session.rollback()
+            raise Exception(f'更新健康状况失败：{str(e)}')
+        finally:
+            db_session.close()
     
     # ------------------------------
     # 医疗文件服务（补充Session提交逻辑）
@@ -335,5 +391,134 @@ class MaternalService:
         except Exception as e:
             db_session.rollback()
             raise Exception(f'添加医疗文件失败：{str(e)}')
+        finally:
+            db_session.close()
+
+    def get_medical_files(self, maternal_id: int) -> List[MaternalMedicalFiles]:
+        """获取指定孕妇的医疗文件"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            return repo.get_medical_files(maternal_id)
+        finally:
+            db_session.close()
+
+    def get_medical_file_by_id(
+        self,
+        maternal_id: int,
+        file_id: int,
+    ) -> Optional[MaternalMedicalFiles]:
+        """
+        通过file_id和maternal_id查询单个医疗文件
+        """
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            return repo.get_medical_file_by_id(
+                maternal_id=maternal_id,
+                file_id=file_id,
+            )
+        finally:
+            db_session.close()
+
+    def update_medical_file(
+        self,
+        maternal_id: int,
+        file_id: int,
+        file_name: Optional[str] = None,
+        file_path: Optional[str] = None,
+        file_type: Optional[str] = None,
+        file_size: Optional[int] = None,
+        upload_time: Optional[datetime] = None,
+        file_desc: Optional[str] = None,
+        check_date: Optional[date] = None
+    ) -> Optional[MaternalMedicalFiles]:
+        """更新医疗文件记录"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            result = repo.update_medical_file(
+                maternal_id=maternal_id,
+                file_id=file_id,
+                file_name=file_name,
+                file_path=file_path,
+                file_type=file_type,
+                file_size=file_size,
+                upload_time=upload_time,
+                file_desc=file_desc,
+                check_date=check_date
+            )
+            db_session.commit()
+            return result
+        except Exception as e:
+            db_session.rollback()
+            raise Exception(f'更新医疗文件失败：{str(e)}')
+        finally:
+            db_session.close()
+    
+    #---------------------------------
+    # 对话记录服务
+    #---------------------------------
+    def create_dialogue(
+        self,
+        maternal_id: int,
+        user_id: int,
+        user_input: str,
+        agent_output: str,
+        timestamp: Optional[datetime] = None
+    ) -> MaternalDialogue:
+        """添加对话记录"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            result = repo.create_dialogue(
+                maternal_id=maternal_id,
+                user_id=user_id,
+                user_input=user_input,
+                agent_output=agent_output,
+                timestamp=timestamp or datetime.now()
+            )
+            db_session.commit()
+            db_session.refresh(result)
+            return result
+        except Exception as e:
+            db_session.rollback()
+            raise Exception(f'添加对话记录失败：{str(e)}')
+        finally:
+            db_session.close()
+
+    def get_dialogues(self, maternal_id: int) -> List[MaternalDialogue]:
+        """获取指定孕妇的对话记录"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            return repo.get_dialogues(maternal_id)
+        finally:
+            db_session.close()
+
+    def update_dialogue(
+        self,
+        maternal_id: int,
+        dialogue_id: int,
+        user_input: Optional[str] = None,
+        agent_output: Optional[str] = None,
+        timestamp: Optional[datetime] = None
+    ) -> Optional[MaternalDialogue]:
+        """更新对话记录"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            result = repo.update_dialogue(
+                maternal_id=maternal_id,
+                dialogue_id=dialogue_id,
+                user_input=user_input,
+                agent_output=agent_output,
+                timestamp=timestamp
+            )
+            db_session.commit()
+            return result
+        except Exception as e:
+            db_session.rollback()
+            raise Exception(f'更新对话记录失败：{str(e)}')
         finally:
             db_session.close()

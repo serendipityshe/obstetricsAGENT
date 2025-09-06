@@ -139,6 +139,23 @@ class MaternalService:
         except Exception as e:
             raise Exception(f"获取孕产史失败: {str(e)}")
 
+    def update_pregnancy_history(
+        self,
+        maternal_id: int,
+        history_id: int,
+        **kwargs
+    ) -> Optional[Dict[str, Any]]:
+        """更新孕产史记录"""
+        try:
+            result = self.dataset_service.update_pregnancy_history(
+                maternal_id=maternal_id,
+                history_id=history_id,
+                **kwargs
+            )
+            return self._pregnancy_history_to_dict(result) if result else None
+        except Exception as e:
+            raise Exception(f"更新孕产史失败: {str(e)}")
+
     # ------------------------------
     # 健康状况相关服务
     # ------------------------------
@@ -174,6 +191,23 @@ class MaternalService:
             return [self._health_condition_to_dict(condition) for condition in results]
         except Exception as e:
             raise Exception(f"获取健康状况失败: {str(e)}")
+
+    def update_health_condition(
+        self,
+        maternal_id: int,
+        condition_id: int,
+        **kwargs
+    ) -> Optional[Dict[str, Any]]:
+        """更新健康状况记录"""
+        try:
+            result = self.dataset_service.update_health_condition(
+                maternal_id=maternal_id,
+                condition_id=condition_id,
+                **kwargs
+            )
+            return self._health_condition_to_dict(result) if result else None
+        except Exception as e:
+            raise Exception(f"更新健康状况失败: {str(e)}")
 
     # ------------------------------
     # 医疗文件相关服务
@@ -213,6 +247,38 @@ class MaternalService:
         except Exception as e:
             raise Exception(f"获取医疗文件失败: {str(e)}")
 
+    def get_medical_file_by_id(
+        self,
+        maternal_id: int,
+        file_id: int,
+    ) -> Optional[Dict[str, Any]]:
+        """获取指定孕妇的医疗文件"""
+        try:
+            result = self.dataset_service.get_medical_file_by_id(
+                maternal_id=maternal_id,
+                file_id=file_id,
+            )
+            return self._medical_file_to_dict(result) if result else None
+        except Exception as e:
+            raise Exception(f"获取医疗文件失败: {str(e)}")
+
+    def update_medical_file(
+        self,
+        maternal_id: int,
+        file_id: int,
+        **kwargs
+    ) -> Optional[Dict[str, Any]]:
+        """更新医疗文件记录"""
+        try:
+            result = self.dataset_service.update_medical_file(
+                maternal_id=maternal_id,
+                file_id=file_id,
+                **kwargs
+            )
+            return self._medical_file_to_dict(result) if result else None
+        except Exception as e:
+            raise Exception(f"更新医疗文件失败: {str(e)}")
+
     # ------------------------------
     # 对话记录相关服务
     # ------------------------------
@@ -232,6 +298,31 @@ class MaternalService:
             return self._dialogue_to_dict(result)
         except Exception as e:
             raise Exception(f"添加对话记录失败: {str(e)}")
+
+    def get_dialogues(self, maternal_id: int) -> List[Dict[str, Any]]:
+        """获取指定孕妇的对话记录"""
+        try:
+            results = self.dataset_service.get_dialogues(maternal_id)
+            return [self._dialogue_to_dict(dialogue) for dialogue in results]
+        except Exception as e:
+            raise Exception(f"获取对话记录失败: {str(e)}")
+    
+    def update_dialogue(
+        self,
+        maternal_id: int,
+        dialogue_id: int,
+        **kwargs
+    ) -> Optional[Dict[str, Any]]:
+        """更新对话记录"""
+        try:
+            result = self.dataset_service.update_dialogue(
+                maternal_id=maternal_id,
+                dialogue_id=dialogue_id,
+                **kwargs
+            )
+            return self._dialogue_to_dict(result) if result else None
+        except Exception as e:
+            raise Exception(f"更新对话记录失败: {str(e)}")
 
     # ------------------------------
     # 数据模型转字典工具方法

@@ -192,7 +192,34 @@ class MaternalRepository:
         """获取指定孕妇的所有孕产史"""
         return self.db_session.query(MaternalPregnancyHistory).filter(
             MaternalPregnancyHistory.maternal_id == maternal_id
-        ).all()
+        ).first()
+
+    def update_pregnancy_history(
+        self,
+        maternal_id: int,
+        pregnancy_count: Optional[int] = None,
+        bad_pregnancy_history: Optional[str] = None,
+        delivery_method: Optional[str] = None
+    ) -> Optional[MaternalPregnancyHistory]:
+        """更新孕产史记录"""
+        history = self.get_pregnancy_histories(maternal_id)
+        if not history:
+            return None
+        
+        if pregnancy_count is not None:
+            history.pregnancy_count = pregnancy_count
+        if bad_pregnancy_history is not None:
+            history.bad_pregnancy_history = bad_pregnancy_history
+        if delivery_method is not None:
+            history.delivery_method = delivery_method
+        
+        try:
+            self.db_session.commit()
+            self.db_session.refresh(history)
+            return history
+        except SQLAlchemyError as e:
+            self.db_session.rollback()
+            raise e
     
     # ------------------------------
     # 健康状况操作（关联表）
@@ -234,7 +261,43 @@ class MaternalRepository:
         """获取指定孕妇的所有健康状况记录"""
         return self.db_session.query(MaternalHealthCondition).filter(
             MaternalHealthCondition.maternal_id == maternal_id
-        ).all()
+        ).first()
+
+    def update_health_condition(
+        self,
+        maternal_id: int,
+        has_hypertension: Optional[bool] = None,
+        has_diabetes: Optional[bool] = None,
+        has_thyroid_disease: Optional[bool] = None,
+        has_heart_disease: Optional[bool] = None,
+        has_liver_disease: Optional[bool] = None,
+        allergy_history: Optional[str] = None
+    ) -> Optional[MaternalHealthCondition]:
+        """更新健康状况记录"""
+        condition = self.get_health_conditions(maternal_id)
+        if not condition:
+            return None
+        
+        if has_hypertension is not None:
+            condition.has_hypertension = has_hypertension
+        if has_diabetes is not None:
+            condition.has_diabetes = has_diabetes
+        if has_thyroid_disease is not None:
+            condition.has_thyroid_disease = has_thyroid_disease
+        if has_heart_disease is not None:
+            condition.has_heart_disease = has_heart_disease
+        if has_liver_disease is not None:
+            condition.has_liver_disease = has_liver_disease
+        if allergy_history is not None:
+            condition.allergy_history = allergy_history
+        
+        try:
+            self.db_session.commit()
+            self.db_session.refresh(condition)
+            return condition
+        except SQLAlchemyError as e:
+            self.db_session.rollback()
+            raise e
     
     # ------------------------------
     # 医疗文件操作（关联表）
@@ -278,7 +341,59 @@ class MaternalRepository:
         """获取指定孕妇的所有医疗文件记录"""
         return self.db_session.query(MaternalMedicalFiles).filter(
             MaternalMedicalFiles.maternal_id == maternal_id
-        ).all()
+        ).first()
+
+    def get_medical_file_by_id(
+        self,
+        maternal_id: int,
+        file_id: int,
+    ) -> Optional[MaternalMedicalFiles]:
+        """
+        通过file_id和maternal_id查询单个医疗文件
+        """
+        return self.db_session.query(MaternalMedicalFiles).filter(
+            MaternalMedicalFiles.maternal_id == maternal_id,
+            MaternalMedicalFiles.id == file_id
+        ).first()
+
+    def update_medical_file(
+        self,
+        file_id: int,
+        file_name: Optional[str] = None,
+        file_path: Optional[str] = None,
+        file_type: Optional[str] = None,
+        file_size: Optional[int] = None,
+        upload_time: Optional[datetime] = None,
+        file_desc: Optional[str] = None,
+        check_date: Optional[date] = None
+    ) -> Optional[MaternalMedicalFiles]:
+        """更新医疗文件记录"""
+        file = self.get_medical_files(file_id)
+        if not file:
+            return None
+        
+        if file_name is not None:
+            file.file_name = file_name
+        if file_path is not None:
+            file.file_path = file_path
+        if file_type is not None:
+            file.file_type = file_type
+        if file_size is not None:
+            file.file_size = file_size
+        if upload_time is not None:
+            file.upload_time = upload_time
+        if file_desc is not None:
+            file.file_desc = file_desc
+        if check_date is not None:
+            file.check_date = check_date
+        
+        try:
+            self.db_session.commit()
+            self.db_session.refresh(file)
+            return file
+        except SQLAlchemyError as e:
+            self.db_session.rollback()
+            raise e
 
     # ------------------------------
     # 对话记录服务
@@ -307,4 +422,28 @@ class MaternalRepository:
         """获取指定孕妇的所有对话记录"""
         return self.db_session.query(MaternalDialogue).filter(
             MaternalDialogue.maternal_id == maternal_id
-        ).all()
+        ).first()
+
+    def update_dialogue(
+        self,
+        dialogue_id: int,
+        dialogue_content: Optional[str] = None,
+        vector_store_path: Optional[str] = None
+    ) -> Optional[MaternalDialogue]:
+        """更新对话记录"""
+        dialogue = self.get_dialogues(dialogue_id)
+        if not dialogue:
+            return None
+        
+        if dialogue_content is not None:
+            dialogue.dialogue_content = dialogue_content
+        if vector_store_path is not None:
+            dialogue.vector_store_path = vector_store_path
+        
+        try:
+            self.db_session.commit()
+            self.db_session.refresh(dialogue)
+            return dialogue
+        except SQLAlchemyError as e:
+            self.db_session.rollback()
+            raise e

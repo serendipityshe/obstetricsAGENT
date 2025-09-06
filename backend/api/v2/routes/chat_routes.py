@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, UploadFile, status, File, Depends, Form, Path 
 
-router = APIRouter(tags=["聊天管理"])
+router = APIRouter(tags=["聊天管理服务"])
 
 @router.post("/{chat_id}/qa")
 async def qa(

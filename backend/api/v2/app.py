@@ -27,7 +27,7 @@ app.add_middleware(
 )
 
 app.include_router(auth_router, prefix= "/api/v2/auth", tags= ["认证管理服务"])
-app.include_router(maternal_router, prefix= "/api/v2/maternal", tags= ["母婴数据管理服务"])
+app.include_router(maternal_router, prefix= "/api/v2/maternal", tags= ["孕妇数据库管理服务"])
 app.include_router(chat_router, prefix= "/api/v2/chat", tags= ["聊天管理服务"])
 
 if __name__ == '__main__':
