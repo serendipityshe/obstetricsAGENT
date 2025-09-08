@@ -88,10 +88,10 @@ class MaternalRepository:
             self.db_session.rollback()
             raise e  # 重新抛出，让上层能捕获
     
-    def get_maternal_info_by_id(self, info_id: int) -> Optional[MaternalInfo]:
+    def get_maternal_info_by_id(self, id: int) -> Optional[MaternalInfo]:
         """根据ID获取孕妇基本信息（包含关联表数据）"""
         return self.db_session.query(MaternalInfo).filter(
-            MaternalInfo.id == info_id
+            MaternalInfo.id == id
         ).first()
     
     def get_maternal_info_by_id_card(self, id_card: str) -> Optional[MaternalInfo]:
@@ -104,7 +104,7 @@ class MaternalRepository:
         """新增：根据用户ID获取孕妇信息"""
         return self.db_session.query(MaternalInfo).filter(
             MaternalInfo.user_id == user_id
-        ).all()
+        ).first()
     
     def get_all_maternal_infos(self) -> List[MaternalInfo]:
         """获取所有孕妇基本信息"""
@@ -112,7 +112,7 @@ class MaternalRepository:
     
     def update_maternal_info(
         self,
-        info_id: int,
+        user_id: int,
         id_card: Optional[str] = None,  # 允许更新身份证号（需确保唯一性）
         phone: Optional[str] = None,
         current_gestational_week: Optional[int] = None,
@@ -120,7 +120,7 @@ class MaternalRepository:
         maternal_age: Optional[int] = None
     ) -> Optional[MaternalInfo]:
         """更新孕妇基本信息"""
-        maternal_info = self.get_maternal_info_by_id(info_id)
+        maternal_info = self.get_maternal_info_by_user_id(user_id)
         if not maternal_info:
             return None
         
@@ -143,9 +143,9 @@ class MaternalRepository:
             self.db_session.rollback()
             raise e
     
-    def delete_maternal_info(self, info_id: int) -> bool:
+    def delete_maternal_info(self, user_id: int) -> bool:
         """删除孕妇基本信息（级联删除关联表数据）"""
-        maternal_info = self.get_maternal_info_by_id(info_id)
+        maternal_info = self.get_maternal_info_by_id(user_id)
         if not maternal_info:
             return False
         
@@ -192,7 +192,7 @@ class MaternalRepository:
         """获取指定孕妇的所有孕产史"""
         return self.db_session.query(MaternalPregnancyHistory).filter(
             MaternalPregnancyHistory.maternal_id == maternal_id
-        ).first()
+        ).all()
 
     def update_pregnancy_history(
         self,
@@ -261,7 +261,7 @@ class MaternalRepository:
         """获取指定孕妇的所有健康状况记录"""
         return self.db_session.query(MaternalHealthCondition).filter(
             MaternalHealthCondition.maternal_id == maternal_id
-        ).first()
+        ).all()
 
     def update_health_condition(
         self,
@@ -337,11 +337,12 @@ class MaternalRepository:
             self.db_session.rollback()
             raise e
     
-    def get_medical_files(self, maternal_id: int) -> List[MaternalMedicalFiles]:
+    def get_medical_files(self, maternal_id: int, file_name: str) -> List[MaternalMedicalFiles]:
         """获取指定孕妇的所有医疗文件记录"""
         return self.db_session.query(MaternalMedicalFiles).filter(
-            MaternalMedicalFiles.maternal_id == maternal_id
-        ).first()
+            MaternalMedicalFiles.maternal_id == maternal_id,
+            MaternalMedicalFiles.file_name == file_name
+        ).all()
 
     def get_medical_file_by_id(
         self,
@@ -354,7 +355,7 @@ class MaternalRepository:
         return self.db_session.query(MaternalMedicalFiles).filter(
             MaternalMedicalFiles.maternal_id == maternal_id,
             MaternalMedicalFiles.id == file_id
-        ).first()
+        ).all()
 
     def update_medical_file(
         self,
@@ -418,11 +419,17 @@ class MaternalRepository:
             self.db_session.rollback()
             raise e
 
-    def get_dialogues(self, maternal_id: int) -> List[MaternalDialogue]:
+    def get_dialogues(self, maternal_id: int, chat_id: str) -> List[MaternalDialogue]:
         """获取指定孕妇的所有对话记录"""
-        return self.db_session.query(MaternalDialogue).filter(
-            MaternalDialogue.maternal_id == maternal_id
-        ).first()
+        try:
+            dialogues = self.db_session.query(MaternalDialogue).filter(
+                MaternalDialogue.maternal_id == maternal_id,
+                MaternalDialogue.chat_id == chat_id
+            ).all()
+            return dialogues
+        except SQLAlchemyError as e:
+            self.db_session.rollback()
+            raise e
 
     def update_dialogue(
         self,

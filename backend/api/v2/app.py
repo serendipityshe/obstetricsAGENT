@@ -18,13 +18,14 @@ app = FastAPI(
     version='1.0'
 )
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins = ["*"],
-    allow_credentials = False,
-    allow_headers = ["*"],
-    allow_methods = ["*"]
-)
+#不需要了
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins = ["*"],
+#     allow_credentials = False,
+#     allow_headers = ["*"],
+#     allow_methods = ["*"]
+# )
 
 app.include_router(auth_router, prefix= "/api/v2/auth", tags= ["认证管理服务"])
 app.include_router(maternal_router, prefix= "/api/v2/maternal", tags= ["孕妇数据库管理服务"])
@@ -34,8 +35,9 @@ if __name__ == '__main__':
     uvicorn.run(
         app= 'app:app',
         host= '0.0.0.0',
-        port= 8805,
-        reload= True,
+        port= 5000,
+        reload= False,
         log_level="debug",
+        reload_excludes=["*.log", "*.tmp"]
     )
 

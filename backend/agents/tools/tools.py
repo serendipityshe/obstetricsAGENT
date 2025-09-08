@@ -93,7 +93,7 @@ def qwen_tool(
 def rag_tool(
     user_query: Annotated[str, "用户的原始问题"], 
     vector_store_path: Annotated[str, "向量存储路径"],
-    top_k: Annotated[int, "检索知识库的文档数量"] = 3,
+    top_k: Annotated[int, "检索知识库的文档数量"] = 1,
 ) -> dict:
     """根据用户问题检索指定知识库获取相关知识"""
     if vector_store_path:

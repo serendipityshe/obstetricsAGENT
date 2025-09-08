@@ -21614,3 +21614,453 @@ Traceback (most recent call last):
     def 
         ^
 SyntaxError: invalid syntax
+2025-09-06 21:50:31,703 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-06 21:50:31,703 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:50:31,704 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-06 21:50:31,704 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:50:31,705 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-06 21:50:31,705 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:50:31,705 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-06 21:50:31,707 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:31,707 INFO sqlalchemy.engine.Engine [generated in 0.00018s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:31,708 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:31,708 INFO sqlalchemy.engine.Engine [cached since 0.001129s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:31,708 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:31,708 INFO sqlalchemy.engine.Engine [cached since 0.001521s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:31,709 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:31,709 INFO sqlalchemy.engine.Engine [cached since 0.001935s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:31,709 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:31,709 INFO sqlalchemy.engine.Engine [cached since 0.002291s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:31,709 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:31,709 INFO sqlalchemy.engine.Engine [cached since 0.002606s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:31,710 INFO sqlalchemy.engine.Engine COMMIT
+/root/anaconda3/envs/rag/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA driver initialization failed, you might not have a CUDA gpu. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+2025-09-06 21:50:36,356 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-06 21:50:36,357 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:50:36,357 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-06 21:50:36,357 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:50:36,357 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-06 21:50:36,357 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:50:36,358 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-06 21:50:36,359 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:36,359 INFO sqlalchemy.engine.Engine [generated in 0.00015s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:36,360 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:36,360 INFO sqlalchemy.engine.Engine [cached since 0.001147s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:36,360 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:36,360 INFO sqlalchemy.engine.Engine [cached since 0.001544s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:36,361 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:36,361 INFO sqlalchemy.engine.Engine [cached since 0.001893s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:36,361 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:36,361 INFO sqlalchemy.engine.Engine [cached since 0.002186s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:36,361 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:36,362 INFO sqlalchemy.engine.Engine [cached since 0.002667s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:36,362 INFO sqlalchemy.engine.Engine COMMIT
+API文档服务启动: http://0.0.0.0:5000/docs/
+ * Serving Flask app 'api_docs'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.122.2:5000
+[33mPress CTRL+C to quit[0m
+2025-09-06 21:50:48,954 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-06 21:50:48,954 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:50:48,955 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-06 21:50:48,955 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:50:48,956 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-06 21:50:48,956 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:50:48,956 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-06 21:50:48,958 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:48,958 INFO sqlalchemy.engine.Engine [generated in 0.00019s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:48,959 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:48,959 INFO sqlalchemy.engine.Engine [cached since 0.001394s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:48,960 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:48,960 INFO sqlalchemy.engine.Engine [cached since 0.001808s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:48,960 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:48,960 INFO sqlalchemy.engine.Engine [cached since 0.002316s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:48,961 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:48,961 INFO sqlalchemy.engine.Engine [cached since 0.002682s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:48,961 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:48,961 INFO sqlalchemy.engine.Engine [cached since 0.003008s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:48,961 INFO sqlalchemy.engine.Engine COMMIT
+2025-09-06 21:50:55,327 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-06 21:50:55,327 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:50:55,327 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-06 21:50:55,328 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:50:55,328 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-06 21:50:55,328 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:50:55,328 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-06 21:50:55,330 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:55,330 INFO sqlalchemy.engine.Engine [generated in 0.00016s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:55,331 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:55,331 INFO sqlalchemy.engine.Engine [cached since 0.00125s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:55,331 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:55,331 INFO sqlalchemy.engine.Engine [cached since 0.001637s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:55,332 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:55,332 INFO sqlalchemy.engine.Engine [cached since 0.001958s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:55,332 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:55,332 INFO sqlalchemy.engine.Engine [cached since 0.002239s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:55,332 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:50:55,332 INFO sqlalchemy.engine.Engine [cached since 0.002526s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:50:55,332 INFO sqlalchemy.engine.Engine COMMIT
+API文档服务启动: http://0.0.0.0:5000/docs/
+ * Serving Flask app 'api_docs'
+ * Debug mode: on
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+2025-09-06 21:58:52,112 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-06 21:58:52,112 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:58:52,113 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-06 21:58:52,113 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:58:52,113 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-06 21:58:52,113 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:58:52,114 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-06 21:58:52,116 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:52,116 INFO sqlalchemy.engine.Engine [generated in 0.00019s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:52,117 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:52,117 INFO sqlalchemy.engine.Engine [cached since 0.00119s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:52,117 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:52,117 INFO sqlalchemy.engine.Engine [cached since 0.001565s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:52,117 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:52,117 INFO sqlalchemy.engine.Engine [cached since 0.00189s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:52,118 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:52,118 INFO sqlalchemy.engine.Engine [cached since 0.002211s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:52,118 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:52,118 INFO sqlalchemy.engine.Engine [cached since 0.002507s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:52,118 INFO sqlalchemy.engine.Engine COMMIT
+2025-09-06 21:58:56,925 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-06 21:58:56,925 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:58:56,925 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-06 21:58:56,925 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:58:56,926 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-06 21:58:56,926 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:58:56,926 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-06 21:58:56,927 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:56,927 INFO sqlalchemy.engine.Engine [generated in 0.00016s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:56,928 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:56,928 INFO sqlalchemy.engine.Engine [cached since 0.001176s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:56,929 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:56,929 INFO sqlalchemy.engine.Engine [cached since 0.001562s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:56,929 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:56,929 INFO sqlalchemy.engine.Engine [cached since 0.001891s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:56,929 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:56,929 INFO sqlalchemy.engine.Engine [cached since 0.002187s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:56,930 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:56,930 INFO sqlalchemy.engine.Engine [cached since 0.002492s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:56,930 INFO sqlalchemy.engine.Engine COMMIT
+API文档服务启动: http://0.0.0.0:5000/docs/
+ * Serving Flask app 'api_docs'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.122.2:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+2025-09-06 21:58:57,241 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-06 21:58:57,241 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:58:57,242 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-06 21:58:57,242 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:58:57,242 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-06 21:58:57,242 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:58:57,242 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-06 21:58:57,244 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:57,244 INFO sqlalchemy.engine.Engine [generated in 0.00017s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:57,245 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:57,245 INFO sqlalchemy.engine.Engine [cached since 0.001183s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:57,246 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:57,246 INFO sqlalchemy.engine.Engine [cached since 0.001563s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:57,246 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:57,246 INFO sqlalchemy.engine.Engine [cached since 0.001878s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:57,246 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:57,246 INFO sqlalchemy.engine.Engine [cached since 0.002172s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:57,247 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:58:57,247 INFO sqlalchemy.engine.Engine [cached since 0.002515s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:58:57,247 INFO sqlalchemy.engine.Engine COMMIT
+2025-09-06 21:59:01,794 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-06 21:59:01,794 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:59:01,794 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-06 21:59:01,794 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:59:01,795 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-06 21:59:01,795 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 21:59:01,795 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-06 21:59:01,796 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:59:01,796 INFO sqlalchemy.engine.Engine [generated in 0.00015s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:59:01,797 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:59:01,797 INFO sqlalchemy.engine.Engine [cached since 0.001071s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:59:01,797 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:59:01,798 INFO sqlalchemy.engine.Engine [cached since 0.001452s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:59:01,798 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:59:01,798 INFO sqlalchemy.engine.Engine [cached since 0.001767s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:59:01,798 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:59:01,798 INFO sqlalchemy.engine.Engine [cached since 0.002057s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:59:01,798 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 21:59:01,798 INFO sqlalchemy.engine.Engine [cached since 0.002348s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 21:59:01,799 INFO sqlalchemy.engine.Engine COMMIT
+ * Debugger is active!
+ * Debugger PIN: 137-012-345
+104.28.158.134 - - [06/Sep/2025 22:00:33] "[31m[1mGET /api/v1/auth/login HTTP/1.0[0m" 405 -
+104.28.163.54 - - [06/Sep/2025 22:00:35] "[33mGET /favicon.ico HTTP/1.0[0m" 404 -
+104.28.158.134 - - [06/Sep/2025 22:00:38] "[31m[1mGET /api/v1/auth/login HTTP/1.0[0m" 405 -
+104.28.158.134 - - [06/Sep/2025 22:00:40] "[31m[1mGET /api/v1/auth/login HTTP/1.0[0m" 405 -
+104.28.157.201 - - [06/Sep/2025 22:00:48] "GET /docs/ HTTP/1.0" 200 -
+104.28.157.201 - - [06/Sep/2025 22:00:49] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.0[0m" 304 -
+104.28.156.205 - - [06/Sep/2025 22:00:51] "[36mGET /swaggerui/swagger-ui.css HTTP/1.0[0m" 304 -
+104.28.163.54 - - [06/Sep/2025 22:00:52] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.0[0m" 304 -
+104.28.157.201 - - [06/Sep/2025 22:00:52] "[36mGET /swaggerui/droid-sans.css HTTP/1.0[0m" 304 -
+104.28.157.201 - - [06/Sep/2025 22:00:53] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.0[0m" 304 -
+104.28.158.134 - - [06/Sep/2025 22:00:57] "GET /swagger.json HTTP/1.0" 200 -
+219.217.147.170 - - [06/Sep/2025 22:01:13] "GET /docs/ HTTP/1.0" 200 -
+219.217.147.170 - - [06/Sep/2025 22:01:13] "[36mGET /swaggerui/droid-sans.css HTTP/1.0[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 22:01:13] "[36mGET /swaggerui/swagger-ui.css HTTP/1.0[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 22:01:13] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.0[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 22:01:13] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.0[0m" 304 -
+219.217.147.170 - - [06/Sep/2025 22:01:13] "GET /swagger.json HTTP/1.0" 200 -
+219.217.147.170 - - [06/Sep/2025 22:01:13] "[36mGET /swaggerui/favicon-32x32.png HTTP/1.0[0m" 304 -
+125.78.51.187 - - [06/Sep/2025 22:01:37] "GET /docs/ HTTP/1.0" 200 -
+125.78.51.187 - - [06/Sep/2025 22:01:38] "GET /swaggerui/droid-sans.css HTTP/1.0" 200 -
+125.78.51.187 - - [06/Sep/2025 22:01:38] "GET /swaggerui/swagger-ui.css HTTP/1.0" 200 -
+125.78.51.187 - - [06/Sep/2025 22:01:38] "GET /swaggerui/swagger-ui-bundle.js HTTP/1.0" 200 -
+125.78.51.187 - - [06/Sep/2025 22:01:38] "GET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.0" 200 -
+125.78.51.187 - - [06/Sep/2025 22:01:38] "GET /swagger.json HTTP/1.0" 200 -
+125.78.51.187 - - [06/Sep/2025 22:01:38] "GET /swaggerui/favicon-32x32.png HTTP/1.0" 200 -
+125.78.51.187 - - [06/Sep/2025 22:01:54] "[31m[1mPOST /api/v1/auth/register HTTP/1.0[0m" 400 -
+125.78.51.187 - - [06/Sep/2025 22:02:00] "[31m[1mPOST /api/v1/auth/register HTTP/1.0[0m" 400 -
+ * Detected change in '/root/project2/api_docs/api_docs2.py', reloading
+API文档服务启动: http://0.0.0.0:5000/docs/
+ * Restarting with stat
+2025-09-06 22:02:58,301 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-06 22:02:58,301 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 22:02:58,302 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-06 22:02:58,302 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 22:02:58,302 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-06 22:02:58,302 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 22:02:58,303 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-06 22:02:58,305 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:02:58,305 INFO sqlalchemy.engine.Engine [generated in 0.00017s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:02:58,306 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:02:58,306 INFO sqlalchemy.engine.Engine [cached since 0.001129s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:02:58,306 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:02:58,306 INFO sqlalchemy.engine.Engine [cached since 0.00152s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:02:58,306 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:02:58,306 INFO sqlalchemy.engine.Engine [cached since 0.001831s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:02:58,307 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:02:58,307 INFO sqlalchemy.engine.Engine [cached since 0.002125s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:02:58,307 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:02:58,307 INFO sqlalchemy.engine.Engine [cached since 0.002426s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:02:58,307 INFO sqlalchemy.engine.Engine COMMIT
+2025-09-06 22:03:02,948 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-06 22:03:02,948 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 22:03:02,948 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-06 22:03:02,948 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 22:03:02,949 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-06 22:03:02,949 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 22:03:02,949 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-06 22:03:02,950 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:03:02,950 INFO sqlalchemy.engine.Engine [generated in 0.00015s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:03:02,951 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:03:02,951 INFO sqlalchemy.engine.Engine [cached since 0.001036s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:03:02,951 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:03:02,951 INFO sqlalchemy.engine.Engine [cached since 0.001388s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:03:02,952 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:03:02,952 INFO sqlalchemy.engine.Engine [cached since 0.001716s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:03:02,952 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:03:02,952 INFO sqlalchemy.engine.Engine [cached since 0.00201s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:03:02,952 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:03:02,952 INFO sqlalchemy.engine.Engine [cached since 0.002276s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:03:02,952 INFO sqlalchemy.engine.Engine COMMIT
+ * Debugger is active!
+ * Debugger PIN: 137-012-345
+125.78.51.187 - - [06/Sep/2025 22:03:08] "[36mGET /swaggerui/droid-sans.css HTTP/1.0[0m" 304 -
+125.78.51.187 - - [06/Sep/2025 22:03:08] "[36mGET /swaggerui/swagger-ui.css HTTP/1.0[0m" 304 -
+125.78.51.187 - - [06/Sep/2025 22:03:08] "GET /swaggerui/swagger-ui.css.map HTTP/1.0" 200 -
+ * Detected change in '/root/project2/api_docs/api_docs2.py', reloading
+API文档服务启动: http://0.0.0.0:5000/docs/
+ * Restarting with stat
+2025-09-06 22:04:57,012 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-06 22:04:57,012 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 22:04:57,013 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-06 22:04:57,013 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 22:04:57,013 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-06 22:04:57,013 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 22:04:57,014 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-06 22:04:57,015 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:04:57,016 INFO sqlalchemy.engine.Engine [generated in 0.00019s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:04:57,016 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:04:57,016 INFO sqlalchemy.engine.Engine [cached since 0.001109s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:04:57,017 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:04:57,017 INFO sqlalchemy.engine.Engine [cached since 0.001506s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:04:57,017 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:04:57,017 INFO sqlalchemy.engine.Engine [cached since 0.001822s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:04:57,017 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:04:57,017 INFO sqlalchemy.engine.Engine [cached since 0.002114s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:04:57,018 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:04:57,018 INFO sqlalchemy.engine.Engine [cached since 0.002414s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:04:57,018 INFO sqlalchemy.engine.Engine COMMIT
+2025-09-06 22:05:01,658 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-06 22:05:01,658 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 22:05:01,658 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-06 22:05:01,658 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 22:05:01,659 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-06 22:05:01,659 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-06 22:05:01,659 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-06 22:05:01,660 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:05:01,660 INFO sqlalchemy.engine.Engine [generated in 0.00016s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:05:01,661 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:05:01,661 INFO sqlalchemy.engine.Engine [cached since 0.001108s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:05:01,662 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:05:01,662 INFO sqlalchemy.engine.Engine [cached since 0.001672s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:05:01,662 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:05:01,662 INFO sqlalchemy.engine.Engine [cached since 0.002162s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:05:01,663 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:05:01,663 INFO sqlalchemy.engine.Engine [cached since 0.002548s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:05:01,663 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-06 22:05:01,663 INFO sqlalchemy.engine.Engine [cached since 0.002868s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-06 22:05:01,663 INFO sqlalchemy.engine.Engine COMMIT
+ * Debugger is active!
+ * Debugger PIN: 137-012-345

@@ -178,7 +178,7 @@ class MaternalService:
     
     def update_maternal_info(
         self,
-        info_id: int,
+        user_id: int,
         id_card: Optional[str] = None,
         phone: Optional[str] = None,
         current_gestational_week: Optional[int] = None,
@@ -190,14 +190,13 @@ class MaternalService:
         try:
             repo = MaternalRepository(db_session)
             result = repo.update_maternal_info(
-                info_id=info_id,
+                user_id=user_id,
                 id_card=id_card,
                 phone=phone,
                 current_gestational_week=current_gestational_week,
                 expected_delivery_date=expected_delivery_date,
                 maternal_age=maternal_age
             )
-            db_session.commit()
             return result
         except Exception as e:
             db_session.rollback()
@@ -394,12 +393,12 @@ class MaternalService:
         finally:
             db_session.close()
 
-    def get_medical_files(self, maternal_id: int) -> List[MaternalMedicalFiles]:
+    def get_medical_files(self, maternal_id: int, file_name: str) -> List[MaternalMedicalFiles]:
         """获取指定孕妇的医疗文件"""
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
-            return repo.get_medical_files(maternal_id)
+            return repo.get_medical_files(maternal_id, file_name)
         finally:
             db_session.close()
 
@@ -487,12 +486,12 @@ class MaternalService:
         finally:
             db_session.close()
 
-    def get_dialogues(self, maternal_id: int) -> List[MaternalDialogue]:
+    def get_dialogues(self, maternal_id: int, chat_id: str) -> List[MaternalDialogue]:
         """获取指定孕妇的对话记录"""
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
-            return repo.get_dialogues(maternal_id)
+            return repo.get_dialogues(maternal_id, chat_id)
         finally:
             db_session.close()
 

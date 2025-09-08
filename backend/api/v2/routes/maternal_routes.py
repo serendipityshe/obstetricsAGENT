@@ -1,198 +1,248 @@
-from fastapi import APIRouter, HTTPException, UploadFile, status, File, Depends, Form, Path  # 新增导入Path
-from pydantic import BaseModel, Field
-from backend.api.v1.services.maternal_service import MaternalService
-
-
-"""孕妇信息及用户相关接口"""
+from fastapi import APIRouter, Query, UploadFile, status, File, Depends, Form, Path, Body
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field, field_validator
+from datetime import date, datetime
 import os
 import uuid
 
-from flask import Blueprint, request, jsonify
-from datetime import datetime
+# 导入业务层和认证依赖（确保路径正确）
 from backend.api.v1.services.maternal_service import MaternalService
-from backend.api.common.auth import verify_token, generate_token, require_auth  # 假设存在令牌生成工具
-
-# 基础配置
-router = APIRouter(tags=["孕妇数据库管理服务"])
-maternal_service = MaternalService()
+from backend.api.common.auth import require_auth  # 认证装饰器
 
 
-# 请求参数模型（不变）
-class UploadFileRequest(BaseModel):
-    chat_id: str = Field(..., description="对话ID（字母/数字/_/-，1-64字符）")
-
-    class Config:
-        from_attributes = True
-        populate_by_name = True
-
-    @classmethod
-    def from_form(cls, chat_id: str = Form(...)):
-        return cls(chat_id=chat_id)
-
-
-# 响应模型（不变）
-class UploadSuccessData(BaseModel):
-    maternal_id: int
-    chat_id: str
-    file_id: str
-    file_name: str
-    save_path: str
-    upload_time: datetime
-    file_type: str
-
-
-# 核心接口：修复路径参数标注（Field→Path）
-@router.post(
-    path="/{maternal_id}/files",
-    status_code=status.HTTP_201_CREATED,
-    description="无认证版孕妇文件上传接口（修复路径参数报错）"
+# ------------------------------
+# 1. 全局配置与依赖初始化
+# ------------------------------
+router = APIRouter(
+    tags=["孕妇数据库管理服务"],  # 统一接口标签（用于API文档分组）
+    prefix=""  # 若需统一前缀可在此配置，如 "/api/v1/maternal"
 )
-def upload_maternal_file(
-    # 关键修复：路径参数必须用Path标注，不能用Field
-    maternal_id: int = Path(..., description="母亲唯一ID"),  # 替换Field为Path
-    # 文件参数（不变）
-    file: UploadFile = File(..., description="上传文件（jpg/png/pdf等）"),
-    # Form参数（不变）
-    req_params: UploadFileRequest = Depends(UploadFileRequest.from_form),
-):
-    # 核心功能暂用pass占位
-    pass
-    
+maternal_service = MaternalService()  # 初始化业务层实例
+
 
 # ------------------------------
-# 孕妇基本信息接口
+# 2. Pydantic 模型定义（请求/响应验证）
 # ------------------------------
+class MaternalInfoUpdate(BaseModel):
+    """孕妇基本信息更新请求模型（自动验证+文档生成）"""
+    expected_delivery_date: date | None = Field(None, description="预产期（格式：YYYY-MM-DD）")
+    # 补充其他可能的字段（如姓名、年龄等），根据实际业务扩展
+    phone: str | None = Field(None, description="孕妇电话")
+    id_card: str | None = Field(None, description="孕妇身份证号")
 
+    # 可选：自定义日期格式验证（若前端传字符串需额外处理）
+    @field_validator('expected_delivery_date')
+    def parse_date(cls, v):
+        if isinstance(v, str):
+            return datetime.strptime(v, "%Y-%m-%d").date()
+        return v
+
+
+class PregnancyHistoryUpdate(BaseModel):
+    """孕产史更新请求模型"""
+    # 根据实际业务补充字段，示例：
+    parity: int | None = Field(None, ge=0, description="孕次（非负整数）")
+    gravidity: int | None = Field(None, ge=0, description="产次（非负整数）")
+    abortion_times: int | None = Field(None, ge=0, description="流产次数（非负整数）")
+    expected_delivery_date: date | None = Field(None, description="预产期（格式：YYYY-MM-DD）")
+
+    @field_validator('expected_delivery_date')
+    def parse_date(cls, v):
+        if isinstance(v, str):
+            return datetime.strptime(v, "%Y-%m-%d").date()
+        return v
+
+
+class HealthConditionUpdate(BaseModel):
+    """健康状况更新请求模型"""
+    # 根据实际业务补充字段，示例：
+    has_chronic_disease: bool | None = Field(None, description="是否有慢性病（true/false）")
+    chronic_disease_type: str | None = Field(None, description="慢性病类型（如高血压、糖尿病）")
+    allergy_history: str | None = Field(None, description="过敏史")
+    expected_delivery_date: date | None = Field(None, description="预产期（格式：YYYY-MM-DD）")
+
+    @field_validator('expected_delivery_date')
+    def parse_date(cls, v):
+        if isinstance(v, str):
+            return datetime.strptime(v, "%Y-%m-%d").date()
+        return v
+
+
+class DialogueCreate(BaseModel):
+    """对话记录创建请求模型"""
+    dialogue_content: str = Field(..., description="对话内容（必填）")  # ... 表示必填
+    vector_store_path: str | None = Field(None, description="向量存储路径（可选）")
+
+
+# ------------------------------
+# 3. 孕妇基本信息接口
+# ------------------------------
 @router.put(
-    path="/{maternal_id}/info",
+    path="/{user_id}/info",
     status_code=status.HTTP_200_OK,
+    description="更新孕妇基本信息（需认证）"
 )
-@require_auth
-def update_maternal(info_id):
-    """更新孕妇信息"""
-    data = request.json
+# @require_auth  # 启用认证（如需关闭可注释）
+def update_maternal_info(
+    # 路径参数：用Path标注，添加验证（正整数）和描述
+    user_id: int = Path(..., description="孕妇唯一ID（正整数）"),
+    # 请求体：用Pydantic模型自动接收JSON数据并验证
+    update_data: MaternalInfoUpdate = Body(..., description="更新数据")  # Depends() 自动解析请求体
+):
     try:
-        # 解析日期字段
-        if 'expected_delivery_date' in data and data['expected_delivery_date']:
-            data['expected_delivery_date'] = datetime.strptime(
-                data['expected_delivery_date'], '%Y-%m-%d').date()
+        print("FastAPI收到的请求数据:", update_data.phone)
+        # 将Pydantic模型转为字典，传给业务层（exclude_unset=True 只传有值的字段）
+        result = maternal_service.update_maternal_info(
+            user_id=user_id,
+            **update_data.model_dump(exclude_unset=True)
+        )
+        print("model_dump结果：", result)
         
-        result = maternal_service.update_maternal_info(info_id, **data)
         if not result:
-            return jsonify({'status': 'error', 'message': '未找到孕妇信息'}), 404
-        return jsonify({
-            'status': 'success',
-            'message': '孕妇信息更新成功',
-            'data': result
-        })
+            return JSONResponse(
+                content={"status": "error", "message": "未找到该孕妇信息"},
+                status_code=status.HTTP_404_NOT_FOUND
+            )
+        
+        return {
+            "status": "success",
+            "message": "孕妇基本信息更新成功",
+            "data": result  # 假设业务层返回更新后的完整信息
+        }
     except Exception as e:
-        return jsonify({'status': 'error', 'message': str(e)}), 500
+        return JSONResponse(
+            content={"status": "error", "message": f"更新失败：{str(e)}"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
 
 
 # ------------------------------
-# 孕产史相关接口
+# 4. 孕产史相关接口
 # ------------------------------
 @router.put(
     path="/{maternal_id}/pregnancy_history",
     status_code=status.HTTP_200_OK,
+    description="更新孕妇孕产史（需认证）"
 )
 @require_auth
-def update_maternal(maternal_id):
-    """更新孕妇信息"""
-    data = request.json
+def update_maternal_pregnancy_history(
+    maternal_id: int = Path(..., description="孕妇唯一ID（正整数）"),
+    update_data: PregnancyHistoryUpdate = Body(..., description="更新数据")
+):
     try:
-        # 解析日期字段
-        if 'expected_delivery_date' in data and data['expected_delivery_date']:
-            data['expected_delivery_date'] = datetime.strptime(
-                data['expected_delivery_date'], '%Y-%m-%d').date()
+        result = maternal_service.update_pregnancy_history(
+            maternal_id=maternal_id,
+            **update_data.model_dump(exclude_unset=True)
+        )
         
-        result = maternal_service.update_pregnancy_history(maternal_id, **data)
         if not result:
-            return jsonify({'status': 'error', 'message': '未找到孕妇信息'}), 404
-        return jsonify({
-            'status': 'success',
-            'message': '孕妇信息更新成功',
-            'data': result
-        })
+            return JSONResponse(
+                content={"status": "error", "message": "未找到该孕妇信息"},
+                status_code=status.HTTP_404_NOT_FOUND
+            )
+        
+        return {
+            "status": "success",
+            "message": "孕妇孕产史更新成功",
+            "data": result
+        }
     except Exception as e:
-        return jsonify({'status': 'error', 'message': str(e)}), 500
+        return JSONResponse(
+            content={"status": "error", "message": f"更新失败：{str(e)}"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
 
 # ------------------------------
-# 健康状况相关接口
+# 5. 健康状况相关接口
 # ------------------------------
 @router.put(
     path="/{maternal_id}/health_condition",
     status_code=status.HTTP_200_OK,
+    description="更新孕妇健康状况（需认证）"
 )
 @require_auth
-def update_maternal(maternal_id):
-    """更新孕妇信息"""
-    data = request.json
+def update_maternal_health_condition(
+    maternal_id: int = Path(..., description="孕妇唯一ID（正整数）"),
+    update_data: HealthConditionUpdate = Body(..., description="更新数据")
+):
     try:
-        # 解析日期字段
-        if 'expected_delivery_date' in data and data['expected_delivery_date']:
-            data['expected_delivery_date'] = datetime.strptime(
-                data['expected_delivery_date'], '%Y-%m-%d').date()
+        result = maternal_service.update_health_condition(
+            maternal_id=maternal_id,
+            **update_data.model_dump(exclude_unset=True)
+        )
         
-        result = maternal_service.update_health_condition(maternal_id, **data)
         if not result:
-            return jsonify({'status': 'error', 'message': '未找到孕妇信息'}), 404
-        return jsonify({
-            'status': 'success',
-            'message': '孕妇信息更新成功',
-            'data': result
-        })
+            return JSONResponse(
+                content={"status": "error", "message": "未找到该孕妇信息"},
+                status_code=status.HTTP_404_NOT_FOUND
+            )
+        
+        return {
+            "status": "success",
+            "message": "孕妇健康状况更新成功",
+            "data": result
+        }
     except Exception as e:
-        return jsonify({'status': 'error', 'message': str(e)}), 500
+        return JSONResponse(
+            content={"status": "error", "message": f"更新失败：{str(e)}"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
 
 # ------------------------------
-# 医疗文件相关接口
+# 6. 医疗文件相关接口
 # ------------------------------
 @router.post(
     path="/{maternal_id}/files",
     status_code=status.HTTP_201_CREATED,
+    description="上传孕妇医疗文件（支持jpg/png/pdf等，需form-data格式）"
 )
-@require_auth
-def upload_medical_file(maternal_id):
-    """上传医疗文件（接收二进制文件内容，保存到服务器并记录数据库）"""
+# @require_auth  # 如需认证可取消注释
+def upload_medical_file(
+    maternal_id: int = Path(..., description="孕妇唯一ID（正整数）"),
+    # 文件参数：FastAPI原生UploadFile，自动处理文件流
+    file: UploadFile = File(..., description="上传的医疗文件（必填）"),
+    # 表单参数：用Form标注（form-data中的非文件字段）
+    file_desc: str | None = Form(None, description="文件描述（可选）"),
+    check_date_str: str | None = Form(None, description="检查日期（格式：YYYY-MM-DD，可选）")
+):
     try:
-        # 1. 获取上传的文件对象（微信小程序上传的二进制文件）
-        file = request.files.get('file')
-        if not file or file.filename == '':
-            return jsonify({'status': 'error', 'message': '未选择文件'}), 400
+        # 1. 验证文件合法性
+        if not file.filename:
+            return JSONResponse(
+                content={"status": "error", "message": "未选择文件或文件名为空"},
+                status_code=status.HTTP_400_BAD_REQUEST
+            )
 
-        # 2. 获取其他表单参数（从 form-data 中获取，而非 JSON）
-        file_desc = request.form.get('file_desc')
-        check_date_str = request.form.get('check_date')
-
-        # 3. 处理文件存储
-        # 3.1 定义存储目录（按孕妇ID分目录）
+        # 2. 处理文件存储目录
         base_upload_dir = "uploads/maternal_files"
         user_dir = os.path.join(base_upload_dir, str(maternal_id))
-        os.makedirs(user_dir, exist_ok=True)  # 确保目录存在
+        os.makedirs(user_dir, exist_ok=True)  # 不存在则创建目录
 
-        # 3.2 生成唯一文件名（避免冲突）
-        file_ext = os.path.splitext(file.filename)[1].lower()  # 保留文件后缀
-        unique_filename = f"{uuid.uuid4()}{file_ext}"  # 使用UUID生成唯一文件名
+        # 3. 生成唯一文件名（避免冲突）
+        file_ext = os.path.splitext(file.filename)[1].lower()  # 提取文件后缀（小写）
+        unique_filename = f"{uuid.uuid4()}{file_ext}"  # UUID生成唯一文件名
         file_path = os.path.join(user_dir, unique_filename)
 
-        # 3.3 保存文件到服务器
-        file.save(file_path)
+        # 4. 保存文件到服务器（FastAPI UploadFile 需用文件对象保存）
+        with open(file_path, "wb") as f:
+            f.write(file.file.read())  # 读取上传文件的二进制内容并写入
 
-        # 4. 处理日期参数
+        # 5. 处理检查日期
         check_date = None
         if check_date_str:
-            check_date = datetime.strptime(check_date_str, '%Y-%m-%d').date()
+            check_date = datetime.strptime(check_date_str, "%Y-%m-%d").date()
 
-        # 5. 获取文件元信息
+        # 6. 获取文件元信息
         file_size = os.path.getsize(file_path)  # 文件大小（字节）
-        file_type = file.content_type or file_ext.lstrip('.')  # 文件类型（MIME类型或后缀）
+        file_type = file.content_type or file_ext.lstrip(".")  # 优先用MIME类型，其次后缀
 
-        # 6. 调用服务层，将文件信息存入数据库
-        result = maternal_service.create_medical_file(
+        # 7. 调用业务层保存到数据库
+        db_result = maternal_service.create_medical_file(
             maternal_id=maternal_id,
             file_name=file.filename,  # 原始文件名
-            file_path=file_path,      # 服务器保存的路径
+            file_path=file_path,      # 服务器存储路径
             file_type=file_type,
             file_size=file_size,
             upload_time=datetime.now(),
@@ -200,69 +250,88 @@ def upload_medical_file(maternal_id):
             check_date=check_date
         )
 
-       # 6. 关键修改：明确返回file_path（结合数据库结果，补充路径）
-        return jsonify({
-            'status': 'success',
-            'message': '文件上传成功',
-            'data': {
-                # 保留数据库返回的关键信息（如记录ID）
-                'file_id': result.id if hasattr(result, 'id') else result.get('id'),
-                'original_filename': file.filename,  # 原始文件名
-                'storage_path': file_path,  # 明确返回存储路径（核心需求）
-                'file_type': file_type,     # 文件类型（如image/jpeg）
-                'file_size': file_size,     # 文件大小
-                'upload_time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # 格式化时间
+        # 8. 构造响应（返回关键信息）
+        return {
+            "status": "success",
+            "message": "医疗文件上传成功",
+            "data": {
+                "file_id": db_result.id if hasattr(db_result, "id") else db_result.get("id"),
+                "original_filename": file.filename,
+                "storage_path": file_path,
+                "file_type": file_type,
+                "file_size": file_size,
+                "upload_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "check_date": check_date.strftime("%Y-%m-%d") if check_date else None,
+                "file_desc": file_desc
             }
-        }), 201
+        }
 
     except Exception as e:
-        # 出错时清理已保存的文件
-        if 'file_path' in locals() and os.path.exists(file_path):
+        # 出错时清理已保存的文件（避免垃圾文件）
+        if "file_path" in locals() and os.path.exists(file_path):
             os.remove(file_path)
-        return jsonify({'status': 'error', 'message': f'文件上传失败: {str(e)}'}), 500
+        
+        return JSONResponse(
+            content={"status": "error", "message": f"文件上传失败：{str(e)}"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+    finally:
+        # 关闭文件流（避免资源泄漏）
+        file.file.close()
+
 
 @router.get(
     path="/{maternal_id}/files",
     status_code=status.HTTP_200_OK,
+    description="获取孕妇的所有医疗文件记录"
 )
-@require_auth
-def get_medical_files(maternal_id):
-    """获取孕妇的所有医疗文件记录"""
+# @require_auth  # 如需认证可取消注释
+def get_medical_files(
+    maternal_id: int = Path(description="孕妇唯一ID（正整数）"),
+    file_name: str = Query(None, description="文件名称"),
+):
     try:
-        results = maternal_service.get_medical_files(maternal_id)
-        return jsonify({
-            'status': 'success',
-            'count': len(results),
-            'data': results
-        })
+        file_records = maternal_service.get_medical_files(maternal_id, file_name)
+        
+        return {
+            "status": "success",
+            "count": len(file_records),
+            "data": file_records
+        }
     except Exception as e:
-        return jsonify({'status': 'error', 'message': str(e)}), 500
+        return JSONResponse(
+            content={"status": "error", "message": f"获取文件记录失败：{str(e)}"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
 
 # ------------------------------
-# 对话记录相关接口
+# 7. 对话记录相关接口
 # ------------------------------
 @router.post(
     path="/{maternal_id}/dialogues",
     status_code=status.HTTP_201_CREATED,
+    description="添加孕妇对话记录"
 )
-@require_auth
-def create_dialogue(maternal_id):
-    """添加对话记录"""
-    data = request.json
-    if 'dialogue_content' not in data:
-        return jsonify({'status': 'error', 'message': '对话内容为必填项'}), 400
-
+# @require_auth  # 如需认证可取消注释
+def create_dialogue(
+    maternal_id: int = Path(..., ge=1, description="孕妇唯一ID（正整数）"),
+    dialogue_data: DialogueCreate = Body(..., description="对话记录数据")  # 自动解析JSON请求体并验证
+):
     try:
         result = maternal_service.create_dialogue(
             maternal_id=maternal_id,
-            dialogue_content=data['dialogue_content'],
-            vector_store_path=data.get('vector_store_path')
+            dialogue_content=dialogue_data.dialogue_content,
+            vector_store_path=dialogue_data.vector_store_path
         )
-        return jsonify({
-            'status': 'success',
-            'message': '对话记录添加成功',
-            'data': result
-        }), 201
+        
+        return {
+            "status": "success",
+            "message": "对话记录添加成功",
+            "data": result
+        }
     except Exception as e:
-        return jsonify({'status': 'error', 'message': str(e)}), 500
-
+        return JSONResponse(
+            content={"status": "error", "message": f"添加对话记录失败：{str(e)}"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )

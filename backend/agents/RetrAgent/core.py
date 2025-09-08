@@ -35,7 +35,10 @@ def retreive_node(state: RetrAgentState) -> RetrAgentState:
             "user_query": state['input'],
             "vector_store_path": state['vector_db_pregnant'],
         })
-        state['output'] = f"专家知识库：{retr_medical_data}\n孕妇知识库：{retr_pregnant_data}"
+        state['output'] = {
+            "专家知识库": retr_medical_data,
+            "孕妇知识库": retr_pregnant_data,
+        }
         state['error'] = None
     except Exception as e:
         state['output'] = None

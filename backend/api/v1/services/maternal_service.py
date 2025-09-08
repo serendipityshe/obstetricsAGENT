@@ -90,13 +90,13 @@ class MaternalService:
 
     def update_maternal_info(
         self,
-        info_id: int,
+        user_id: int,
         **kwargs
     ) -> Optional[Dict[str, Any]]:
         """更新孕妇信息"""
         try:
             result = self.dataset_service.update_maternal_info(
-                info_id=info_id,** kwargs
+                user_id=user_id,** kwargs
             )
             return self._maternal_info_to_dict(result) if result else None
         except Exception as e:
@@ -239,10 +239,10 @@ class MaternalService:
         except Exception as e:
             raise Exception(f"添加医疗文件失败: {str(e)}")
 
-    def get_medical_files(self, maternal_id: int) -> List[Dict[str, Any]]:
+    def get_medical_files(self, maternal_id: int, file_name: str) -> List[Dict[str, Any]]:
         """获取指定孕妇的医疗文件"""
         try:
-            results = self.dataset_service.get_medical_files(maternal_id)
+            results = self.dataset_service.get_medical_files(maternal_id, file_name)
             return [self._medical_file_to_dict(file) for file in results]
         except Exception as e:
             raise Exception(f"获取医疗文件失败: {str(e)}")
@@ -299,10 +299,10 @@ class MaternalService:
         except Exception as e:
             raise Exception(f"添加对话记录失败: {str(e)}")
 
-    def get_dialogues(self, maternal_id: int) -> List[Dict[str, Any]]:
+    def get_dialogues(self, maternal_id: int, chat_id: str) -> List[Dict[str, Any]]:
         """获取指定孕妇的对话记录"""
         try:
-            results = self.dataset_service.get_dialogues(maternal_id)
+            results = self.dataset_service.get_dialogues(maternal_id, chat_id)
             return [self._dialogue_to_dict(dialogue) for dialogue in results]
         except Exception as e:
             raise Exception(f"获取对话记录失败: {str(e)}")
@@ -341,13 +341,12 @@ class MaternalService:
     def _maternal_info_to_dict(info: MaternalInfo) -> Dict[str, Any]:
         return {
             "id": info.id,
+            "user_id": info.user_id,
             "id_card": info.id_card,
             "phone": info.phone,
             "current_gestational_week": info.current_gestational_week,
             "expected_delivery_date": info.expected_delivery_date.isoformat() if info.expected_delivery_date else None,
             "maternal_age": info.maternal_age,
-            "created_at": info.created_at.isoformat() if info.created_at else None,
-            "updated_at": info.updated_at.isoformat() if info.updated_at else None
         }
 
     @staticmethod
@@ -387,16 +386,15 @@ class MaternalService:
             "upload_time": file.upload_time.isoformat() if file.upload_time else None,
             "file_desc": file.file_desc,
             "check_date": file.check_date.isoformat() if file.check_date else None,
-            "created_at": file.created_at.isoformat() if file.created_at else None
         }
 
     @staticmethod
-    def _dialogue_to_dict(self, dialogue: MaternalDialogue) -> dict:
-        """将MaternalDialogue对象转为字典（原方法不变）"""
+    def _dialogue_to_dict(dialogue: MaternalDialogue) -> Dict[str, Any]:
         return {
             "id": dialogue.id,
             "maternal_id": dialogue.maternal_id,
+            "chat_id": dialogue.chat_id,
             "dialogue_content": dialogue.dialogue_content,
             "vector_store_path": dialogue.vector_store_path,
-            "created_at": dialogue.created_at.strftime("%Y-%m-%d %H:%M:%S")
+            "created_at": dialogue.created_at.isoformat() if dialogue.created_at else None
         }

@@ -27,7 +27,7 @@ class PrengantState(TypedDict):
     retrieval_professor: Annotated[Optional[List[dict]], '专家知识库检索结果']
     retrieval_pregnant: Annotated[Optional[List[dict]], '孕妇知识库检索结果']
 
-    file_id: Annotated[Optional[List[int]], "关联的文件ID列表"]
+    file_id: Annotated[Optional[List[str]], "文件路径"]
     image_path: Annotated[Optional[str], '图片路径']
     doc_path: Annotated[Optional[str], '文档路径']
     file_content: Annotated[Optional[str], '文件内容']
@@ -35,33 +35,17 @@ class PrengantState(TypedDict):
     error: Annotated[Optional[str], '错误信息']
     memory: Annotated[Optional[List[dict]], '记忆']
     
-def _get_file_path(file_ids: Optional[List[int]], maternal_service: MaternalService, maternal_id: int) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+def _get_file_path(file_ids: List[int]) -> Tuple[Optional[str], Optional[str], Optional[str]]:
     """获取文件路径（补充maternal_id参数，适配服务层调用）"""
     image_path = None
     doc_path = None
-    try:
-        if file_ids is None:
-            return None, None, "file_id列表为空"
-        for file_id in file_ids:
-            logger.info(f"开始解析file_id={file_id}的文件路径")
-            # 修正：服务层可能需要maternal_id筛选孕妇的文件
-            file_info = maternal_service.get_medical_file_by_id(maternal_id=maternal_id, file_id=file_id)
-            if not file_info:
-                error_msg = f"file_id={file_id}未查询到对应文件信息"
-                logger.error(error_msg)
-                return None, None, error_msg
-            
-            file_type = file_info.get("file_type")
-            file_path = file_info.get("file_path")
-            if not file_type or not file_path:
-                error_msg = f"file_id={file_id}文件类型或文件路径为空"
-                logger.error(error_msg)
-                return None, None, error_msg
-            
+    try:    
+        for file_path in file_ids:
+            file_type = file_path.split(".")[-1]
             if file_type in ["png", "jpg", "jpeg"]:  # 扩展图片类型覆盖更多场景
                 image_path = file_path
                 logger.info(f"图片路径={image_path}")
-            elif file_type in ["pdf", "docx", "txt"]:  # 扩展文档类型
+            elif file_type in ["pdf", "docx", "txt", "json", "doc", "csv"]:  # 扩展文档类型
                 doc_path = file_path
                 logger.info(f"文档路径={doc_path}")
         return image_path, doc_path, None
@@ -71,22 +55,21 @@ def _get_file_path(file_ids: Optional[List[int]], maternal_service: MaternalServ
         return None, None, error_msg
 
 
-def mix_node(state: PrengantState) -> PrengantState:
+def mix_node(state: PrengantState) -> dict:
     """混合智能体节点（补充maternal_id参数传递）"""
-    maternal_service = MaternalService()
+    updates = {}
     try:
         file_ids = state.get("file_id")
-        maternal_id = state.get("maternal_id")
         # 修正：传递maternal_id给_get_file_path，适配服务层查询
-        image_path, doc_path, error_msg = _get_file_path(file_ids, maternal_service, maternal_id)
+        image_path, doc_path, error_msg = _get_file_path(file_ids)
         if error_msg:
-            state["error"] = error_msg
-            state["image_path"] = None
-            state["doc_path"] = None
-            return state
+            updates["error"] = error_msg
+            updates["image_path"] = None
+            updates["doc_path"] = None
+            return updates
         
-        state["image_path"] = image_path
-        state["doc_path"] = doc_path
+        updates["image_path"] = image_path
+        updates["doc_path"] = doc_path
         logger.info(f"路径解析完成， 图片路径={image_path}，文档路径={doc_path}")
 
         user_input = state.get("input")
@@ -96,18 +79,20 @@ def mix_node(state: PrengantState) -> PrengantState:
         mix_agent_instance = mix_agent()
         mix_input = {
             "input": user_input,
-            "image_path": image_path,
-            "doc_path": doc_path,
+            "img_file_path": image_path or "",
+            "doc_file_path": doc_path or "",
         }
         logger.info("启动混合智能体，开始融合用户输入与文件内容")
         mix_result = mix_agent_instance.invoke(mix_input)
+        print("mix_result", mix_result)
         combined_result = mix_result.get("combined_results")
+        print("combined_result", combined_result)
         if not combined_result:
             logger.warning("混合智能体未返回有效融合内容（无文件或内容为空）")
-            state["file_content"] = None
-            return state
+            updates["file_content"] = None
+            return updates
         
-        state["file_content"] = "\n\n".join([
+        updates["file_content"] = "\n\n".join([
             f"文件内容： {str(item['content']).strip()}\n元数据： {item['metadata']}"
             for item in combined_result
         ])
@@ -115,40 +100,45 @@ def mix_node(state: PrengantState) -> PrengantState:
     except Exception as e:
         error_msg = f"混合节点执行失败：{str(e)}"
         logger.error(f"{error_msg}")
-        state["error"] = error_msg
-        state["context"] = None
-        state["file_content"] = None
-    return state
+        updates["error"] = error_msg
+        updates["file_content"] = None
+    return updates
 
-def _get_vector_path(maternal_id: int, maternal_service: MaternalService) -> str:
+def _get_vector_path(maternal_id: int, chat_id: str, maternal_service: MaternalService) -> str:
     """获取个人向量数据库路径（修复：处理单个MaternalDialogue对象）"""
     try:
         # 修正：get_dialogues返回单个ORM对象（非列表），需判断类型
-        dialogues = maternal_service.get_dialogues(maternal_id)
-        # 若为单个对象，转为列表便于统一处理
+        dialogues = maternal_service.get_dialogues(maternal_id, chat_id)
         if not isinstance(dialogues, list):
             dialogues = [dialogues]
+
         if not dialogues:
-            raise ValueError(f"未查询到孕妇{maternal_id}的对话记录")
+            logger.warning(f"未查询到孕妇{maternal_id}的对话记录。默认使用空字符串")
+            return ""
         
         # 修正：ORM对象用属性访问（非字典get），适配服务层返回格式
         first_dialogue = dialogues[0]
-        vector_db_path = first_dialogue.vector_store_path  # 假设是ORM对象属性
+        vector_db_path = first_dialogue['vector_store_path']
         if not vector_db_path:
-            raise ValueError(f"孕妇{maternal_id}的对话记录中无向量数据库路径")
+            logger.warning(f"孕妇{maternal_id}的对话记录中无向量数据库路径，默认使用空字符串")
+            return ""
         return vector_db_path
     except Exception as e:
         error_msg = f"获取向量数据库路径失败：{str(e)}"
         logger.error(error_msg)
         raise ValueError(error_msg)
 
-def retr_node(state: PrengantState) -> PrengantState:
+def retr_node(state: PrengantState) -> dict:
     """检索节点（无新增修改，依赖_get_vector_path修复）"""
+    updates = {}
     try:
         maternal_service = MaternalService()
         maternal_id = state.get("maternal_id")
-        vector_db_path_pregnant = _get_vector_path(maternal_id, maternal_service)
-        vector_db_professor = "./data/vector_store_json"
+        chat_id = state.get("chat_id")
+        if not maternal_id or not chat_id:
+            raise ValueError("maternal_id和chat_id不能为空")
+        vector_db_path_pregnant = _get_vector_path(maternal_id, chat_id, maternal_service)
+        vector_db_professor = "/root/project2/data/vector_store_json"
         retr_agent_instance = create_retr_agent()
         retr_input = {
             "input": state.get("input"),
@@ -156,16 +146,29 @@ def retr_node(state: PrengantState) -> PrengantState:
             "vector_db_pregnant": vector_db_path_pregnant,
         }
         retr_result = retr_agent_instance.invoke(retr_input)
-        state["retrieval_professor"] = retr_result.get("output")['专家知识库']
-        state["retrieval_pregnant"] = retr_result.get("output")['孕妇知识库']
-        logger.info(f"检索智能体处理成功：检索到{len(state['retrieval_professor'])}条专家知识库结果，{len(state['retrieval_pregnant'])}条孕妇知识库结果")
+        logger.info("检索智能体调用完成，开始校验结果")
+        output_data = retr_result.get("output", {})
+        print(type(output_data))
+        print("output: ", output_data)
+        retrieval_professor = output_data["专家知识库"]
+        retrieval_pregnant = output_data["孕妇知识库"]
+
+        if not retrieval_professor:
+            raise ValueError(f"专家知识库检索结果为空，无法提供专业建议（maternal_id: {maternal_id}）")
+        if not retrieval_pregnant:
+            logger.warning(
+                f"孕妇{maternal_id}的个人知识库检索结果为空，无法提供个性化建议"
+            )
+        updates["retrieval_professor"] = retrieval_professor
+        updates["retrieval_pregnant"] = retrieval_pregnant
+        logger.info(f"检索智能体处理成功：检索到{len(retrieval_professor)}条专家知识库结果，{len(retrieval_pregnant)}条孕妇知识库结果")
     except Exception as e:
         error_msg = f"检索节点执行失败：{str(e)}"
-        logger.error(f"{error_msg}")
-        state["error"] = error_msg
-        state["retrieval_professor"] = None
-        state["retrieval_pregnant"] = None
-    return state
+        logger.error(error_msg)
+        updates["error"] = error_msg
+        updates["retrieval_professor"] = None
+        updates["retrieval_pregnant"] = None
+    return updates
 
 def proc_context(state: PrengantState) -> PrengantState:
     """处理上下文（适配context字符串类型）"""
@@ -222,7 +225,8 @@ def prengant_workflow():
     # 修正：将并行（START→mix + START→retr）改为串行（START→mix→retr→proc_context）
     # 避免两个节点同时操作state导致更新冲突
     builder.add_edge(START, "mix")
-    builder.add_edge("mix", "retr")
+    builder.add_edge(START, 'retr')
+    builder.add_edge("mix", "proc_context")
     builder.add_edge("retr", "proc_context")
     builder.add_edge("proc_context", "gen_synth")
     builder.add_edge("gen_synth", END)
@@ -239,7 +243,7 @@ if __name__ == "__main__":
         "maternal_id": 1,
         "chat_id": f"chat_{int(datetime.datetime.now().timestamp())}",  # 生成唯一整数chat_id
         "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "file_id": None  # 无文件时显式传None，避免state字段缺失
+        "file_id": ["/root/project2/test/孕前和孕期保健指南.doc"] # 无文件时显式传None，避免state字段缺失
     }
     # 执行工作流并打印结果
     result = graph.invoke(input_data)

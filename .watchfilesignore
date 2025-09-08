@@ -1,0 +1,14 @@
+# 忽略所有临时文件
+*.tmp
+*.swp
+*.bak
+*~
+# 忽略日志文件
+*.log
+# 忽略编辑器目录
+.vscode/
+.idea/
+# 忽略构建目录
+dist/
+build/
+node_modules/
