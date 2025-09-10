@@ -421,6 +421,12 @@ class MaternalRepository:
             self.db_session.rollback()
             raise e
 
+    def get_maternal_info_by_id(self, maternal_id: int):
+        """通过maternal_id获取孕妇信息"""
+        return self.db_session.query(MaternalInfo).filter(
+            MaternalInfo.id == maternal_id
+        ).first()
+
     def get_dialogues(self, maternal_id: int, chat_id: str) -> List[MaternalDialogue]:
         """获取指定孕妇的所有对话记录"""
         try:
@@ -433,14 +439,40 @@ class MaternalRepository:
             self.db_session.rollback()
             raise e
 
+    def create_chat_record(
+        self, 
+        maternal_id: int,
+        chat_id: str,
+        json_file_path: str
+    ) -> MaternalDialogue:
+        """创建对话记录"""
+        maternal_info = self.get_maternal_info_by_id(maternal_id)
+        if not maternal_info:
+            raise ValueError("孕妇不存在")
+        
+        dialogue = self.create_dialogue(
+            maternal_id=maternal_id,
+            chat_id=chat_id,
+            dialogue_content=json_file_path,
+            created_at = datetime.now()
+        )
+        try:
+            self.db_session.add(dialogue)
+            self.db_session.commit()
+            self.db_session.refresh(dialogue)
+            return dialogue
+        except SQLAlchemyError as e:
+            self.db_session.rollback()
+            raise Exception(f"存储chat记录到数据库失败: {str(e)}")
+
     def update_dialogue(
         self,
-        dialogue_id: int,
+        maternal_id: int,
+        chat_id: str,
         dialogue_content: Optional[str] = None,
-        vector_store_path: Optional[str] = None
     ) -> Optional[MaternalDialogue]:
         """更新对话记录"""
-        dialogue = self.get_dialogues(dialogue_id)
+        dialogue = self.get_dialogues(maternal_id)
         if not dialogue:
             return None
         

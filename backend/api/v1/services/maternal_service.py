@@ -306,6 +306,19 @@ class MaternalService:
             return [self._dialogue_to_dict(dialogue) for dialogue in results]
         except Exception as e:
             raise Exception(f"获取对话记录失败: {str(e)}")
+
+    def get_maternal_info_by_id(
+        self,
+        maternal_id: int,
+    ) -> Optional[Dict[str, Any]]:
+        """获取指定孕妇的信息"""
+        try:
+            result = self.dataset_service.get_maternal_info_by_id(
+                maternal_id=maternal_id,
+            )
+            return self._maternal_info_to_dict(result) if result else None
+        except Exception as e:
+            raise Exception(f"获取孕妇信息失败: {str(e)}")
     
     def update_dialogue(
         self,
@@ -323,6 +336,23 @@ class MaternalService:
             return self._dialogue_to_dict(result) if result else None
         except Exception as e:
             raise Exception(f"更新对话记录失败: {str(e)}")
+
+    def create_chat_record(
+        self,
+        maternal_id: int,
+        chat_id: str,
+        json_file_path: str,
+    ) -> Dict[str, Any]:
+        """创建对话记录"""
+        try:
+            result = self.dataset_service.create_chat_record(
+                maternal_id=maternal_id,
+                chat_id=chat_id,
+                json_file_path=json_file_path,
+            )
+            return self._dialogue_to_dict(result)
+        except Exception as e:
+            raise Exception(f"创建对话记录失败: {str(e)}")
 
     # ------------------------------
     # 数据模型转字典工具方法

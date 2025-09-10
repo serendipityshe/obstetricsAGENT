@@ -486,12 +486,39 @@ class MaternalService:
         finally:
             db_session.close()
 
+    def get_maternal_info_by_id(
+        self,
+        maternal_id: int,
+    ) -> Optional[MaternalDialogue]:
+        """通过dialogue_id获取对话记录"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            return repo.get_maternal_info_by_id(
+                maternal_id=maternal_id,
+            )
+        finally:
+            db_session.close()
+
     def get_dialogues(self, maternal_id: int, chat_id: str) -> List[MaternalDialogue]:
         """获取指定孕妇的对话记录"""
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
             return repo.get_dialogues(maternal_id, chat_id)
+        finally:
+            db_session.close()
+
+    def create_chat_record(self, maternal_id: int, chat_id: str, json_file_path: str) -> MaternalDialogue:
+        """创建对话记录"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            return repo.create_chat_record(
+                maternal_id=maternal_id,
+                chat_id=chat_id,
+                json_file_path=json_file_path,
+            )
         finally:
             db_session.close()
 

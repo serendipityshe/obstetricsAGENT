@@ -98,6 +98,11 @@ async def create_chat_id(
             with open(json_file_path, 'w', encoding='utf-8') as f:
                 json.dump({}, f)  # 写入空 JSON 对象，保证文件格式正确
             print(f"空 JSON 文件已创建: {json_file_path}")
+            maternal_service.create_chat_record(
+                maternal_id=request.maternal_id,
+                chat_id=chat_id,
+                json_file_path=json_file_path,
+            )
         except Exception as e:
             print(f"创建空 JSON 文件失败: {str(e)}")
         return CreateChatIdRequest(
