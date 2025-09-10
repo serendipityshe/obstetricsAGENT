@@ -35,7 +35,7 @@ class PrengantState(TypedDict):
     error: Annotated[Optional[str], '错误信息']
     memory: Annotated[Optional[List[dict]], '记忆']
     
-def _get_file_path(file_ids: List[int]) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+def _get_file_path(file_ids: List[str]) -> Tuple[Optional[str], Optional[str], Optional[str]]:
     """获取文件路径（补充maternal_id参数，适配服务层调用）"""
     image_path = None
     doc_path = None
@@ -239,7 +239,7 @@ if __name__ == "__main__":
     # 构造完整的输入参数（含必填字段）
     input_data = {
         "input": "孕妇最近出现头晕症状，需要什么建议？",
-        "user_type": "孕妇",
+        "user_type": "pregnant_mother",
         "maternal_id": 1,
         "chat_id": f"chat_{int(datetime.datetime.now().timestamp())}",  # 生成唯一整数chat_id
         "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),

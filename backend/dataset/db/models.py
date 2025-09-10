@@ -128,7 +128,7 @@ class MaternalDialogue(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True, comment='对话记录ID')
     maternal_id = Column(Integer, ForeignKey('maternal_info.id'), nullable=False, comment='关联孕妇ID（外键）')
-    chat_id = Column(String(255), nullable=False, comment='对话ID(必填)')
+    chat_id = Column(String(255), nullable=True, comment='对话ID(必填)')
     dialogue_content = Column(String(512), nullable=False, comment='对话文本内容存储路径（json格式）')
     vector_store_path = Column(String(512), nullable=True, comment='对话向量在知识库中的存储路径（如向量数据库索引路径或文件路径）')
     created_at = Column(DateTime, default=datetime.now, comment='对话发生时间')

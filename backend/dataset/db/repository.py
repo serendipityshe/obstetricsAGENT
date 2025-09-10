@@ -403,10 +403,12 @@ class MaternalRepository:
         self, 
         maternal_id: int,
         dialogue_content: str,
+        chat_id: Optional[str] = None,
         vector_store_path: Optional[str] = None
     ) -> MaternalDialogue:
         dialogue = MaternalDialogue(
             maternal_id=maternal_id,
+            chat_id=chat_id,
             dialogue_content=dialogue_content,
             vector_store_path=vector_store_path
         )

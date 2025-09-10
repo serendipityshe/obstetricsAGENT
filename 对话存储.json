@@ -1,0 +1,132 @@
+{
+  "chat_meta": {
+    // 1. 会话核心元信息（关联chat_id，支撑会话识别和模型调用）
+    "chat_id": "obstetrics-chat-20250911-007",  // 唯一会话ID（后端创建返回给前端，如UUID）
+    "user_info": {
+      "user_id": "wx-mini-uid-890123",          // 小程序用户唯一ID（关联微信openid，避免跨用户混淆）
+      "user_type": "pregnant_mother",           // 用户类型（产科场景核心：pregnant_mother/doctor，影响模型回答逻辑）
+      "pregnancy_info": {                       // 产科专属上下文（模型需用，前端需渲染）
+        "week": 23,                             // 孕周（动态更新，如用户后续告知“已孕24周”）
+        "is_high_risk": false,                  // 是否高危妊娠
+        "due_date": "2026-03-20",               // 预产期（可选，前端会话头部显示）
+        "hospital": "北京协和医院产科"           // 就诊医院（模型回答可关联医院诊疗规范）
+      }
+    },
+    "session_stats": {
+      "create_time": 1726092000,                // 会话创建时间戳（秒，前端显示“创建于9月11日 08:00”）
+      "last_message_time": 1726100800,          // 最后一条消息时间戳（前端排序历史会话）
+      "message_count": 8,                       // 消息总数（前端分页加载用，如“共8条消息”）
+      "attached_file_count": 2,                 // 关联文件数（前端显示“含2张图片”）
+      "is_active": true                         // 会话是否活跃（前端标记“当前会话”）
+    },
+    "model_config": {                           // 模型配置（后端记录，避免重复传参）
+      "model_name": "obstetrics-agent-v1-multimodal",  // 调用的产科模型
+      "temperature": 0.3,                       // 模型温度（医疗场景固定低值）
+      "max_tokens": 1000                        // 单次回答最大Token
+    }
+  },
+  "message_list": [
+    // 2. 全量消息列表（按send_time升序，每条消息符合OpenAI格式+前端渲染字段）
+    {
+      "message_id": "msg-20250911-001",         // 唯一消息ID（后端生成，前端重发/定位用）
+      "role": "system",                         // OpenAI角色：system（后端初始化，前端不渲染）
+      "content": "你是专业的产科医疗助手，仅回答孕期/产后问题，异常情况必须提示“及时联系产科医生”，需结合用户孕周和就诊医院规范，引用《妊娠期保健指南2024》",
+      "send_time": 1726092000,                  // 消息发送时间戳（秒）
+      "status": "success"                       // 消息状态（system消息默认success）
+    },
+    {
+      "message_id": "msg-20250911-002",
+      "role": "user",                           // OpenAI角色：user（前端右对齐气泡）
+      "content": [                              // 多模态内容（OpenAI规范：数组格式，支持text/image/document）
+        {
+          "type": "text",
+          "text": "医生，我孕23周，昨天做了B超，帮我看一下胎儿腹围是否正常？"  // 文本内容（前端text组件渲染）
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "file_id": "file-20250911-b超01",    // 后端文件唯一ID（关联文件记录）
+            "url": "https://obstetrics-mini.xxx.com/files/chat-20250911-007/b超01.jpg?token=abc123",  // 小程序可访问的图片URL（带时效签名）
+            "preview_url": "https://obstetrics-mini.xxx.com/previews/chat-20250911-007/b超01-thumb.jpg",  // 缩略图URL（前端气泡预览）
+            "file_name": "20250910_B超报告.jpg", // 原始文件名（前端长按保存显示）
+            "file_size": 307200                  // 文件大小（字节，前端显示“300KB”）
+          }
+        }
+      ],
+      "send_time": 1726092500,
+      "status": "success",                      // 消息状态：success（成功）/fail（失败）/loading（发送中）
+      "source": "user_input"                    // 消息来源（前端可选显示：user_input/mini_upload）
+    },
+    {
+      "message_id": "msg-20250911-003",
+      "role": "assistant",                      // OpenAI角色：assistant（前端左对齐气泡）
+      "content": [
+        {
+          "type": "text",
+          "text": "正在分析您的B超图，需提取胎儿腹围数据，请稍候..."  // 加载中提示（前端显示转圈动画）
+        }
+      ],
+      "send_time": 1726092505,
+      "status": "loading",
+      "source": "llm_loading"
+    },
+    {
+      "message_id": "msg-20250911-004",
+      "role": "function",                       // OpenAI角色：function（工具调用结果，前端不直接渲染，仅用于模型上下文）
+      "name": "analyze_obstetrics_image",        // 调用的工具名
+      "content": "{\"file_id\":\"file-20250911-b超01\",\"analysis_result\":{\"胎儿腹围\":\"20.5cm\",\"正常范围\":\"19.0~21.5cm（孕23周）\",\"confidence\":0.93}}",  // 工具结果（JSON字符串，OpenAI规范）
+      "send_time": 1726092600,
+      "status": "success",
+      "source": "tool_response"
+    },
+    {
+      "message_id": "msg-20250911-005",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "根据您2025-09-10的B超图及专业影像分析（置信度93%）：\n1. 胎儿腹围：20.5cm，孕23周正常范围为19.0~21.5cm，当前数值正常；\n2. 结合您就诊的北京协和医院规范，腹围与孕周匹配，无需额外检查；\n【建议】后续每周监测胎动，孕24周按时做糖耐量试验。"  // 支持换行（前端用\n拆分）
+        },
+        {
+          "type": "document",
+          "document": {
+            "file_id": "file-20250911-指南01",
+            "url": "https://obstetrics-mini.xxx.com/docs/孕23周腹围指南.pdf?token=def456",  // 文档URL（小程序web-view打开）
+            "file_name": "孕23周胎儿腹围参考指南.pdf",
+            "file_type": "application/pdf",       // 文件类型（前端显示PDF图标）
+            "summary": "摘录自《妊娠期保健指南2024》孕中期胎儿生长指标章节"  // 摘要（前端文档卡片显示）
+          }
+        }
+      ],
+      "send_time": 1726092650,
+      "status": "success",
+      "source": "llm_generated",
+      "related_tools": [                        // 关联工具（前端可选展开“数据来源”）
+        {
+          "tool_name": "analyze_obstetrics_image",
+          "tool_desc": "B超影像指标提取工具，提取腹围、双顶径等关键数据"
+        }
+      ]
+    },
+    // 后续消息省略...（如用户追问“糖耐量试验需要空腹吗？”及助手回答）
+  ],
+  "attached_files": [
+    // 3. 关联文件记录（后端管理用，前端无需渲染，仅用于文件追溯/清理）
+    {
+      "file_id": "file-20250911-b超01",
+      "chat_id": "obstetrics-chat-20250911-007",
+      "file_type": "image/jpeg",
+      "storage_path": "/data/obstetrics/files/chat-20250911-007/b超01.jpg",  // 后端存储路径
+      "upload_time": 1726092480,
+      "is_valid": true                          // 文件是否有效（避免删除后前端访问失效）
+    },
+    {
+      "file_id": "file-20250911-指南01",
+      "chat_id": "obstetrics-chat-20250911-007",
+      "file_type": "application/pdf",
+      "storage_path": "/data/obstetrics/docs/孕23周腹围指南.pdf",
+      "upload_time": 1726092640,
+      "is_valid": true
+    }
+  ]
+}

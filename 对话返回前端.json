@@ -1,0 +1,61 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": {
+    "chat_meta": {
+      "chat_id": "obstetrics-chat-20250911-007",
+      "user_type": "pregnant_mother",
+      "maternal_id": 1,
+      "session_stats": {
+        "create_time": 1726092000,
+        "last_message_time": 1726100800
+      },
+      "session_title": "孕23周B超腹围咨询"  
+    },
+    "message_list": [
+      {
+        "message_id": "msg-20250911-002",
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "医生，我孕23周，昨天做了B超，帮我看一下胎儿腹围是否正常？"
+          },
+          {
+            "type": "image_url",
+            "image_url": {
+              "url": "https://obstetrics-mini.xxx.com/files/chat-20250911-007/b超01.jpg?token=abc123",
+              "preview_url": "https://obstetrics-mini.xxx.com/previews/chat-20250911-007/b超01-thumb.jpg",
+              "file_name": "20250910_B超报告.jpg",
+              "file_size": 307200
+            }
+          },
+          {
+            "type": "document",
+            "document": {
+              "url": "https://obstetrics-mini.xxx.com/docs/孕23周腹围指南.pdf?token=def456",
+              "file_name": "孕23周胎儿腹围参考指南.pdf",
+              "file_type": "application/pdf"
+            }
+          }
+        ],
+        "send_time": 1726092500,
+        "status": "success",
+        "source": "user_input"
+      },
+      {
+        "message_id": "msg-20250911-003",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "正在分析您的B超图，需提取胎儿腹围数据，请稍候..."
+          }
+        ],
+        "send_time": 1726092505,
+        "status": "success",
+        "source": "llm_loading"
+      }
+    ]
+  }
+}

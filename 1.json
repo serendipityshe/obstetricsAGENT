@@ -1,0 +1,53 @@
+{
+    "chat_meta": {
+        "chat_id": "", 
+        "user_info": {
+            "user_id": "",
+            "user_type": "",
+            "username": "",
+            "pregnancy_info": {
+                "current_gestational_week": 23,
+                "expected_delivery_date": "2026-03-20"
+            }
+        },
+    "session_stats": {
+      "create_time": 1726092000,                // 会话创建时间戳（秒，前端显示“创建于9月11日 08:00”）
+      "last_message_time": 1726100800,          // 最后一条消息时间戳（前端排序历史会话）
+      "message_count": 8,                       // 消息总数（前端分页加载用，如“共8条消息”）
+      "attached_file_count": 2,                 // 关联文件数（前端显示“含2张图片”）
+      "is_active": true                         // 会话是否活跃（前端标记“当前会话”）
+    },
+    "model_config": {
+        "model_name": "qwen",
+        "temperature": 0.2,
+        "max_tokens": 1024
+    }
+    },
+    "message_list": [
+        {
+            "message_id": "msg-20250909-001",
+            "role": "system",
+            "content": "...",
+            "send_time": 1726092000,
+            "status": "success"
+        },
+        {
+            "message_id": "msg-20250909-002",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "..."
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        
+                    }
+                }
+            ],
+            "send_time": 1726092000,
+            "status": "success"
+        }
+    ]
+}
