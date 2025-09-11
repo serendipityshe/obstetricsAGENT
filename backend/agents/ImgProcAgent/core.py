@@ -16,15 +16,22 @@ from PIL import Image
 from backend.agents.tools.tools import qwen_tool  # 仅保留qwen_tool
 
 
-class ImgProcState(TypedDict):
+class ImgProcStateRequired(TypedDict):
+    """
+    图片处理智能体的必需字段
+    """
+    input: Annotated[str, "用户输入"]
+    file_path: Annotated[str, "图片本地路径（后端可访问）"]
+
+
+class ImgProcState(ImgProcStateRequired, total=False):
     """
     图片处理智能体的状态结构（删除base64_content字段，无需提前存储编码结果）
     专注于图片路径、元数据与解析结果
     """
-    file_path: Annotated[str, "图片本地路径（后端可访问）"]
-    content: Optional[Annotated[str, "图片解析内容"]] = None
-    metadata: Optional[Annotated[Dict, "图片元数据（格式、尺寸、大小等）"]] = None
-    error: Optional[Annotated[str, "错误信息"]] = None
+    content: Annotated[str, "图片解析内容"]
+    metadata: Annotated[Dict, "图片元数据（格式、尺寸、大小等）"]
+    error: Annotated[str, "错误信息"]
 
 
 # ------------------------- 定义节点 ----------------------------
@@ -133,6 +140,7 @@ if __name__ == "__main__":
 
     # 调用智能体（传入后端可访问的本地图片路径）
     result = img_agent.invoke({
+        "input": "请分析这张图片",  # 添加必需的input字段
         "file_path": "test/OIP.png"  # 替换为你的实际图片路径
     })
 

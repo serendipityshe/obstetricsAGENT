@@ -1,12 +1,12 @@
 from fastapi import APIRouter, HTTPException, status, Depends, Form, Path 
 from pydantic import BaseModel, Field
-from typing import Optional, List, Union
+from typing import Optional, List, Union, Literal
 import datetime
 
 import json
 import uuid
 import os
-from backend.workflow.test import prengant_workflow
+from backend.workflow.test import prengant_workflow, PrengantState
 from backend.api.v1.services.maternal_service import MaternalService  # 复用服务层
 import logging
 
@@ -128,7 +128,7 @@ async def create_chat_id(
 # 3.1 消息内容子模型（支持text/image_url/document三种类型）
 class TextContent(BaseModel):
     """文本类型消息内容"""
-    type: str = Field("text", Literal=True, description="内容类型：固定为text")
+    type: Literal["text"] = Field("text", description="内容类型：固定为text")
     text: str = Field(..., description="文本内容")
 
 class ImageUrlInfo(BaseModel):
@@ -141,7 +141,7 @@ class ImageUrlInfo(BaseModel):
 
 class ImageUrlContent(BaseModel):
     """图片类型消息内容"""
-    type: str = Field("image_url", Literal=True, description="内容类型：固定为image_url")
+    type: Literal["image_url"] = Field("image_url", description="内容类型：固定为image_url")
     image_url: ImageUrlInfo = Field(..., description="图片详细信息")
 
 class DocumentInfo(BaseModel):
@@ -154,7 +154,7 @@ class DocumentInfo(BaseModel):
 
 class DocumentContent(BaseModel):
     """文档类型消息内容"""
-    type: str = Field("document", Literal=True, description="内容类型：固定为document")
+    type: Literal["document"] = Field("document", description="内容类型：固定为document")
     document: DocumentInfo = Field(..., description="文档详细信息")
 
 # 消息内容类型集合（Union）
@@ -227,9 +227,18 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
             f"chat_id={request.chat_id}, input={request.input[:30]}..."
         )
 
-        # 2. 执行工作流（保留原逻辑）
+        # 2. 执行工作流（保留原逻辑，将request转换为工作流状态）
         workflow_graph = prengant_workflow()
-        workflow_result = workflow_graph.invoke(request)
+        # 将请求对象转换为工作流状态
+        workflow_state: PrengantState = {
+            "input": request.input,
+            "maternal_id": request.maternal_id,
+            "chat_id": request.chat_id,
+            "user_type": request.user_type,
+            "timestamp": request.timestamp,
+            "file_id": request.file_id or []
+        }
+        workflow_result = workflow_graph.invoke(workflow_state)
         workflow_output = workflow_result.get("output")  # 助手回答
         workflow_error = workflow_result.get("error")    # 工作流内部错误
         image_path = workflow_result.get("image_path")   # 图片文件路径（工作流返回）
@@ -245,7 +254,7 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
         user_content: List[MessageContent] = []
 
         # 3.1 添加用户文本内容
-        user_content.append(TextContent(text=request.input))
+        user_content.append(TextContent(type="text", text=request.input))
 
         # 3.2 添加用户文件内容（图片/文档）
         # 处理图片文件（从workflow_result的image_path提取）
@@ -257,6 +266,7 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
             image_url = f"https://obstetrics-mini.xxx.com/files/{request.chat_id}/{file_name}?token={token}"
             preview_url = f"https://obstetrics-mini.xxx.com/previews/{request.chat_id}/{file_name.replace(os.path.splitext(file_name)[1], '-thumb.jpg')}"
             user_content.append(ImageUrlContent(
+                type="image_url",
                 image_url=ImageUrlInfo(
                     url=image_url,
                     preview_url=preview_url,
@@ -275,6 +285,7 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
             # 构造文档URL（实际项目需替换为文件服务域名）
             doc_url = f"https://obstetrics-mini.xxx.com/files/{request.chat_id}/{file_name}?token={token}"
             user_content.append(DocumentContent(
+                type="document",
                 document=DocumentInfo(
                     url=doc_url,
                     file_name=file_name,
@@ -297,7 +308,7 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
         if workflow_output:
             assistant_message_id = f"msg_{uuid.uuid4()}"
             # 助手仅返回文本（可根据需求扩展多类型）
-            assistant_content = [TextContent(text=workflow_output)]
+            assistant_content: List[MessageContent] = [TextContent(type="text", text=workflow_output)]
             # 生成助手消息时间（比用户消息晚40秒，模拟真实响应耗时）
             user_dt = datetime.datetime.strptime(request.timestamp, "%Y-%m-%d %H:%M:%S")
             assistant_dt = user_dt + datetime.timedelta(seconds=40)
@@ -326,28 +337,47 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
         )
 
         # 7. 构造最终响应
+        answer = PregnantWorkflowResponse(
+            code=200 if workflow_output else 500,
+            msg="success" if workflow_output else "工作流未生成有效回答",
+            data=workflow_data
+        )
+        
         if workflow_output:
-            return PregnantWorkflowResponse(
-                code=200,
-                msg="success",
-                data=workflow_data
-            )
-        else:
-            # 无助手回答时仍返回200格式，error字段说明问题
-            return PregnantWorkflowResponse(
-                code=500,
-                msg="工作流未生成有效回答",
-                data=WorkflowData(
-                    chat_meta=ChatMeta(
-                        chat_id=request.chat_id,
-                        user_type=request.user_type,
-                        maternal_id=request.maternal_id
-                    ),
-                    session_title=session_title,
-                    messages=[user_message],  # 仅返回用户消息
-                    error=workflow_error or "工作流核心生成节点失败，未返回回答"
-                )
-            )
+            try:
+                # 修正变量名拼写错误
+                json_file_path = maternal_service.get_dialogue_content_by_chat_id(request.chat_id)
+                if not isinstance(json_file_path, str):
+                    raise ValueError("获取JSON文件路径失败")
+                logger.info(f"准备写入JSON文件，路径为: {json_file_path}") 
+                # 确保目录存在
+                os.makedirs(os.path.dirname(json_file_path), exist_ok=True)
+                
+                existing_data = []
+                # 读取已存在数据
+                if os.path.exists(json_file_path):
+                    try:
+                        with open(json_file_path, 'r', encoding='utf-8') as f:
+                            existing_data = json.load(f)
+                            if not isinstance(existing_data, list):
+                                existing_data = [existing_data]
+                    except json.JSONDecodeError:
+                            logger.warning(f"JSON文件格式错误，将创建新文件: {json_file_path}")
+                            existing_data = []
+                
+                # 合并数据
+                existing_data.append(answer.model_dump())
+
+                # 写入JSON文件并添加异常处理
+                with open(json_file_path, 'w', encoding='utf-8') as f:
+                    json.dump(existing_data, f, ensure_ascii=False, indent=2)
+                
+                logger.info(f"答案已成功写入JSON文件: {json_file_path}")
+            except Exception as e:
+                logger.error(f"写入JSON文件失败: {str(e)}", exc_info=True)
+                # 即使文件写入失败，仍返回正常响应（根据业务需求决定是否抛出异常）
+                
+        return answer
 
     except Exception as e:
         # 捕获接口层异常（如工作流调用失败、参数错误）
@@ -357,7 +387,7 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
         user_message = MessageItem(
             message_id=f"msg_{uuid.uuid4()}",
             role="user",
-            content=[TextContent(text=request.input)],
+            content=[TextContent(type="text", text=request.input)],
             timestamp=request.timestamp
         )
         return PregnantWorkflowResponse(
@@ -375,56 +405,41 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
             )
         )
 
-# ------------------------------
-# 5. 定义请求/响应模型（Pydantic验证）
-# ------------------------------
-class ChatHistoryItem(BaseModel):
-    """
-    单条对话记录模型
-    """
-    role: str = Field(..., description="角色：human(用户)/ai(智能体)")
-    content: str = Field(..., description="对话内容")
-    timestamp: str = Field(..., description="对话时间（格式：YYYY-MM-DD HH:MM:SS）")
 
-class ChatHistoryData(BaseModel):
-    """
-    对话历史响应的业务数据模型
-    """
+# ------------------------------
+# 2. 核心接口实现（根据 chat_id 获取对话历史）
+# ------------------------------
+
+
+@router.get(
+    path = '/{chat_id}/history',
+    summary = '根据',
+    description = '根据对话ID获取对话历史'
+)
+async def get_chat_history_by_ids(
+    chat_id: str = Path(..., description="对话ID")
+):
+    json_file_path = maternal_service.get_dialogue_content_by_chat_id(chat_id)
+    if not isinstance(json_file_path, str):
+        raise HTTPException(status_code=404, detail="对话文件不存在")
+    with open(json_file_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+        return data
+
+# ------------------------------
+# 2. 核心接口实现（根据 chat_id 获取对话历史）
+# ------------------------------
+class GetChatIdsRequest(BaseModel):
     maternal_id: int = Field(..., description="孕妇ID")
-    chat_id: int = Field(..., description="对话ID")
-    history: List[ChatHistoryItem] = Field(..., description="对话历史记录")
-    history_length: int = Field(..., description="对话总轮次")
-    latest_update_time: str = Field(..., description="最新对话时间（格式：YYYY-MM-DD HH:MM:SS）")
 
-class ChatHistoryResponse(BaseModel):
-    """
-    统一响应模型
-    """
-    code: int = Field(..., description="状态码：200=成功，400=记录不存在，500=系统错误")
-    message: str = Field(..., description="提示信息")
-    data: Optional[ChatHistoryData] = Field(None, description="业务数据")
-    error: Optional[str] = Field(None, description="错误信息")
 
-# ------------------------------
-# 2. 核心接口实现（根据 maternal_id 和 chat_id 获取对话历史）
-# ------------------------------
-# # .get(
-#     path = '{maternal_id}/{chat_id}/history',
-#     summary = '根据',
-#     description = '根据孕妇ID和对话ID获取对话历史'
-# )
-# async def get_chat_history_by_ids(
-#     maternal_id: int,
-#     chat_id: int
-# ):
-#     return ChatHistoryResponse(
-#         code=200,
-#         message="对话历史获取成功",
-#         data=ChatHistoryData(
-#             maternal_id=maternal_id,
-#             chat_id=chat_id,
-#             history=[],
-#             history_length=0,
-#             latest_update_time="2023-01-01 00:00:00"
-#         )
-#     )
+@router.post(
+    path = '/get_chat_ids',
+    summary = '根据孕妇ID获取对话ID列表',
+    description = '根据孕妇ID获取所有对话记录的对话ID列表'
+)
+async def get_chat_ids_by_maternal_id(
+    request: GetChatIdsRequest
+):
+    chat_ids = maternal_service.get_chat_id_by_maternal_id(request.maternal_id)
+    return chat_ids

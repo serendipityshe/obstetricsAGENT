@@ -3,11 +3,12 @@
 """
 
 from sqlalchemy import Column, Integer, String, Date, Text, ForeignKey, Boolean, DateTime
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import relationship, declarative_base, Mapped, mapped_column
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from backend.config.settings import SQLALCHEMY_DATABASE_URL
-from datetime import datetime
+from datetime import datetime, date
+from typing import Optional
 
 Base = declarative_base()
 
@@ -36,13 +37,13 @@ class MaternalInfo(Base):
     """
     __tablename__ = 'maternal_info'
     
-    id = Column(Integer, primary_key=True, autoincrement=True, comment='主键ID（自增）')
-    user_id = Column(Integer, ForeignKey("user.id"), unique=True, nullable=False, comment="关联用户ID(外键)")
-    id_card = Column(String(18), nullable=True, comment='身份证号（唯一标识）')
-    phone = Column(String(20), unique=True, nullable=True, comment='手机号（可选）')
-    current_gestational_week = Column(Integer, nullable=True, comment='当前孕周')
-    expected_delivery_date = Column(Date, nullable=True, comment='预产期')
-    maternal_age = Column(Integer, nullable=True, comment='准妈妈年龄')
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True, comment='主键ID（自增）')
+    user_id: Mapped[int] = mapped_column(Integer, ForeignKey("user.id"), unique=True, nullable=False, comment="关联用户ID(外键)")
+    id_card: Mapped[Optional[str]] = mapped_column(String(18), nullable=True, comment='身份证号（唯一标识）')
+    phone: Mapped[Optional[str]] = mapped_column(String(20), unique=True, nullable=True, comment='手机号（可选）')
+    current_gestational_week: Mapped[Optional[int]] = mapped_column(Integer, nullable=True, comment='当前孕周')
+    expected_delivery_date: Mapped[Optional[date]] = mapped_column(Date, nullable=True, comment='预产期')
+    maternal_age: Mapped[Optional[int]] = mapped_column(Integer, nullable=True, comment='准妈妈年龄')
     
     # 关联主表
     user = relationship("User", back_populates="maternal_info")
@@ -63,11 +64,11 @@ class MaternalPregnancyHistory(Base):
     """
     __tablename__ = 'maternal_pregnancy_history'
     
-    id = Column(Integer, primary_key=True, autoincrement=True, comment='记录ID')
-    maternal_id = Column(Integer, ForeignKey('maternal_info.id'), nullable=False, comment='关联孕妇ID')
-    pregnancy_count = Column(Integer, nullable=True, comment='既往妊娠次数')
-    bad_pregnancy_history = Column(Text, nullable=True, comment='既往不良孕史（如流产、早产等）')
-    delivery_method = Column(String(50), nullable=True, comment='既往分娩方式（顺产/剖宫产等）')
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True, comment='记录ID')
+    maternal_id: Mapped[int] = mapped_column(Integer, ForeignKey('maternal_info.id'), nullable=False, comment='关联孕妇ID')
+    pregnancy_count: Mapped[Optional[int]] = mapped_column(Integer, nullable=True, comment='既往妊娠次数')
+    bad_pregnancy_history: Mapped[Optional[str]] = mapped_column(Text, nullable=True, comment='既往不良孕史（如流产、早产等）')
+    delivery_method: Mapped[Optional[str]] = mapped_column(String(50), nullable=True, comment='既往分娩方式（顺产/剖宫产等）')
     
     # 关联主表
     maternal = relationship("MaternalInfo", back_populates="pregnancy_histories")
@@ -82,14 +83,14 @@ class MaternalHealthCondition(Base):
     """
     __tablename__ = 'maternal_health_condition'
     
-    id = Column(Integer, primary_key=True, autoincrement=True, comment='记录ID')
-    maternal_id = Column(Integer, ForeignKey('maternal_info.id'), nullable=False, comment='关联孕妇ID')
-    has_hypertension = Column(Boolean, default=False, comment='是否有高血压')
-    has_diabetes = Column(Boolean, default=False, comment='是否有糖尿病')
-    has_thyroid_disease = Column(Boolean, default=False, comment='是否有甲状腺疾病')
-    has_heart_disease = Column(Boolean, default=False, comment='是否有心脏病')
-    has_liver_disease = Column(Boolean, default=False, comment='是否有肝脏疾病')
-    allergy_history = Column(Text, nullable=True, comment='过敏史详情')
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True, comment='记录ID')
+    maternal_id: Mapped[int] = mapped_column(Integer, ForeignKey('maternal_info.id'), nullable=False, comment='关联孕妇ID')
+    has_hypertension: Mapped[bool] = mapped_column(Boolean, default=False, comment='是否有高血压')
+    has_diabetes: Mapped[bool] = mapped_column(Boolean, default=False, comment='是否有糖尿病')
+    has_thyroid_disease: Mapped[bool] = mapped_column(Boolean, default=False, comment='是否有甲状腺疾病')
+    has_heart_disease: Mapped[bool] = mapped_column(Boolean, default=False, comment='是否有心脏病')
+    has_liver_disease: Mapped[bool] = mapped_column(Boolean, default=False, comment='是否有肝脏疾病')
+    allergy_history: Mapped[Optional[str]] = mapped_column(Text, nullable=True, comment='过敏史详情')
     
     # 关联主表
     maternal = relationship("MaternalInfo", back_populates="health_conditions")
@@ -104,15 +105,15 @@ class MaternalMedicalFiles(Base):
     """
     __tablename__ = 'maternal_medical_files'
     
-    id = Column(Integer, primary_key=True, autoincrement=True, comment='文件记录ID')
-    maternal_id = Column(Integer, ForeignKey('maternal_info.id'), nullable=False, comment='关联孕妇ID')
-    file_name = Column(String(255), nullable=False, comment='文件名')
-    file_path = Column(String(512), nullable=False, comment='文件存储路径（服务器绝对路径或云存储URL）')
-    file_type = Column(String(50), nullable=False, comment='文件类型（如：pdf、jpg、dcm、docx等）')
-    file_size = Column(Integer, nullable=True, comment='文件大小（字节）')
-    upload_time = Column(DateTime, default=datetime.now, comment='上传时间')
-    file_desc = Column(Text, nullable=True, comment='文件描述（如：24周B超报告、唐筛结果等）')
-    check_date = Column(Date, nullable=True, comment='检查日期')
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True, comment='文件记录ID')
+    maternal_id: Mapped[int] = mapped_column(Integer, ForeignKey('maternal_info.id'), nullable=False, comment='关联孕妇ID')
+    file_name: Mapped[str] = mapped_column(String(255), nullable=False, comment='文件名')
+    file_path: Mapped[str] = mapped_column(String(512), nullable=False, comment='文件存储路径（服务器绝对路径或云存储URL）')
+    file_type: Mapped[str] = mapped_column(String(50), nullable=False, comment='文件类型（如：pdf、jpg、dcm、docx等）')
+    file_size: Mapped[Optional[int]] = mapped_column(Integer, nullable=True, comment='文件大小（字节）')
+    upload_time: Mapped[datetime] = mapped_column(DateTime, default=datetime.now, comment='上传时间')
+    file_desc: Mapped[Optional[str]] = mapped_column(Text, nullable=True, comment='文件描述（如：24周B超报告、唐筛结果等）')
+    check_date: Mapped[Optional[date]] = mapped_column(Date, nullable=True, comment='检查日期')
     
     # 关联主表
     maternal = relationship("MaternalInfo", back_populates="medical_files")
@@ -126,12 +127,12 @@ class MaternalDialogue(Base):
     """
     __tablename__ = 'maternal_dialogue'
 
-    id = Column(Integer, primary_key=True, autoincrement=True, comment='对话记录ID')
-    maternal_id = Column(Integer, ForeignKey('maternal_info.id'), nullable=False, comment='关联孕妇ID（外键）')
-    chat_id = Column(String(255), nullable=True, comment='对话ID(必填)')
-    dialogue_content = Column(String(512), nullable=False, comment='对话文本内容存储路径（json格式）')
-    vector_store_path = Column(String(512), nullable=True, comment='对话向量在知识库中的存储路径（如向量数据库索引路径或文件路径）')
-    created_at = Column(DateTime, default=datetime.now, comment='对话发生时间')
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True, comment='对话记录ID')
+    maternal_id: Mapped[int] = mapped_column(Integer, ForeignKey('maternal_info.id'), nullable=False, comment='关联孕妇ID（外键）')
+    chat_id: Mapped[Optional[str]] = mapped_column(String(255), nullable=True, comment='对话ID(必填)')
+    dialogue_content: Mapped[str] = mapped_column(String(512), nullable=False, comment='对话文本内容存储路径（json格式）')
+    vector_store_path: Mapped[Optional[str]] = mapped_column(String(512), nullable=True, comment='对话向量在知识库中的存储路径（如向量数据库索引路径或文件路径）')
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now, comment='对话发生时间')
     
     # 关联孕妇主表
     maternal = relationship("MaternalInfo", backref="dialogues")  # 允许通过maternal_info.dialogues获取所有对话

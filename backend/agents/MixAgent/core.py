@@ -16,10 +16,14 @@ from backend.agents.ImgProcAgent.core import create_imgproc_agent
 
 
 
-class MixAgentState(TypedDict):
-    """混合智能体状态"""
-    # 输入参数（仅初始化时设置，后续节点不修改）
+class MixAgentStateRequired(TypedDict):
+    """混合智能体状态的必需字段"""
     input: Annotated[str, "用户输入"]
+
+
+class MixAgentState(MixAgentStateRequired, total=False):
+    """混合智能体状态"""
+    # 输入参数（初始化时可选）
     doc_file_path: Optional[Annotated[str, "文档路径"]]
     img_file_path: Optional[Annotated[str, "图片路径"]]
     
@@ -27,14 +31,14 @@ class MixAgentState(TypedDict):
     doc_result: Optional[Annotated[dict, "文档处理结果"]]
     img_result: Optional[Annotated[dict, "图片处理结果"]]
     
-    # 输出结果
-    combined_results: Annotated[List[dict], "统一格式的结果列表"]
+    # 输出结果（最终由combine_results节点生成）
+    combined_results: Optional[Annotated[List[dict], "统一格式的结果列表"]]
     error: Optional[Annotated[str, "错误信息"]]
 
 
 # 节点：处理文档（修复：仅返回修改的状态键）
 def process_document(state: MixAgentState) -> dict:  # 返回类型改为dict（仅增量状态）
-    doc_path_str = state["doc_file_path"]
+    doc_path_str = state.get("doc_file_path")
     if not doc_path_str:
         return {}  # 无修改，返回空字典
     
@@ -82,7 +86,7 @@ def process_document(state: MixAgentState) -> dict:  # 返回类型改为dict（
 
 # 节点：处理图片（修复：仅返回修改的状态键）
 def process_image(state: MixAgentState) -> dict:  # 返回类型改为dict（仅增量状态）
-    img_path_str = state["img_file_path"]
+    img_path_str = state.get("img_file_path")
     if not img_path_str:
         return {}  # 无修改，返回空字典
     
@@ -128,9 +132,9 @@ def process_image(state: MixAgentState) -> dict:  # 返回类型改为dict（仅
 def combine_results(state: MixAgentState) -> dict:  # 返回类型改为dict（仅增量状态）
     combined = []
     if state.get("doc_result"):
-        combined.append(state["doc_result"])
+        combined.append(state.get("doc_result"))
     if state.get("img_result"):
-        combined.append(state["img_result"])
+        combined.append(state.get("img_result"))
     print(f"结果整合完成：共{len(combined)}个来源")
     # 仅返回修改的combined_results键
     return {"combined_results": combined}
@@ -160,7 +164,7 @@ if __name__ == "__main__":
     script_dir = Path(__file__).parent
     test_dir = script_dir.parent.parent.parent / "test"
     
-    input_params = {
+    input_params: MixAgentState = {
         "input": "孕期保健",
         "doc_file_path": str(test_dir / "孕前和孕期保健指南.doc"),
         "img_file_path": str(test_dir / "OIP.png"),
@@ -171,8 +175,8 @@ if __name__ == "__main__":
         print(f"{key}: {value}")
     print("=" * 50)
     
-    mix_agent = mix_agent()
-    result = mix_agent.invoke(input_params)
+    mix_agent_instance = mix_agent()
+    result = mix_agent_instance.invoke(input_params)
     
     if result.get('error'):
         print(f"\n=== 处理失败 ===")

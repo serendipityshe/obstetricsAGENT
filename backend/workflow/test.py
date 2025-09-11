@@ -14,14 +14,16 @@ import logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
-class PrengantState(TypedDict):
-    """孕妇状态（修正：context改为字符串类型，匹配实际拼接结果）"""
+class PrengantStateRequired(TypedDict):
+    """孕妇状态的必需字段"""
     input: Annotated[str, '用户输入']
     maternal_id: Annotated[int, '孕妇id(必填)']
     chat_id: Annotated[str, '聊天id(必填)']
     user_type: Annotated[str, '用户类型(必填)']
     timestamp: Annotated[str, '时间戳（格式：YYYY-MM-DD HH:MM:SS UTC，必填）']
 
+class PrengantState(PrengantStateRequired, total=False):
+    """孕妇状态（修正：context改为字符串类型，匹配实际拼接结果）"""
     output: Annotated[str, '模型输出']
     context: Annotated[Optional[str], '上下文（拼接后的字符串）']  # 修正：List[dict]→str
     retrieval_professor: Annotated[Optional[List[dict]], '专家知识库检索结果']
@@ -60,6 +62,13 @@ def mix_node(state: PrengantState) -> dict:
     updates = {}
     try:
         file_ids = state.get("file_id")
+        # 修正：检查file_ids是否为None
+        if not file_ids:
+            updates["image_path"] = None
+            updates["doc_path"] = None
+            updates["file_content"] = None
+            return updates
+        
         # 修正：传递maternal_id给_get_file_path，适配服务层查询
         image_path, doc_path, error_msg = _get_file_path(file_ids)
         if error_msg:
@@ -77,10 +86,12 @@ def mix_node(state: PrengantState) -> dict:
             raise ValueError("混合处理节点失败： 用户输入(input)不能为空")
 
         mix_agent_instance = mix_agent()
-        mix_input = {
+        # 修复：确保mix_input符合MixAgentState类型定义
+        from backend.agents.MixAgent.core import MixAgentState
+        mix_input: MixAgentState = {
             "input": user_input,
-            "img_file_path": image_path or "",
-            "doc_file_path": doc_path or "",
+            "img_file_path": image_path,
+            "doc_file_path": doc_path,
         }
         logger.info("启动混合智能体，开始融合用户输入与文件内容")
         mix_result = mix_agent_instance.invoke(mix_input)
@@ -140,8 +151,10 @@ def retr_node(state: PrengantState) -> dict:
         vector_db_path_pregnant = _get_vector_path(maternal_id, chat_id, maternal_service)
         vector_db_professor = "/root/project2/data/vector_store_json"
         retr_agent_instance = create_retr_agent()
-        retr_input = {
-            "input": state.get("input"),
+        # 修复：确保retr_input符合RetrAgentState类型定义
+        from backend.agents.RetrAgent.core import RetrAgentState
+        retr_input: RetrAgentState = {
+            "input": state.get("input") or "",
             "vector_db_professor": vector_db_professor,
             "vector_db_pregnant": vector_db_path_pregnant,
         }
@@ -198,20 +211,26 @@ def gen_synth_node(state: PrengantState) -> PrengantState:
     """生成合成智能体节点（无修改）"""
     try:
         gen_synth_agent_instance = gen_synth_agent()
-        gen_synth_input = {
-            "input": state.get("input"),
-            "user_type": state.get("user_type"),
-            "context": state.get("context"),
+        # 修复：确保gen_synth_input符合GenSynthAgentState类型定义
+        from backend.agents.GenSynthAgent.core import GenSynthAgentState
+        context = state.get("context") or ""  # 处理None值
+        gen_synth_input: GenSynthAgentState = {
+            "input": state.get("input") or "",
+            "user_type": state.get("user_type") or "",
+            "context": context,
+            "output": "",  # 添加必需字段
+            "error": None,   # 添加可选字段
         }
         logger.info("启动合成智能体，开始生成合成输出")
         gen_synth_result = gen_synth_agent_instance.invoke(gen_synth_input)
-        state["output"] = gen_synth_result.get("output")
-        logger.info(f"合成智能体处理成功：生成输出={state['output'][:50]}...")  # 截断长输出避免日志冗余
+        state["output"] = gen_synth_result.get("output") or ""
+        output_str = state['output']
+        logger.info(f"合成智能体处理成功：生成输出={output_str[:50] if output_str else ''}…")  # 截断长输出避免日志冗余
     except Exception as e:
         error_msg = f"合成节点执行失败：{str(e)}"
         logger.error(f"{error_msg}")
         state["error"] = error_msg
-        state["output"] = None
+        state["output"] = ""
     return state
 
 def prengant_workflow():
@@ -236,14 +255,14 @@ def prengant_workflow():
 
 if __name__ == "__main__":
     graph = prengant_workflow()
-    # 构造完整的输入参数（含必填字段）
-    input_data = {
+    # 构造完整的输入参数（含必填字段），确保符合PrengantState类型
+    input_data: PrengantState = {
         "input": "孕妇最近出现头晕症状，需要什么建议？",
         "user_type": "pregnant_mother",
         "maternal_id": 1,
         "chat_id": f"chat_{int(datetime.datetime.now().timestamp())}",  # 生成唯一整数chat_id
         "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "file_id": ["/root/project2/test/孕前和孕期保健指南.doc"] # 无文件时显式传None，避免state字段缺失
+        "file_id": ["/root/project2/test/孕前和孕期保健指南.doc"] # 无文件时显式传None，避免状态字段缺失
     }
     # 执行工作流并打印结果
     result = graph.invoke(input_data)
@@ -251,5 +270,6 @@ if __name__ == "__main__":
     logger.info("工作流执行结果：")
     logger.info(f"错误信息：{result.get('error') or '无'}")
     logger.info(f"生成输出：{result.get('output') or '无'}")
-    logger.info(f"上下文：{result.get('context')[:100]}" if result.get('context') else "上下文：无")
+    context_str = result.get('context')
+    logger.info(f"上下文：{context_str[:100] if context_str else '无'}")
     

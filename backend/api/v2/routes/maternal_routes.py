@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Query, UploadFile, status, File, Depends, Form, Path, Body
+from typing import Dict, Any, Optional
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, field_validator
 from datetime import date, datetime
@@ -40,17 +41,9 @@ class MaternalInfoUpdate(BaseModel):
 
 class PregnancyHistoryUpdate(BaseModel):
     """孕产史更新请求模型"""
-    # 根据实际业务补充字段，示例：
-    parity: int | None = Field(None, ge=0, description="孕次（非负整数）")
-    gravidity: int | None = Field(None, ge=0, description="产次（非负整数）")
-    abortion_times: int | None = Field(None, ge=0, description="流产次数（非负整数）")
-    expected_delivery_date: date | None = Field(None, description="预产期（格式：YYYY-MM-DD）")
-
-    @field_validator('expected_delivery_date')
-    def parse_date(cls, v):
-        if isinstance(v, str):
-            return datetime.strptime(v, "%Y-%m-%d").date()
-        return v
+    pregnancy_count: int | None = Field(None, ge=0, description="既往妊娠次数")
+    bad_pregnancy_history: str | None = Field(None, description="不良孕产史（非负整数）")
+    delivery_method: str | None = Field(None, description="分娩方式（非负整数）")
 
 
 class HealthConditionUpdate(BaseModel):
@@ -115,6 +108,25 @@ def update_maternal_info(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
 
+@router.get(
+    path = "/{user_id}/get_pregnantMother_info",
+    status_code=status.HTTP_200_OK,
+    description="获取孕妇基本信息（需认证）"
+)
+# @require_auth
+def get_pregnantMother_info(
+    user_id: int = Path(..., description="孕妇唯一ID（正整数）")
+) -> Dict[str, Any]:
+    """根据用户ID获取孕妇基本信息"""
+    try:
+        result = maternal_service.get_maternal_info_by_user_id(user_id)
+        return result if result else None
+    except Exception as e:
+        return JSONResponse(
+            content={"status": "error", "message": f"获取失败：{str(e)}"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
 
 # ------------------------------
 # 4. 孕产史相关接口
@@ -124,7 +136,7 @@ def update_maternal_info(
     status_code=status.HTTP_200_OK,
     description="更新孕妇孕产史（需认证）"
 )
-@require_auth
+# @require_auth
 def update_maternal_pregnancy_history(
     maternal_id: int = Path(..., description="孕妇唯一ID（正整数）"),
     update_data: PregnancyHistoryUpdate = Body(..., description="更新数据")
@@ -161,7 +173,7 @@ def update_maternal_pregnancy_history(
     status_code=status.HTTP_200_OK,
     description="更新孕妇健康状况（需认证）"
 )
-@require_auth
+# @require_auth
 def update_maternal_health_condition(
     maternal_id: int = Path(..., description="孕妇唯一ID（正整数）"),
     update_data: HealthConditionUpdate = Body(..., description="更新数据")
@@ -212,6 +224,15 @@ def upload_medical_file(
         if not file.filename:
             return JSONResponse(
                 content={"status": "error", "message": "未选择文件或文件名为空"},
+                status_code=status.HTTP_400_BAD_REQUEST
+            )
+
+        # 检查文件大小
+        file_content = file.file.read()
+        max_size = 10 * 1024 * 1024  # 10MB
+        if len(file_content) > max_size:
+            return JSONResponse(
+                content={"status": "error", "message": "文件大小不能超过10MB"},
                 status_code=status.HTTP_400_BAD_REQUEST
             )
 

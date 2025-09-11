@@ -12,11 +12,15 @@ from backend.dataset.db.models import MaternalDialogue
 from backend.dataset.db.service import get_session, get_db_engine
 
 
-class MeMState(TypedDict):
-    """完善长期记忆智能体状态定义"""
+class MeMStateRequired(TypedDict):
+    """长期记忆智能体状态定义 - 必需字段"""
     maternal_id: Annotated[str, '孕妇ID']
     chat_history: Annotated[str, "对话记录路径"]
     persist_directory: Annotated[str, "向量数据库路径"]
+
+
+class MeMState(MeMStateRequired, total=False):
+    """长期记忆智能体状态定义 - 完整状态（包含可选字段）"""
     error: Optional[Annotated[str, '错误信息']]
     content: Optional[Annotated[str, '处理结果信息']]  # 新增：存储处理结果
     metadata: Optional[Annotated[Dict, '附加元数据']]  # 新增：存储元数据
@@ -71,8 +75,8 @@ def create_mem_agent():
 
 if __name__ == '__main__':
     mem_agent = create_mem_agent()
-    # 初始状态
-    initial_state = {
+    # 初始状态 - 明确构造为 MeMState 类型
+    initial_state: MeMState = {
         "maternal_id": "1",
         "chat_history": "test/chat.json",  # 确保该路径存在实际文件
         "persist_directory": "test/vector_db",  # 确保该目录可写

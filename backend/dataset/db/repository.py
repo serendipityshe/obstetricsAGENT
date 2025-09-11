@@ -56,6 +56,7 @@ class MaternalRepository:
         return self.db_session.query(User).filter(
             User.id == user_id
         ).first()
+
     
     # ------------------------------
     # 孕妇基本信息操作
@@ -135,13 +136,8 @@ class MaternalRepository:
         if maternal_age is not None:
             maternal_info.maternal_age = maternal_age
         
-        try:
-            self.db_session.commit()
-            self.db_session.refresh(maternal_info)
-            return maternal_info
-        except SQLAlchemyError as e:
-            self.db_session.rollback()
-            raise e
+        # 只做数据修改，不做事务管理（由 Service 层统一处理）
+        return maternal_info
     
     def delete_maternal_info(self, user_id: int) -> bool:
         """删除孕妇基本信息（级联删除关联表数据）"""
@@ -188,8 +184,14 @@ class MaternalRepository:
             self.db_session.rollback()
             raise e
     
+    def get_pregnancy_history(self, maternal_id: int) -> Optional[MaternalPregnancyHistory]:
+        """获取指定孕妇的孕产史记录（单条记录）"""
+        return self.db_session.query(MaternalPregnancyHistory).filter(
+            MaternalPregnancyHistory.maternal_id == maternal_id
+        ).first()
+    
     def get_pregnancy_histories(self, maternal_id: int) -> List[MaternalPregnancyHistory]:
-        """获取指定孕妇的所有孕产史"""
+        """获取指定孕妇的所有孕产史记录"""
         return self.db_session.query(MaternalPregnancyHistory).filter(
             MaternalPregnancyHistory.maternal_id == maternal_id
         ).all()
@@ -202,7 +204,7 @@ class MaternalRepository:
         delivery_method: Optional[str] = None
     ) -> Optional[MaternalPregnancyHistory]:
         """更新孕产史记录"""
-        history = self.get_pregnancy_histories(maternal_id)
+        history = self.get_pregnancy_history(maternal_id)
         if not history:
             return None
         
@@ -213,13 +215,8 @@ class MaternalRepository:
         if delivery_method is not None:
             history.delivery_method = delivery_method
         
-        try:
-            self.db_session.commit()
-            self.db_session.refresh(history)
-            return history
-        except SQLAlchemyError as e:
-            self.db_session.rollback()
-            raise e
+        # 只做数据修改，不做事务管理（由 Service 层统一处理）
+        return history
     
     # ------------------------------
     # 健康状况操作（关联表）
@@ -257,6 +254,12 @@ class MaternalRepository:
             self.db_session.rollback()
             raise e
     
+    def get_health_condition(self, maternal_id: int) -> Optional[MaternalHealthCondition]:
+        """获取指定孕妇的健康状况记录（单条记录）"""
+        return self.db_session.query(MaternalHealthCondition).filter(
+            MaternalHealthCondition.maternal_id == maternal_id
+        ).first()
+    
     def get_health_conditions(self, maternal_id: int) -> List[MaternalHealthCondition]:
         """获取指定孕妇的所有健康状况记录"""
         return self.db_session.query(MaternalHealthCondition).filter(
@@ -274,7 +277,7 @@ class MaternalRepository:
         allergy_history: Optional[str] = None
     ) -> Optional[MaternalHealthCondition]:
         """更新健康状况记录"""
-        condition = self.get_health_conditions(maternal_id)
+        condition = self.get_health_condition(maternal_id)
         if not condition:
             return None
         
@@ -291,13 +294,8 @@ class MaternalRepository:
         if allergy_history is not None:
             condition.allergy_history = allergy_history
         
-        try:
-            self.db_session.commit()
-            self.db_session.refresh(condition)
-            return condition
-        except SQLAlchemyError as e:
-            self.db_session.rollback()
-            raise e
+        # 只做数据修改，不做事务管理（由 Service 层统一处理）
+        return condition
     
     # ------------------------------
     # 医疗文件操作（关联表）
@@ -355,7 +353,7 @@ class MaternalRepository:
         return self.db_session.query(MaternalMedicalFiles).filter(
             MaternalMedicalFiles.maternal_id == maternal_id,
             MaternalMedicalFiles.id == file_id
-        ).all()
+        ).first()
 
     def update_medical_file(
         self,
@@ -369,7 +367,9 @@ class MaternalRepository:
         check_date: Optional[date] = None
     ) -> Optional[MaternalMedicalFiles]:
         """更新医疗文件记录"""
-        file = self.get_medical_files(file_id)
+        file = self.db_session.query(MaternalMedicalFiles).filter(
+            MaternalMedicalFiles.id == file_id
+        ).first()
         if not file:
             return None
         
@@ -388,13 +388,8 @@ class MaternalRepository:
         if check_date is not None:
             file.check_date = check_date
         
-        try:
-            self.db_session.commit()
-            self.db_session.refresh(file)
-            return file
-        except SQLAlchemyError as e:
-            self.db_session.rollback()
-            raise e
+        # 只做数据修改，不做事务管理（由 Service 层统一处理）
+        return file
 
     # ------------------------------
     # 对话记录服务
@@ -404,13 +399,15 @@ class MaternalRepository:
         maternal_id: int,
         dialogue_content: str,
         chat_id: Optional[str] = None,
-        vector_store_path: Optional[str] = None
+        vector_store_path: Optional[str] = None,
+        created_at: Optional[datetime] = None
     ) -> MaternalDialogue:
         dialogue = MaternalDialogue(
             maternal_id=maternal_id,
             chat_id=chat_id,
             dialogue_content=dialogue_content,
-            vector_store_path=vector_store_path
+            vector_store_path=vector_store_path,
+            created_at=created_at,
         )
         try:
             self.db_session.add(dialogue)
@@ -421,10 +418,16 @@ class MaternalRepository:
             self.db_session.rollback()
             raise e
 
-    def get_maternal_info_by_id(self, maternal_id: int):
+    def get_maternal_info_by_maternal_id(self, maternal_id: int):
         """通过maternal_id获取孕妇信息"""
         return self.db_session.query(MaternalInfo).filter(
             MaternalInfo.id == maternal_id
+        ).first()
+
+    def get_dialogue_content_by_chat_id(self, chat_id: str):
+        """通过chat_id获取对话内容"""
+        return self.db_session.query(MaternalDialogue).filter(
+            MaternalDialogue.chat_id == chat_id
         ).first()
 
     def get_dialogues(self, maternal_id: int, chat_id: str) -> List[MaternalDialogue]:
@@ -446,7 +449,7 @@ class MaternalRepository:
         json_file_path: str
     ) -> MaternalDialogue:
         """创建对话记录"""
-        maternal_info = self.get_maternal_info_by_id(maternal_id)
+        maternal_info = self.get_maternal_info_by_maternal_id(maternal_id)
         if not maternal_info:
             raise ValueError("孕妇不存在")
         
@@ -456,23 +459,29 @@ class MaternalRepository:
             dialogue_content=json_file_path,
             created_at = datetime.now()
         )
-        try:
-            self.db_session.add(dialogue)
-            self.db_session.commit()
-            self.db_session.refresh(dialogue)
-            return dialogue
-        except SQLAlchemyError as e:
-            self.db_session.rollback()
-            raise Exception(f"存储chat记录到数据库失败: {str(e)}")
+        return dialogue
+
+    def get_history_by_chat_id(self, chat_id: str) -> MaternalDialogue:
+        """通过chat_id获取对话记录"""
+        return self.db_session.query(MaternalDialogue).filter(
+            MaternalDialogue.chat_id == chat_id
+        ).first()
+
+    def get_chat_id_by_maternal_id(self, maternal_id: int) -> List[MaternalDialogue]:
+        """通过maternal_id获取所有对话记录"""
+        return self.db_session.query(MaternalDialogue).filter(
+            MaternalDialogue.maternal_id == maternal_id
+        ).all()
 
     def update_dialogue(
         self,
         maternal_id: int,
         chat_id: str,
         dialogue_content: Optional[str] = None,
+        vector_store_path: Optional[str] = None
     ) -> Optional[MaternalDialogue]:
         """更新对话记录"""
-        dialogue = self.get_dialogues(maternal_id)
+        dialogue = self.get_dialogue_content_by_chat_id(chat_id)
         if not dialogue:
             return None
         
@@ -481,10 +490,5 @@ class MaternalRepository:
         if vector_store_path is not None:
             dialogue.vector_store_path = vector_store_path
         
-        try:
-            self.db_session.commit()
-            self.db_session.refresh(dialogue)
-            return dialogue
-        except SQLAlchemyError as e:
-            self.db_session.rollback()
-            raise e
+        # 只做数据修改，不做事务管理（由 Service 层统一处理）
+        return dialogue

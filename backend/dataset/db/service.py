@@ -51,7 +51,7 @@ class MaternalService:
             if user_type == 'pregnant_mother':
                 # 2.1 创建孕妇基本信息（必须传user_id关联用户）
                 maternal_info = repo.create_maternal_info(
-                    user_id=user.id,  # 关键：使用已创建用户的ID
+                    user_id=user.id,  # type: ignore # 关键：使用已创建用户的ID
                     id_card=None,
                     phone=None,
                     current_gestational_week=None,
@@ -86,6 +86,7 @@ class MaternalService:
                 # 2.5 创建关联的对话记录（空JSON）
                 repo.create_dialogue(
                     maternal_id=maternal_info.id,
+                    chat_id=None,
                     dialogue_content="{}",  # 符合JSON格式的空内容
                     vector_store_path=None
                 )
@@ -110,6 +111,15 @@ class MaternalService:
             return repo.get_user_info_by_username(username)
         finally:
             db_session.close()
+
+    def get_maternal_info_by_user_id(self, user_id: int) -> Optional[MaternalInfo]:
+        """根据用户ID获取孕妇信息"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            return repo.get_maternal_info_by_user_id(user_id)
+        finally:
+            db_session.close()
     
     # ------------------------------
     # 孕妇基本信息服务（修正：添加user_id参数）
@@ -117,7 +127,7 @@ class MaternalService:
     def create_maternal_info(
         self,
         user_id: int,  # 新增：关联User表的必需参数
-        id_card: str = None,
+        id_card: Optional[str] = None,
         phone: Optional[str] = None,
         current_gestational_week: Optional[int] = None,
         expected_delivery_date: Optional[date] = None,
@@ -197,6 +207,9 @@ class MaternalService:
                 expected_delivery_date=expected_delivery_date,
                 maternal_age=maternal_age
             )
+            if result:
+                db_session.commit()
+                db_session.refresh(result)
             return result
         except Exception as e:
             db_session.rollback()
@@ -273,7 +286,9 @@ class MaternalService:
                 bad_pregnancy_history=bad_pregnancy_history,
                 delivery_method=delivery_method
             )
-            db_session.commit()
+            if result:
+                db_session.commit()
+                db_session.refresh(result)  # 在 Service 层做 refresh
             return result
         except Exception as e:
             db_session.rollback()
@@ -348,7 +363,9 @@ class MaternalService:
                 has_liver_disease=has_liver_disease,
                 allergy_history=allergy_history
             )
-            db_session.commit()
+            if result:
+                db_session.commit()
+                db_session.refresh(result)
             return result
         except Exception as e:
             db_session.rollback()
@@ -437,7 +454,6 @@ class MaternalService:
         try:
             repo = MaternalRepository(db_session)
             result = repo.update_medical_file(
-                maternal_id=maternal_id,
                 file_id=file_id,
                 file_name=file_name,
                 file_path=file_path,
@@ -447,7 +463,9 @@ class MaternalService:
                 file_desc=file_desc,
                 check_date=check_date
             )
-            db_session.commit()
+            if result:
+                db_session.commit()
+                db_session.refresh(result)
             return result
         except Exception as e:
             db_session.rollback()
@@ -461,10 +479,10 @@ class MaternalService:
     def create_dialogue(
         self,
         maternal_id: int,
-        user_id: int,
-        user_input: str,
-        agent_output: str,
-        timestamp: Optional[datetime] = None
+        dialogue_content: str,
+        chat_id: Optional[str] = None,
+        vector_store_path: Optional[str] = None,
+        created_at: Optional[datetime] = None
     ) -> MaternalDialogue:
         """添加对话记录"""
         db_session = self._get_session()
@@ -472,10 +490,10 @@ class MaternalService:
             repo = MaternalRepository(db_session)
             result = repo.create_dialogue(
                 maternal_id=maternal_id,
-                user_id=user_id,
-                user_input=user_input,
-                agent_output=agent_output,
-                timestamp=timestamp or datetime.now()
+                dialogue_content=dialogue_content,
+                chat_id=chat_id,
+                vector_store_path=vector_store_path,
+                created_at=created_at or datetime.now()
             )
             db_session.commit()
             db_session.refresh(result)
@@ -486,26 +504,23 @@ class MaternalService:
         finally:
             db_session.close()
 
-    def get_maternal_info_by_id(
-        self,
-        maternal_id: int,
-    ) -> Optional[MaternalDialogue]:
-        """通过dialogue_id获取对话记录"""
-        db_session = self._get_session()
-        try:
-            repo = MaternalRepository(db_session)
-            return repo.get_maternal_info_by_id(
-                maternal_id=maternal_id,
-            )
-        finally:
-            db_session.close()
-
     def get_dialogues(self, maternal_id: int, chat_id: str) -> List[MaternalDialogue]:
         """获取指定孕妇的对话记录"""
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
             return repo.get_dialogues(maternal_id, chat_id)
+        finally:
+            db_session.close()
+
+    def get_dialogue_content_by_chat_id(self, chat_id: str) -> Optional[MaternalDialogue]:
+        """通过chat_id获取对话内容"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            return repo.get_dialogue_content_by_chat_id(
+                chat_id=chat_id,
+            )
         finally:
             db_session.close()
 
@@ -522,13 +537,34 @@ class MaternalService:
         finally:
             db_session.close()
 
+    def get_history_by_chat_id(self, chat_id: str) -> Optional[MaternalDialogue]:
+        """通过chat_id获取对话记录"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            return repo.get_history_by_chat_id(
+                chat_id=chat_id,
+            )
+        finally:
+            db_session.close()
+    
+    def get_chat_id_by_maternal_id(self, maternal_id: int) -> List[MaternalDialogue]:
+        """通过maternal_id获取所有对话记录"""
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            return repo.get_chat_id_by_maternal_id(
+                maternal_id=maternal_id,
+            )
+        finally:
+            db_session.close()
+
     def update_dialogue(
         self,
         maternal_id: int,
-        dialogue_id: int,
-        user_input: Optional[str] = None,
-        agent_output: Optional[str] = None,
-        timestamp: Optional[datetime] = None
+        chat_id: str,
+        dialogue_content: Optional[str] = None,
+        vector_store_path: Optional[str] = None
     ) -> Optional[MaternalDialogue]:
         """更新对话记录"""
         db_session = self._get_session()
@@ -536,12 +572,13 @@ class MaternalService:
             repo = MaternalRepository(db_session)
             result = repo.update_dialogue(
                 maternal_id=maternal_id,
-                dialogue_id=dialogue_id,
-                user_input=user_input,
-                agent_output=agent_output,
-                timestamp=timestamp
+                chat_id=chat_id,
+                dialogue_content=dialogue_content,
+                vector_store_path=vector_store_path
             )
-            db_session.commit()
+            if result:
+                db_session.commit()
+                db_session.refresh(result)
             return result
         except Exception as e:
             db_session.rollback()

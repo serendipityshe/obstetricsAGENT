@@ -102,6 +102,14 @@ class MaternalService:
         except Exception as e:
             raise Exception(f"更新孕妇信息失败: {str(e)}")
 
+    def get_maternal_info_by_user_id(self, user_id: int) -> Optional[Dict[str, Any]]:
+        """根据用户ID获取孕妇信息"""
+        try:
+            result = self.dataset_service.get_maternal_info_by_user_id(user_id)
+            return self._maternal_info_to_dict(result) if result else None
+        except Exception as e:
+            raise Exception(f"获取孕妇信息失败: {str(e)}")
+
     def delete_maternal_info(self, info_id: int) -> bool:
         """删除孕妇信息"""
         try:
@@ -142,14 +150,12 @@ class MaternalService:
     def update_pregnancy_history(
         self,
         maternal_id: int,
-        history_id: int,
         **kwargs
     ) -> Optional[Dict[str, Any]]:
         """更新孕产史记录"""
         try:
             result = self.dataset_service.update_pregnancy_history(
                 maternal_id=maternal_id,
-                history_id=history_id,
                 **kwargs
             )
             return self._pregnancy_history_to_dict(result) if result else None
@@ -319,6 +325,34 @@ class MaternalService:
             return self._maternal_info_to_dict(result) if result else None
         except Exception as e:
             raise Exception(f"获取孕妇信息失败: {str(e)}")
+
+    def get_dialogue_content_by_chat_id(
+        self,
+        chat_id: str,
+    ) -> Optional[Dict[str, Any]]:
+        """获取指定chat_id的对话记录"""
+        try:
+            result = self.dataset_service.get_dialogue_content_by_chat_id(
+                chat_id=chat_id,
+            )
+            json_path = result.dialogue_content
+            return json_path
+        except Exception as e:
+            raise Exception(f"获取对话记录失败: {str(e)}")
+
+    def get_chat_id_by_maternal_id(
+        self,
+        maternal_id: int,
+    ) -> Optional[Dict[str, Any]]:
+        """获取指定孕妇的对话记录"""
+        try:
+            chat_ids = []
+            results = self.dataset_service.get_chat_id_by_maternal_id(maternal_id)
+            for result in results:
+                chat_ids.append(result.chat_id)
+            return chat_ids
+        except Exception as e:
+            raise Exception(f"获取对话记录失败: {str(e)}")
     
     def update_dialogue(
         self,
@@ -387,7 +421,6 @@ class MaternalService:
             "pregnancy_count": history.pregnancy_count,
             "bad_pregnancy_history": history.bad_pregnancy_history,
             "delivery_method": history.delivery_method,
-            "created_at": history.created_at.isoformat() if history.created_at else None
         }
 
     @staticmethod

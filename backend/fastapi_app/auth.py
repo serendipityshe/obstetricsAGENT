@@ -8,7 +8,7 @@ import hashlib
 from datetime import datetime, timedelta
 from typing import Optional, Dict, Any
 
-import jwt
+from jose import jwt, JWTError
 from fastapi import HTTPException, Depends, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from passlib.context import CryptContext
@@ -70,13 +70,11 @@ class TokenManager:
                 settings.jwt_secret, 
                 algorithms=[settings.jwt_algorithm]
             )
-            user_id: str = payload.get("user_id")
+            user_id = payload.get("user_id")
             if user_id is None:
                 return None
             return user_id
-        except jwt.ExpiredSignatureError:
-            return None
-        except jwt.JWTError:
+        except JWTError:
             return None
 
 class PasswordManager:

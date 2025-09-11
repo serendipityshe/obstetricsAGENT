@@ -15,22 +15,28 @@ from langchain_core.documents import Document  # 新增：用于文件路径校�
 root_dir = Path(__file__).parent.parent.parent.parent
 sys.path.append(str(root_dir))
 
-from typing import TypedDict, Optional, Dict, Annotated
+from typing import TypedDict, Optional, Dict, List, Annotated
 from langgraph.graph import StateGraph, END, START
 from backend.agents.tools.tools import docproc_tool, qwen_tool
 
 
-class DocProcState(TypedDict):
+class DocProcStateRequired(TypedDict):
+    """
+    文档处理智能体的必需字段
+    """
+    input: Annotated[str, "用户输入"]
+    file_path: Annotated[str, "文件路径"]
+
+
+class DocProcState(DocProcStateRequired, total=False):
     """
     文档处理智能体的状态结构
     专注于文档解析结果.
     """
-    input: Annotated[str, "用户输入"]
-    file_path: Annotated[str, "文件路径"]
-    file_type: Optional[Annotated[str, "文件类型"]]
-    content: Optional[Annotated[str, "文件内容"]]
-    metadata: Optional[Annotated[Dict, "文件元数据"]]
-    error: Optional[Annotated[str, "错误信息"]]
+    file_type: Annotated[str, "文件类型"]
+    content: Annotated[str, "文件内容"]
+    metadata: Annotated[Dict, "文件元数据"]
+    error: Annotated[str, "错误信息"]
 
 #----------------------定义节点--------------------
 def detect_document_format(state: DocProcState) -> DocProcState:
@@ -69,10 +75,15 @@ def extract_document_content(state: DocProcState) -> DocProcState:
             return state
 
         page_contents = []
+        metadata = {}
         for doc in doc_list:
             page_contents.append(doc.page_content)
-            metadata = doc.metadata
-        state["content"] = page_contents
+            # 合并所有文档的元数据，后面的会覆盖前面的
+            metadata.update(doc.metadata or {})
+        
+        # 将所有页面内容合并为单个字符串
+        combined_content = "\n\n".join(page_contents)
+        state["content"] = combined_content
         state["metadata"] = metadata
             
     except Exception as e:
@@ -81,11 +92,19 @@ def extract_document_content(state: DocProcState) -> DocProcState:
     return state
 
 def qwen_answer(state: DocProcState) -> DocProcState:
+    # 检查是否存在错误或没有内容
+    if state.get('error'):
+        return state
+    
+    content = state.get('content')
+    if not content:
+        state["error"] = "文档内容为空，无法生成答案"
+        return state
 
-    prompt =  f"""
+    prompt = f"""
             你是一个文档处理智能体，仅基于以下文档内容回答用户问题，禁止编造信息：
             1. 用户问题：{state['input']}
-            2. 文档内容：{state['content']}
+            2. 文档内容：{content}
 
             要求：
             - 若文档中无相关答案，需明确说明“文档中未找到相关内容”；
