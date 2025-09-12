@@ -32,21 +32,32 @@ def retreive_node(state: RetrAgentState) -> RetrAgentState:
     检索智能体节点
     """
     try:
+        # 修复：使用正确的rag_tool调用方式
         retr_medical_data = rag_tool.invoke({
             "user_query": state['input'],
             "vector_store_path": state['vector_db_professor'],
+            "top_k": 3
         })
         retr_pregnant_data = rag_tool.invoke({
             "user_query": state['input'],
-            "vector_store_path": state['vector_db_pregnant'],
+            "vector_store_path": state['vector_db_pregnant'], 
+            "top_k": 3
         })
+        
+        # 确保返回结果的结构正确
+        professor_fragments = retr_medical_data.get("knowledge_fragments", []) if retr_medical_data else []
+        pregnant_fragments = retr_pregnant_data.get("knowledge_fragments", []) if retr_pregnant_data else []
+        
         state['output'] = {
-            "专家知识库": retr_medical_data,
-            "孕妇知识库": retr_pregnant_data,
+            "专家知识库": professor_fragments,
+            "孕妇知识库": pregnant_fragments,
         }
         state['error'] = None
     except Exception as e:
-        state['output'] = None
+        state['output'] = {
+            "专家知识库": [],
+            "孕妇知识库": [],
+        }
         state['error'] = f"检索失败：{str(e)}"
     return state
 

@@ -1,7 +1,9 @@
-from fastapi import APIRouter, HTTPException, status, Depends, Form, Path 
+from starlette.responses import JSONResponse
+from fastapi import APIRouter, HTTPException, status, Depends, Form, Path, Query, UploadFile, File, Body
 from pydantic import BaseModel, Field
-from typing import Optional, List, Union, Literal
-import datetime
+from fastapi.responses import JSONResponse
+from typing import Any, Optional, List, Union, Literal
+from datetime import date, datetime, timedelta
 
 import json
 import uuid
@@ -35,8 +37,8 @@ def get_file_size(file_path: str) -> int:
 
 def generate_expire_time(days: int = 7) -> str:
     """生成文件过期时间（当前时间+N天），格式：YYYY-MM-DD HH:MM:SS"""
-    expire_dt = datetime.datetime.now() + datetime.timedelta(days=days)
-    return expire_dt.strftime("%Y-%m-%d %H:%M:%S")
+    expire_dt = datetime.now() + timedelta(days=days)
+    return expire_dt.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
 
 def get_file_name_from_path(file_path: str) -> str:
     """从文件路径中提取文件名（如无路径则返回默认名）"""
@@ -94,21 +96,30 @@ async def create_chat_id(
         save_chat_path = os.path.join('dataset', 'pregnant_mother', str(request.maternal_id), 'chat')
         os.makedirs(save_chat_path, exist_ok=True)
         json_file_path = os.path.join(save_chat_path, f'{chat_id}.json')
+        
+        # 生成向量存储路径
+        vector_store_path = f"/root/project2/data/vector_store/chat_{chat_id}_maternal_{request.maternal_id}"
+        
         try:
             with open(json_file_path, 'w', encoding='utf-8') as f:
                 json.dump({}, f)  # 写入空 JSON 对象，保证文件格式正确
             print(f"空 JSON 文件已创建: {json_file_path}")
-            maternal_service.create_chat_record(
+            
+            # 创建聊天记录并同时设置向量存储路径
+            result = maternal_service.dataset_service.create_dialogue(
                 maternal_id=request.maternal_id,
                 chat_id=chat_id,
-                json_file_path=json_file_path,
+                dialogue_content=json_file_path,
+                vector_store_path=vector_store_path
             )
+            logger.info(f"已为 chat_id={chat_id} 初始化向量存储路径: {vector_store_path}")
+            
         except Exception as e:
-            print(f"创建空 JSON 文件失败: {str(e)}")
+            print(f"创建空 JSON 文件或数据库记录失败: {str(e)}")
         return CreateChatIdRequest(
             code=200,
             msg="对话ID创建成功",
-            data={"chat_id": chat_id}
+            data={"chat_id": chat_id, "vector_store_path": vector_store_path}
         )
     except Exception as e:
         logger.error(f"创建对话ID失败: {e}")
@@ -191,7 +202,7 @@ class PregnantWorkflowRequest(BaseModel):
     chat_id: str = Field(..., description="聊天会话ID（必填，与创建接口返回一致）")
     user_type: str = Field(..., description="用户类型（必填，固定值：pregnant_mother/doctor）")
     timestamp: str = Field(
-        default_factory=lambda: datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        default_factory=lambda: datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
         description="请求时间戳（格式：YYYY-MM-DD HH:MM:SS，默认自动生成）"
     )
     file_id: Optional[List[str]] = Field(None, description="关联文件ID列表（支持图片/文档）")
@@ -310,13 +321,13 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
             # 助手仅返回文本（可根据需求扩展多类型）
             assistant_content: List[MessageContent] = [TextContent(type="text", text=workflow_output)]
             # 生成助手消息时间（比用户消息晚40秒，模拟真实响应耗时）
-            user_dt = datetime.datetime.strptime(request.timestamp, "%Y-%m-%d %H:%M:%S")
-            assistant_dt = user_dt + datetime.timedelta(seconds=40)
+            user_dt = datetime.strptime(request.timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+            assistant_dt = user_dt + timedelta(seconds=40)
             assistant_message = MessageItem(
                 message_id=assistant_message_id,
                 role="assistant",
                 content=assistant_content,
-                timestamp=assistant_dt.strftime("%Y-%m-%d %H:%M:%S")
+                timestamp=assistant_dt.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
             )
 
         # 5. 构造会话标题（取用户输入前10字，超出截断）
@@ -435,7 +446,7 @@ class GetChatIdsRequest(BaseModel):
 
 @router.post(
     path = '/get_chat_ids',
-    summary = '根据孕妇ID获取对话ID列表',
+    summary = '原本路由根据孕妇ID获取对话ID列表',
     description = '根据孕妇ID获取所有对话记录的对话ID列表'
 )
 async def get_chat_ids_by_maternal_id(
@@ -443,3 +454,139 @@ async def get_chat_ids_by_maternal_id(
 ):
     chat_ids = maternal_service.get_chat_id_by_maternal_id(request.maternal_id)
     return chat_ids
+
+
+# ------------------------------
+# 6. 医疗文件相关接口
+# ------------------------------
+@router.post(
+    path="/{user_id}/files",
+    status_code=status.HTTP_201_CREATED,
+    summary="注意：！！！原接口/api/v2/maternal/{user_id}/files，已弃用，请使用新接口/api/v2/chat/{user_id}/files 上传孕妇医疗文件",
+    description="上传孕妇医疗文件（支持jpg/png/pdf等，需form-data格式）"
+)
+# @require_auth  # 如需认证可取消注释
+def upload_medical_file(
+    user_id: int = Path(..., description="孕妇唯一ID（正整数）"),
+    # 文件参数：FastAPI原生UploadFile，自动处理文件流
+    file: UploadFile = File(..., description="上传的医疗文件（必填）"),
+    # 表单参数：用Form标注（form-data中的非文件字段）
+    file_desc: str | None = Form(None, description="文件描述（可选）"),
+    check_date_str: str | None = Form(None, description="检查日期（格式：YYYY-MM-DD，可选）")
+):
+    try:
+        # 1. 验证文件合法性
+        if not file.filename:
+            return JSONResponse(
+                content={"status": "error", "message": "未选择文件或文件名为空"},
+                status_code=status.HTTP_400_BAD_REQUEST
+            )
+
+        # 检查文件大小
+        file_content = file.file.read()
+        max_size = 10 * 1024 * 1024  # 10MB
+        if len(file_content) > max_size:
+            return JSONResponse(
+                content={"status": "error", "message": "文件大小不能超过10MB"},
+                status_code=status.HTTP_400_BAD_REQUEST
+            )
+
+        # 2. 处理文件存储目录
+        base_upload_dir = "uploads/maternal_files"
+        user_dir = os.path.join(base_upload_dir, str(user_id))
+        os.makedirs(user_dir, exist_ok=True)  # 不存在则创建目录
+
+        # 3. 生成唯一文件名（避免冲突）
+        file_ext = os.path.splitext(file.filename)[1].lower()  # 提取文件后缀（小写）
+        unique_filename = f"{uuid.uuid4()}{file_ext}"  # UUID生成唯一文件名
+        file_path = os.path.join(user_dir, unique_filename)
+
+        # 4. 保存文件到服务器（FastAPI UploadFile 需用文件对象保存）
+        with open(file_path, "wb") as f:
+            f.write(file.file.read())  # 读取上传文件的二进制内容并写入
+
+        # 5. 处理检查日期
+        check_date = None
+        if check_date_str:
+            check_date = datetime.strptime(check_date_str, "%Y-%m-%d").date()
+
+        # 6. 获取文件元信息
+        file_size = os.path.getsize(file_path)  # 文件大小（字节）
+        file_type = file.content_type or file_ext.lstrip(".")  # 优先用MIME类型，其次后缀
+
+        # 7. 调用业务层保存到数据库
+        db_result = maternal_service.create_medical_file(
+            maternal_id=user_id,
+            file_name=file.filename,  # 原始文件名
+            file_path=file_path,      # 服务器存储路径
+            file_type=file_type,
+            file_size=file_size,
+            upload_time=datetime.now(),
+            file_desc=file_desc,
+            check_date=check_date
+        )
+
+        # 8. 构造响应（返回关键信息）
+        file_id = None
+        if hasattr(db_result, "id"):
+            file_id = getattr(db_result, "id")
+        elif isinstance(db_result, dict) and "id" in db_result:
+            file_id = db_result["id"]
+        
+        return {
+            "status": "success",
+            "message": "医疗文件上传成功",
+            "data": {
+                "file_id": file_id,
+                "original_filename": file.filename,
+                "storage_path": file_path,
+                "file_type": file_type,
+                "file_size": file_size,
+                "upload_time": datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
+                "check_date": check_date.strftime("%Y-%m-%d") if check_date else None,
+                "file_desc": file_desc
+            }
+        }
+
+    except Exception as e:
+        # 出错时清理已保存的文件（避免垃圾文件）
+        file_path_local = locals().get("file_path")
+        if file_path_local and os.path.exists(file_path_local):
+            try:
+                os.remove(file_path_local)
+            except OSError:
+                pass  # 忽略删除文件时的错误
+        
+        return JSONResponse(
+            content={"status": "error", "message": f"文件上传失败：{str(e)}"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+    finally:
+        # 关闭文件流（避免资源泄漏）
+        file.file.close()
+
+
+@router.get(
+    path="/{user_id}/files",
+    status_code=status.HTTP_200_OK,
+    summary="注意：！！！原接口/api/v2/maternal/{user_id}/files，已弃用，请使用新接口/api/v2/chat/{maternal_id}/files 获取孕妇医疗文件列表",
+    description="获取孕妇的所有医疗文件记录"
+)
+# @require_auth  # 如需认证可取消注释
+def get_medical_files(
+    user_id: int = Path(description="孕妇唯一ID（正整数）"),
+    file_name: str = Query(None, description="文件名称"),
+):
+    try:
+        file_records = maternal_service.get_medical_files(user_id, file_name)
+        
+        return {
+            "status": "success",
+            "count": len(file_records),
+            "data": file_records
+        }
+    except Exception as e:
+        return JSONResponse(
+            content={"status": "error", "message": f"获取文件记录失败：{str(e)}"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )

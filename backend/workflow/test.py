@@ -1,13 +1,16 @@
 import sys
 from pathlib import Path
-from typing import Annotated, TypedDict, List, Optional, Tuple
+from typing import Annotated, TypedDict, List, Optional, Tuple, Dict
 import datetime
+import json
+import os
 
 root_dir = Path(__file__).parent.parent.parent
 sys.path.append(str(root_dir))
 
 from langgraph.graph import StateGraph, END, START
 from backend.agents import gen_synth_agent, mix_agent, create_retr_agent
+from backend.agents.MeMAgent.core import create_enhanced_mem_agent
 from backend.api.v1.services.maternal_service import MaternalService
 import logging
 
@@ -23,9 +26,9 @@ class PrengantStateRequired(TypedDict):
     timestamp: Annotated[str, '时间戳（格式：YYYY-MM-DD HH:MM:SS UTC，必填）']
 
 class PrengantState(PrengantStateRequired, total=False):
-    """孕妇状态（修正：context改为字符串类型，匹配实际拼接结果）"""
+    """孕妇状态（支持多轮对话记忆功能）"""
     output: Annotated[str, '模型输出']
-    context: Annotated[Optional[str], '上下文（拼接后的字符串）']  # 修正：List[dict]→str
+    context: Annotated[Optional[str], '上下文（拼接后的字符串）']
     retrieval_professor: Annotated[Optional[List[dict]], '专家知识库检索结果']
     retrieval_pregnant: Annotated[Optional[List[dict]], '孕妇知识库检索结果']
 
@@ -36,6 +39,12 @@ class PrengantState(PrengantStateRequired, total=False):
 
     error: Annotated[Optional[str], '错误信息']
     memory: Annotated[Optional[List[dict]], '记忆']
+    
+    # 多轮对话相关字段
+    chat_history: Annotated[Optional[List[Dict[str, str]]], '对话历史（结构化）']
+    chat_history_text: Annotated[Optional[str], '对话历史（文本形式）']
+    compressed_memory: Annotated[Optional[str], '压缩后的记忆']
+    memory_summary: Annotated[Optional[str], '记忆摘要']
     
 def _get_file_path(file_ids: List[str]) -> Tuple[Optional[str], Optional[str], Optional[str]]:
     """获取文件路径（补充maternal_id参数，适配服务层调用）"""
@@ -56,6 +65,46 @@ def _get_file_path(file_ids: List[str]) -> Tuple[Optional[str], Optional[str], O
         logger.error(error_msg)
         return None, None, error_msg
 
+
+def memory_processing_node(state: PrengantState) -> dict:
+    """记忆处理节点 - 调用增强版MeMAgent处理对话记忆"""
+    updates = {}
+    try:
+        # 创建增强版记忆智能体
+        mem_agent = create_enhanced_mem_agent()
+        
+        # 构建记忆智能体输入
+        from backend.agents.MeMAgent.core import MeMState
+        mem_input: MeMState = {
+            "maternal_id": state.get("maternal_id"),
+            "chat_id": state.get("chat_id"),
+            "max_turns_in_memory": 5,  # 可配置的内存轮数阈值
+        }
+        
+        logger.info("启动记忆智能体，开始处理对话历史")
+        mem_result = mem_agent.invoke(mem_input)
+        
+        # 提取记忆处理结果
+        updates["chat_history"] = mem_result.get("chat_history", [])
+        updates["chat_history_text"] = mem_result.get("chat_history_text", "")
+        updates["compressed_memory"] = mem_result.get("compressed_memory", "")
+        updates["memory_summary"] = mem_result.get("memory_summary", "")
+        
+        if mem_result.get("error"):
+            logger.warning(f"记忆智能体处理有警告: {mem_result['error']}")
+        
+        logger.info(f"记忆处理完成: {mem_result.get('memory_summary', 'Unknown')}")
+        
+    except Exception as e:
+        error_msg = f"记忆处理节点执行失败: {str(e)}"
+        logger.error(error_msg)
+        updates["error"] = error_msg
+        updates["chat_history"] = []
+        updates["chat_history_text"] = ""
+        updates["compressed_memory"] = ""
+        updates["memory_summary"] = "记忆处理失败"
+    
+    return updates
 
 def mix_node(state: PrengantState) -> dict:
     """混合智能体节点（补充maternal_id参数传递）"""
@@ -121,7 +170,7 @@ def _get_vector_path(maternal_id: int, chat_id: str, maternal_service: MaternalS
         # 修正：get_dialogues返回单个ORM对象（非列表），需判断类型
         dialogues = maternal_service.get_dialogues(maternal_id, chat_id)
         if not isinstance(dialogues, list):
-            dialogues = [dialogues]
+            dialogues = [dialogues] if dialogues else []
 
         if not dialogues:
             logger.warning(f"未查询到孕妇{maternal_id}的对话记录。默认使用空字符串")
@@ -129,7 +178,12 @@ def _get_vector_path(maternal_id: int, chat_id: str, maternal_service: MaternalS
         
         # 修正：ORM对象用属性访问（非字典get），适配服务层返回格式
         first_dialogue = dialogues[0]
-        vector_db_path = first_dialogue['vector_store_path']
+        if isinstance(first_dialogue, dict):
+            vector_db_path = first_dialogue.get('vector_store_path')
+        else:
+            # 如果是 ORM 对象
+            vector_db_path = getattr(first_dialogue, 'vector_store_path', None)
+            
         if not vector_db_path:
             logger.warning(f"孕妇{maternal_id}的对话记录中无向量数据库路径，默认使用空字符串")
             return ""
@@ -137,7 +191,8 @@ def _get_vector_path(maternal_id: int, chat_id: str, maternal_service: MaternalS
     except Exception as e:
         error_msg = f"获取向量数据库路径失败：{str(e)}"
         logger.error(error_msg)
-        raise ValueError(error_msg)
+        # 不再抛出异常，返回空字符串以避免中断整个流程
+        return ""
 
 def retr_node(state: PrengantState) -> dict:
     """检索节点（无新增修改，依赖_get_vector_path修复）"""
@@ -163,11 +218,19 @@ def retr_node(state: PrengantState) -> dict:
         output_data = retr_result.get("output", {})
         print(type(output_data))
         print("output: ", output_data)
-        retrieval_professor = output_data["专家知识库"]
-        retrieval_pregnant = output_data["孕妇知识库"]
+        
+        # 修复：处理None值情况
+        if not output_data or not isinstance(output_data, dict):
+            logger.warning("检索智能体返回了无效结果")
+            updates["retrieval_professor"] = []
+            updates["retrieval_pregnant"] = []
+            return updates
+            
+        retrieval_professor = output_data.get("专家知识库", [])
+        retrieval_pregnant = output_data.get("孕妇知识库", [])
 
         if not retrieval_professor:
-            raise ValueError(f"专家知识库检索结果为空，无法提供专业建议（maternal_id: {maternal_id}）")
+            logger.warning(f"专家知识库检索结果为空，可能影响专业建议质量（maternal_id: {maternal_id}）")
         if not retrieval_pregnant:
             logger.warning(
                 f"孕妇{maternal_id}的个人知识库检索结果为空，无法提供个性化建议"
@@ -179,27 +242,42 @@ def retr_node(state: PrengantState) -> dict:
         error_msg = f"检索节点执行失败：{str(e)}"
         logger.error(error_msg)
         updates["error"] = error_msg
-        updates["retrieval_professor"] = None
-        updates["retrieval_pregnant"] = None
+        updates["retrieval_professor"] = []
+        updates["retrieval_pregnant"] = []
     return updates
 
 def proc_context(state: PrengantState) -> PrengantState:
-    """处理上下文（适配context字符串类型）"""
+    """处理上下文（集成对话记忆）"""
     try:
         file_content = state.get("file_content") or ""  # 空值默认空字符串
+        compressed_memory = state.get("compressed_memory") or ""
+        
         # 检索结果转为字符串（避免None导致拼接报错）
         retrieval_professor_str = str(state.get("retrieval_professor", []))
         retrieval_pregnant_str = str(state.get("retrieval_pregnant", []))
         
-        # 拼接上下文（按优先级排序：文件内容→孕妇知识库→专家知识库）
-        context_parts = [
-            f"【文件内容】\n{file_content}",
-            f"【孕妇个人知识库】\n{retrieval_pregnant_str}",
-            f"【专家通用知识库】\n{retrieval_professor_str}"
-        ]
-        context = "\n\n".join(part for part in context_parts if part.strip())
+        # 拼接上下文（按优先级排序：对话记忆→文件内容→孕妇知识库→专家知识库）
+        context_parts = []
+        
+        # 添加对话记忆（如果存在）
+        if compressed_memory:
+            context_parts.append(f"【对话历史】\n{compressed_memory}")
+        
+        # 添加文件内容
+        if file_content:
+            context_parts.append(f"【文件内容】\n{file_content}")
+            
+        # 添加检索结果
+        if retrieval_pregnant_str and retrieval_pregnant_str != "[]":
+            context_parts.append(f"【孕妇个人知识库】\n{retrieval_pregnant_str}")
+            
+        if retrieval_professor_str and retrieval_professor_str != "[]":
+            context_parts.append(f"【专家通用知识库】\n{retrieval_professor_str}")
+        
+        context = "\n\n".join(context_parts)
         state["context"] = context
-        logger.info(f"上下文处理完成，总长度：{len(context)}字符")
+        logger.info(f"上下文处理完成，总长度：{len(context)}字符，包含{len(context_parts)}个部分")
+        
     except Exception as e:
         error_msg = f"处理上下文节点执行失败：{str(e)}"
         logger.error(f"{error_msg}")
@@ -234,17 +312,20 @@ def gen_synth_node(state: PrengantState) -> PrengantState:
     return state
 
 def prengant_workflow():
-    """孕妇工作流（修复：并行节点改为串行，避免更新冲突）"""
+    """孕妇工作流（集成增强版记忆智能体）"""
     builder = StateGraph(PrengantState)
-    builder.add_node("gen_synth", gen_synth_node)
+    
+    # 添加节点
+    builder.add_node("memory_processing", memory_processing_node)  # 使用MeMAgent处理记忆
+    builder.add_node("mix", mix_node)
     builder.add_node("retr", retr_node)
     builder.add_node("proc_context", proc_context)
-    builder.add_node("mix", mix_node)
+    builder.add_node("gen_synth", gen_synth_node)
 
-    # 修正：将并行（START→mix + START→retr）改为串行（START→mix→retr→proc_context）
-    # 避免两个节点同时操作state导致更新冲突
-    builder.add_edge(START, "mix")
-    builder.add_edge(START, 'retr')
+    # 构建工作流：记忆处理 → 并行处理（文件处理+检索） → 上下文整合 → 生成回答
+    builder.add_edge(START, "memory_processing")
+    builder.add_edge("memory_processing", "mix")
+    builder.add_edge("memory_processing", "retr")
     builder.add_edge("mix", "proc_context")
     builder.add_edge("retr", "proc_context")
     builder.add_edge("proc_context", "gen_synth")
@@ -257,19 +338,26 @@ if __name__ == "__main__":
     graph = prengant_workflow()
     # 构造完整的输入参数（含必填字段），确保符合PrengantState类型
     input_data: PrengantState = {
-        "input": "孕妇最近出现头晕症状，需要什么建议？",
+        "input": "我之前问过头晕的问题，现在想了解一下孕期饮食建议",
         "user_type": "pregnant_mother",
-        "maternal_id": 1,
-        "chat_id": f"chat_{int(datetime.datetime.now().timestamp())}",  # 生成唯一整数chat_id
+        "maternal_id": 23,
+        "chat_id": "chat_23_pregnant_mother_e2489f96-30eb-4b9d-a744-f705204e2e52",  # 使用已创建的测试chat_id
         "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "file_id": ["/root/project2/test/孕前和孕期保健指南.doc"] # 无文件时显式传None，避免状态字段缺失
+        "file_id": []  # 测试多轮对话，不使用文件
     }
+    
     # 执行工作流并打印结果
     result = graph.invoke(input_data)
     logger.info("="*50)
-    logger.info("工作流执行结果：")
+    logger.info("增强版多轮对话工作流执行结果：")
     logger.info(f"错误信息：{result.get('error') or '无'}")
     logger.info(f"生成输出：{result.get('output') or '无'}")
-    context_str = result.get('context')
-    logger.info(f"上下文：{context_str[:100] if context_str else '无'}")
+    logger.info(f"记忆摘要：{result.get('memory_summary') or '无'}")
     
+    context_str = result.get('context')
+    if context_str:
+        logger.info(f"上下文长度：{len(context_str)}")
+        # 显示前200字符作为预览
+        logger.info(f"上下文预览：{context_str[:200]}...")
+    else:
+        logger.info("上下文：无")

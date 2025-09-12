@@ -70,15 +70,55 @@ class KnowledgeBase:
         Returns:
             None
         '''
+        # 确保存储目录存在
+        os.makedirs(self.persist_directory, exist_ok=True)
+        
         if not rebuild and os.path.exists(os.path.join(self.persist_directory, 'chroma.sqlite3')):
+            try:
+                self.vector_store = Chroma(
+                    persist_directory=self.persist_directory,
+                    embedding_function=self.init_embeddings()
+                )
+                return
+            except Exception as e:
+                print(f"加载已存在的向量存储失败，重新构建: {e}")
+                rebuild = True
+        
+        # 如果没有数据源或数据源不存在，创建空的向量存储
+        if not self.data_root or (
+            isinstance(self.data_root, str) and not os.path.exists(self.data_root)
+        ) or (
+            isinstance(self.data_root, list) and not any(os.path.exists(path) for path in self.data_root)
+        ):
+            print(f"数据源不存在或为空，创建空的向量存储: {self.data_root}")
+            embeddings = self.init_embeddings()
             self.vector_store = Chroma(
                 persist_directory=self.persist_directory,
-                embedding_function=self.init_embeddings()
+                embedding_function=embeddings
             )
             return
         
-        loader = DocumentLoader(self.data_root)
-        documents = loader.load()
+        # 如果数据源是列表，逐个处理
+        if isinstance(self.data_root, list):
+            documents = []
+            for data_path in self.data_root:
+                if os.path.exists(data_path):
+                    loader = DocumentLoader(data_path)
+                    documents.extend(loader.load())
+        else:
+            loader = DocumentLoader(self.data_root)
+            documents = loader.load()
+        
+        # 如果没有加载到文档，创建空的向量存储
+        if not documents:
+            print(f"未加载到任何文档，创建空的向量存储")
+            embeddings = self.init_embeddings()
+            self.vector_store = Chroma(
+                persist_directory=self.persist_directory,
+                embedding_function=embeddings
+            )
+            return
+            
         documents_splits = DocumentParser(documents).split()
         embeddings = self.init_embeddings()
         self.vector_store = Chroma.from_documents(

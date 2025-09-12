@@ -116,11 +116,20 @@ def update_maternal_info(
 # @require_auth
 def get_pregnantMother_info(
     user_id: int = Path(..., description="孕妇唯一ID（正整数）")
-) -> Dict[str, Any]:
+):
     """根据用户ID获取孕妇基本信息"""
     try:
         result = maternal_service.get_maternal_info_by_user_id(user_id)
-        return result if result else None
+        if not result:
+            return JSONResponse(
+                content={"status": "error", "message": "未找到该孕妇信息"},
+                status_code=status.HTTP_404_NOT_FOUND
+            )
+        return {
+            "status": "success",
+            "message": "获取孕妇信息成功",
+            "data": result
+        }
     except Exception as e:
         return JSONResponse(
             content={"status": "error", "message": f"获取失败：{str(e)}"},
@@ -208,6 +217,7 @@ def update_maternal_health_condition(
 @router.post(
     path="/{maternal_id}/files",
     status_code=status.HTTP_201_CREATED,
+    summary="注意：！！！该接口即将弃用，请使用新接口/api/v2/chat/{maternal_id}/files",
     description="上传孕妇医疗文件（支持jpg/png/pdf等，需form-data格式）"
 )
 # @require_auth  # 如需认证可取消注释
@@ -272,11 +282,17 @@ def upload_medical_file(
         )
 
         # 8. 构造响应（返回关键信息）
+        file_id = None
+        if hasattr(db_result, "id"):
+            file_id = getattr(db_result, "id")
+        elif isinstance(db_result, dict) and "id" in db_result:
+            file_id = db_result["id"]
+        
         return {
             "status": "success",
             "message": "医疗文件上传成功",
             "data": {
-                "file_id": db_result.id if hasattr(db_result, "id") else db_result.get("id"),
+                "file_id": file_id,
                 "original_filename": file.filename,
                 "storage_path": file_path,
                 "file_type": file_type,
@@ -289,8 +305,12 @@ def upload_medical_file(
 
     except Exception as e:
         # 出错时清理已保存的文件（避免垃圾文件）
-        if "file_path" in locals() and os.path.exists(file_path):
-            os.remove(file_path)
+        file_path_local = locals().get("file_path")
+        if file_path_local and os.path.exists(file_path_local):
+            try:
+                os.remove(file_path_local)
+            except OSError:
+                pass  # 忽略删除文件时的错误
         
         return JSONResponse(
             content={"status": "error", "message": f"文件上传失败：{str(e)}"},
@@ -304,6 +324,7 @@ def upload_medical_file(
 @router.get(
     path="/{maternal_id}/files",
     status_code=status.HTTP_200_OK,
+    summary="注意：！！！该接口即将弃用，请使用新接口/api/v2/chat/{maternal_id}/files",
     description="获取孕妇的所有医疗文件记录"
 )
 # @require_auth  # 如需认证可取消注释

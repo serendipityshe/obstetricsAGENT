@@ -35,13 +35,35 @@ class DocumentLoader:
         
         # 过滤并格式化有效消息
         messages = []
-        for i, msg in enumerate(data):
-            if isinstance(msg, dict) and "role" in msg and "content" in msg:
-                role = msg["role"]
-                content = str(msg["content"]) if not isinstance(msg["content"], str) else msg["content"]
-                messages.append(f"{role}: {content}")
-            else:
-                print(f"对话记录中第{i+1}条消息格式不正确，已跳过")
+        for i, item in enumerate(data):
+            # 处理嵌套的对话数据结构
+            if isinstance(item, dict):
+                # 如果是包含data字段的结构
+                if "data" in item and "messages" in item["data"]:
+                    nested_messages = item["data"]["messages"]
+                    for msg in nested_messages:
+                        if isinstance(msg, dict) and "role" in msg and "content" in msg:
+                            role = msg["role"]
+                            # 处理content可能是列表的情况
+                            if isinstance(msg["content"], list):
+                                content_text = ""
+                                for content_item in msg["content"]:
+                                    if isinstance(content_item, dict) and content_item.get("type") == "text":
+                                        content_text += content_item.get("text", "")
+                                content = content_text
+                            else:
+                                content = str(msg["content"])
+                            
+                            if content.strip():  # 只添加非空内容
+                                messages.append(f"{role}: {content}")
+                # 如果是直接的消息格式
+                elif "role" in item and "content" in item:
+                    role = item["role"]
+                    content = str(item["content"]) if not isinstance(item["content"], str) else item["content"]
+                    if content.strip():  # 只添加非空内容
+                        messages.append(f"{role}: {content}")
+                else:
+                    print(f"对话记录中第{i+1}条消息格式不正确，已跳过")
         
         return [Document(
             page_content="\n\n".join(messages),

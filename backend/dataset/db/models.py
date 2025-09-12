@@ -65,7 +65,7 @@ class MaternalPregnancyHistory(Base):
     __tablename__ = 'maternal_pregnancy_history'
     
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True, comment='记录ID')
-    maternal_id: Mapped[int] = mapped_column(Integer, ForeignKey('maternal_info.id'), nullable=False, comment='关联孕妇ID')
+    maternal_id: Mapped[int] = mapped_column(Integer, ForeignKey('maternal_info.user_id'), nullable=False, comment='关联用户ID')
     pregnancy_count: Mapped[Optional[int]] = mapped_column(Integer, nullable=True, comment='既往妊娠次数')
     bad_pregnancy_history: Mapped[Optional[str]] = mapped_column(Text, nullable=True, comment='既往不良孕史（如流产、早产等）')
     delivery_method: Mapped[Optional[str]] = mapped_column(String(50), nullable=True, comment='既往分娩方式（顺产/剖宫产等）')
@@ -84,7 +84,7 @@ class MaternalHealthCondition(Base):
     __tablename__ = 'maternal_health_condition'
     
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True, comment='记录ID')
-    maternal_id: Mapped[int] = mapped_column(Integer, ForeignKey('maternal_info.id'), nullable=False, comment='关联孕妇ID')
+    maternal_id: Mapped[int] = mapped_column(Integer, ForeignKey('maternal_info.user_id'), nullable=False, comment='关联孕妇ID')
     has_hypertension: Mapped[bool] = mapped_column(Boolean, default=False, comment='是否有高血压')
     has_diabetes: Mapped[bool] = mapped_column(Boolean, default=False, comment='是否有糖尿病')
     has_thyroid_disease: Mapped[bool] = mapped_column(Boolean, default=False, comment='是否有甲状腺疾病')
@@ -106,7 +106,7 @@ class MaternalMedicalFiles(Base):
     __tablename__ = 'maternal_medical_files'
     
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True, comment='文件记录ID')
-    maternal_id: Mapped[int] = mapped_column(Integer, ForeignKey('maternal_info.id'), nullable=False, comment='关联孕妇ID')
+    maternal_id: Mapped[int] = mapped_column(Integer, ForeignKey('maternal_info.user_id'), nullable=False, comment='关联孕妇ID')
     file_name: Mapped[str] = mapped_column(String(255), nullable=False, comment='文件名')
     file_path: Mapped[str] = mapped_column(String(512), nullable=False, comment='文件存储路径（服务器绝对路径或云存储URL）')
     file_type: Mapped[str] = mapped_column(String(50), nullable=False, comment='文件类型（如：pdf、jpg、dcm、docx等）')
@@ -128,7 +128,7 @@ class MaternalDialogue(Base):
     __tablename__ = 'maternal_dialogue'
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True, comment='对话记录ID')
-    maternal_id: Mapped[int] = mapped_column(Integer, ForeignKey('maternal_info.id'), nullable=False, comment='关联孕妇ID（外键）')
+    maternal_id: Mapped[int] = mapped_column(Integer, ForeignKey('maternal_info.user_id'), nullable=False, comment='关联孕妇ID（外键）')
     chat_id: Mapped[Optional[str]] = mapped_column(String(255), nullable=True, comment='对话ID(必填)')
     dialogue_content: Mapped[str] = mapped_column(String(512), nullable=False, comment='对话文本内容存储路径（json格式）')
     vector_store_path: Mapped[Optional[str]] = mapped_column(String(512), nullable=True, comment='对话向量在知识库中的存储路径（如向量数据库索引路径或文件路径）')

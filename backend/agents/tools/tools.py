@@ -96,17 +96,25 @@ def rag_tool(
     top_k: Annotated[int, "检索知识库的文档数量"] = 1,
 ) -> dict:
     """根据用户问题检索指定知识库获取相关知识"""
-    if vector_store_path:
-        retrieval = RAGRetrieval(persist_directory=vector_store_path)
-    else:
-        retrieval = RAGRetrieval()
-    docs = retrieval.retrieve(user_query, top_k=top_k)
-    knowledge_fragments = [{
-        "source": doc.metadata.get('source'),
-        "priority": doc.metadata.get('priority'),
-        "content": doc.page_content
-    }for doc in docs]
-    return {"knowledge_fragments": knowledge_fragments}
+    try:
+        # 处理空向量存储路径的情况
+        if not vector_store_path or vector_store_path.strip() == "":
+            # 使用默认路径
+            retrieval = RAGRetrieval()
+        else:
+            retrieval = RAGRetrieval(persist_directory=vector_store_path)
+            
+        docs = retrieval.retrieve(user_query, top_k=top_k)
+        knowledge_fragments = [{
+            "source": doc.metadata.get('source'),
+            "priority": doc.metadata.get('priority'),
+            "content": doc.page_content
+        }for doc in docs]
+        return {"knowledge_fragments": knowledge_fragments}
+    except Exception as e:
+        # 如果检索失败，返回空结果而不是抛出异常
+        print(f"检索失败: {e}")
+        return {"knowledge_fragments": []}
 
 @tool(
     name_or_callable="docproc_tool",
