@@ -2,6 +2,7 @@ from langchain.tools import tool
 from typing import Annotated
 
 import base64
+import os
 
 from backend.rag.retrieval import RAGRetrieval
 from backend.knowledge_base.manage import KnowledgeBase
@@ -106,10 +107,10 @@ def rag_tool(
             
         docs = retrieval.retrieve(user_query, top_k=top_k)
         knowledge_fragments = [{
-            "source": doc.metadata.get('source'),
-            "priority": doc.metadata.get('priority'),
+            "source": doc.metadata.get('source', 'unknown'),
+            "priority": doc.metadata.get('priority', 3),
             "content": doc.page_content
-        }for doc in docs]
+        } for doc in docs]
         return {"knowledge_fragments": knowledge_fragments}
     except Exception as e:
         # 如果检索失败，返回空结果而不是抛出异常

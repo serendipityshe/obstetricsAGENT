@@ -3,6 +3,7 @@
 """
 
 from typing import List, Optional
+from unittest import result
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 from .models import (
@@ -337,21 +338,31 @@ class MaternalRepository:
     
     def get_medical_files(self, maternal_id: int, file_name: str) -> List[MaternalMedicalFiles]:
         """获取指定孕妇的所有医疗文件记录"""
-        return self.db_session.query(MaternalMedicalFiles).filter(
+        query = self.db_session.query(MaternalMedicalFiles).filter(
             MaternalMedicalFiles.maternal_id == maternal_id,
-            MaternalMedicalFiles.file_name == file_name
-        ).all()
+        )
+        if file_name:
+            query = query.filter(MaternalMedicalFiles.file_name == file_name)
+        result = query.all()
+        return result
 
-    def get_medical_file_by_id(
+
+    def get_medical_filepath_by_id(
         self,
-        maternal_id: int,
-        file_id: int,
+        file_id: str,
     ) -> Optional[MaternalMedicalFiles]:
         """
-        通过file_id和maternal_id查询单个医疗文件
+        通过file_id获得file_path
         """
         return self.db_session.query(MaternalMedicalFiles).filter(
-            MaternalMedicalFiles.maternal_id == maternal_id,
+            MaternalMedicalFiles.id == file_id
+        ).first()
+
+    def get_medical_file_by_fileid(self, file_id: str) -> Optional[MaternalMedicalFiles]:
+        """
+        通过file_id获得文件信息
+        """
+        return self.db_session.query(MaternalMedicalFiles).filter(
             MaternalMedicalFiles.id == file_id
         ).first()
 
@@ -441,6 +452,7 @@ class MaternalRepository:
         except SQLAlchemyError as e:
             self.db_session.rollback()
             raise e
+
 
     def create_chat_record(
         self, 

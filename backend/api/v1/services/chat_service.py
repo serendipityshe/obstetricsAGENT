@@ -11,7 +11,7 @@ import base64
 class ChatService:
     def __init__(self):
         self.rag_llm = RAGLLMGeneration()
-        self.rag_retrieval = RAGRetrieval()  # 用于知识检索
+        self.rag_retrieval = RAGRetrieval.get_instance()  # 使用单例模式
         self.user_sessions = {}  # 存储格式: {session_id: (history, timestamp)}
         self.SESSION_TIMEOUT = 3600  # 会话超时时间(秒)
         self.UPLOAD_DIR = os.path.join(

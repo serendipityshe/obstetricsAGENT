@@ -1,53 +1,49 @@
 {
+  "code": 200,
+  "msg": "success",
+  "data": {
     "chat_meta": {
-        "chat_id": "", 
-        "user_info": {
-            "user_id": "",
-            "user_type": "",
-            "username": "",
-            "pregnancy_info": {
-                "current_gestational_week": 23,
-                "expected_delivery_date": "2026-03-20"
+        "chat_id": "chat_1726200000",
+        "user_type": "pregnant_mother",
+        "maternal_id": 1
+    },
+    "session_title": "我孕23周，最近常头晕",
+    "messages": [
+      {
+        "message_id": "msg_550e8400-e29b-41d4-a716-446655440001",
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "我孕23周，最近常头晕，帮我看一下这张昨天的产检报告和B超图，需要注意什么？"
+          },
+          {
+            "type": "image_url",
+            "image_url": {
+                "file_id": ""
             }
-        },
-    "session_stats": {
-      "create_time": 1726092000,                // 会话创建时间戳（秒，前端显示“创建于9月11日 08:00”）
-      "last_message_time": 1726100800,          // 最后一条消息时间戳（前端排序历史会话）
-      "message_count": 8,                       // 消息总数（前端分页加载用，如“共8条消息”）
-      "attached_file_count": 2,                 // 关联文件数（前端显示“含2张图片”）
-      "is_active": true                         // 会话是否活跃（前端标记“当前会话”）
-    },
-    "model_config": {
-        "model_name": "qwen",
-        "temperature": 0.2,
-        "max_tokens": 1024
-    }
-    },
-    "message_list": [
-        {
-            "message_id": "msg-20250909-001",
-            "role": "system",
-            "content": "...",
-            "send_time": 1726092000,
-            "status": "success"
-        },
-        {
-            "message_id": "msg-20250909-002",
-            "role": "user",
-            "content": [
-                {
-                    "type": "text",
-                    "text": "..."
-                },
-                {
-                    "type": "image_url",
-                    "image_url": {
-                        
-                    }
-                }
-            ],
-            "send_time": 1726092000,
-            "status": "success"
-        }
-    ]
+          },
+          {
+            "type": "document",
+            "document": {
+              "file_id": ""
+            }
+          }
+        ],
+        "timestamp": "2025-09-12 10:00:00" 
+      },
+      {
+        "message_id": "msg_550e8400-e29b-41d4-a716-446655440002",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "结合您的提问、2025-09-11的B超图及产检报告（血压125/80mmHg，血常规正常），孕23周头晕建议：\n1. 产检报告显示您空腹血糖3.8mmol/L（略偏低），需少量多餐（如上午10点加吃全麦面包）；\n2. B超图未见胎儿异常，头晕时可缓慢坐下休息，避免突然起身；\n3. 若头晕伴随视物模糊或胎动减少，需24小时内联系产科医生。"
+          }
+        ],
+        "timestamp": "2025-09-12 10:00:40"
+      }
+    ],
+    "error": null 
+  }
 }

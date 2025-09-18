@@ -1,6 +1,8 @@
 """数据库操作封装"""
 from typing import List, Optional, Dict, Any
 from datetime import date, datetime
+
+from langchain_core.callbacks import file
 from backend.dataset.db.service import MaternalService as DatasetMaternalService
 from backend.dataset.db.models import (
     User,
@@ -253,18 +255,23 @@ class MaternalService:
         except Exception as e:
             raise Exception(f"获取医疗文件失败: {str(e)}")
 
-    def get_medical_file_by_id(
+    def get_medical_filepath_by_id(
         self,
-        maternal_id: int,
-        file_id: int,
-    ) -> Optional[Dict[str, Any]]:
-        """获取指定孕妇的医疗文件"""
+        file_id: str,
+    ) -> str:
+        """根据文件ID获取单个医疗文件路径"""
         try:
-            result = self.dataset_service.get_medical_file_by_id(
-                maternal_id=maternal_id,
+            result: MaternalMedicalFiles | None = self.dataset_service.get_medical_filepath_by_id(
                 file_id=file_id,
             )
-            return self._medical_file_to_dict(result) if result else None
+            return result.file_path
+        except Exception as e:
+            raise Exception(f"获取医疗文件路径失败: {str(e)}")
+
+    def get_medical_file_by_fileid(self, file_id: str) -> Dict[str, Any]:
+        try:
+            result: MaternalMedicalFiles | None = self.dataset_service.get_medical_file_by_fileid(file_id)
+            return self._medical_file_to_dict(file=result)
         except Exception as e:
             raise Exception(f"获取医疗文件失败: {str(e)}")
 
@@ -433,8 +440,7 @@ class MaternalService:
             "has_thyroid_disease": condition.has_thyroid_disease,
             "has_heart_disease": condition.has_heart_disease,
             "has_liver_disease": condition.has_liver_disease,
-            "allergy_history": condition.allergy_history,
-            "created_at": condition.created_at.isoformat() if condition.created_at else None
+            "allergy_history": condition.allergy_history
         }
 
     @staticmethod

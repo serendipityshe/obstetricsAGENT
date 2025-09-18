@@ -419,21 +419,30 @@ class MaternalService:
         finally:
             db_session.close()
 
-    def get_medical_file_by_id(
+    def get_medical_filepath_by_id(
         self,
-        maternal_id: int,
-        file_id: int,
+        file_id: str,
     ) -> Optional[MaternalMedicalFiles]:
         """
-        通过file_id和maternal_id查询单个医疗文件
+        通过file_id获得file_path
         """
         db_session = self._get_session()
         try:
             repo = MaternalRepository(db_session)
-            return repo.get_medical_file_by_id(
-                maternal_id=maternal_id,
+            return repo.get_medical_filepath_by_id(
                 file_id=file_id,
             )
+        finally:
+            db_session.close()
+
+    def get_medical_file_by_fileid(self, file_id: str):
+        """
+        通过file_id获得文件信息
+        """
+        db_session = self._get_session()
+        try:
+            repo = MaternalRepository(db_session)
+            return repo.get_medical_file_by_fileid(file_id)
         finally:
             db_session.close()
 

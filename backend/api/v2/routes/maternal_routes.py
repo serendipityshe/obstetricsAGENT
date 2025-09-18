@@ -1,10 +1,11 @@
 from fastapi import APIRouter, Query, UploadFile, status, File, Depends, Form, Path, Body
 from typing import Dict, Any, Optional
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
 from pydantic import BaseModel, Field, field_validator
 from datetime import date, datetime
 import os
 import uuid
+import mimetypes
 
 # 导入业务层和认证依赖（确保路径正确）
 from backend.api.v1.services.maternal_service import MaternalService
@@ -49,16 +50,12 @@ class PregnancyHistoryUpdate(BaseModel):
 class HealthConditionUpdate(BaseModel):
     """健康状况更新请求模型"""
     # 根据实际业务补充字段，示例：
-    has_chronic_disease: bool | None = Field(None, description="是否有慢性病（true/false）")
-    chronic_disease_type: str | None = Field(None, description="慢性病类型（如高血压、糖尿病）")
+    has_hypertension: bool | None = Field(None, description="是否有高血压")
+    has_diabetes: bool | None = Field(None, description="是否有糖尿病")
+    has_thyroid_disease: bool | None = Field(None, description="是否有甲状腺疾病")
+    has_heart_disease: bool | None = Field(None, description="是否有心脏病")
+    has_liver_disease: bool | None = Field(None, description="是否有肝脏疾病")
     allergy_history: str | None = Field(None, description="过敏史")
-    expected_delivery_date: date | None = Field(None, description="预产期（格式：YYYY-MM-DD）")
-
-    @field_validator('expected_delivery_date')
-    def parse_date(cls, v):
-        if isinstance(v, str):
-            return datetime.strptime(v, "%Y-%m-%d").date()
-        return v
 
 
 class DialogueCreate(BaseModel):
@@ -75,7 +72,7 @@ class DialogueCreate(BaseModel):
     status_code=status.HTTP_200_OK,
     description="更新孕妇基本信息（需认证）"
 )
-# @require_auth  # 启用认证（如需关闭可注释）
+# @require_auth  # 启用认证
 def update_maternal_info(
     # 路径参数：用Path标注，添加验证（正整数）和描述
     user_id: int = Path(..., description="孕妇唯一ID（正整数）"),
@@ -140,6 +137,46 @@ def get_pregnantMother_info(
 # ------------------------------
 # 4. 孕产史相关接口
 # ------------------------------
+
+class PregnancyHistoryGetResponse(BaseModel):
+    """获取孕妇孕产史响应模型"""
+    user_id: int = Field(..., description="孕妇唯一ID（正整数）")
+    pregnancy_count: int | None = Field(None, ge=0, description="既往妊娠次数")
+    bad_pregnancy_history: str | None = Field(None, description="不良孕产史（非负整数）")
+    delivery_method: str | None = Field(None, description="分娩方式（非负整数）")
+
+@router.get(
+    path="/{user_id}/pregnancy_history",
+    status_code=status.HTTP_200_OK,
+    summary="获取孕妇孕产史（需认证）",
+    description="获取孕妇孕产史（需认证）"
+)
+def get_maternal_pregnancy_history(
+    user_id: int = Path(..., description="孕妇唯一ID（正整数）")
+):
+    try:
+        result = maternal_service.get_pregnancy_histories(
+            maternal_id=user_id
+        )
+        
+        if not result:
+            return JSONResponse(
+                content={"status": "error", "message": "未找到该孕妇信息"},
+                status_code=status.HTTP_404_NOT_FOUND
+            )
+        
+        return {
+            "status": "success",
+            "message": "获取孕产史成功",
+            "data": result
+        }
+    except Exception as e:
+        return JSONResponse(
+            content={"status": "error", "message": f"获取失败：{str(e)}"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
+
 @router.put(
     path="/{maternal_id}/pregnancy_history",
     status_code=status.HTTP_200_OK,
@@ -177,6 +214,66 @@ def update_maternal_pregnancy_history(
 # ------------------------------
 # 5. 健康状况相关接口
 # ------------------------------
+class HealthConditionGetResponse(BaseModel):
+    """获取孕妇健康状况响应模型"""
+    user_id: int = Field(..., description="孕妇唯一ID（正整数）")
+    has_hypertension: bool = Field(default=False, description="是否有高血压")
+    has_diabetes: bool = Field(default=False, description="是否有糖尿病")
+    has_thyroid_disease: bool = Field(default=False, description="是否有甲状腺疾病")
+    has_liver_disease: bool = Field(default=False, description="是否有肝脏疾病")
+    allergy_history: Optional[str] = Field(default=None, description="过敏史")
+
+@router.get(
+    path="/{user_id}/health_condition",
+    status_code=status.HTTP_200_OK,
+    summary="获取孕妇健康状况（需认证）",
+    description="获取孕妇健康状况（需认证）",
+    response_model=HealthConditionGetResponse  # 绑定响应模型，自动校验返回格式
+)
+def get_maternal_health_condition(
+    # 直接通过路径参数获取 user_id，用 Path 做校验
+    user_id: int = Path(
+        ..., 
+        ge=1,  # 确保是正整数
+        description="孕妇唯一ID（正整数）"
+    )
+):
+    try:
+        # 调用服务层获取数据（返回的是列表，需要处理）
+        result_list = maternal_service.get_health_conditions(maternal_id=user_id)
+        
+        if not result_list:
+            return JSONResponse(
+                content={"detail": "未找到该孕妇信息"},
+                status_code=status.HTTP_404_NOT_FOUND
+            )
+        
+        # 获取第一条健康状况记录（通常一个孕妇只有一条健康状况记录）
+        result = result_list[0] if result_list else None
+        if not result:
+            return JSONResponse(
+                content={"detail": "未找到该孕妇健康状况信息"},
+                status_code=status.HTTP_404_NOT_FOUND
+            )
+        
+        # 确保返回的数据符合响应模型结构
+        return {
+            "user_id": user_id,
+            "has_hypertension": result.get("has_hypertension", False),
+            "has_diabetes": result.get("has_diabetes", False),
+            "has_thyroid_disease": result.get("has_thyroid_disease", False),
+            "has_heart_disease": result.get("has_heart_disease", False),
+            "has_liver_disease": result.get("has_liver_disease", False),
+            "allergy_history": result.get("allergy_history")
+        }
+    
+    except Exception as e:
+        return JSONResponse(
+            content={"detail": f"获取失败：{str(e)}"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
+
 @router.put(
     path="/{maternal_id}/health_condition",
     status_code=status.HTTP_200_OK,
@@ -187,16 +284,35 @@ def update_maternal_health_condition(
     maternal_id: int = Path(..., description="孕妇唯一ID（正整数）"),
     update_data: HealthConditionUpdate = Body(..., description="更新数据")
 ):
+    """更新孕妇健康状况"""
     try:
+        # 先检查健康状况记录是否存在
+        existing_conditions = maternal_service.get_health_conditions(maternal_id)
+        
+        if not existing_conditions:
+            return JSONResponse(
+                content={"status": "error", "message": "未找到该孕妇的健康状况记录"},
+                status_code=status.HTTP_404_NOT_FOUND
+            )
+        
+        # 使用第一条记录的ID进行更新
+        condition_id = existing_conditions[0].get('id')
+        if not condition_id:
+            return JSONResponse(
+                content={"status": "error", "message": "无效的健康状况ID"},
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+        
         result = maternal_service.update_health_condition(
             maternal_id=maternal_id,
+            condition_id=condition_id,
             **update_data.model_dump(exclude_unset=True)
         )
         
         if not result:
             return JSONResponse(
-                content={"status": "error", "message": "未找到该孕妇信息"},
-                status_code=status.HTTP_404_NOT_FOUND
+                content={"status": "error", "message": "更新健康状况失败"},
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
         
         return {
@@ -211,138 +327,75 @@ def update_maternal_health_condition(
         )
 
 
-# ------------------------------
-# 6. 医疗文件相关接口
-# ------------------------------
-@router.post(
-    path="/{maternal_id}/files",
-    status_code=status.HTTP_201_CREATED,
-    summary="注意：！！！该接口即将弃用，请使用新接口/api/v2/chat/{maternal_id}/files",
-    description="上传孕妇医疗文件（支持jpg/png/pdf等，需form-data格式）"
-)
-# @require_auth  # 如需认证可取消注释
-def upload_medical_file(
-    maternal_id: int = Path(..., description="孕妇唯一ID（正整数）"),
-    # 文件参数：FastAPI原生UploadFile，自动处理文件流
-    file: UploadFile = File(..., description="上传的医疗文件（必填）"),
-    # 表单参数：用Form标注（form-data中的非文件字段）
-    file_desc: str | None = Form(None, description="文件描述（可选）"),
-    check_date_str: str | None = Form(None, description="检查日期（格式：YYYY-MM-DD，可选）")
-):
-    try:
-        # 1. 验证文件合法性
-        if not file.filename:
-            return JSONResponse(
-                content={"status": "error", "message": "未选择文件或文件名为空"},
-                status_code=status.HTTP_400_BAD_REQUEST
-            )
-
-        # 检查文件大小
-        file_content = file.file.read()
-        max_size = 10 * 1024 * 1024  # 10MB
-        if len(file_content) > max_size:
-            return JSONResponse(
-                content={"status": "error", "message": "文件大小不能超过10MB"},
-                status_code=status.HTTP_400_BAD_REQUEST
-            )
-
-        # 2. 处理文件存储目录
-        base_upload_dir = "uploads/maternal_files"
-        user_dir = os.path.join(base_upload_dir, str(maternal_id))
-        os.makedirs(user_dir, exist_ok=True)  # 不存在则创建目录
-
-        # 3. 生成唯一文件名（避免冲突）
-        file_ext = os.path.splitext(file.filename)[1].lower()  # 提取文件后缀（小写）
-        unique_filename = f"{uuid.uuid4()}{file_ext}"  # UUID生成唯一文件名
-        file_path = os.path.join(user_dir, unique_filename)
-
-        # 4. 保存文件到服务器（FastAPI UploadFile 需用文件对象保存）
-        with open(file_path, "wb") as f:
-            f.write(file.file.read())  # 读取上传文件的二进制内容并写入
-
-        # 5. 处理检查日期
-        check_date = None
-        if check_date_str:
-            check_date = datetime.strptime(check_date_str, "%Y-%m-%d").date()
-
-        # 6. 获取文件元信息
-        file_size = os.path.getsize(file_path)  # 文件大小（字节）
-        file_type = file.content_type or file_ext.lstrip(".")  # 优先用MIME类型，其次后缀
-
-        # 7. 调用业务层保存到数据库
-        db_result = maternal_service.create_medical_file(
-            maternal_id=maternal_id,
-            file_name=file.filename,  # 原始文件名
-            file_path=file_path,      # 服务器存储路径
-            file_type=file_type,
-            file_size=file_size,
-            upload_time=datetime.now(),
-            file_desc=file_desc,
-            check_date=check_date
-        )
-
-        # 8. 构造响应（返回关键信息）
-        file_id = None
-        if hasattr(db_result, "id"):
-            file_id = getattr(db_result, "id")
-        elif isinstance(db_result, dict) and "id" in db_result:
-            file_id = db_result["id"]
-        
-        return {
-            "status": "success",
-            "message": "医疗文件上传成功",
-            "data": {
-                "file_id": file_id,
-                "original_filename": file.filename,
-                "storage_path": file_path,
-                "file_type": file_type,
-                "file_size": file_size,
-                "upload_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                "check_date": check_date.strftime("%Y-%m-%d") if check_date else None,
-                "file_desc": file_desc
-            }
-        }
-
-    except Exception as e:
-        # 出错时清理已保存的文件（避免垃圾文件）
-        file_path_local = locals().get("file_path")
-        if file_path_local and os.path.exists(file_path_local):
-            try:
-                os.remove(file_path_local)
-            except OSError:
-                pass  # 忽略删除文件时的错误
-        
-        return JSONResponse(
-            content={"status": "error", "message": f"文件上传失败：{str(e)}"},
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
-        )
-    finally:
-        # 关闭文件流（避免资源泄漏）
-        file.file.close()
-
-
 @router.get(
-    path="/{maternal_id}/files",
+    path="/{maternal_id}/files/{file_id}/download",
     status_code=status.HTTP_200_OK,
-    summary="注意：！！！该接口即将弃用，请使用新接口/api/v2/chat/{maternal_id}/files",
-    description="获取孕妇的所有医疗文件记录"
+    summary="下载孕妇医疗文件",
+    description="根据文件ID下载指定的医疗文件"
 )
 # @require_auth  # 如需认证可取消注释
-def get_medical_files(
-    maternal_id: int = Path(description="孕妇唯一ID（正整数）"),
-    file_name: str = Query(None, description="文件名称"),
+def download_medical_file(
+    maternal_id: int = Path(..., description="孕妇唯一ID（正整数）"),
+    file_id: int = Path(..., description="文件唯一ID（正整数）")
 ):
+    """下载医疗文件"""
     try:
-        file_records = maternal_service.get_medical_files(maternal_id, file_name)
+        # 1. 获取文件信息
+        file_info = maternal_service.get_medical_file_by_fileid(str(file_id))
         
-        return {
-            "status": "success",
-            "count": len(file_records),
-            "data": file_records
-        }
+        if not file_info:
+            return JSONResponse(
+                content={"status": "error", "message": "文件不存在"},
+                status_code=status.HTTP_404_NOT_FOUND
+            )
+        
+        # 2. 验证文件归属权（确保文件属于指定的孕妇）
+        if file_info["maternal_id"] != maternal_id:
+            return JSONResponse(
+                content={"status": "error", "message": "无权访问该文件"},
+                status_code=status.HTTP_403_FORBIDDEN
+            )
+        
+        # 3. 检查文件是否存在于服务器
+        file_path = file_info["file_path"]
+        
+        # 4. 安全检查：防止路径遍历攻击
+        # 确保文件路径在允许的上传目录范围内
+        allowed_base_dir = os.path.abspath("uploads/maternal_files")
+        actual_file_path = os.path.abspath(file_path)
+        
+        if not actual_file_path.startswith(allowed_base_dir):
+            return JSONResponse(
+                content={"status": "error", "message": "非法文件路径"},
+                status_code=status.HTTP_403_FORBIDDEN
+            )
+        
+        if not os.path.exists(file_path):
+            return JSONResponse(
+                content={"status": "error", "message": "文件在服务器上不存在"},
+                status_code=status.HTTP_404_NOT_FOUND
+            )
+        
+        # 5. 确定文件的MIME类型
+        mime_type, _ = mimetypes.guess_type(file_path)
+        if mime_type is None:
+            mime_type = "application/octet-stream"  # 默认二进制类型
+        
+        # 6. 返回文件响应
+        return FileResponse(
+            path=file_path,
+            media_type=mime_type,
+            filename=file_info["file_name"],  # 使用原始文件名
+            headers={
+                "Content-Disposition": f"attachment; filename*=UTF-8''{file_info['file_name']}",
+                "Cache-Control": "no-cache",
+                "Pragma": "no-cache"
+            }
+        )
+        
     except Exception as e:
         return JSONResponse(
-            content={"status": "error", "message": f"获取文件记录失败：{str(e)}"},
+            content={"status": "error", "message": f"下载文件失败：{str(e)}"},
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
 

@@ -3,10 +3,12 @@
 """
 
 from sqlalchemy import Column, Integer, String, Date, Text, ForeignKey, Boolean, DateTime
+from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship, declarative_base, Mapped, mapped_column
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from backend.config.settings import SQLALCHEMY_DATABASE_URL
+import uuid
 from datetime import datetime, date
 from typing import Optional
 
@@ -105,7 +107,7 @@ class MaternalMedicalFiles(Base):
     """
     __tablename__ = 'maternal_medical_files'
     
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True, comment='文件记录ID')
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, comment='文件唯一标识（UUID）')
     maternal_id: Mapped[int] = mapped_column(Integer, ForeignKey('maternal_info.user_id'), nullable=False, comment='关联孕妇ID')
     file_name: Mapped[str] = mapped_column(String(255), nullable=False, comment='文件名')
     file_path: Mapped[str] = mapped_column(String(512), nullable=False, comment='文件存储路径（服务器绝对路径或云存储URL）')

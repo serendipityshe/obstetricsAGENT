@@ -1,13 +1,14 @@
 from starlette.responses import JSONResponse
 from fastapi import APIRouter, HTTPException, status, Depends, Form, Path, Query, UploadFile, File, Body
 from pydantic import BaseModel, Field
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
 from typing import Any, Optional, List, Union, Literal
 from datetime import date, datetime, timedelta
 
 import json
 import uuid
 import os
+import mimetypes
 from backend.workflow.test import prengant_workflow, PrengantState
 from backend.api.v1.services.maternal_service import MaternalService  # 复用服务层
 import logging
@@ -23,42 +24,43 @@ maternal_service = MaternalService()
 # ------------------------------
 # 1. 通用工具函数（辅助生成URL、文件信息等）
 # ------------------------------
-def generate_temp_token() -> str:
-    """生成临时URL令牌（实际项目需对接文件服务生成有效令牌）"""
-    return str(uuid.uuid4())[:8]  # 取UUID前8位作为临时令牌
-
-def get_file_size(file_path: str) -> int:
-    """获取文件大小（字节），路径不存在时返回0"""
-    try:
-        return os.path.getsize(file_path) if file_path and os.path.exists(file_path) else 0
-    except Exception as e:
-        logger.warning(f"获取文件大小失败: {e}")
-        return 0
-
-def generate_expire_time(days: int = 7) -> str:
-    """生成文件过期时间（当前时间+N天），格式：YYYY-MM-DD HH:MM:SS"""
-    expire_dt = datetime.now() + timedelta(days=days)
-    return expire_dt.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
-
-def get_file_name_from_path(file_path: str) -> str:
-    """从文件路径中提取文件名（如无路径则返回默认名）"""
-    if not file_path:
-        return "unknown_file"
-    return os.path.basename(file_path) or "unknown_file"
-
-def get_file_type_from_path(file_path: str) -> str:
-    """从文件路径推断MIME类型（简化版，实际项目需用专业库如python-magic）"""
-    if not file_path:
-        return "application/octet-stream"
-    ext = os.path.splitext(file_path)[-1].lower()
-    if ext in [".jpg", ".jpeg", ".png", ".gif"]:
-        return f"image/{ext[1:]}"
-    elif ext == ".pdf":
-        return "application/pdf"
-    elif ext in [".doc", ".docx"]:
-        return "application/msword" if ext == ".doc" else "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    else:
-        return "application/octet-stream"
+# 注意：由于返回格式简化为file_id，以下函数已不再使用，保留作为参考
+# def generate_temp_token() -> str:
+#     """生成临时URL令牌（实际项目需对接文件服务生成有效令牌）"""
+#     return str(uuid.uuid4())[:8]  # 取UUID前8位作为临时令牌
+# 
+# def get_file_size(file_path: str) -> int:
+#     """获取文件大小（字节），路径不存在时返回0"""
+#     try:
+#         return os.path.getsize(file_path) if file_path and os.path.exists(file_path) else 0
+#     except Exception as e:
+#         logger.warning(f"获取文件大小失败: {e}")
+#         return 0
+# 
+# def generate_expire_time(days: int = 7) -> str:
+#     """生成文件过期时间（当前时间+N天），格式：YYYY-MM-DD HH:MM:SS"""
+#     expire_dt = datetime.now() + timedelta(days=days)
+#     return expire_dt.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+# 
+# def get_file_name_from_path(file_path: str) -> str:
+#     """从文件路径中提取文件名（如无路径则返回默认名）"""
+#     if not file_path:
+#         return "unknown_file"
+#     return os.path.basename(file_path) or "unknown_file"
+# 
+# def get_file_type_from_path(file_path: str) -> str:
+#     """从文件路径推断MIME类型（简化版，实际项目需用专业库如python-magic）"""
+#     if not file_path:
+#         return "application/octet-stream"
+#     ext = os.path.splitext(file_path)[-1].lower()
+#     if ext in [".jpg", ".jpeg", ".png", ".gif"]:
+#         return f"image/{ext[1:]}"
+#     elif ext == ".pdf":
+#         return "application/pdf"
+#     elif ext in [".doc", ".docx"]:
+#         return "application/msword" if ext == ".doc" else "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+#     else:
+#         return "application/octet-stream"
 
 # ------------------------------
 # 2. 创建chat_id的接口
@@ -144,11 +146,7 @@ class TextContent(BaseModel):
 
 class ImageUrlInfo(BaseModel):
     """图片URL信息"""
-    url: str = Field(..., description="图片文件访问URL（含令牌）")
-    preview_url: str = Field(..., description="图片预览URL（缩略图）")
-    file_name: str = Field(..., description="图片文件名")
-    file_size: int = Field(..., description="文件大小（字节）")
-    expire_time: str = Field(..., description="URL过期时间（格式：YYYY-MM-DD HH:MM:SS）")
+    file_id: str = Field(..., description="文件ID")
 
 class ImageUrlContent(BaseModel):
     """图片类型消息内容"""
@@ -157,11 +155,7 @@ class ImageUrlContent(BaseModel):
 
 class DocumentInfo(BaseModel):
     """文档URL信息"""
-    url: str = Field(..., description="文档文件访问URL（含令牌）")
-    file_name: str = Field(..., description="文档文件名")
-    file_type: str = Field(..., description="文档MIME类型（如application/pdf）")
-    file_size: int = Field(..., description="文件大小（字节）")
-    expire_time: str = Field(..., description="URL过期时间（格式：YYYY-MM-DD HH:MM:SS）")
+    file_id: str = Field(..., description="文件ID")
 
 class DocumentContent(BaseModel):
     """文档类型消息内容"""
@@ -252,12 +246,10 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
         workflow_result = workflow_graph.invoke(workflow_state)
         workflow_output = workflow_result.get("output")  # 助手回答
         workflow_error = workflow_result.get("error")    # 工作流内部错误
-        image_path = workflow_result.get("image_path")   # 图片文件路径（工作流返回）
-        doc_path = workflow_result.get("doc_path")       # 文档文件路径（工作流返回）
         logger.info(
             f"工作流执行完成：output_exists={bool(workflow_output)}, "
             f"has_error={bool(workflow_error)}, "
-            f"has_image={bool(image_path)}, has_doc={bool(doc_path)}"
+            f"file_count={len(request.file_id) if request.file_id else 0}"
         )
 
         # 3. 构造用户消息（user角色）
@@ -268,43 +260,46 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
         user_content.append(TextContent(type="text", text=request.input))
 
         # 3.2 添加用户文件内容（图片/文档）
-        # 处理图片文件（从workflow_result的image_path提取）
-        if image_path:
-            file_name = get_file_name_from_path(image_path)
-            file_size = get_file_size(image_path)
-            token = generate_temp_token()
-            # 构造图片URL（实际项目需替换为文件服务域名）
-            image_url = f"https://obstetrics-mini.xxx.com/files/{request.chat_id}/{file_name}?token={token}"
-            preview_url = f"https://obstetrics-mini.xxx.com/previews/{request.chat_id}/{file_name.replace(os.path.splitext(file_name)[1], '-thumb.jpg')}"
-            user_content.append(ImageUrlContent(
-                type="image_url",
-                image_url=ImageUrlInfo(
-                    url=image_url,
-                    preview_url=preview_url,
-                    file_name=file_name,
-                    file_size=file_size,
-                    expire_time=generate_expire_time()
-                )
-            ))
-
-        # 处理文档文件（从workflow_result的doc_path提取）
-        if doc_path:
-            file_name = get_file_name_from_path(doc_path)
-            file_size = get_file_size(doc_path)
-            file_type = get_file_type_from_path(doc_path)
-            token = generate_temp_token()
-            # 构造文档URL（实际项目需替换为文件服务域名）
-            doc_url = f"https://obstetrics-mini.xxx.com/files/{request.chat_id}/{file_name}?token={token}"
-            user_content.append(DocumentContent(
-                type="document",
-                document=DocumentInfo(
-                    url=doc_url,
-                    file_name=file_name,
-                    file_type=file_type,
-                    file_size=file_size,
-                    expire_time=generate_expire_time()
-                )
-            ))
+        # 处理请求中的file_id列表，根据文件类型分类到image_url或document
+        if request.file_id:
+            for file_id_str in request.file_id:
+                try:
+                    # 通过maternal_service获取文件信息
+                    file_info = maternal_service.get_medical_file_by_fileid(file_id_str)
+                    if file_info:
+                        file_type = file_info.get("file_type", "").lower()
+                        print("/n 文件类型为：", file_type)
+                        
+                        # 判断文件类型：图片类型
+                        if (file_type.startswith("image/") or 
+                            file_type in ["jpg", "jpeg", "png", "gif", "bmp", "webp"]):
+                            user_content.append(ImageUrlContent(
+                                type="image_url",
+                                image_url=ImageUrlInfo(
+                                    file_id=file_id_str
+                                )
+                            ))
+                        # 判断文件类型：文档类型
+                        elif (file_type.startswith("application/") or 
+                              file_type in ["pdf", "doc", "docx", "txt", "rtf"]):
+                            user_content.append(DocumentContent(
+                                type="document",
+                                document=DocumentInfo(
+                                    file_id=file_id_str
+                                )
+                            ))
+                        else:
+                            # 未知文件类型默认作为文档处理
+                            logger.warning(f"未知文件类型 {file_type}，将作为文档处理")
+                            user_content.append(DocumentContent(
+                                type="document",
+                                document=DocumentInfo(
+                                    file_id=file_id_str
+                                )
+                            ))
+                except Exception as e:
+                    logger.error(f"处理文件ID {file_id_str} 时出错: {str(e)}")
+                    continue
 
         # 3.3 封装用户消息
         user_message = MessageItem(
@@ -503,7 +498,7 @@ def upload_medical_file(
 
         # 4. 保存文件到服务器（FastAPI UploadFile 需用文件对象保存）
         with open(file_path, "wb") as f:
-            f.write(file.file.read())  # 读取上传文件的二进制内容并写入
+            f.write(file_content)  # 读取上传文件的二进制内容并写入
 
         # 5. 处理检查日期
         check_date = None
@@ -565,20 +560,21 @@ def upload_medical_file(
         # 关闭文件流（避免资源泄漏）
         file.file.close()
 
+class GetMedicalFilesRequest(BaseModel):
+    file_id: str = Field(..., description="孕妇ID")
 
 @router.get(
     path="/{user_id}/files",
     status_code=status.HTTP_200_OK,
-    summary="注意：！！！原接口/api/v2/maternal/{user_id}/files，已弃用，请使用新接口/api/v2/chat/{maternal_id}/files 获取孕妇医疗文件列表",
-    description="获取孕妇的所有医疗文件记录"
+    summary="根据file_id获取孕妇医疗文件信息",
+    description="根据file_id获取孕妇医疗文件信息"
 )
 # @require_auth  # 如需认证可取消注释
 def get_medical_files(
-    user_id: int = Path(description="孕妇唯一ID（正整数）"),
-    file_name: str = Query(None, description="文件名称"),
+    request: GetMedicalFilesRequest
 ):
     try:
-        file_records = maternal_service.get_medical_files(user_id, file_name)
+        file_records = maternal_service.get_medical_file_by_fileid(request.file_id)
         
         return {
             "status": "success",
@@ -588,5 +584,117 @@ def get_medical_files(
     except Exception as e:
         return JSONResponse(
             content={"status": "error", "message": f"获取文件记录失败：{str(e)}"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
+
+@router.get(
+    path="/{user_id}/files/{file_id}/download",
+    status_code=status.HTTP_200_OK,
+    summary="下载孕妇医疗文件",
+    description="根据用户ID和文件ID下载指定的医疗文件"
+)
+# @require_auth  # 如需认证可取消注释
+def download_medical_file(
+    user_id: int = Path(..., description="孕妇唯一ID（正整数）"),
+    file_id: str = Path(..., description="文件唯一ID（正整数）")
+):
+    """下载医疗文件"""
+    try:
+        # 1. 获取文件信息
+        file_info = maternal_service.get_medical_file_by_fileid(file_id)
+        
+        if not file_info:
+            return JSONResponse(
+                content={"status": "error", "message": "文件不存在"},
+                status_code=status.HTTP_404_NOT_FOUND
+            )
+        
+        # 2. 验证文件归属权（确保文件属于指定的孕妇）
+        if file_info["maternal_id"] != user_id:
+            return JSONResponse(
+                content={"status": "error", "message": "无权访问该文件"},
+                status_code=status.HTTP_403_FORBIDDEN
+            )
+        
+        # 3. 检查文件是否存在于服务器
+        file_path = file_info["file_path"]
+        
+        # 4. 安全检查：防止路径遍历攻击
+        # 确保文件路径在允许的上传目录范围内
+        allowed_base_dir = os.path.abspath("uploads/maternal_files")
+        actual_file_path = os.path.abspath(file_path)
+        
+        if not actual_file_path.startswith(allowed_base_dir):
+            return JSONResponse(
+                content={"status": "error", "message": "非法文件路径"},
+                status_code=status.HTTP_403_FORBIDDEN
+            )
+        
+        if not os.path.exists(file_path):
+            return JSONResponse(
+                content={"status": "error", "message": "文件在服务器上不存在"},
+                status_code=status.HTTP_404_NOT_FOUND
+            )
+        
+        # 5. 确定文件的MIME类型
+        mime_type, _ = mimetypes.guess_type(file_path)
+        if mime_type is None:
+            mime_type = "application/octet-stream"  # 默认二进制类型
+        
+        # 6. 返回文件响应
+        return FileResponse(
+            path=file_path,
+            media_type=mime_type,
+            filename=file_info["file_name"],  # 使用原始文件名
+            headers={
+                "Content-Disposition": f"attachment; filename*=UTF-8''{file_info['file_name']}",
+                "Cache-Control": "no-cache",
+                "Pragma": "no-cache"
+            }
+        )
+        
+    except Exception as e:
+        logger.error(f"下载文件失败: {e}")
+        return JSONResponse(
+            content={"status": "error", "message": f"下载文件失败：{str(e)}"},
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
+
+@router.get(
+    path="/{user_id}/files/list",
+    status_code=status.HTTP_200_OK,
+    summary="获取用户的所有医疗文件列表",
+    description="根据用户ID获取该用户上传的所有医疗文件列表"
+)
+# @require_auth  # 如需认证可取消注释
+def list_medical_files(
+    user_id: int = Path(..., description="孕妇唯一ID（正整数）"),
+    file_name: Optional[str] = Query(None, description="可选的文件名过滤条件")
+):
+    """获取用户的医疗文件列表"""
+    try:
+        # 获取文件列表
+        file_records = maternal_service.get_medical_files(user_id, file_name or "")
+        
+        # 为每个文件添加下载链接
+        for record in file_records:
+            # 添加下载URL（前端可以通过此URL直接下载文件）
+            record["download_url"] = f"/api/v2/chat/{user_id}/files/{record['id']}/download"
+            
+            # 检查文件是否仍然存在于服务器上
+            record["file_exists"] = os.path.exists(record["file_path"])
+        
+        return {
+            "status": "success",
+            "count": len(file_records),
+            "data": file_records
+        }
+        
+    except Exception as e:
+        logger.error(f"获取文件列表失败: {e}")
+        return JSONResponse(
+            content={"status": "error", "message": f"获取文件列表失败：{str(e)}"},
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
         )

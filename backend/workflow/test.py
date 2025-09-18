@@ -340,8 +340,8 @@ if __name__ == "__main__":
     input_data: PrengantState = {
         "input": "我之前问过头晕的问题，现在想了解一下孕期饮食建议",
         "user_type": "pregnant_mother",
-        "maternal_id": 23,
-        "chat_id": "chat_23_pregnant_mother_e2489f96-30eb-4b9d-a744-f705204e2e52",  # 使用已创建的测试chat_id
+        "maternal_id": 2,
+        "chat_id": "chat_2_pregnant_mother_94ecb7d2-2060-48b5-b250-6a7f2ef0da36",  # 使用已创建的测试chat_id
         "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "file_id": []  # 测试多轮对话，不使用文件
     }

@@ -18,7 +18,7 @@ class DocumentLoader:
     '''
     文档加载器，支持单个文件和文件夹路径
     
-    ARGS:
+backend/agents    ARGS:
         file_path : str 文档路径（可以是单个文件或文件夹）.
 
     RETURN:
@@ -29,46 +29,67 @@ class DocumentLoader:
 
 
     def _conversation_json_parser(self, data, file_path: str) -> List[Document]:
-        """解析列表形式的对话记录JSON：[{"role": "user", "content": "..."}, ...]"""
-        if not isinstance(data, list):
-            return []
-        
-        # 过滤并格式化有效消息
+        """解析各种格式的对话记录JSON"""
         messages = []
-        for i, item in enumerate(data):
-            # 处理嵌套的对话数据结构
-            if isinstance(item, dict):
-                # 如果是包含data字段的结构
-                if "data" in item and "messages" in item["data"]:
-                    nested_messages = item["data"]["messages"]
-                    for msg in nested_messages:
-                        if isinstance(msg, dict) and "role" in msg and "content" in msg:
-                            role = msg["role"]
-                            # 处理content可能是列表的情况
-                            if isinstance(msg["content"], list):
-                                content_text = ""
-                                for content_item in msg["content"]:
-                                    if isinstance(content_item, dict) and content_item.get("type") == "text":
-                                        content_text += content_item.get("text", "")
-                                content = content_text
-                            else:
-                                content = str(msg["content"])
-                            
-                            if content.strip():  # 只添加非空内容
-                                messages.append(f"{role}: {content}")
-                # 如果是直接的消息格式
-                elif "role" in item and "content" in item:
-                    role = item["role"]
-                    content = str(item["content"]) if not isinstance(item["content"], str) else item["content"]
-                    if content.strip():  # 只添加非空内容
-                        messages.append(f"{role}: {content}")
-                else:
-                    print(f"对话记录中第{i+1}条消息格式不正确，已跳过")
+        
+        try:
+            # 处理工作流响应格式：{"data": {"messages": [...]}}
+            if isinstance(data, dict) and "data" in data:
+                if "messages" in data["data"]:
+                    self._extract_messages_from_array(data["data"]["messages"], messages)
+                elif "message_list" in data["data"]:
+                    self._extract_messages_from_array(data["data"]["message_list"], messages)
+            # 处理直接的消息数组格式：[{"role": "user", "content": "..."}, ...]
+            elif isinstance(data, list):
+                self._extract_messages_from_array(data, messages)
+            # 处理单个对话记录格式
+            elif isinstance(data, dict) and "role" in data and "content" in data:
+                self._extract_single_message(data, messages)
+            else:
+                print(f"未识别的对话记录格式，文件: {file_path}")
+                return []
+                
+        except Exception as e:
+            print(f"解析对话记录时出错，文件: {file_path}，错误: {e}")
+            return []
         
         return [Document(
             page_content="\n\n".join(messages),
             metadata={"source": file_path, "message_count": len(messages), "format": "conversation_list"}
         )] if messages else []
+    
+    def _extract_messages_from_array(self, message_array, messages):
+        """从消息数组中提取消息内容"""
+        for i, item in enumerate(message_array):
+            try:
+                self._extract_single_message(item, messages)
+            except Exception as e:
+                print(f"对话记录中第{i+1}条消息格式不正确，已跳过，错误: {e}")
+                continue
+    
+    def _extract_single_message(self, item, messages):
+        """提取单条消息内容"""
+        if not isinstance(item, dict) or "role" in item and "content" in item:
+            role = item.get("role", "unknown")
+            content = item.get("content", "")
+            
+            # 处理content为列表的情况（多模态内容）
+            if isinstance(content, list):
+                content_text = ""
+                for content_item in content:
+                    if isinstance(content_item, dict):
+                        if content_item.get("type") == "text":
+                            content_text += content_item.get("text", "")
+                        elif content_item.get("type") == "image_url":
+                            content_text += f"[图片: {content_item.get('image_url', {}).get('file_name', '未知图片')}]"
+                        elif content_item.get("type") == "document":
+                            content_text += f"[文档: {content_item.get('document', {}).get('file_name', '未知文档')}]"
+                content = content_text
+            else:
+                content = str(content)
+            
+            if content and content.strip():
+                messages.append(f"{role}: {content.strip()}")
 
     def _original_json_parser(self, data, file_path: str) -> List[Document]:
         """处理原始JSON格式"""
