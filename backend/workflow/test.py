@@ -4,6 +4,7 @@ from typing import Annotated, TypedDict, List, Optional, Tuple, Dict
 import datetime
 import json
 import os
+import time
 
 root_dir = Path(__file__).parent.parent.parent
 sys.path.append(str(root_dir))
@@ -67,47 +68,53 @@ def _get_file_path(file_ids: List[str]) -> Tuple[Optional[str], Optional[str], O
 
 
 def memory_processing_node(state: PrengantState) -> dict:
-    """记忆处理节点 - 调用增强版MeMAgent处理对话记忆"""
+    """记忆处理节点 - 使用检索式对话历史"""
+    start_time = time.time()
     updates = {}
     try:
-        # 创建增强版记忆智能体
-        mem_agent = create_enhanced_mem_agent()
-        
-        # 构建记忆智能体输入
-        from backend.agents.MeMAgent.core import MeMState
-        mem_input: MeMState = {
-            "maternal_id": state.get("maternal_id"),
-            "chat_id": state.get("chat_id"),
-            "max_turns_in_memory": 5,  # 可配置的内存轮数阈值
-        }
-        
-        logger.info("启动记忆智能体，开始处理对话历史")
-        mem_result = mem_agent.invoke(mem_input)
-        
-        # 提取记忆处理结果
-        updates["chat_history"] = mem_result.get("chat_history", [])
-        updates["chat_history_text"] = mem_result.get("chat_history_text", "")
-        updates["compressed_memory"] = mem_result.get("compressed_memory", "")
-        updates["memory_summary"] = mem_result.get("memory_summary", "")
-        
+        # 使用检索式记忆处理
+        from backend.agents.MeMAgent.retrieval_memory import create_retrieval_memory_function
+
+        maternal_id = state.get("maternal_id")
+        chat_id = state.get("chat_id")
+        current_input = state.get("input", "")
+
+        logger.info("启动检索式记忆智能体，基于当前输入检索相关历史")
+        invoke_start_time = time.time()
+
+        process_memory = create_retrieval_memory_function()
+        mem_result = process_memory(maternal_id, chat_id, current_input)
+
+        invoke_duration = time.time() - invoke_start_time
+
+        # 提取检索式记忆结果
+        updates["relevant_history"] = mem_result.get("relevant_history", "")
+        updates["history_summary"] = mem_result.get("history_summary", "")
+
+        # 保持向后兼容性
+        updates["compressed_memory"] = mem_result.get("relevant_history", "")
+        updates["memory_summary"] = mem_result.get("history_summary", "")
+
         if mem_result.get("error"):
-            logger.warning(f"记忆智能体处理有警告: {mem_result['error']}")
-        
-        logger.info(f"记忆处理完成: {mem_result.get('memory_summary', 'Unknown')}")
-        
+            logger.warning(f"检索式记忆处理有警告: {mem_result['error']}")
+
+        duration = time.time() - start_time
+        logger.info(f"检索式记忆处理完成: {mem_result.get('history_summary', 'Unknown')}, 耗时: {duration:.2f}秒 (检索调用: {invoke_duration:.2f}秒)")
+
     except Exception as e:
-        error_msg = f"记忆处理节点执行失败: {str(e)}"
+        error_msg = f"检索式记忆处理节点执行失败: {str(e)}"
         logger.error(error_msg)
         updates["error"] = error_msg
-        updates["chat_history"] = []
-        updates["chat_history_text"] = ""
+        updates["relevant_history"] = ""
+        updates["history_summary"] = "检索式记忆处理失败"
         updates["compressed_memory"] = ""
-        updates["memory_summary"] = "记忆处理失败"
-    
+        updates["memory_summary"] = "检索式记忆处理失败"
+
     return updates
 
 def mix_node(state: PrengantState) -> dict:
     """混合智能体节点（补充maternal_id参数传递）"""
+    start_time = time.time()
     updates = {}
     try:
         file_ids = state.get("file_id")
@@ -143,7 +150,9 @@ def mix_node(state: PrengantState) -> dict:
             "doc_file_path": doc_path,
         }
         logger.info("启动混合智能体，开始融合用户输入与文件内容")
+        invoke_start_time = time.time()
         mix_result = mix_agent_instance.invoke(mix_input)
+        invoke_duration = time.time() - invoke_start_time
         print("mix_result", mix_result)
         combined_result = mix_result.get("combined_results")
         print("combined_result", combined_result)
@@ -196,6 +205,7 @@ def _get_vector_path(maternal_id: int, chat_id: str, maternal_service: MaternalS
 
 def retr_node(state: PrengantState) -> dict:
     """检索节点（无新增修改，依赖_get_vector_path修复）"""
+    start_time = time.time()
     updates = {}
     try:
         maternal_service = MaternalService()
@@ -239,54 +249,101 @@ def retr_node(state: PrengantState) -> dict:
         updates["retrieval_pregnant"] = retrieval_pregnant
         logger.info(f"检索智能体处理成功：检索到{len(retrieval_professor)}条专家知识库结果，{len(retrieval_pregnant)}条孕妇知识库结果")
     except Exception as e:
+        duration = time.time() - start_time
         error_msg = f"检索节点执行失败：{str(e)}"
-        logger.error(error_msg)
+        logger.error(f"{error_msg}, 耗时: {duration:.2f}秒")
         updates["error"] = error_msg
         updates["retrieval_professor"] = []
         updates["retrieval_pregnant"] = []
     return updates
 
 def proc_context(state: PrengantState) -> PrengantState:
-    """处理上下文（集成对话记忆）"""
+    """处理上下文（医学场景优化版：专家知识库优先+长度限制）"""
+    start_time = time.time()
     try:
-        file_content = state.get("file_content") or ""  # 空值默认空字符串
+        # 设置上下文最大长度限制（约6000字符，确保AI模型处理速度）
+        MAX_CONTEXT_LENGTH = 6000
+
+        file_content = state.get("file_content") or ""
         compressed_memory = state.get("compressed_memory") or ""
-        
+
         # 检索结果转为字符串（避免None导致拼接报错）
         retrieval_professor_str = str(state.get("retrieval_professor", []))
         retrieval_pregnant_str = str(state.get("retrieval_pregnant", []))
-        
-        # 拼接上下文（按优先级排序：对话记忆→文件内容→孕妇知识库→专家知识库）
+
+        # 医学场景优先级：专家知识库 > 相关历史 > 文件内容 > 孕妇知识库
         context_parts = []
-        
-        # 添加对话记忆（如果存在）
-        if compressed_memory:
-            context_parts.append(f"【对话历史】\n{compressed_memory}")
-        
-        # 添加文件内容
-        if file_content:
-            context_parts.append(f"【文件内容】\n{file_content}")
-            
-        # 添加检索结果
-        if retrieval_pregnant_str and retrieval_pregnant_str != "[]":
-            context_parts.append(f"【孕妇个人知识库】\n{retrieval_pregnant_str}")
-            
+        current_length = 0
+
+        # 1. 专家知识库（优先级最高，医学权威性）
         if retrieval_professor_str and retrieval_professor_str != "[]":
-            context_parts.append(f"【专家通用知识库】\n{retrieval_professor_str}")
-        
+            professor_part = f"【专家知识库】\n{retrieval_professor_str}"
+            # 专家知识库分配最多4000字符
+            if len(professor_part) > 4000:
+                truncated_professor = retrieval_professor_str[:3960] + "...[专家知识库已截断]"
+                professor_part = f"【专家知识库】\n{truncated_professor}"
+
+            context_parts.append(professor_part)
+            current_length += len(professor_part)
+
+        # 2. 相关对话历史（次优先级）
+        if compressed_memory and current_length < MAX_CONTEXT_LENGTH:
+            memory_part = f"【相关历史】\n{compressed_memory}"
+            if current_length + len(memory_part) <= MAX_CONTEXT_LENGTH:
+                context_parts.append(memory_part)
+                current_length += len(memory_part)
+            else:
+                # 截断对话历史
+                available_length = MAX_CONTEXT_LENGTH - current_length - 30
+                if available_length > 100:
+                    truncated_memory = compressed_memory[:available_length] + "...[历史已截断]"
+                    context_parts.append(f"【相关历史】\n{truncated_memory}")
+                    current_length = MAX_CONTEXT_LENGTH
+
+        # 3. 文件内容（第三优先级）
+        if file_content and current_length < MAX_CONTEXT_LENGTH:
+            file_part = f"【文件内容】\n{file_content}"
+            if current_length + len(file_part) <= MAX_CONTEXT_LENGTH:
+                context_parts.append(file_part)
+                current_length += len(file_part)
+            else:
+                # 截断文件内容
+                available_length = MAX_CONTEXT_LENGTH - current_length - 30
+                if available_length > 100:
+                    truncated_file = file_content[:available_length] + "...[文件已截断]"
+                    context_parts.append(f"【文件内容】\n{truncated_file}")
+                    current_length = MAX_CONTEXT_LENGTH
+
+        # 4. 孕妇知识库（最低优先级，如果还有空间）
+        if retrieval_pregnant_str and retrieval_pregnant_str != "[]" and current_length < MAX_CONTEXT_LENGTH:
+            pregnant_part = f"【个人知识库】\n{retrieval_pregnant_str}"
+            if current_length + len(pregnant_part) <= MAX_CONTEXT_LENGTH:
+                context_parts.append(pregnant_part)
+                current_length += len(pregnant_part)
+            else:
+                # 截断个人知识库
+                available_length = MAX_CONTEXT_LENGTH - current_length - 30
+                if available_length > 100:
+                    truncated_pregnant = retrieval_pregnant_str[:available_length] + "...[个人库已截断]"
+                    context_parts.append(f"【个人知识库】\n{truncated_pregnant}")
+
         context = "\n\n".join(context_parts)
         state["context"] = context
-        logger.info(f"上下文处理完成，总长度：{len(context)}字符，包含{len(context_parts)}个部分")
-        
+        duration = time.time() - start_time
+
+        logger.info(f"医学上下文处理完成，总长度：{len(context)}字符（限制：{MAX_CONTEXT_LENGTH}），包含{len(context_parts)}个部分, 耗时: {duration:.2f}秒")
+
     except Exception as e:
+        duration = time.time() - start_time
         error_msg = f"处理上下文节点执行失败：{str(e)}"
-        logger.error(f"{error_msg}")
+        logger.error(f"{error_msg}, 耗时: {duration:.2f}秒")
         state["error"] = error_msg
         state["context"] = None
     return state
 
 def gen_synth_node(state: PrengantState) -> PrengantState:
     """生成合成智能体节点（无修改）"""
+    start_time = time.time()
     try:
         gen_synth_agent_instance = gen_synth_agent()
         # 修复：确保gen_synth_input符合GenSynthAgentState类型定义
@@ -300,16 +357,62 @@ def gen_synth_node(state: PrengantState) -> PrengantState:
             "error": None,   # 添加可选字段
         }
         logger.info("启动合成智能体，开始生成合成输出")
+        invoke_start_time = time.time()
         gen_synth_result = gen_synth_agent_instance.invoke(gen_synth_input)
+        invoke_duration = time.time() - invoke_start_time
         state["output"] = gen_synth_result.get("output") or ""
         output_str = state['output']
-        logger.info(f"合成智能体处理成功：生成输出={output_str[:50] if output_str else ''}…")  # 截断长输出避免日志冗余
+        duration = time.time() - start_time
+        logger.info(f"合成智能体处理成功：生成输出={output_str[:50] if output_str else ''}…, 耗时: {duration:.2f}秒 (agent调用: {invoke_duration:.2f}秒)")  # 截断长输出避免日志冗余
     except Exception as e:
+        duration = time.time() - start_time
         error_msg = f"合成节点执行失败：{str(e)}"
-        logger.error(f"{error_msg}")
+        logger.error(f"{error_msg}, 耗时: {duration:.2f}秒")
         state["error"] = error_msg
         state["output"] = ""
     return state
+
+# 新增：流式版本的孕妇工作流
+async def prengant_workflow_stream(state: PrengantState):
+    """
+    流式孕妇工作流 - 实时返回AI生成内容
+    只有最后的AI生成阶段是流式的，前面的检索等步骤仍然是批处理
+    """
+    try:
+        # 1. 记忆处理（非流式）- 修复：正确合并更新到state
+        memory_updates = memory_processing_node(state)
+        state.update(memory_updates)
+
+        # 2. 并行处理：文件处理和检索（非流式）
+        # 这些步骤需要完整结果才能进行下一步，所以保持非流式
+        mix_updates = mix_node(state)
+        state.update(mix_updates)
+
+        retr_updates = retr_node(state)
+        state.update(retr_updates)
+
+        # 3. 上下文整合（非流式）- 修复：proc_context直接修改state并返回
+        state = proc_context(state)
+
+        # 4. 流式生成回答（这是用户最关心的部分）
+        from backend.agents.GenSynthAgent.core import gen_synth_node_stream, GenSynthAgentState
+
+        # 构造生成智能体的输入
+        context = state.get("context") or ""
+        gen_synth_input: GenSynthAgentState = {
+            "input": state.get("input") or "",
+            "user_type": state.get("user_type") or "",
+            "context": context,
+            "output": "",
+            "error": None,
+        }
+
+        # 流式生成并yield每个chunk
+        async for chunk in gen_synth_node_stream(gen_synth_input):
+            yield chunk
+
+    except Exception as e:
+        yield f"\n\n❌ 工作流执行失败：{str(e)}"
 
 def prengant_workflow():
     """孕妇工作流（集成增强版记忆智能体）"""

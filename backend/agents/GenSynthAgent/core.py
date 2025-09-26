@@ -21,6 +21,41 @@ class GenSynthAgentState(TypedDict):
     error: Annotated[Optional[str], "错误信息"]
 
 
+# 新增：流式版本的生成合成节点
+async def gen_synth_node_stream(state: GenSynthAgentState):
+    """
+    流式生成合成智能体节点
+    实时yield AI生成的每个token
+    """
+    try:
+        user_type = state['user_type']
+        template_selector = TemplateSelector()
+        template_dict = template_selector.select_template(query=state['input'], user_type=user_type)
+        template = template_dict['messages'][0]['content']
+        system_message = template.format(query=state["input"], context=state["context"])
+
+        with open("backend/config/model_settings.yaml", "r", encoding="utf-8") as f:
+            model_settings = yaml.safe_load(f)
+        default_model_config = model_settings.get("DEFAULT_MODEL")
+
+        # 引入流式工具
+        from backend.agents.tools.tools import qwen_tool_stream
+
+        # 流式调用AI模型
+        async for chunk in qwen_tool_stream(
+            input=system_message,
+            img_path='',
+            model_name=default_model_config["llm_model"],
+            api_key=default_model_config["api_key"],
+            base_url=default_model_config["base_url"],
+            temperature=default_model_config["temperature"]
+        ):
+            # 实时yield每个chunk给上层
+            yield chunk
+
+    except Exception as e:
+        yield f"\n\n❌ 生成失败：{str(e)}"
+
 def gen_synth_node(state: GenSynthAgentState) -> GenSynthAgentState:
     """
     生成合成智能体节点

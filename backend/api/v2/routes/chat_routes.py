@@ -1,25 +1,169 @@
 from starlette.responses import JSONResponse
 from fastapi import APIRouter, HTTPException, status, Depends, Form, Path, Query, UploadFile, File, Body
 from pydantic import BaseModel, Field
-from fastapi.responses import JSONResponse, FileResponse
-from typing import Any, Optional, List, Union, Literal
+from fastapi.responses import JSONResponse, FileResponse, StreamingResponse
+from typing import Any, Optional, List, Union, Literal, AsyncGenerator
 from datetime import date, datetime, timedelta
 
 import json
 import uuid
 import os
 import mimetypes
+import time
+import asyncio
+from asyncio import Semaphore, Queue
 from backend.workflow.test import prengant_workflow, PrengantState
 from backend.api.v1.services.maternal_service import MaternalService  # 复用服务层
+# 异步任务管理器相关导入已移除，统一使用流式处理
 import logging
+from collections import defaultdict, deque
+from dataclasses import dataclass
+from threading import Lock
 
 # 初始化日志
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logger = logging.getLogger("pregnant-workflow-api")
 
+# ==============================
+# P0级性能优化配置
+# ==============================
+
+# 1. 并发控制配置
+MAX_CONCURRENT_REQUESTS = 20  # 最大并发处理数量
+WORKFLOW_TIMEOUT = 90.0      # 工作流超时时间(秒)
+QUEUE_MAX_SIZE = 50          # 请求队列最大大小
+
+# 2. 全局并发控制信号量
+workflow_semaphore = Semaphore(MAX_CONCURRENT_REQUESTS)
+
+# 3. 请求队列
+request_queue: Queue = Queue(maxsize=QUEUE_MAX_SIZE)
+
+# 4. 请求队列处理器
+async def process_queue_requests():
+    """处理请求队列中的任务"""
+    while True:
+        try:
+            # 等待队列中的请求
+            request_item = await request_queue.get()
+            request_data, response_future = request_item
+
+            # 执行请求
+            try:
+                result = await execute_workflow_stream_protected(request_data)
+                response_future.set_result(result)
+            except Exception as e:
+                response_future.set_exception(e)
+            finally:
+                request_queue.task_done()
+
+        except Exception as e:
+            logger.error(f"队列处理器异常: {e}")
+            await asyncio.sleep(1)  # 防止无限循环
+
+# 启动队列处理器
+async def start_queue_processor():
+    """启动请求队列处理器"""
+    asyncio.create_task(process_queue_requests())
+
+async def wait_for_queue_result(response_future: asyncio.Future):
+    """等待队列处理结果并流式返回"""
+    try:
+        # 等待队列处理完成
+        result_generator = await response_future
+
+        # 流式返回结果
+        async for chunk in result_generator:
+            yield chunk
+
+    except Exception as e:
+        logger.error(f"队列结果等待异常：{e}")
+        yield f"{json.dumps({'type': 'error', 'message': f'队列处理失败: {str(e)}'}, ensure_ascii=False)}\n"
+        yield f"{json.dumps({'type': 'done'}, ensure_ascii=False)}\n"
+
+# 5. 性能监控数据结构
+@dataclass
+class PerformanceMetrics:
+    active_requests: int = 0
+    total_requests: int = 0
+    successful_requests: int = 0
+    failed_requests: int = 0
+    timeout_requests: int = 0
+    queue_waiting: int = 0
+    avg_response_time: float = 0.0
+    recent_response_times: deque = None
+
+    def __post_init__(self):
+        if self.recent_response_times is None:
+            self.recent_response_times = deque(maxlen=100)
+
+# 6. 全局性能监控实例
+performance_metrics = PerformanceMetrics()
+metrics_lock = Lock()
+
+def update_metrics(success: bool, duration: float, timeout: bool = False):
+    """更新性能指标"""
+    with metrics_lock:
+        performance_metrics.total_requests += 1
+        if success:
+            performance_metrics.successful_requests += 1
+        else:
+            performance_metrics.failed_requests += 1
+
+        if timeout:
+            performance_metrics.timeout_requests += 1
+
+        performance_metrics.recent_response_times.append(duration)
+
+        # 计算平均响应时间
+        if performance_metrics.recent_response_times:
+            performance_metrics.avg_response_time = sum(performance_metrics.recent_response_times) / len(performance_metrics.recent_response_times)
+
+def increment_active_requests():
+    """增加活跃请求计数"""
+    with metrics_lock:
+        performance_metrics.active_requests += 1
+
+def decrement_active_requests():
+    """减少活跃请求计数"""
+    with metrics_lock:
+        performance_metrics.active_requests -= 1
+
+def update_queue_waiting(count: int):
+    """更新队列等待数量"""
+    with metrics_lock:
+        performance_metrics.queue_waiting = count
+
+def get_performance_snapshot():
+    """获取性能指标快照"""
+    with metrics_lock:
+        return {
+            "active_requests": performance_metrics.active_requests,
+            "total_requests": performance_metrics.total_requests,
+            "successful_requests": performance_metrics.successful_requests,
+            "failed_requests": performance_metrics.failed_requests,
+            "timeout_requests": performance_metrics.timeout_requests,
+            "success_rate": f"{(performance_metrics.successful_requests / max(performance_metrics.total_requests, 1)) * 100:.1f}%",
+            "avg_response_time": f"{performance_metrics.avg_response_time:.2f}s",
+            "queue_waiting": performance_metrics.queue_waiting,
+            "queue_size": request_queue.qsize(),
+            "semaphore_available": workflow_semaphore._value
+        }
+
 # 初始化路由（标签与现有聊天管理服务分类一致）
 router = APIRouter(tags=["聊天管理服务"])
 maternal_service = MaternalService()
+
+# 初始化标志，确保队列处理器只启动一次
+_queue_processor_started = False
+
+async def ensure_queue_processor_started():
+    """确保请求队列处理器已启动"""
+    global _queue_processor_started
+    if not _queue_processor_started:
+        await start_queue_processor()
+        _queue_processor_started = True
+        logger.info("请求队列处理器已启动")
 
 # ------------------------------
 # 1. 通用工具函数（辅助生成URL、文件信息等）
@@ -208,33 +352,157 @@ class PregnantWorkflowResponse(BaseModel):
     msg: str = Field(..., description="状态描述：success/失败原因")
     data: WorkflowData = Field(..., description="业务数据（含对话内容）")
 
+# 异步任务相关模型已移除，统一使用流式响应
+
 # ------------------------------
-# 4. 工作流调用接口实现
+# 4. 工作流执行函数（流式版本）
 # ------------------------------
-@router.post(
-    "/qa",
-    summary="孕妇工作流调用接口",
-    description="""
-    调用孕妇专属智能工作流，处理用户需求并返回结构化对话数据：
-    1. 支持文本+多文件（图片/文档）混合输入
-    2. 自动关联孕妇个人数据与专家知识库
-    3. 返回用户-助手完整对话链（含文件URL信息）
-    4. 错误信息会在data.error字段保留，不影响正常响应格式
-    """,
-    response_model=PregnantWorkflowResponse,
-    status_code=status.HTTP_200_OK
-)
-async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
+
+# 同步工作流函数已移除，统一使用流式处理模式
+
+# ------------------------------
+# 流式工作流执行函数
+# ------------------------------
+
+async def execute_workflow_stream_protected(request_data: dict) -> AsyncGenerator[str, None]:
+    """带并发控制和超时保护的流式工作流执行"""
+    request_start_time = time.time()
+    request_id = f"req_{uuid.uuid4().hex[:8]}"
+
+    # 增加活跃请求计数
+    increment_active_requests()
+
+    # 记录请求开始
+    logger.info(f"[{request_id}] 开始处理请求 - 当前活跃请求: {performance_metrics.active_requests}")
+
     try:
-        # 1. 基础参数日志打印
-        logger.info(
-            f"接收孕妇工作流请求：maternal_id={request.maternal_id}, "
-            f"chat_id={request.chat_id}, input={request.input[:30]}..."
+        # 1. 获取信号量（并发控制）
+        logger.info(f"[{request_id}] 等待获取信号量 - 可用数量: {workflow_semaphore._value}")
+        async with workflow_semaphore:
+            logger.info(f"[{request_id}] 已获取信号量，开始处理")
+
+            # 2. 超时保护 - 使用简化的超时处理
+            try:
+                # 记录开始时间用于超时检测
+                start_time = time.time()
+
+                # 执行工作流生成器
+                async for chunk in execute_workflow_stream_internal(request_data, request_id):
+                    # 检查是否超时
+                    if time.time() - start_time > WORKFLOW_TIMEOUT:
+                        logger.error(f"[{request_id}] 工作流执行超时")
+                        raise asyncio.TimeoutError("工作流执行超时")
+
+                    yield chunk
+
+                # 成功完成
+                duration = time.time() - request_start_time
+                update_metrics(success=True, duration=duration)
+                logger.info(f"[{request_id}] 请求成功完成，耗时: {duration:.2f}s")
+
+            except asyncio.TimeoutError:
+                # 超时处理
+                duration = time.time() - request_start_time
+                update_metrics(success=False, duration=duration, timeout=True)
+                logger.error(f"[{request_id}] 请求超时，耗时: {duration:.2f}s")
+
+                yield f"{json.dumps({'type': 'error', 'message': f'⏰ 处理超时（{WORKFLOW_TIMEOUT}秒），请稍后重试', 'progress': 0}, ensure_ascii=False)}\n"
+                yield f"{json.dumps({'type': 'done'}, ensure_ascii=False)}\n"
+
+    except Exception as e:
+        # 其他异常处理
+        duration = time.time() - request_start_time
+        update_metrics(success=False, duration=duration)
+        logger.error(f"[{request_id}] 请求处理异常: {str(e)}", exc_info=True)
+
+        yield f"{json.dumps({'type': 'error', 'message': f'❌ 处理失败: {str(e)}', 'progress': 0}, ensure_ascii=False)}\n"
+        yield f"{json.dumps({'type': 'done'}, ensure_ascii=False)}\n"
+
+    finally:
+        # 减少活跃请求计数
+        decrement_active_requests()
+        logger.info(f"[{request_id}] 请求处理完成 - 当前活跃请求: {performance_metrics.active_requests}")
+
+        # 记录详细的性能日志
+        perf_snapshot = get_performance_snapshot()
+        logger.info(f"[{request_id}] 性能快照 - 成功率: {perf_snapshot['success_rate']}, "
+                   f"平均响应时间: {perf_snapshot['avg_response_time']}, "
+                   f"可用信号量: {perf_snapshot['semaphore_available']}, "
+                   f"队列大小: {perf_snapshot['queue_size']}")
+
+async def execute_workflow_stream_internal(request_data: dict, request_id: str) -> AsyncGenerator[str, None]:
+    """内部工作流执行逻辑（原execute_workflow_stream的核心逻辑）"""
+    try:
+        request = PregnantWorkflowRequest(**request_data)
+        start_time = time.time()
+
+        # 发送开始消息
+        logger.info(f"[{request_id}] 发送开始消息 - 输入长度: {len(request.input)}")
+        yield f"{json.dumps({'type': 'start', 'message': '🚀 开始处理您的问题...', 'timestamp': datetime.now().isoformat(), 'progress': 0}, ensure_ascii=False)}\n"
+
+        # 等待一小段时间，让前端能看到开始消息
+        await asyncio.sleep(0.1)
+
+        # 发送进度消息（增加更详细的监控信息）
+        perf_snapshot = get_performance_snapshot()
+        logger.info(f"[{request_id}] 工作流初始化 - 当前并发: {perf_snapshot['active_requests']}, "
+                   f"可用信号量: {perf_snapshot['semaphore_available']}, "
+                   f"队列大小: {perf_snapshot['queue_size']}")
+        progress_msg = f"📋 正在初始化智能医疗工作流... (当前并发: {perf_snapshot['active_requests']})"
+        yield f"{json.dumps({'type': 'progress', 'message': progress_msg, 'progress': 5}, ensure_ascii=False)}\n"
+
+        # 构造用户消息
+        user_message_id = f"msg_{uuid.uuid4()}"
+        user_content: List[MessageContent] = [TextContent(type="text", text=request.input)]
+
+        # 处理文件
+        if request.file_id:
+            yield f"{json.dumps({'type': 'progress', 'message': f'📁 正在分析您上传的 {len(request.file_id)} 个医疗文件...', 'progress': 15}, ensure_ascii=False)}\n"
+
+            for i, file_id_str in enumerate(request.file_id):
+                try:
+                    file_info = maternal_service.get_medical_file_by_fileid(file_id_str)
+                    if file_info:
+                        file_name = file_info.get("file_name", "未知文件")
+                        file_type = file_info.get("file_type", "").lower()
+
+                        yield f"{json.dumps({'type': 'progress', 'message': f'📄 正在解析文件: {file_name}', 'progress': 15 + (i+1) * 5}, ensure_ascii=False)}\n"
+
+                        if (file_type.startswith("image/") or
+                            file_type in ["jpg", "jpeg", "png", "gif", "bmp", "webp"]):
+                            user_content.append(ImageUrlContent(
+                                type="image_url",
+                                image_url=ImageUrlInfo(file_id=file_id_str)
+                            ))
+                        else:
+                            user_content.append(DocumentContent(
+                                type="document",
+                                document=DocumentInfo(file_id=file_id_str)
+                            ))
+                except Exception as e:
+                    logger.error(f"处理文件ID {file_id_str} 时出错: {str(e)}")
+                    yield f"{json.dumps({'type': 'progress', 'message': f'⚠️ 文件处理失败，继续处理其他内容...', 'progress': 15 + (i+1) * 5}, ensure_ascii=False)}\n"
+                    continue
+
+        user_message = MessageItem(
+            message_id=user_message_id,
+            role="user",
+            content=user_content,
+            timestamp=request.timestamp
         )
 
-        # 2. 执行工作流（保留原逻辑，将request转换为工作流状态）
+        # 执行工作流
+        yield f"{json.dumps({'type': 'progress', 'message': '🤖 正在启动AI智能诊疗系统...', 'progress': 35}, ensure_ascii=False)}\n"
+        await asyncio.sleep(0.2)
+
+        yield f"{json.dumps({'type': 'progress', 'message': '🔍 正在检索相关医疗知识库...', 'progress': 45}, ensure_ascii=False)}\n"
+        await asyncio.sleep(0.3)
+
+        yield f"{json.dumps({'type': 'progress', 'message': '🧠 AI医生正在分析您的情况...', 'progress': 60}, ensure_ascii=False)}\n"
+
+        # 准备工作流执行
+        logger.info(f"[{request_id}] 开始执行工作流 - maternal_id: {request.maternal_id}, chat_id: {request.chat_id}")
         workflow_graph = prengant_workflow()
-        # 将请求对象转换为工作流状态
         workflow_state: PrengantState = {
             "input": request.input,
             "maternal_id": request.maternal_id,
@@ -243,81 +511,51 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
             "timestamp": request.timestamp,
             "file_id": request.file_id or []
         }
-        workflow_result = workflow_graph.invoke(workflow_state)
-        workflow_output = workflow_result.get("output")  # 助手回答
-        workflow_error = workflow_result.get("error")    # 工作流内部错误
-        logger.info(
-            f"工作流执行完成：output_exists={bool(workflow_output)}, "
-            f"has_error={bool(workflow_error)}, "
-            f"file_count={len(request.file_id) if request.file_id else 0}"
-        )
 
-        # 3. 构造用户消息（user角色）
-        user_message_id = f"msg_{uuid.uuid4()}"  # 生成消息ID
-        user_content: List[MessageContent] = []
+        # 执行流式工作流（真正的AI流式输出）
+        workflow_start_time = time.time()
+        logger.info(f"[{request_id}] 开始流式工作流 - 开始时间: {workflow_start_time}")
 
-        # 3.1 添加用户文本内容
-        user_content.append(TextContent(type="text", text=request.input))
+        # 引入流式工作流
+        from backend.workflow.test import prengant_workflow_stream
 
-        # 3.2 添加用户文件内容（图片/文档）
-        # 处理请求中的file_id列表，根据文件类型分类到image_url或document
-        if request.file_id:
-            for file_id_str in request.file_id:
-                try:
-                    # 通过maternal_service获取文件信息
-                    file_info = maternal_service.get_medical_file_by_fileid(file_id_str)
-                    if file_info:
-                        file_type = file_info.get("file_type", "").lower()
-                        print("/n 文件类型为：", file_type)
-                        
-                        # 判断文件类型：图片类型
-                        if (file_type.startswith("image/") or 
-                            file_type in ["jpg", "jpeg", "png", "gif", "bmp", "webp"]):
-                            user_content.append(ImageUrlContent(
-                                type="image_url",
-                                image_url=ImageUrlInfo(
-                                    file_id=file_id_str
-                                )
-                            ))
-                        # 判断文件类型：文档类型
-                        elif (file_type.startswith("application/") or 
-                              file_type in ["pdf", "doc", "docx", "txt", "rtf"]):
-                            user_content.append(DocumentContent(
-                                type="document",
-                                document=DocumentInfo(
-                                    file_id=file_id_str
-                                )
-                            ))
-                        else:
-                            # 未知文件类型默认作为文档处理
-                            logger.warning(f"未知文件类型 {file_type}，将作为文档处理")
-                            user_content.append(DocumentContent(
-                                type="document",
-                                document=DocumentInfo(
-                                    file_id=file_id_str
-                                )
-                            ))
-                except Exception as e:
-                    logger.error(f"处理文件ID {file_id_str} 时出错: {str(e)}")
-                    continue
+        # 发送AI开始生成的消息
+        yield f"{json.dumps({'type': 'progress', 'message': '🤖 AI医生开始回答...', 'progress': 70}, ensure_ascii=False)}\n"
 
-        # 3.3 封装用户消息
-        user_message = MessageItem(
-            message_id=user_message_id,
-            role="user",
-            content=user_content,
-            timestamp=request.timestamp
-        )
+        # 实时流式输出AI生成的内容
+        full_response = ""
+        chunk_count = 0
 
-        # 4. 构造助手消息（assistant角色）
+        async for ai_chunk in prengant_workflow_stream(workflow_state):
+            chunk_count += 1
+            full_response += ai_chunk
+
+            # 实时发送AI生成的每个chunk给前端
+            yield f"{json.dumps({'type': 'ai_content', 'content': ai_chunk, 'chunk_id': chunk_count}, ensure_ascii=False)}\n"
+
+            # 可选：每隔几个chunk发送一次进度更新
+            if chunk_count % 10 == 0:
+                progress = min(70 + (chunk_count // 10), 95)
+                yield f"{json.dumps({'type': 'progress', 'message': f'💭 AI正在思考... ({chunk_count} tokens)', 'progress': progress}, ensure_ascii=False)}\n"
+
+        workflow_end_time = time.time()
+        workflow_duration = workflow_end_time - workflow_start_time
+
+        logger.info(f"[{request_id}] 流式工作流完成 - 耗时: {workflow_duration:.2f}s, chunks: {chunk_count}")
+
+        # 设置最终的AI回复内容
+        workflow_output = full_response.strip() if full_response.strip() else None
+        workflow_error = None if workflow_output else "AI未生成有效回复"
+
+        yield f"{json.dumps({'type': 'progress', 'message': f'✅ AI回复完成（耗时 {workflow_duration:.1f}秒，共 {chunk_count} tokens）', 'progress': 95}, ensure_ascii=False)}\n"
+
+        # 构造助手消息
         assistant_message: Optional[MessageItem] = None
         if workflow_output:
             assistant_message_id = f"msg_{uuid.uuid4()}"
-            # 助手仅返回文本（可根据需求扩展多类型）
             assistant_content: List[MessageContent] = [TextContent(type="text", text=workflow_output)]
-            # 生成助手消息时间（比用户消息晚40秒，模拟真实响应耗时）
             user_dt = datetime.strptime(request.timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
-            assistant_dt = user_dt + timedelta(seconds=40)
+            assistant_dt = user_dt + timedelta(seconds=int(workflow_duration))
             assistant_message = MessageItem(
                 message_id=assistant_message_id,
                 role="assistant",
@@ -325,12 +563,12 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
                 timestamp=assistant_dt.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
             )
 
-        # 5. 构造会话标题（取用户输入前10字，超出截断）
+        # 构造会话标题
         session_title = request.input[:10] + "..." if len(request.input) > 10 else request.input
         if not session_title:
             session_title = "未命名会话"
 
-        # 6. 构造响应业务数据（data字段）
+        # 构造响应数据
         workflow_data = WorkflowData(
             chat_meta=ChatMeta(
                 chat_id=request.chat_id,
@@ -339,77 +577,281 @@ async def invoke_pregnant_workflow(request: PregnantWorkflowRequest):
             ),
             session_title=session_title,
             messages=[user_message] + ([assistant_message] if assistant_message else []),
-            error=workflow_error  # 保留工作流错误（无错误则为None）
+            error=workflow_error
         )
 
-        # 7. 构造最终响应
         answer = PregnantWorkflowResponse(
             code=200 if workflow_output else 500,
             msg="success" if workflow_output else "工作流未生成有效回答",
             data=workflow_data
         )
-        
+
+        # 保存结果
         if workflow_output:
             try:
-                # 修正变量名拼写错误
-                json_file_path = maternal_service.get_dialogue_content_by_chat_id(request.chat_id)
-                if not isinstance(json_file_path, str):
-                    raise ValueError("获取JSON文件路径失败")
-                logger.info(f"准备写入JSON文件，路径为: {json_file_path}") 
-                # 确保目录存在
-                os.makedirs(os.path.dirname(json_file_path), exist_ok=True)
-                
-                existing_data = []
-                # 读取已存在数据
-                if os.path.exists(json_file_path):
-                    try:
-                        with open(json_file_path, 'r', encoding='utf-8') as f:
-                            existing_data = json.load(f)
-                            if not isinstance(existing_data, list):
-                                existing_data = [existing_data]
-                    except json.JSONDecodeError:
-                            logger.warning(f"JSON文件格式错误，将创建新文件: {json_file_path}")
-                            existing_data = []
-                
-                # 合并数据
-                existing_data.append(answer.model_dump())
+                yield f"{json.dumps({'type': 'progress', 'message': '💾 正在保存对话记录...', 'progress': 95}, ensure_ascii=False)}\n"
 
-                # 写入JSON文件并添加异常处理
-                with open(json_file_path, 'w', encoding='utf-8') as f:
-                    json.dump(existing_data, f, ensure_ascii=False, indent=2)
-                
-                logger.info(f"答案已成功写入JSON文件: {json_file_path}")
+                json_file_path = maternal_service.get_dialogue_content_by_chat_id(request.chat_id)
+                if isinstance(json_file_path, str):
+                    os.makedirs(os.path.dirname(json_file_path), exist_ok=True)
+
+                    existing_data = []
+                    if os.path.exists(json_file_path):
+                        try:
+                            with open(json_file_path, 'r', encoding='utf-8') as f:
+                                existing_data = json.load(f)
+                                if not isinstance(existing_data, list):
+                                    existing_data = [existing_data]
+                        except json.JSONDecodeError:
+                            existing_data = []
+
+                    existing_data.append(answer.model_dump())
+                    with open(json_file_path, 'w', encoding='utf-8') as f:
+                        json.dump(existing_data, f, ensure_ascii=False, indent=2)
+
+                    logger.info(f"答案已保存到JSON文件: {json_file_path}")
             except Exception as e:
-                logger.error(f"写入JSON文件失败: {str(e)}", exc_info=True)
-                # 即使文件写入失败，仍返回正常响应（根据业务需求决定是否抛出异常）
-                
-        return answer
+                logger.error(f"保存JSON文件失败: {str(e)}")
+                yield f"{json.dumps({'type': 'warning', 'message': '⚠️ 对话记录保存失败，但结果已生成', 'progress': 95}, ensure_ascii=False)}\n"
+
+        # 计算总耗时
+        total_duration = time.time() - start_time
+
+        # 发送最终结果
+        yield f"{json.dumps({'type': 'complete', 'message': f'🎉 处理完成！总耗时 {total_duration:.1f}秒', 'data': answer.model_dump(), 'progress': 100, 'duration': total_duration}, ensure_ascii=False)}\n"
+
+        # 关闭连接
+        yield f"{json.dumps({'type': 'done'}, ensure_ascii=False)}\n"
 
     except Exception as e:
-        # 捕获接口层异常（如工作流调用失败、参数错误）
-        interface_error = f"接口执行异常：{str(e)}"
-        logger.error(interface_error, exc_info=True)
-        # 构造异常响应（仍保持目标格式）
-        user_message = MessageItem(
-            message_id=f"msg_{uuid.uuid4()}",
-            role="user",
-            content=[TextContent(type="text", text=request.input)],
-            timestamp=request.timestamp
-        )
-        return PregnantWorkflowResponse(
-            code=500,
-            msg="接口调用失败",
-            data=WorkflowData(
-                chat_meta=ChatMeta(
-                    chat_id=request.chat_id,
-                    user_type=request.user_type,
-                    maternal_id=request.maternal_id
-                ),
-                session_title=request.input[:30] + "..." if request.input else "未命名会话",
-                messages=[user_message],
-                error=interface_error
+        error_msg = f"工作流执行异常：{str(e)}"
+        logger.error(error_msg, exc_info=True)
+
+        # 发送错误消息
+        yield f"{json.dumps({'type': 'error', 'message': f'❌ 处理失败: {error_msg}', 'progress': 0}, ensure_ascii=False)}\n"
+        yield f"{json.dumps({'type': 'done'}, ensure_ascii=False)}\n"
+
+# ------------------------------
+# 4. 工作流调用接口实现
+# ------------------------------
+
+@router.post(
+    "/qa",
+    summary="孕妇工作流调用接口（流式返回）",
+    description="""
+    调用孕妇专属智能工作流，支持实时流式返回：
+
+    **功能特性**：
+    1. 立即开始流式响应，实时推送处理进度
+    2. 通过Server-Sent Events返回进度和最终结果
+    3. 用户可实时看到处理状态，无需等待
+    4. 连接结束后直接获得完整对话数据
+    5. 支持多用户并发（20个并发 + 50个队列）
+
+    **响应格式（Server-Sent Events）**：
+    - type: start - 处理开始
+    - type: progress - 处理进度更新（含进度百分比）
+    - type: ai_content - AI实时生成内容
+    - type: complete - 处理完成，包含完整结果
+    - type: error - 处理失败
+    """,
+    status_code=status.HTTP_200_OK,
+    responses={
+        200: {
+            "description": "JSON Lines 流式响应",
+            "content": {
+                "application/x-ndjson": {
+                    "example": "{\"type\":\"start\",\"message\":\"🚀 开始处理您的问题...\"}\n{\"type\":\"ai_content\",\"content\":\"您好\",\"chunk_id\":1}\n{\"type\":\"done\"}\n"
+                }
+            }
+        }
+    }
+)
+async def invoke_pregnant_workflow_stream(
+    request: PregnantWorkflowRequest,
+    use_queue: bool = Query(False, description="是否使用请求队列（高负载时推荐开启）")
+):
+    """调用孕妇工作流（流式返回）"""
+    try:
+        # 确保队列处理器已启动
+        await ensure_queue_processor_started()
+
+        logger.info(f"开始流式工作流：maternal_id={request.maternal_id}, chat_id={request.chat_id}, use_queue={use_queue}")
+
+        if use_queue:
+            # 使用队列模式处理
+            if request_queue.full():
+                # 队列已满，返回错误
+                logger.warning(f"请求队列已满，拒绝请求：maternal_id={request.maternal_id}")
+                raise HTTPException(
+                    status_code=503,
+                    detail="服务器繁忙，请稍后重试"
+                )
+
+            # 将请求放入队列
+            response_future = asyncio.Future()
+            await request_queue.put((request.model_dump(), response_future))
+            update_queue_waiting(request_queue.qsize())
+
+            logger.info(f"请求已加入队列：maternal_id={request.maternal_id}, 队列大小={request_queue.qsize()}")
+
+            # 等待队列处理结果并返回流式响应
+            return StreamingResponse(
+                wait_for_queue_result(response_future),
+                media_type="application/x-ndjson",
+                headers={
+                    "Cache-Control": "no-cache",
+                    "Connection": "keep-alive",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Cache-Control"
+                }
             )
-        )
+        else:
+            # 直接处理模式
+            return StreamingResponse(
+                execute_workflow_stream_protected(request.model_dump()),
+                media_type="application/x-ndjson",
+                headers={
+                    "Cache-Control": "no-cache",
+                    "Connection": "keep-alive",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Cache-Control"
+                }
+            )
+
+    except Exception as e:
+        logger.error(f"工作流调用失败: {e}")
+        raise HTTPException(status_code=500, detail=f"启动流式工作流失败: {str(e)}")
+
+# ------------------------------
+# 7. 性能监控接口
+# ------------------------------
+
+# @router.get(
+#     "/qa/performance",
+#     summary="获取系统性能指标",
+#     description="获取当前系统的性能指标，包括并发情况、响应时间、成功率等",
+#     status_code=status.HTTP_200_OK
+# )
+# async def get_performance_metrics():
+#     """获取系统性能指标"""
+#     try:
+#         perf_snapshot = get_performance_snapshot()
+
+#         return {
+#             "code": 200,
+#             "msg": "获取性能指标成功",
+#             "data": {
+#                 "timestamp": datetime.now().isoformat(),
+#                 "performance": perf_snapshot,
+#                 "system_config": {
+#                     "max_concurrent_requests": MAX_CONCURRENT_REQUESTS,
+#                     "workflow_timeout": WORKFLOW_TIMEOUT,
+#                     "queue_max_size": QUEUE_MAX_SIZE
+#                 },
+#                 "recommendations": generate_performance_recommendations(perf_snapshot)
+#             }
+#         }
+#     except Exception as e:
+#         logger.error(f"获取性能指标失败: {e}")
+#         return {
+#             "code": 500,
+#             "msg": f"获取性能指标失败: {str(e)}",
+#             "data": None
+#         }
+
+# def generate_performance_recommendations(perf_snapshot: dict) -> List[str]:
+#     """根据性能指标生成优化建议"""
+#     recommendations = []
+
+#     # 检查成功率
+#     success_rate = float(perf_snapshot["success_rate"].rstrip('%'))
+#     if success_rate < 90:
+#         recommendations.append("🚨 成功率低于90%，建议检查系统负载和错误日志")
+
+#     # 检查并发情况
+#     active_requests = perf_snapshot["active_requests"]
+#     semaphore_available = perf_snapshot["semaphore_available"]
+#     if semaphore_available <= 2:
+#         recommendations.append("⚠️ 并发资源紧张，建议增加MAX_CONCURRENT_REQUESTS或使用队列模式")
+
+#     # 检查队列情况
+#     queue_size = perf_snapshot["queue_size"]
+#     if queue_size > QUEUE_MAX_SIZE * 0.8:
+#         recommendations.append("📋 请求队列接近满载，建议增加处理能力或queue大小")
+
+#     # 检查响应时间
+#     avg_response_time = float(perf_snapshot["avg_response_time"].rstrip('s'))
+#     if avg_response_time > 60:
+#         recommendations.append("⏰ 平均响应时间超过60秒，建议优化工作流性能")
+
+#     # 检查超时率
+#     total_requests = perf_snapshot["total_requests"]
+#     timeout_requests = perf_snapshot["timeout_requests"]
+#     if total_requests > 0:
+#         timeout_rate = (timeout_requests / total_requests) * 100
+#         if timeout_rate > 10:
+#             recommendations.append("⏱️ 超时率超过10%，建议增加WORKFLOW_TIMEOUT或优化处理逻辑")
+
+#     if not recommendations:
+#         recommendations.append("✅ 系统运行状态良好")
+
+#     return recommendations
+
+# @router.get(
+#     "/health",
+#     summary="系统健康检查",
+#     description="检查系统健康状态，包括服务可用性和关键指标",
+#     status_code=status.HTTP_200_OK
+# )
+# async def health_check():
+#     """系统健康检查"""
+#     try:
+#         # 检查基本服务状态
+#         perf_snapshot = get_performance_snapshot()
+
+#         # 判断系统健康状态
+#         is_healthy = True
+#         health_issues = []
+
+#         # 检查成功率
+#         success_rate = float(perf_snapshot["success_rate"].rstrip('%'))
+#         if success_rate < 80:
+#             is_healthy = False
+#             health_issues.append("成功率过低")
+
+#         # 检查响应时间
+#         avg_response_time = float(perf_snapshot["avg_response_time"].rstrip('s'))
+#         if avg_response_time > 120:
+#             is_healthy = False
+#             health_issues.append("响应时间过长")
+
+#         # 检查信号量可用性
+#         if perf_snapshot["semaphore_available"] <= 0:
+#             is_healthy = False
+#             health_issues.append("无可用并发资源")
+
+#         # 检查队列状态
+#         if perf_snapshot["queue_size"] >= QUEUE_MAX_SIZE:
+#             is_healthy = False
+#             health_issues.append("请求队列已满")
+
+#         return {
+#             "status": "healthy" if is_healthy else "unhealthy",
+#             "timestamp": datetime.now().isoformat(),
+#             "version": "v2.0.0",
+#             "uptime": "unknown",  # 可以添加启动时间记录
+#             "performance": perf_snapshot,
+#             "issues": health_issues if health_issues else None
+#         }
+
+#     except Exception as e:
+#         logger.error(f"健康检查失败: {e}")
+#         return {
+#             "status": "error",
+#             "timestamp": datetime.now().isoformat(),
+#             "error": str(e)
+#         }
 
 
 # ------------------------------
@@ -457,7 +899,7 @@ async def get_chat_ids_by_maternal_id(
 @router.post(
     path="/{user_id}/files",
     status_code=status.HTTP_201_CREATED,
-    summary="注意：！！！原接口/api/v2/maternal/{user_id}/files，已弃用，请使用新接口/api/v2/chat/{user_id}/files 上传孕妇医疗文件",
+    summary="上传孕妇医疗文件",
     description="上传孕妇医疗文件（支持jpg/png/pdf等，需form-data格式）"
 )
 # @require_auth  # 如需认证可取消注释

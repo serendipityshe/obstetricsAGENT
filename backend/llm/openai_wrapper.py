@@ -26,7 +26,7 @@ import os
 
 
 class QwenAIWrap(BaseChatModel):
-    # 只保留“需要统一管理”或“扩展用”的字段，基础参数通过ChatOpenAI管理
+    # 只保留"需要统一管理"或"扩展用"的字段，基础参数通过ChatOpenAI管理
     client: ChatOpenAI = Field(default=None)
     template_selector: TemplateSelector = Field(default_factory=TemplateSelector)  # 用factory避免空初始化
 
@@ -35,7 +35,7 @@ class QwenAIWrap(BaseChatModel):
                  api_key: Optional[str] = None, 
                  base_url: Optional[str] = None, 
                  temperature: Optional[float] = None,
-                 max_tokens: int = 2048,
+                 max_tokens: int = 1500,
                  max_retries: int = 5,
                  **kwargs) -> None:
         super().__init__()
@@ -44,14 +44,15 @@ class QwenAIWrap(BaseChatModel):
             model_settings = yaml.safe_load(f)
         default = model_settings['DEFAULT_MODEL']
 
-        # 2. 初始化ChatOpenAI（只转发必要参数，避免冗余）
+        # 2. 初始化ChatOpenAI（设置streaming=True启用流式输出）
         self.client = ChatOpenAI(
             api_key=api_key or default['api_key'],
             base_url=base_url or default['base_url'],
             model=model_name or default['llm_model'],
             temperature=temperature if temperature is not None else default['temperature'],
             max_retries=max_retries,
-            max_tokens=max_tokens,
+            max_tokens=max_tokens if max_tokens != 1500 else default.get('max_tokens', 1500),
+            streaming=True,  # 直接设置为True，启用流式输出
             **kwargs
         )
 

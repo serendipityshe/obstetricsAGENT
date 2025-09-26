@@ -1,8 +1,12 @@
 import sys
+import os
 from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+
+# 优化GPU显存分配，减少内存碎片
+os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
 
 root_dir = Path(__file__).parent.parent.parent.parent
 sys.path.append(str(root_dir))

@@ -53,7 +53,28 @@ class KnowledgeBase:
 
     def init_embeddings(self):
         cfg = self.load_config('./backend/config/model_settings.yaml')
-        model_kwargs = {"device": "cuda" if torch.cuda.is_available() else 'cpu'}
+
+        # 智能设备选择：优先尝试CUDA，如果显存不足则回退到CPU
+        device = "cpu"  # 默认使用CPU
+        if torch.cuda.is_available():
+            try:
+                # 检查GPU显存情况
+                gpu_memory = torch.cuda.get_device_properties(0).total_memory
+                gpu_memory_allocated = torch.cuda.memory_allocated(0)
+                gpu_memory_free = gpu_memory - gpu_memory_allocated
+
+                # 如果可用显存大于3GB，使用GPU
+                if gpu_memory_free > 3 * 1024**3:  # 3GB
+                    device = "cuda"
+                    print(f"使用GPU进行嵌入计算，可用显存: {gpu_memory_free / 1024**3:.1f}GB")
+                else:
+                    print(f"GPU显存不足({gpu_memory_free / 1024**3:.1f}GB < 3GB)，使用CPU进行嵌入计算")
+            except Exception as e:
+                print(f"GPU检测失败，使用CPU进行嵌入计算: {e}")
+        else:
+            print("CUDA不可用，使用CPU进行嵌入计算")
+
+        model_kwargs = {"device": device}
         encode_kwargs = {"normalize_embeddings": True}
         return EmbeddingModel(
             model_name=cfg['embed_model'],
@@ -79,9 +100,14 @@ class KnowledgeBase:
                     persist_directory=self.persist_directory,
                     embedding_function=self.init_embeddings()
                 )
+                print("成功加载已存在的向量存储")
                 return
             except Exception as e:
                 print(f"加载已存在的向量存储失败，重新构建: {e}")
+                # 清理GPU缓存，为重建腾出空间
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
+                    print("已清理GPU缓存")
                 rebuild = True
         
         # 如果没有数据源或数据源不存在，创建空的向量存储
@@ -103,12 +129,14 @@ class KnowledgeBase:
             documents = []
             for data_path in self.data_root:
                 if os.path.exists(data_path):
+                    print(f"开始加载文件夹：{data_path}")
                     loader = DocumentLoader(data_path)
                     documents.extend(loader.load())
         else:
+            print(f"开始加载文件夹：{self.data_root}")
             loader = DocumentLoader(self.data_root)
             documents = loader.load()
-        
+
         # 如果没有加载到文档，创建空的向量存储
         if not documents:
             print(f"未加载到任何文档，创建空的向量存储")
@@ -118,14 +146,51 @@ class KnowledgeBase:
                 embedding_function=embeddings
             )
             return
-            
-        documents_splits = DocumentParser(documents).split()
-        embeddings = self.init_embeddings()
-        self.vector_store = Chroma.from_documents(
-            documents_splits,
-            embeddings,
-            persist_directory=self.persist_directory
-        )
+
+        print(f"加载完成，共加载{len(documents)}个文档")
+
+        try:
+            documents_splits = DocumentParser(documents).split()
+            print(f"文档分割完成，共{len(documents_splits)}个片段")
+
+            embeddings = self.init_embeddings()
+            self.vector_store = Chroma.from_documents(
+                documents_splits,
+                embeddings,
+                persist_directory=self.persist_directory
+            )
+            print("向量存储构建完成")
+
+            # 构建完成后清理GPU缓存
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+                print("已清理GPU缓存")
+
+        except Exception as e:
+            print(f"向量存储构建失败: {e}")
+            # 如果GPU构建失败，尝试强制使用CPU重试
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+                print("尝试使用CPU重新构建向量存储...")
+                # 强制使用CPU的嵌入函数
+                model_kwargs = {"device": "cpu"}
+                encode_kwargs = {"normalize_embeddings": True}
+                cfg = self.load_config('./backend/config/model_settings.yaml')
+                cpu_embeddings = EmbeddingModel(
+                    model_name=cfg['embed_model'],
+                    model_kwargs=model_kwargs,
+                    encode_kwargs=encode_kwargs,
+                    cache_folder=cfg['cache_folder'],
+                ).embeddings
+
+                self.vector_store = Chroma.from_documents(
+                    documents_splits,
+                    cpu_embeddings,
+                    persist_directory=self.persist_directory
+                )
+                print("使用CPU成功构建向量存储")
+            else:
+                raise e
 
     def search(self, query : str, top_k : int = 5):
         '''查询知识库

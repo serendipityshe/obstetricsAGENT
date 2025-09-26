@@ -203,14 +203,12 @@ class MaternalService:
     def update_health_condition(
         self,
         maternal_id: int,
-        condition_id: int,
         **kwargs
     ) -> Optional[Dict[str, Any]]:
         """更新健康状况记录"""
         try:
             result = self.dataset_service.update_health_condition(
                 maternal_id=maternal_id,
-                condition_id=condition_id,
                 **kwargs
             )
             return self._health_condition_to_dict(result) if result else None

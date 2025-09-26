@@ -1,10 +1,12 @@
 # 模型名称
-DEFAULT_MODEL: 
+DEFAULT_MODEL:
   api_key: 'sk-324f8210e73a40a59ce9901efcf3eb5f'
-  llm_model: 'qwen-plus-latest'
+  llm_model: 'qwen-plus-2025-09-11'
   base_url: 'https://dashscope.aliyuncs.com/compatible-mode/v1'
   temperature: 0.0
   max_retries: 3
+  max_tokens: 1500
+  stream: true
 
 VL_MODEL:
   api_key: 'sk-324f8210e73a40a59ce9901efcf3eb5f'

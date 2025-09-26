@@ -178,18 +178,18 @@ def get_maternal_pregnancy_history(
 
 
 @router.put(
-    path="/{maternal_id}/pregnancy_history",
+    path="/{user_id}/pregnancy_history",
     status_code=status.HTTP_200_OK,
     description="更新孕妇孕产史（需认证）"
 )
 # @require_auth
 def update_maternal_pregnancy_history(
-    maternal_id: int = Path(..., description="孕妇唯一ID（正整数）"),
+    user_id: int = Path(..., description="孕妇唯一ID（正整数）"),
     update_data: PregnancyHistoryUpdate = Body(..., description="更新数据")
 ):
     try:
         result = maternal_service.update_pregnancy_history(
-            maternal_id=maternal_id,
+            maternal_id=user_id,
             **update_data.model_dump(exclude_unset=True)
         )
         
@@ -275,19 +275,19 @@ def get_maternal_health_condition(
 
 
 @router.put(
-    path="/{maternal_id}/health_condition",
+    path="/{user_id}/health_condition",
     status_code=status.HTTP_200_OK,
     description="更新孕妇健康状况（需认证）"
 )
 # @require_auth
 def update_maternal_health_condition(
-    maternal_id: int = Path(..., description="孕妇唯一ID（正整数）"),
+    user_id: int = Path(..., description="孕妇唯一ID（正整数）"),
     update_data: HealthConditionUpdate = Body(..., description="更新数据")
 ):
     """更新孕妇健康状况"""
     try:
         # 先检查健康状况记录是否存在
-        existing_conditions = maternal_service.get_health_conditions(maternal_id)
+        existing_conditions = maternal_service.get_health_conditions(user_id)
         
         if not existing_conditions:
             return JSONResponse(
@@ -295,17 +295,8 @@ def update_maternal_health_condition(
                 status_code=status.HTTP_404_NOT_FOUND
             )
         
-        # 使用第一条记录的ID进行更新
-        condition_id = existing_conditions[0].get('id')
-        if not condition_id:
-            return JSONResponse(
-                content={"status": "error", "message": "无效的健康状况ID"},
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
-        
         result = maternal_service.update_health_condition(
-            maternal_id=maternal_id,
-            condition_id=condition_id,
+            maternal_id=user_id,
             **update_data.model_dump(exclude_unset=True)
         )
         
@@ -328,14 +319,14 @@ def update_maternal_health_condition(
 
 
 @router.get(
-    path="/{maternal_id}/files/{file_id}/download",
+    path="/{user_id}/files/{file_id}/download",
     status_code=status.HTTP_200_OK,
     summary="下载孕妇医疗文件",
     description="根据文件ID下载指定的医疗文件"
 )
 # @require_auth  # 如需认证可取消注释
 def download_medical_file(
-    maternal_id: int = Path(..., description="孕妇唯一ID（正整数）"),
+    user_id: int = Path(..., description="孕妇唯一ID（正整数）"),
     file_id: int = Path(..., description="文件唯一ID（正整数）")
 ):
     """下载医疗文件"""
@@ -350,7 +341,7 @@ def download_medical_file(
             )
         
         # 2. 验证文件归属权（确保文件属于指定的孕妇）
-        if file_info["maternal_id"] != maternal_id:
+        if file_info["maternal_id"] != user_id:
             return JSONResponse(
                 content={"status": "error", "message": "无权访问该文件"},
                 status_code=status.HTTP_403_FORBIDDEN
@@ -404,18 +395,18 @@ def download_medical_file(
 # 7. 对话记录相关接口
 # ------------------------------
 @router.post(
-    path="/{maternal_id}/dialogues",
+    path="/{user_id}/dialogues",
     status_code=status.HTTP_201_CREATED,
     description="添加孕妇对话记录"
 )
 # @require_auth  # 如需认证可取消注释
 def create_dialogue(
-    maternal_id: int = Path(..., ge=1, description="孕妇唯一ID（正整数）"),
+    user_id: int = Path(..., ge=1, description="孕妇唯一ID（正整数）"),
     dialogue_data: DialogueCreate = Body(..., description="对话记录数据")  # 自动解析JSON请求体并验证
 ):
     try:
         result = maternal_service.create_dialogue(
-            maternal_id=maternal_id,
+            maternal_id=user_id,
             dialogue_content=dialogue_data.dialogue_content,
             vector_store_path=dialogue_data.vector_store_path
         )
