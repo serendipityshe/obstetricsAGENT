@@ -289,11 +289,30 @@ def rag_tool(
     try:
         # 处理空向量存储路径的情况
         if not vector_store_path or vector_store_path.strip() == "":
-            # 使用默认路径
-            retrieval = RAGRetrieval()
+            # 如果向量存储路径为空，直接返回空结果
+            print(f"向量存储路径为空，返回空检索结果")
+            return {"knowledge_fragments": []}
+
+        # 判断是专家知识库还是孕妇知识库，使用不同的数据源
+        if "vector_store_json" in vector_store_path:
+            # 专家知识库：使用医学文档作为数据源
+            retrieval = RAGRetrieval(persist_directory=vector_store_path, data_root="data/raw_manuals")
         else:
-            retrieval = RAGRetrieval(persist_directory=vector_store_path)
-            
+            # 孕妇知识库：从向量存储路径推断对话记录路径
+            # 例如：/root/project2/data/vector_store/chat_xxx_maternal_2 -> dataset/pregnant_mother/2/chat
+            if "maternal_" in vector_store_path:
+                try:
+                    # 提取maternal_id
+                    maternal_id = vector_store_path.split("maternal_")[-1]
+                    chat_data_root = f"dataset/pregnant_mother/{maternal_id}/chat"
+                    retrieval = RAGRetrieval(persist_directory=vector_store_path, data_root=chat_data_root)
+                except:
+                    # 如果解析失败，使用空数据源避免重建专家知识库
+                    retrieval = RAGRetrieval(persist_directory=vector_store_path, data_root="")
+            else:
+                # 其他情况使用空数据源
+                retrieval = RAGRetrieval(persist_directory=vector_store_path, data_root="")
+
         docs = retrieval.retrieve(user_query, top_k=top_k)
         knowledge_fragments = [{
             "source": doc.metadata.get('source', 'unknown'),

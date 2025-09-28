@@ -23,6 +23,36 @@ from .parser import DocumentParser
 from .embedder import EmbeddingModel
 from .vector_store import ChromaVectorStore
 
+# 添加元数据过滤工具
+try:
+    from langchain_community.vectorstores.utils import filter_complex_metadata
+except ImportError:
+    # 如果导入失败，提供一个简单的替代实现
+    def filter_complex_metadata(docs):
+        """简单的元数据过滤函数"""
+        filtered_docs = []
+        for doc in docs:
+            # 过滤元数据，只保留基本类型
+            filtered_metadata = {}
+            for key, value in doc.metadata.items():
+                if isinstance(value, (str, int, float, bool)) or value is None:
+                    filtered_metadata[key] = value
+                elif isinstance(value, list):
+                    # 将列表转换为字符串
+                    filtered_metadata[key] = ', '.join(str(item) for item in value)
+                else:
+                    # 其他复杂类型转换为字符串
+                    filtered_metadata[key] = str(value)
+
+            # 创建新的文档对象
+            new_doc = documents.Document(
+                page_content=doc.page_content,
+                metadata=filtered_metadata
+            )
+            filtered_docs.append(new_doc)
+
+        return filtered_docs
+
 class KnowledgeBase:
     '''知识库协调中枢  
     协调loader-parse-embedder-vector_store工作流
@@ -101,6 +131,7 @@ class KnowledgeBase:
                     embedding_function=self.init_embeddings()
                 )
                 print("成功加载已存在的向量存储")
+                # 确保真正退出，避免继续执行重建逻辑
                 return
             except Exception as e:
                 print(f"加载已存在的向量存储失败，重新构建: {e}")
@@ -109,7 +140,14 @@ class KnowledgeBase:
                     torch.cuda.empty_cache()
                     print("已清理GPU缓存")
                 rebuild = True
-        
+
+        # 只有在需要重建时才继续执行下面的逻辑
+        # 如果已经成功加载了向量存储，就不需要重建了
+        if not rebuild and hasattr(self, 'vector_store') and self.vector_store is not None:
+            return
+
+        # 如果需要重建或者向量存储不存在，才继续执行重建逻辑
+
         # 如果没有数据源或数据源不存在，创建空的向量存储
         if not self.data_root or (
             isinstance(self.data_root, str) and not os.path.exists(self.data_root)
@@ -123,7 +161,7 @@ class KnowledgeBase:
                 embedding_function=embeddings
             )
             return
-        
+
         # 如果数据源是列表，逐个处理
         if isinstance(self.data_root, list):
             documents = []
@@ -153,9 +191,13 @@ class KnowledgeBase:
             documents_splits = DocumentParser(documents).split()
             print(f"文档分割完成，共{len(documents_splits)}个片段")
 
+            # 过滤复杂的元数据
+            filtered_documents = filter_complex_metadata(documents_splits)
+            print(f"元数据过滤完成，共{len(filtered_documents)}个片段")
+
             embeddings = self.init_embeddings()
             self.vector_store = Chroma.from_documents(
-                documents_splits,
+                filtered_documents,
                 embeddings,
                 persist_directory=self.persist_directory
             )
@@ -183,12 +225,25 @@ class KnowledgeBase:
                     cache_folder=cfg['cache_folder'],
                 ).embeddings
 
-                self.vector_store = Chroma.from_documents(
-                    documents_splits,
-                    cpu_embeddings,
-                    persist_directory=self.persist_directory
-                )
-                print("使用CPU成功构建向量存储")
+                # CPU重试时也需要过滤元数据
+                if 'documents_splits' in locals():
+                    filtered_documents = filter_complex_metadata(documents_splits)
+                    self.vector_store = Chroma.from_documents(
+                        filtered_documents,
+                        cpu_embeddings,
+                        persist_directory=self.persist_directory
+                    )
+                    print("使用CPU成功构建向量存储")
+                else:
+                    # 如果documents_splits不存在，重新解析
+                    documents_splits = DocumentParser(documents).split()
+                    filtered_documents = filter_complex_metadata(documents_splits)
+                    self.vector_store = Chroma.from_documents(
+                        filtered_documents,
+                        cpu_embeddings,
+                        persist_directory=self.persist_directory
+                    )
+                    print("使用CPU重新解析并构建向量存储")
             else:
                 raise e
 
