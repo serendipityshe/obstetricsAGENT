@@ -1,622 +1,1143 @@
 nohup: 忽略输入
-2025-09-26 13:04:57,329 INFO sqlalchemy.engine.Engine select pg_catalog.version()
-2025-09-26 13:04:57,329 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 13:04:57,331 INFO sqlalchemy.engine.Engine select current_schema()
-2025-09-26 13:04:57,331 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 13:04:57,332 INFO sqlalchemy.engine.Engine show standard_conforming_strings
-2025-09-26 13:04:57,332 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 13:04:57,334 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 13:04:57,339 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:14,697 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-29 11:10:14,699 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-29 11:10:14,702 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-29 11:10:14,703 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-29 11:10:14,705 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-29 11:10:14,705 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-29 11:10:14,708 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-29 11:10:14,718 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:04:57,339 INFO sqlalchemy.engine.Engine [generated in 0.00031s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:04:57,342 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:14,719 INFO sqlalchemy.engine.Engine [generated in 0.00058s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:14,728 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:04:57,342 INFO sqlalchemy.engine.Engine [cached since 0.003023s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:04:57,343 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:14,728 INFO sqlalchemy.engine.Engine [cached since 0.01011s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:14,729 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:04:57,343 INFO sqlalchemy.engine.Engine [cached since 0.004004s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:04:57,344 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:14,729 INFO sqlalchemy.engine.Engine [cached since 0.01134s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:14,730 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:04:57,344 INFO sqlalchemy.engine.Engine [cached since 0.004964s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:04:57,345 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:14,730 INFO sqlalchemy.engine.Engine [cached since 0.01242s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:14,731 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:04:57,345 INFO sqlalchemy.engine.Engine [cached since 0.006021s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:04:57,346 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:14,731 INFO sqlalchemy.engine.Engine [cached since 0.01341s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:14,732 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:04:57,346 INFO sqlalchemy.engine.Engine [cached since 0.007075s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:04:57,347 INFO sqlalchemy.engine.Engine COMMIT
-2025-09-26 13:04:57,508 INFO sqlalchemy.engine.Engine select pg_catalog.version()
-2025-09-26 13:04:57,508 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 13:04:57,510 INFO sqlalchemy.engine.Engine select current_schema()
-2025-09-26 13:04:57,510 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 13:04:57,511 INFO sqlalchemy.engine.Engine show standard_conforming_strings
-2025-09-26 13:04:57,511 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 13:04:57,512 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 13:04:57,515 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:14,732 INFO sqlalchemy.engine.Engine [cached since 0.01444s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:14,733 INFO sqlalchemy.engine.Engine COMMIT
+2025-09-29 11:10:14,876 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-29 11:10:14,876 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-29 11:10:14,877 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-29 11:10:14,877 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-29 11:10:14,878 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-29 11:10:14,878 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-29 11:10:14,879 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-29 11:10:14,881 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:04:57,515 INFO sqlalchemy.engine.Engine [generated in 0.00028s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:04:57,518 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:14,882 INFO sqlalchemy.engine.Engine [generated in 0.00031s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:14,884 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:04:57,518 INFO sqlalchemy.engine.Engine [cached since 0.002793s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:04:57,519 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:14,884 INFO sqlalchemy.engine.Engine [cached since 0.002577s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:14,885 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:04:57,519 INFO sqlalchemy.engine.Engine [cached since 0.003806s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:04:57,520 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:14,885 INFO sqlalchemy.engine.Engine [cached since 0.003573s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:14,886 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:04:57,520 INFO sqlalchemy.engine.Engine [cached since 0.004767s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:04:57,521 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:14,886 INFO sqlalchemy.engine.Engine [cached since 0.004437s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:14,887 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:04:57,521 INFO sqlalchemy.engine.Engine [cached since 0.005756s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:04:57,522 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:14,887 INFO sqlalchemy.engine.Engine [cached since 0.005399s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:14,887 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:04:57,522 INFO sqlalchemy.engine.Engine [cached since 0.006695s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:04:57,523 INFO sqlalchemy.engine.Engine COMMIT
-2025-09-26 13:05:09,346 INFO sqlalchemy.engine.Engine select pg_catalog.version()
-2025-09-26 13:05:09,346 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
-2025-09-26 13:05:09,346 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 13:05:09,346 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
-2025-09-26 13:05:09,347 INFO sqlalchemy.engine.Engine select current_schema()
-2025-09-26 13:05:09,347 - sqlalchemy.engine.Engine - INFO - select current_schema()
-2025-09-26 13:05:09,348 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 13:05:09,348 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
-2025-09-26 13:05:09,349 INFO sqlalchemy.engine.Engine show standard_conforming_strings
-2025-09-26 13:05:09,349 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
-2025-09-26 13:05:09,349 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 13:05:09,349 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
-2025-09-26 13:05:09,350 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 13:05:09,350 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 13:05:09,352 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:14,888 INFO sqlalchemy.engine.Engine [cached since 0.006275s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:14,888 INFO sqlalchemy.engine.Engine COMMIT
+2025-09-29 11:10:26,251 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-29 11:10:26,251 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-09-29 11:10:26,251 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-29 11:10:26,251 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-09-29 11:10:26,254 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-29 11:10:26,254 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-09-29 11:10:26,254 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-29 11:10:26,254 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-09-29 11:10:26,256 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-29 11:10:26,256 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-09-29 11:10:26,256 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-29 11:10:26,256 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-09-29 11:10:26,257 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-29 11:10:26,257 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-09-29 11:10:26,259 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:05:09,352 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:26,259 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:05:09,352 INFO sqlalchemy.engine.Engine [generated in 0.00029s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:05:09,352 - sqlalchemy.engine.Engine - INFO - [generated in 0.00029s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:05:09,355 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:26,259 INFO sqlalchemy.engine.Engine [generated in 0.00028s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:26,259 - sqlalchemy.engine.Engine - INFO - [generated in 0.00028s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:26,262 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:05:09,355 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:26,262 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:05:09,355 INFO sqlalchemy.engine.Engine [cached since 0.002778s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:05:09,355 - sqlalchemy.engine.Engine - INFO - [cached since 0.002778s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:05:09,356 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:26,263 INFO sqlalchemy.engine.Engine [cached since 0.003426s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:26,263 - sqlalchemy.engine.Engine - INFO - [cached since 0.003426s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:26,264 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:05:09,356 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:26,264 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:05:09,356 INFO sqlalchemy.engine.Engine [cached since 0.004022s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:05:09,356 - sqlalchemy.engine.Engine - INFO - [cached since 0.004022s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:05:09,357 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:26,264 INFO sqlalchemy.engine.Engine [cached since 0.004596s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:26,264 - sqlalchemy.engine.Engine - INFO - [cached since 0.004596s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:26,265 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:05:09,357 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:26,265 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:05:09,357 INFO sqlalchemy.engine.Engine [cached since 0.005056s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:05:09,357 - sqlalchemy.engine.Engine - INFO - [cached since 0.005056s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:05:09,358 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:26,265 INFO sqlalchemy.engine.Engine [cached since 0.005694s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:26,265 - sqlalchemy.engine.Engine - INFO - [cached since 0.005694s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:26,266 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:05:09,358 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:26,266 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:05:09,358 INFO sqlalchemy.engine.Engine [cached since 0.00607s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:05:09,358 - sqlalchemy.engine.Engine - INFO - [cached since 0.00607s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:05:09,359 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:26,266 INFO sqlalchemy.engine.Engine [cached since 0.006845s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:26,266 - sqlalchemy.engine.Engine - INFO - [cached since 0.006845s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:26,267 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:05:09,359 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+2025-09-29 11:10:26,267 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
 FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
 WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 13:05:09,359 INFO sqlalchemy.engine.Engine [cached since 0.007124s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:05:09,359 - sqlalchemy.engine.Engine - INFO - [cached since 0.007124s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 13:05:09,360 INFO sqlalchemy.engine.Engine COMMIT
-2025-09-26 13:05:09,360 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-09-29 11:10:26,267 INFO sqlalchemy.engine.Engine [cached since 0.008053s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:26,267 - sqlalchemy.engine.Engine - INFO - [cached since 0.008053s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:26,268 INFO sqlalchemy.engine.Engine COMMIT
+2025-09-29 11:10:26,268 - sqlalchemy.engine.Engine - INFO - COMMIT
 WARNING:  Current configuration will not reload as not all conditions are met, please refer to documentation.
-INFO:     Started server process [210610]
+INFO:     Started server process [321791]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
-INFO:     127.0.0.1:57060 - "GET /docs HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57060 - "GET /openapi.json HTTP/1.1" 200 OK
-2025-09-26 13:06:54,765 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 13:06:54,765 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 13:06:54,769 INFO sqlalchemy.engine.Engine SELECT maternal_health_condition.id AS maternal_health_condition_id, maternal_health_condition.maternal_id AS maternal_health_condition_maternal_id, maternal_health_condition.has_hypertension AS maternal_health_condition_has_hypertension, maternal_health_condition.has_diabetes AS maternal_health_condition_has_diabetes, maternal_health_condition.has_thyroid_disease AS maternal_health_condition_has_thyroid_disease, maternal_health_condition.has_heart_disease AS maternal_health_condition_has_heart_disease, maternal_health_condition.has_liver_disease AS maternal_health_condition_has_liver_disease, maternal_health_condition.allergy_history AS maternal_health_condition_allergy_history 
-FROM maternal_health_condition 
-WHERE maternal_health_condition.maternal_id = %(maternal_id_1)s
-2025-09-26 13:06:54,769 - sqlalchemy.engine.Engine - INFO - SELECT maternal_health_condition.id AS maternal_health_condition_id, maternal_health_condition.maternal_id AS maternal_health_condition_maternal_id, maternal_health_condition.has_hypertension AS maternal_health_condition_has_hypertension, maternal_health_condition.has_diabetes AS maternal_health_condition_has_diabetes, maternal_health_condition.has_thyroid_disease AS maternal_health_condition_has_thyroid_disease, maternal_health_condition.has_heart_disease AS maternal_health_condition_has_heart_disease, maternal_health_condition.has_liver_disease AS maternal_health_condition_has_liver_disease, maternal_health_condition.allergy_history AS maternal_health_condition_allergy_history 
-FROM maternal_health_condition 
-WHERE maternal_health_condition.maternal_id = %(maternal_id_1)s
-2025-09-26 13:06:54,770 INFO sqlalchemy.engine.Engine [generated in 0.00053s] {'maternal_id_1': 2}
-2025-09-26 13:06:54,770 - sqlalchemy.engine.Engine - INFO - [generated in 0.00053s] {'maternal_id_1': 2}
-2025-09-26 13:06:54,777 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 13:06:54,777 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-2025-09-26 13:06:54,781 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 13:06:54,781 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 13:06:54,785 INFO sqlalchemy.engine.Engine SELECT maternal_health_condition.id AS maternal_health_condition_id, maternal_health_condition.maternal_id AS maternal_health_condition_maternal_id, maternal_health_condition.has_hypertension AS maternal_health_condition_has_hypertension, maternal_health_condition.has_diabetes AS maternal_health_condition_has_diabetes, maternal_health_condition.has_thyroid_disease AS maternal_health_condition_has_thyroid_disease, maternal_health_condition.has_heart_disease AS maternal_health_condition_has_heart_disease, maternal_health_condition.has_liver_disease AS maternal_health_condition_has_liver_disease, maternal_health_condition.allergy_history AS maternal_health_condition_allergy_history 
-FROM maternal_health_condition 
-WHERE maternal_health_condition.maternal_id = %(maternal_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 13:06:54,785 - sqlalchemy.engine.Engine - INFO - SELECT maternal_health_condition.id AS maternal_health_condition_id, maternal_health_condition.maternal_id AS maternal_health_condition_maternal_id, maternal_health_condition.has_hypertension AS maternal_health_condition_has_hypertension, maternal_health_condition.has_diabetes AS maternal_health_condition_has_diabetes, maternal_health_condition.has_thyroid_disease AS maternal_health_condition_has_thyroid_disease, maternal_health_condition.has_heart_disease AS maternal_health_condition_has_heart_disease, maternal_health_condition.has_liver_disease AS maternal_health_condition_has_liver_disease, maternal_health_condition.allergy_history AS maternal_health_condition_allergy_history 
-FROM maternal_health_condition 
-WHERE maternal_health_condition.maternal_id = %(maternal_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 13:06:54,786 INFO sqlalchemy.engine.Engine [generated in 0.00078s] {'maternal_id_1': 2, 'param_1': 1}
-2025-09-26 13:06:54,786 - sqlalchemy.engine.Engine - INFO - [generated in 0.00078s] {'maternal_id_1': 2, 'param_1': 1}
-2025-09-26 13:06:54,791 INFO sqlalchemy.engine.Engine UPDATE maternal_health_condition SET has_hypertension=%(has_hypertension)s WHERE maternal_health_condition.id = %(maternal_health_condition_id)s
-2025-09-26 13:06:54,791 - sqlalchemy.engine.Engine - INFO - UPDATE maternal_health_condition SET has_hypertension=%(has_hypertension)s WHERE maternal_health_condition.id = %(maternal_health_condition_id)s
-2025-09-26 13:06:54,791 INFO sqlalchemy.engine.Engine [generated in 0.00033s] {'has_hypertension': True, 'maternal_health_condition_id': 2}
-2025-09-26 13:06:54,791 - sqlalchemy.engine.Engine - INFO - [generated in 0.00033s] {'has_hypertension': True, 'maternal_health_condition_id': 2}
-2025-09-26 13:06:54,796 INFO sqlalchemy.engine.Engine COMMIT
-2025-09-26 13:06:54,796 - sqlalchemy.engine.Engine - INFO - COMMIT
-2025-09-26 13:06:54,803 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 13:06:54,803 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 13:06:54,805 INFO sqlalchemy.engine.Engine SELECT maternal_health_condition.id, maternal_health_condition.maternal_id, maternal_health_condition.has_hypertension, maternal_health_condition.has_diabetes, maternal_health_condition.has_thyroid_disease, maternal_health_condition.has_heart_disease, maternal_health_condition.has_liver_disease, maternal_health_condition.allergy_history 
-FROM maternal_health_condition 
-WHERE maternal_health_condition.id = %(pk_1)s
-2025-09-26 13:06:54,805 - sqlalchemy.engine.Engine - INFO - SELECT maternal_health_condition.id, maternal_health_condition.maternal_id, maternal_health_condition.has_hypertension, maternal_health_condition.has_diabetes, maternal_health_condition.has_thyroid_disease, maternal_health_condition.has_heart_disease, maternal_health_condition.has_liver_disease, maternal_health_condition.allergy_history 
-FROM maternal_health_condition 
-WHERE maternal_health_condition.id = %(pk_1)s
-2025-09-26 13:06:54,805 INFO sqlalchemy.engine.Engine [generated in 0.00033s] {'pk_1': 2}
-2025-09-26 13:06:54,805 - sqlalchemy.engine.Engine - INFO - [generated in 0.00033s] {'pk_1': 2}
-2025-09-26 13:06:54,807 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 13:06:54,807 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-INFO:     47.99.162.39:0 - "PUT /api/v2/maternal/2/health_condition HTTP/1.0" 200 OK
-2025-09-26 14:07:19,390 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:07:19,390 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:07:19,397 INFO sqlalchemy.engine.Engine SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:19,397 - sqlalchemy.engine.Engine - INFO - SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:19,398 INFO sqlalchemy.engine.Engine [generated in 0.00078s] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:19,398 - sqlalchemy.engine.Engine - INFO - [generated in 0.00078s] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:19,404 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:07:19,404 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-INFO:     188.253.123.158:0 - "GET /api/v2/maternal/2/get_pregnantMother_info HTTP/1.0" 200 OK
-2025-09-26 14:07:21,226 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:07:21,226 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:07:21,228 INFO sqlalchemy.engine.Engine SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:21,228 - sqlalchemy.engine.Engine - INFO - SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:21,229 INFO sqlalchemy.engine.Engine [cached since 1.832s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:21,229 - sqlalchemy.engine.Engine - INFO - [cached since 1.832s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:21,234 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:07:21,234 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-INFO:     188.253.123.158:0 - "GET /api/v2/maternal/2/get_pregnantMother_info HTTP/1.0" 200 OK
-2025-09-26 14:07:21,789 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:07:21,789 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:07:21,790 INFO sqlalchemy.engine.Engine SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:21,790 - sqlalchemy.engine.Engine - INFO - SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:21,790 INFO sqlalchemy.engine.Engine [cached since 2.393s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:21,790 - sqlalchemy.engine.Engine - INFO - [cached since 2.393s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:21,792 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:07:21,792 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-INFO:     188.253.123.158:0 - "GET /api/v2/maternal/2/get_pregnantMother_info HTTP/1.0" 200 OK
-FastAPI收到的请求数据: 11111111111
-2025-09-26 14:07:24,229 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:07:24,229 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:07:24,230 INFO sqlalchemy.engine.Engine SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:24,230 - sqlalchemy.engine.Engine - INFO - SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:24,230 INFO sqlalchemy.engine.Engine [cached since 4.833s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:24,230 - sqlalchemy.engine.Engine - INFO - [cached since 4.833s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:24,234 INFO sqlalchemy.engine.Engine COMMIT
-2025-09-26 14:07:24,234 - sqlalchemy.engine.Engine - INFO - COMMIT
-2025-09-26 14:07:24,235 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:07:24,235 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:07:24,238 INFO sqlalchemy.engine.Engine SELECT maternal_info.id, maternal_info.user_id, maternal_info.id_card, maternal_info.phone, maternal_info.current_gestational_week, maternal_info.expected_delivery_date, maternal_info.maternal_age 
-FROM maternal_info 
-WHERE maternal_info.id = %(pk_1)s
-2025-09-26 14:07:24,238 - sqlalchemy.engine.Engine - INFO - SELECT maternal_info.id, maternal_info.user_id, maternal_info.id_card, maternal_info.phone, maternal_info.current_gestational_week, maternal_info.expected_delivery_date, maternal_info.maternal_age 
-FROM maternal_info 
-WHERE maternal_info.id = %(pk_1)s
-2025-09-26 14:07:24,238 INFO sqlalchemy.engine.Engine [generated in 0.00048s] {'pk_1': 2}
-2025-09-26 14:07:24,238 - sqlalchemy.engine.Engine - INFO - [generated in 0.00048s] {'pk_1': 2}
-2025-09-26 14:07:24,243 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:07:24,243 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-model_dump结果： {'id': 2, 'user_id': 2, 'id_card': '111111111111111111', 'phone': '11111111111', 'current_gestational_week': None, 'expected_delivery_date': '2025-12-26', 'maternal_age': None}
-INFO:     188.253.123.158:0 - "PUT /api/v2/maternal/2/info HTTP/1.0" 200 OK
-2025-09-26 14:07:24,583 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:07:24,583 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:07:24,583 INFO sqlalchemy.engine.Engine SELECT maternal_health_condition.id AS maternal_health_condition_id, maternal_health_condition.maternal_id AS maternal_health_condition_maternal_id, maternal_health_condition.has_hypertension AS maternal_health_condition_has_hypertension, maternal_health_condition.has_diabetes AS maternal_health_condition_has_diabetes, maternal_health_condition.has_thyroid_disease AS maternal_health_condition_has_thyroid_disease, maternal_health_condition.has_heart_disease AS maternal_health_condition_has_heart_disease, maternal_health_condition.has_liver_disease AS maternal_health_condition_has_liver_disease, maternal_health_condition.allergy_history AS maternal_health_condition_allergy_history 
-FROM maternal_health_condition 
-WHERE maternal_health_condition.maternal_id = %(maternal_id_1)s
-2025-09-26 14:07:24,583 - sqlalchemy.engine.Engine - INFO - SELECT maternal_health_condition.id AS maternal_health_condition_id, maternal_health_condition.maternal_id AS maternal_health_condition_maternal_id, maternal_health_condition.has_hypertension AS maternal_health_condition_has_hypertension, maternal_health_condition.has_diabetes AS maternal_health_condition_has_diabetes, maternal_health_condition.has_thyroid_disease AS maternal_health_condition_has_thyroid_disease, maternal_health_condition.has_heart_disease AS maternal_health_condition_has_heart_disease, maternal_health_condition.has_liver_disease AS maternal_health_condition_has_liver_disease, maternal_health_condition.allergy_history AS maternal_health_condition_allergy_history 
-FROM maternal_health_condition 
-WHERE maternal_health_condition.maternal_id = %(maternal_id_1)s
-2025-09-26 14:07:24,584 INFO sqlalchemy.engine.Engine [cached since 3630s ago] {'maternal_id_1': 2}
-2025-09-26 14:07:24,584 - sqlalchemy.engine.Engine - INFO - [cached since 3630s ago] {'maternal_id_1': 2}
-2025-09-26 14:07:24,586 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:07:24,586 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-2025-09-26 14:07:24,587 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:07:24,587 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:07:24,587 INFO sqlalchemy.engine.Engine SELECT maternal_health_condition.id AS maternal_health_condition_id, maternal_health_condition.maternal_id AS maternal_health_condition_maternal_id, maternal_health_condition.has_hypertension AS maternal_health_condition_has_hypertension, maternal_health_condition.has_diabetes AS maternal_health_condition_has_diabetes, maternal_health_condition.has_thyroid_disease AS maternal_health_condition_has_thyroid_disease, maternal_health_condition.has_heart_disease AS maternal_health_condition_has_heart_disease, maternal_health_condition.has_liver_disease AS maternal_health_condition_has_liver_disease, maternal_health_condition.allergy_history AS maternal_health_condition_allergy_history 
-FROM maternal_health_condition 
-WHERE maternal_health_condition.maternal_id = %(maternal_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:24,587 - sqlalchemy.engine.Engine - INFO - SELECT maternal_health_condition.id AS maternal_health_condition_id, maternal_health_condition.maternal_id AS maternal_health_condition_maternal_id, maternal_health_condition.has_hypertension AS maternal_health_condition_has_hypertension, maternal_health_condition.has_diabetes AS maternal_health_condition_has_diabetes, maternal_health_condition.has_thyroid_disease AS maternal_health_condition_has_thyroid_disease, maternal_health_condition.has_heart_disease AS maternal_health_condition_has_heart_disease, maternal_health_condition.has_liver_disease AS maternal_health_condition_has_liver_disease, maternal_health_condition.allergy_history AS maternal_health_condition_allergy_history 
-FROM maternal_health_condition 
-WHERE maternal_health_condition.maternal_id = %(maternal_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:24,587 INFO sqlalchemy.engine.Engine [cached since 3630s ago] {'maternal_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:24,587 - sqlalchemy.engine.Engine - INFO - [cached since 3630s ago] {'maternal_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:24,590 INFO sqlalchemy.engine.Engine UPDATE maternal_health_condition SET allergy_history=%(allergy_history)s WHERE maternal_health_condition.id = %(maternal_health_condition_id)s
-2025-09-26 14:07:24,590 - sqlalchemy.engine.Engine - INFO - UPDATE maternal_health_condition SET allergy_history=%(allergy_history)s WHERE maternal_health_condition.id = %(maternal_health_condition_id)s
-2025-09-26 14:07:24,590 INFO sqlalchemy.engine.Engine [generated in 0.00022s] {'allergy_history': '无', 'maternal_health_condition_id': 2}
-2025-09-26 14:07:24,590 - sqlalchemy.engine.Engine - INFO - [generated in 0.00022s] {'allergy_history': '无', 'maternal_health_condition_id': 2}
-2025-09-26 14:07:24,592 INFO sqlalchemy.engine.Engine COMMIT
-2025-09-26 14:07:24,592 - sqlalchemy.engine.Engine - INFO - COMMIT
-2025-09-26 14:07:24,597 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:07:24,597 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:07:24,598 INFO sqlalchemy.engine.Engine SELECT maternal_health_condition.id, maternal_health_condition.maternal_id, maternal_health_condition.has_hypertension, maternal_health_condition.has_diabetes, maternal_health_condition.has_thyroid_disease, maternal_health_condition.has_heart_disease, maternal_health_condition.has_liver_disease, maternal_health_condition.allergy_history 
-FROM maternal_health_condition 
-WHERE maternal_health_condition.id = %(pk_1)s
-2025-09-26 14:07:24,598 - sqlalchemy.engine.Engine - INFO - SELECT maternal_health_condition.id, maternal_health_condition.maternal_id, maternal_health_condition.has_hypertension, maternal_health_condition.has_diabetes, maternal_health_condition.has_thyroid_disease, maternal_health_condition.has_heart_disease, maternal_health_condition.has_liver_disease, maternal_health_condition.allergy_history 
-FROM maternal_health_condition 
-WHERE maternal_health_condition.id = %(pk_1)s
-2025-09-26 14:07:24,598 INFO sqlalchemy.engine.Engine [cached since 3630s ago] {'pk_1': 2}
-2025-09-26 14:07:24,598 - sqlalchemy.engine.Engine - INFO - [cached since 3630s ago] {'pk_1': 2}
-2025-09-26 14:07:24,601 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:07:24,601 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-INFO:     188.253.123.158:0 - "PUT /api/v2/maternal/2/health_condition HTTP/1.0" 200 OK
-2025-09-26 14:07:27,443 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:07:27,443 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:07:27,445 INFO sqlalchemy.engine.Engine SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:27,445 - sqlalchemy.engine.Engine - INFO - SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:27,445 INFO sqlalchemy.engine.Engine [cached since 8.048s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:27,445 - sqlalchemy.engine.Engine - INFO - [cached since 8.048s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:27,450 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:07:27,450 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-INFO:     188.253.123.158:0 - "GET /api/v2/maternal/2/get_pregnantMother_info HTTP/1.0" 200 OK
-2025-09-26 14:07:28,625 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:07:28,625 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:07:28,626 INFO sqlalchemy.engine.Engine SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:28,626 - sqlalchemy.engine.Engine - INFO - SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:28,626 INFO sqlalchemy.engine.Engine [cached since 9.229s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:28,626 - sqlalchemy.engine.Engine - INFO - [cached since 9.229s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:28,628 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:07:28,628 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-INFO:     188.253.123.158:0 - "GET /api/v2/maternal/2/get_pregnantMother_info HTTP/1.0" 200 OK
-2025-09-26 14:07:29,131 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:07:29,131 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:07:29,131 INFO sqlalchemy.engine.Engine SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:29,131 - sqlalchemy.engine.Engine - INFO - SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:07:29,132 INFO sqlalchemy.engine.Engine [cached since 9.735s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:29,132 - sqlalchemy.engine.Engine - INFO - [cached since 9.735s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:07:29,133 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:07:29,133 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-INFO:     188.253.123.158:0 - "GET /api/v2/maternal/2/get_pregnantMother_info HTTP/1.0" 200 OK
-2025-09-26 14:15:25,922 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:15:25,922 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:15:25,930 INFO sqlalchemy.engine.Engine SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:15:25,930 - sqlalchemy.engine.Engine - INFO - SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:15:25,931 INFO sqlalchemy.engine.Engine [cached since 486.5s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:15:25,931 - sqlalchemy.engine.Engine - INFO - [cached since 486.5s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:15:25,940 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:15:25,940 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-INFO:     188.253.123.158:0 - "GET /api/v2/maternal/2/get_pregnantMother_info HTTP/1.0" 200 OK
-2025-09-26 14:15:30,042 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:15:30,042 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:15:30,052 INFO sqlalchemy.engine.Engine SELECT maternal_dialogue.id AS maternal_dialogue_id, maternal_dialogue.maternal_id AS maternal_dialogue_maternal_id, maternal_dialogue.chat_id AS maternal_dialogue_chat_id, maternal_dialogue.dialogue_content AS maternal_dialogue_dialogue_content, maternal_dialogue.vector_store_path AS maternal_dialogue_vector_store_path, maternal_dialogue.created_at AS maternal_dialogue_created_at 
+2025-09-29 11:10:31,279 - pregnant-workflow-api - INFO - 请求队列处理器已启动
+2025-09-29 11:10:31,279 - pregnant-workflow-api - INFO - 开始流式工作流：maternal_id=3, chat_id=chat_3_pregnant_mother_967c973a-2e0b-4744-b7df-75b9d0d52634, use_queue=False
+INFO:     120.26.141.97:0 - "POST /api/v2/chat/qa HTTP/1.0" 200 OK
+2025-09-29 11:10:31,284 - pregnant-workflow-api - INFO - [req_1ac0c925] 开始处理请求 - 当前活跃请求: 1
+2025-09-29 11:10:31,285 - pregnant-workflow-api - INFO - [req_1ac0c925] 等待获取信号量 - 可用数量: 20
+2025-09-29 11:10:31,285 - pregnant-workflow-api - INFO - [req_1ac0c925] 已获取信号量，开始处理
+2025-09-29 11:10:31,285 - pregnant-workflow-api - INFO - [req_1ac0c925] 发送开始消息 - 输入长度: 7
+2025-09-29 11:10:31,386 - pregnant-workflow-api - INFO - [req_1ac0c925] 工作流初始化 - 当前并发: 1, 可用信号量: 19, 队列大小: 0
+2025-09-29 11:10:31,888 - pregnant-workflow-api - INFO - [req_1ac0c925] 开始执行工作流 - maternal_id: 3, chat_id: chat_3_pregnant_mother_967c973a-2e0b-4744-b7df-75b9d0d52634
+2025-09-29 11:10:31,903 - pregnant-workflow-api - INFO - [req_1ac0c925] 开始流式工作流 - 开始时间: 1759115431.9032757
+2025-09-29 11:10:31,906 - backend.workflow.test - INFO - 启动检索式记忆智能体，基于当前输入检索相关历史
+向量存储路径为空，返回空检索结果
+2025-09-29 11:10:32,142 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-09-29 11:10:32,142 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-09-29 11:10:32,143 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-29 11:10:32,143 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-09-29 11:10:32,144 INFO sqlalchemy.engine.Engine select current_schema()
+2025-09-29 11:10:32,144 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-09-29 11:10:32,144 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-29 11:10:32,144 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-09-29 11:10:32,145 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-09-29 11:10:32,145 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-09-29 11:10:32,145 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-09-29 11:10:32,145 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-09-29 11:10:32,146 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-29 11:10:32,146 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-09-29 11:10:32,148 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-29 11:10:32,148 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-29 11:10:32,148 INFO sqlalchemy.engine.Engine [generated in 0.00027s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:32,148 - sqlalchemy.engine.Engine - INFO - [generated in 0.00027s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:32,151 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-29 11:10:32,151 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-29 11:10:32,151 INFO sqlalchemy.engine.Engine [cached since 0.002968s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:32,151 - sqlalchemy.engine.Engine - INFO - [cached since 0.002968s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:32,152 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-29 11:10:32,152 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-29 11:10:32,152 INFO sqlalchemy.engine.Engine [cached since 0.004071s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:32,152 - sqlalchemy.engine.Engine - INFO - [cached since 0.004071s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:32,153 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-29 11:10:32,153 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-29 11:10:32,153 INFO sqlalchemy.engine.Engine [cached since 0.005043s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:32,153 - sqlalchemy.engine.Engine - INFO - [cached since 0.005043s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:32,154 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-29 11:10:32,154 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-29 11:10:32,154 INFO sqlalchemy.engine.Engine [cached since 0.006015s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:32,154 - sqlalchemy.engine.Engine - INFO - [cached since 0.006015s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:32,155 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-29 11:10:32,155 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2025-09-29 11:10:32,155 INFO sqlalchemy.engine.Engine [cached since 0.007112s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:32,155 - sqlalchemy.engine.Engine - INFO - [cached since 0.007112s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2025-09-29 11:10:32,156 INFO sqlalchemy.engine.Engine COMMIT
+2025-09-29 11:10:32,156 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-09-29 11:10:32,192 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-29 11:10:32,192 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-09-29 11:10:32,201 INFO sqlalchemy.engine.Engine SELECT maternal_dialogue.id AS maternal_dialogue_id, maternal_dialogue.maternal_id AS maternal_dialogue_maternal_id, maternal_dialogue.chat_id AS maternal_dialogue_chat_id, maternal_dialogue.dialogue_content AS maternal_dialogue_dialogue_content, maternal_dialogue.vector_store_path AS maternal_dialogue_vector_store_path, maternal_dialogue.created_at AS maternal_dialogue_created_at 
 FROM maternal_dialogue 
-WHERE maternal_dialogue.maternal_id = %(maternal_id_1)s
-2025-09-26 14:15:30,052 - sqlalchemy.engine.Engine - INFO - SELECT maternal_dialogue.id AS maternal_dialogue_id, maternal_dialogue.maternal_id AS maternal_dialogue_maternal_id, maternal_dialogue.chat_id AS maternal_dialogue_chat_id, maternal_dialogue.dialogue_content AS maternal_dialogue_dialogue_content, maternal_dialogue.vector_store_path AS maternal_dialogue_vector_store_path, maternal_dialogue.created_at AS maternal_dialogue_created_at 
+WHERE maternal_dialogue.maternal_id = %(maternal_id_1)s AND maternal_dialogue.chat_id = %(chat_id_1)s
+2025-09-29 11:10:32,201 - sqlalchemy.engine.Engine - INFO - SELECT maternal_dialogue.id AS maternal_dialogue_id, maternal_dialogue.maternal_id AS maternal_dialogue_maternal_id, maternal_dialogue.chat_id AS maternal_dialogue_chat_id, maternal_dialogue.dialogue_content AS maternal_dialogue_dialogue_content, maternal_dialogue.vector_store_path AS maternal_dialogue_vector_store_path, maternal_dialogue.created_at AS maternal_dialogue_created_at 
 FROM maternal_dialogue 
-WHERE maternal_dialogue.maternal_id = %(maternal_id_1)s
-2025-09-26 14:15:30,053 INFO sqlalchemy.engine.Engine [generated in 0.00112s] {'maternal_id_1': 2}
-2025-09-26 14:15:30,053 - sqlalchemy.engine.Engine - INFO - [generated in 0.00112s] {'maternal_id_1': 2}
-2025-09-26 14:15:30,059 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:15:30,059 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-INFO:     188.253.123.158:0 - "POST /api/v2/chat/get_chat_ids HTTP/1.0" 200 OK
-2025-09-26 14:15:31,454 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:15:31,454 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:15:31,455 INFO sqlalchemy.engine.Engine SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:15:31,455 - sqlalchemy.engine.Engine - INFO - SELECT maternal_info.id AS maternal_info_id, maternal_info.user_id AS maternal_info_user_id, maternal_info.id_card AS maternal_info_id_card, maternal_info.phone AS maternal_info_phone, maternal_info.current_gestational_week AS maternal_info_current_gestational_week, maternal_info.expected_delivery_date AS maternal_info_expected_delivery_date, maternal_info.maternal_age AS maternal_info_maternal_age 
-FROM maternal_info 
-WHERE maternal_info.user_id = %(user_id_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:15:31,455 INFO sqlalchemy.engine.Engine [cached since 492.1s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:15:31,455 - sqlalchemy.engine.Engine - INFO - [cached since 492.1s ago] {'user_id_1': 2, 'param_1': 1}
-2025-09-26 14:15:31,457 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:15:31,457 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-INFO:     188.253.123.158:0 - "GET /api/v2/maternal/2/get_pregnantMother_info HTTP/1.0" 200 OK
-INFO:     188.253.123.158:0 - "POST /api/v2/auth/logout HTTP/1.0" 200 OK
-2025-09-26 14:16:55,380 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:16:55,380 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:16:55,386 INFO sqlalchemy.engine.Engine SELECT "user".id AS user_id, "user".username AS user_username, "user".password_hash AS user_password_hash, "user".user_type AS user_user_type, "user".created_at AS user_created_at 
-FROM "user" 
-WHERE "user".username = %(username_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:16:55,386 - sqlalchemy.engine.Engine - INFO - SELECT "user".id AS user_id, "user".username AS user_username, "user".password_hash AS user_password_hash, "user".user_type AS user_user_type, "user".created_at AS user_created_at 
-FROM "user" 
-WHERE "user".username = %(username_1)s 
- LIMIT %(param_1)s
-2025-09-26 14:16:55,386 INFO sqlalchemy.engine.Engine [generated in 0.00060s] {'username_1': '111111', 'param_1': 1}
-2025-09-26 14:16:55,386 - sqlalchemy.engine.Engine - INFO - [generated in 0.00060s] {'username_1': '111111', 'param_1': 1}
-2025-09-26 14:16:55,401 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:16:55,401 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-INFO:     188.253.123.158:0 - "POST /api/v2/auth/login HTTP/1.0" 200 OK
-空 JSON 文件已创建: dataset/pregnant_mother/2/chat/chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40.json
-2025-09-26 14:16:57,935 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:16:57,935 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:16:57,944 INFO sqlalchemy.engine.Engine INSERT INTO maternal_dialogue (maternal_id, chat_id, dialogue_content, vector_store_path, created_at) VALUES (%(maternal_id)s, %(chat_id)s, %(dialogue_content)s, %(vector_store_path)s, %(created_at)s) RETURNING maternal_dialogue.id
-2025-09-26 14:16:57,944 - sqlalchemy.engine.Engine - INFO - INSERT INTO maternal_dialogue (maternal_id, chat_id, dialogue_content, vector_store_path, created_at) VALUES (%(maternal_id)s, %(chat_id)s, %(dialogue_content)s, %(vector_store_path)s, %(created_at)s) RETURNING maternal_dialogue.id
-2025-09-26 14:16:57,945 INFO sqlalchemy.engine.Engine [generated in 0.00099s] {'maternal_id': 2, 'chat_id': 'chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40', 'dialogue_content': 'dataset/pregnant_mother/2/chat/chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40.json', 'vector_store_path': '/root/project2/data/vector_store/chat_chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40_maternal_2', 'created_at': datetime.datetime(2025, 9, 26, 14, 16, 57, 932089)}
-2025-09-26 14:16:57,945 - sqlalchemy.engine.Engine - INFO - [generated in 0.00099s] {'maternal_id': 2, 'chat_id': 'chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40', 'dialogue_content': 'dataset/pregnant_mother/2/chat/chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40.json', 'vector_store_path': '/root/project2/data/vector_store/chat_chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40_maternal_2', 'created_at': datetime.datetime(2025, 9, 26, 14, 16, 57, 932089)}
-2025-09-26 14:16:57,959 INFO sqlalchemy.engine.Engine COMMIT
-2025-09-26 14:16:57,959 - sqlalchemy.engine.Engine - INFO - COMMIT
-2025-09-26 14:16:57,966 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:16:57,966 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:16:57,967 INFO sqlalchemy.engine.Engine SELECT maternal_dialogue.id, maternal_dialogue.maternal_id, maternal_dialogue.chat_id, maternal_dialogue.dialogue_content, maternal_dialogue.vector_store_path, maternal_dialogue.created_at 
-FROM maternal_dialogue 
-WHERE maternal_dialogue.id = %(pk_1)s
-2025-09-26 14:16:57,967 - sqlalchemy.engine.Engine - INFO - SELECT maternal_dialogue.id, maternal_dialogue.maternal_id, maternal_dialogue.chat_id, maternal_dialogue.dialogue_content, maternal_dialogue.vector_store_path, maternal_dialogue.created_at 
-FROM maternal_dialogue 
-WHERE maternal_dialogue.id = %(pk_1)s
-2025-09-26 14:16:57,967 INFO sqlalchemy.engine.Engine [generated in 0.00030s] {'pk_1': 64}
-2025-09-26 14:16:57,967 - sqlalchemy.engine.Engine - INFO - [generated in 0.00030s] {'pk_1': 64}
-2025-09-26 14:16:57,969 INFO sqlalchemy.engine.Engine COMMIT
-2025-09-26 14:16:57,969 - sqlalchemy.engine.Engine - INFO - COMMIT
-2025-09-26 14:16:57,970 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:16:57,970 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:16:57,970 INFO sqlalchemy.engine.Engine SELECT maternal_dialogue.id, maternal_dialogue.maternal_id, maternal_dialogue.chat_id, maternal_dialogue.dialogue_content, maternal_dialogue.vector_store_path, maternal_dialogue.created_at 
-FROM maternal_dialogue 
-WHERE maternal_dialogue.id = %(pk_1)s
-2025-09-26 14:16:57,970 - sqlalchemy.engine.Engine - INFO - SELECT maternal_dialogue.id, maternal_dialogue.maternal_id, maternal_dialogue.chat_id, maternal_dialogue.dialogue_content, maternal_dialogue.vector_store_path, maternal_dialogue.created_at 
-FROM maternal_dialogue 
-WHERE maternal_dialogue.id = %(pk_1)s
-2025-09-26 14:16:57,970 INFO sqlalchemy.engine.Engine [cached since 0.003583s ago] {'pk_1': 64}
-2025-09-26 14:16:57,970 - sqlalchemy.engine.Engine - INFO - [cached since 0.003583s ago] {'pk_1': 64}
-2025-09-26 14:16:57,972 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:16:57,972 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-2025-09-26 14:16:57,972 - pregnant-workflow-api - INFO - 已为 chat_id=chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40 初始化向量存储路径: /root/project2/data/vector_store/chat_chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40_maternal_2
-INFO:     188.253.123.158:0 - "POST /api/v2/chat/chat_id HTTP/1.0" 200 OK
-INFO:     188.253.123.158:0 - "GET /api/v2/chat/2/files HTTP/1.0" 422 Unprocessable Entity
-2025-09-26 14:16:59,152 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:16:59,152 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:16:59,152 INFO sqlalchemy.engine.Engine SELECT maternal_dialogue.id AS maternal_dialogue_id, maternal_dialogue.maternal_id AS maternal_dialogue_maternal_id, maternal_dialogue.chat_id AS maternal_dialogue_chat_id, maternal_dialogue.dialogue_content AS maternal_dialogue_dialogue_content, maternal_dialogue.vector_store_path AS maternal_dialogue_vector_store_path, maternal_dialogue.created_at AS maternal_dialogue_created_at 
-FROM maternal_dialogue 
-WHERE maternal_dialogue.maternal_id = %(maternal_id_1)s
-2025-09-26 14:16:59,152 - sqlalchemy.engine.Engine - INFO - SELECT maternal_dialogue.id AS maternal_dialogue_id, maternal_dialogue.maternal_id AS maternal_dialogue_maternal_id, maternal_dialogue.chat_id AS maternal_dialogue_chat_id, maternal_dialogue.dialogue_content AS maternal_dialogue_dialogue_content, maternal_dialogue.vector_store_path AS maternal_dialogue_vector_store_path, maternal_dialogue.created_at AS maternal_dialogue_created_at 
-FROM maternal_dialogue 
-WHERE maternal_dialogue.maternal_id = %(maternal_id_1)s
-2025-09-26 14:16:59,153 INFO sqlalchemy.engine.Engine [cached since 89.1s ago] {'maternal_id_1': 2}
-2025-09-26 14:16:59,153 - sqlalchemy.engine.Engine - INFO - [cached since 89.1s ago] {'maternal_id_1': 2}
-2025-09-26 14:16:59,155 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:16:59,155 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-INFO:     188.253.123.158:0 - "POST /api/v2/chat/get_chat_ids HTTP/1.0" 200 OK
-2025-09-26 14:17:01,454 - pregnant-workflow-api - INFO - 请求队列处理器已启动
-2025-09-26 14:17:01,454 - pregnant-workflow-api - INFO - 开始流式工作流：maternal_id=2, chat_id=chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40, use_queue=False
-INFO:     188.253.123.158:0 - "POST /api/v2/chat/qa HTTP/1.0" 200 OK
-2025-09-26 14:17:01,455 - pregnant-workflow-api - INFO - [req_4cc6d50d] 开始处理请求 - 当前活跃请求: 1
-2025-09-26 14:17:01,455 - pregnant-workflow-api - INFO - [req_4cc6d50d] 等待获取信号量 - 可用数量: 20
-2025-09-26 14:17:01,455 - pregnant-workflow-api - INFO - [req_4cc6d50d] 已获取信号量，开始处理
-2025-09-26 14:17:01,456 - pregnant-workflow-api - INFO - [req_4cc6d50d] 发送开始消息 - 输入长度: 1
-2025-09-26 14:17:01,557 - pregnant-workflow-api - INFO - [req_4cc6d50d] 工作流初始化 - 当前并发: 1, 可用信号量: 19, 队列大小: 0
-2025-09-26 14:17:02,058 - pregnant-workflow-api - INFO - [req_4cc6d50d] 开始执行工作流 - maternal_id: 2, chat_id: chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40
-2025-09-26 14:17:02,080 - pregnant-workflow-api - INFO - [req_4cc6d50d] 开始流式工作流 - 开始时间: 1758867422.0802107
-2025-09-26 14:17:02,082 - backend.workflow.test - INFO - 启动检索式记忆智能体，基于当前输入检索相关历史
-2025-09-26 14:17:02,106 INFO sqlalchemy.engine.Engine select pg_catalog.version()
-2025-09-26 14:17:02,106 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
-2025-09-26 14:17:02,106 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 14:17:02,106 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
-2025-09-26 14:17:02,107 INFO sqlalchemy.engine.Engine select current_schema()
-2025-09-26 14:17:02,107 - sqlalchemy.engine.Engine - INFO - select current_schema()
-2025-09-26 14:17:02,108 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 14:17:02,108 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
-2025-09-26 14:17:02,109 INFO sqlalchemy.engine.Engine show standard_conforming_strings
-2025-09-26 14:17:02,109 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
-2025-09-26 14:17:02,109 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 14:17:02,109 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
-2025-09-26 14:17:02,110 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:17:02,110 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:17:02,113 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,113 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,113 INFO sqlalchemy.engine.Engine [generated in 0.00029s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,113 - sqlalchemy.engine.Engine - INFO - [generated in 0.00029s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,115 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,115 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,115 INFO sqlalchemy.engine.Engine [cached since 0.002609s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,115 - sqlalchemy.engine.Engine - INFO - [cached since 0.002609s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,116 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,116 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,116 INFO sqlalchemy.engine.Engine [cached since 0.003679s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,116 - sqlalchemy.engine.Engine - INFO - [cached since 0.003679s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,117 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,117 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,118 INFO sqlalchemy.engine.Engine [cached since 0.005004s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,118 - sqlalchemy.engine.Engine - INFO - [cached since 0.005004s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,119 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,119 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,119 INFO sqlalchemy.engine.Engine [cached since 0.006057s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,119 - sqlalchemy.engine.Engine - INFO - [cached since 0.006057s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,120 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,120 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,120 INFO sqlalchemy.engine.Engine [cached since 0.007571s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,120 - sqlalchemy.engine.Engine - INFO - [cached since 0.007571s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,122 INFO sqlalchemy.engine.Engine COMMIT
-2025-09-26 14:17:02,122 - sqlalchemy.engine.Engine - INFO - COMMIT
-2025-09-26 14:17:02,125 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:17:02,125 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:17:02,128 INFO sqlalchemy.engine.Engine SELECT maternal_dialogue.id AS maternal_dialogue_id, maternal_dialogue.maternal_id AS maternal_dialogue_maternal_id, maternal_dialogue.chat_id AS maternal_dialogue_chat_id, maternal_dialogue.dialogue_content AS maternal_dialogue_dialogue_content, maternal_dialogue.vector_store_path AS maternal_dialogue_vector_store_path, maternal_dialogue.created_at AS maternal_dialogue_created_at 
+WHERE maternal_dialogue.maternal_id = %(maternal_id_1)s AND maternal_dialogue.chat_id = %(chat_id_1)s
+使用GPU进行嵌入计算，可用显存: 9.6GB
+2025-09-29 11:10:32,208 INFO sqlalchemy.engine.Engine [generated in 0.00747s] {'maternal_id_1': 3, 'chat_id_1': 'chat_3_pregnant_mother_967c973a-2e0b-4744-b7df-75b9d0d52634'}
+2025-09-29 11:10:32,208 - sqlalchemy.engine.Engine - INFO - [generated in 0.00747s] {'maternal_id_1': 3, 'chat_id_1': 'chat_3_pregnant_mother_967c973a-2e0b-4744-b7df-75b9d0d52634'}
+2025-09-29 11:10:32,212 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-09-29 11:10:32,212 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-09-29 11:10:32,843 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: ./data/models/embed/models--BAAI--bge-large-zh-v1.5/snapshots/79e7739b6ab944e86d6171e44d24c997fc1e0116
+2025-09-29 11:10:32,843 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: ./data/models/embed/models--BAAI--bge-large-zh-v1.5/snapshots/79e7739b6ab944e86d6171e44d24c997fc1e0116
+2025-09-29 11:10:37,487 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-29 11:10:37,551 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-29 11:10:38,859 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: ./data/models/embed/models--BAAI--bge-large-zh-v1.5/snapshots/79e7739b6ab944e86d6171e44d24c997fc1e0116
+2025-09-29 11:10:38,953 - backend.agents.MeMAgent.retrieval_memory - INFO - 历史检索完成: 检索到3个相关历史片段，总长度31字符
+2025-09-29 11:10:38,955 - backend.workflow.test - INFO - 检索式记忆处理完成: 检索到3个相关历史片段，总长度31字符, 耗时: 7.05秒 (检索调用: 7.05秒)
+2025-09-29 11:10:40,706 - backend.workflow.test - INFO - 检索智能体调用完成，开始校验结果
+使用GPU进行嵌入计算，可用显存: 9.6GB
+成功加载已存在的向量存储
+成功加载已存在的向量存储
+使用GPU进行嵌入计算，可用显存: 7.2GB
+成功加载已存在的向量存储
+<class 'dict'>
+output:  {'专家知识库': [{'source': 'data\\raw_manuals\\《妇产科学》第10版.pdf', 'priority': 1, 'content': '第十一章\u2002 胎儿附属物异常\n155\n方法。合并母儿血型不合的溶血胎儿， 应在有条件的胎儿医学中心行宫内输血治疗。\n2.\u2003羊水过多合并正常胎儿 应寻找病因， 治疗原发病\n。前列腺素合成酶抑制剂 （ 如吲哚美辛 ） 有抗\n利尿作用， 可抑制胎儿排尿使羊水量减少。用药期间每周一次超声监测羊水量。由于吲哚美辛可使胎儿\n动脉导管闭合， 不宜长时间应用， 妊娠＞32 周者也不宜使用。不推荐仅为减少羊水量而使用吲哚美辛。\n自觉症状轻者， 注意休息， 取侧卧位以改善子宫胎盘循环， 需要时给予镇静剂。每周复查超声以便\n了解羊水指数及胎儿生长情况。自觉症状严重者， 可经腹羊膜腔穿刺放出适量羊水， 缓解压迫症状， 必\n要时利用放出的羊水了解胎肺成熟度。放羊水时应密切观察孕妇血压、 心率及呼吸变化， 监测胎心， 酌\n情给予镇静剂和抑制子宫收缩药物， 预防早产。有必要时 3～4 周后可再次放羊水， 以降低宫腔内压力。\n羊水量反复增长， 自觉症状严重者， 妊娠≥34 周， 胎肺已成熟， 可终止妊娠； 如胎肺未成熟， 可给\n予地塞米松促胎肺成熟治疗后再考虑终止妊娠。\n3.\n\u2003分娩时的处理 应警惕脐带脱垂和胎盘早剥的发生。若破膜后子宫收缩乏力，\n可静脉滴注缩\n宫素加强宫缩， 密切观察产程。胎儿娩出后及时应用宫缩剂， 预防产后出血发生。\n二、 \u2002羊水过少\n妊娠晚期羊水量少于 300ml 者， 称为羊水过少 （oligohydramnios） 。羊水过少的发生率为 0.4%～\n4%。羊水过少严重影响围产儿预后， 与不良妊娠结局有关。\n【病因】\n羊水过少主要与羊水产生减少或羊水外漏增加有关。部分羊水过少原因不明。常见原因有以下\n几种。\n1.\u2003胎儿结构异常 以胎儿泌尿系统结构异常为主， 如 Meckel-Gruber\n综合征、 Prune-Belly 综合征、\n胎儿肾缺如 （ 如 Potter 综合征 ） 、 肾小管发育不全、 输尿管或尿道梗阻、 膀胱外翻等引起少尿或无尿， 导\n致羊水过少。染色体异常、 脐膨出、 膈疝、 法洛四联症、 水囊状淋巴管瘤 （cystic hygroma） 、 小头畸形、 甲\n状腺功能减退等也可引起羊水过少。\n2.\n\u2003胎盘功能障碍 过期妊娠、 胎盘退行性变可导致胎盘功能障碍\n， 子宫胎盘灌注减少。胎儿生\n长受限、 胎儿慢性缺氧引起胎儿血液重新分配， 为保障胎儿脑和心脏血供， 肾血流量减少， 胎儿尿生成\n减少， 导致羊水过少。\n3.\n\u2003 羊膜病变 某些原因不明的羊水过少与羊膜通透性改变、 炎症以及宫内感染有关\n。胎膜破\n裂， 羊水外漏速度超过羊水生成速度， 可导致羊水过少。\n4.\u2003母体因素 妊娠期高血压疾病可致胎盘血流减少。孕妇脱水、\n血容量不足时， 孕妇血浆渗透\n压增高， 使胎儿血浆渗透压相应增高， 尿液形成减少。孕妇服用某些药物， 如前列腺素合成酶抑制剂、\n血管紧张素转换酶抑制剂等有抗利尿作用， 使用时间过长， 可发生羊水过少。一些免疫性疾病如系统\n性红斑狼疮、 干燥综合征、 抗磷脂综合征等， 也可导致羊水过少。\n【临床表现与诊断】\n1.\u2003临床表现 羊水过少的临床症状多不典型。多伴有胎儿生长受限， 孕妇自我感觉腹部较其他\n孕妇小， 有时候孕妇于胎动时感腹部不适， 胎盘功能障碍时常伴有胎动减少。检查见宫高腹围较同期\n孕周小， 合并胎儿生长受限时更明显， 有子宫紧裹胎儿感。子宫敏感， 轻微刺激易引发宫缩。临产后\n阵痛明显， 且宫缩多不协调。胎膜破裂者， 阴道漏出清亮或者血性液体， 或者孕妇内裤变湿等。阴道\n检查时， 发现前羊膜囊不明显， 胎膜紧贴胎先露部， 人工破膜时羊水流出极少。\n2.\n\u2003辅助检查\n（1） 超声检查： 是最重要的辅助检查方法\n。妊娠晚期 DVP≤2cm 为羊水过少，≤1cm 为严重羊水\n过少。AFI≤5cm 诊断为羊水过少。超声检查还能及时发现胎儿生长受限， 以及胎儿肾缺如、 肾发育\n不全、 输尿管或尿道梗阻等畸形。\n（2）\n 电子胎心监护： 羊水过少胎儿的胎盘储备功能降低\n， 无应激试验 （NST） 可呈无反应型。分娩'}, {'source': 'data\\raw_manuals\\《妇产科学》第10版.pdf', 'priority': 1, 'content': '第十一章\u2002 胎儿附属物异常\n154\n多， 还可能并发双胎输血综合征， 两个胎儿间的血液循环相互沟通， 受血胎儿的循环血量多， 尿量增\n加， 导致羊水过多。\n3.\u2003 胎盘脐带病变 胎盘绒毛膜血管瘤直径 ＞1cm 时，\n15%～30% 合并羊水过多。巨大胎盘、 脐\n带帆状附着也可导致羊水过多。\n4.\u2003妊娠合并症 妊娠期糖尿病患者羊水过多的发病率为 13%～\n36%。母体高血糖致胎儿血糖\n增高， 产生高渗性利尿， 并使胎盘胎膜渗出增加， 导致羊水过多。母儿 Rh 血型不合， 胎儿免疫性水肿、\n胎盘绒毛水肿影响液体交换可导致羊水过多。\n【临床表现与诊断】\n1.\u2003临床表现\n（1） 急性羊水过多： 较少见\n。多发生在妊娠 20～24 周。羊水迅速增多， 子宫于数日内明显增大，\n因腹压增加而产生一系列压迫症状。孕妇自觉腹部胀痛， 行动不便， 表情痛苦， 因膈肌抬高， 胸部受到\n挤压， 出现呼吸困难， 甚至发绀， 不能平卧。检查见腹壁皮肤紧绷发亮， 严重者皮肤变薄， 皮下静脉清\n晰可见。巨大的子宫压迫下腔静脉， 影响静脉回流， 出现下肢及外阴部水肿或静脉曲张。子宫明显大\n于妊娠月份， 因腹部张力过高， 胎位不清， 胎心遥远或听不清。\n（2）\n 慢性羊水过多： 较多见\n， 多发生在妊娠晚期。数周内羊水缓慢增多， 症状较缓和， 孕妇多能适\n应， 仅感腹部增大较快， 临床上无明显不适或仅出现轻微压迫症状， 如胸闷、 气短， 但能忍受。产检时\n宫高及腹围增加过快， 测量宫底高度及腹围大于同期孕周， 腹壁皮肤发亮、 变薄。触诊时感觉子宫张\n力大， 有液体震颤感， 胎位不清， 胎心遥远。四步触诊时， 测量宫高大于孕龄或者胎儿触诊困难或有胎\n儿漂浮感， 要考虑羊水过多可能性。\n2.\n\u2003辅助检查\n（1） 超声检查： 是重要的辅助检查方法\n， 不仅能测量羊水量， 还可了解胎儿情况， 如无脑儿、 脊柱\n裂、 胎儿水肿及双胎等。超声诊断羊水量异常的指标包括最大羊水池深度 （deepest vertical pocket， DVP）\n和羊水指数 （amniotic fluid index， AFI） 。DVP 正常值为 2～8cm， AFI 正常范围为 8～25cm。DVP≥8cm\n或 AFI≥25cm 诊断为羊水过多。也有认为以 AFI 大于该孕周的 3 个标准差或大于第 97.5 百分位数\n为诊断标准较为恰当。\n（2）\n 胎儿疾病检查：\n部分染色体异常胎儿可伴有羊水过多。羊水过多的孕妇， 除超声排除结构异\n常外， 可取羊水或脐血中胎儿细胞进行细胞或分子遗传学的检查， 了解胎儿染色体数目、 结构有无异\n常， 还可以检测是否有染色体的微小缺失或重复。通过超声测量胎儿大脑中动脉收缩期峰值流速来\n预测有无合并胎儿贫血。另外， 用 PCR 检测胎儿是否感染人类细小病毒 B19、 梅毒螺旋体、 弓形虫、\n单纯疱疹病毒、 风疹病毒、 巨细胞病毒等。但是， 羊水过多孕妇进行羊水穿刺一定要告知有胎膜破裂\n的风险， 由于羊水量多， 羊膜腔张力过高， 穿刺可能导致胎膜破裂而引起流产或早产。\n（3）\n 其他检查： 母体糖耐量试验， Rh\n血型不合者检测母体血型抗体的滴度。\n【对母儿的影响】\n1.\u2003对母体的影响 一般很少有自觉症状， 当羊水过多程度重或发展迅速时 ， 可因子宫过度膨胀\n造成压力过高及压迫邻近脏器而引起症状， 可出现类似腹腔间室综合征的表现， 严重时可引起孕妇心\n力衰竭。子宫张力过高， 除容易发生胎膜早破、 早产外， 还可发生胎盘早剥。子宫肌纤维伸展过度可\n致产后子宫收缩乏力， 产后出血发生率明显增加。\n2.\n\u2003对胎儿的影响 胎位异常、 胎儿窘迫\n、 早产增多。破膜时羊水流出过快可导致脐带脱垂。羊\n水过多的程度越重， 围产儿的死亡率越高。妊娠中期重度羊水过多的围产儿病死率超过 50%。\n【处理】\n取决于胎儿有无合并的结构异常及遗传性疾病、 孕周大小及孕妇自觉症状的严重程度。\n1.\n\u2003羊水过多合并胎儿结构异常 如为严重的胎儿结构异常， 应及时终止妊娠\n； 非严重胎儿结构\n异常， 应评估胎儿情况及预后， 以及当前新生儿外科救治技术， 并与孕妇及家属充分沟通后决定处理'}, {'source': 'data\\raw_manuals\\new_data.json', 'priority': 3, 'content': '复发 — 一项研究纳入挪威医学出生登记处中1967-2017年的270多万例单胎分娩，与初次妊娠无特发性羊水过多者相比，有特发性羊水过多者在二次妊娠时发病的几率增至6.6倍[20]。前2次妊娠均发生特发性羊水过多者第3次妊娠时发病的几率增至12.6倍，但仅发生1次特发性羊水过多者第3次妊娠时发病的几率较低。 \n胎儿畸形 — 羊水过多的单胎妊娠中，胎儿畸形约占1/3[15]。最常见的相关畸形会影响胎儿吞咽和/或羊水吸收[21,22]。胃肠道梗阻可能是原发性的(如，十二指肠、食道或上肠道闭锁)，也可能继发于其他病变，如大面积单侧肾发育不良、胸腔大肿块、膈疝。 \n大多数其他器官系统的异常也可引起羊水过多，但相对少见，且涉及其他发病机制。\n母亲糖尿病 — 羊水过多的妊娠中，母亲糖尿病占8%-25%[23]。一项大型回顾性研究发现，使用AFI诊断时，伴和不伴糖尿病的孕妇羊水过多发生率分别为10.5%和3.8%[24]。糖尿病类型在一定程度上会影响羊水过多发生率：A1型妊娠糖尿病(5.4%)、A2型妊娠糖尿病(13.4%)、1型糖尿病(21.2%)和2型糖尿病(15.3%)。使用SDP诊断时，所有类型糖尿病患者的羊水过多发生率均更高。\n糖尿病合并妊娠中的羊水过多发病机制尚不明确，但人们认为最可能由胎儿高血糖性多尿(渗透性利尿)引起，支持依据是观察到羊水过多常伴发母亲糖化血红蛋白(A1C)水平较高和巨大儿[25,26]。因此，糖尿病从A1向A2、2型和1型逐级进展时，羊水过多的发生率逐渐升高，这与母体及胎儿血糖水平逐渐升高一致。也可能是因为在并发糖尿病的妊娠中，胎儿吞咽减少或母亲与胎儿之间水转运失衡。\n一项回顾性研究纳入1545例羊水过多的患者，发现仅8.5%的病例可归因于糖尿病，这些患者往往具有轻度羊水过多(定义为AFI 26.0-35.9cm)[23]。其他研究者证实，对于糖耐量正常的妊娠，若发生羊水过多和胎儿生长加速，则出现母亲和新生儿并发症的风险较高，而在不伴胎儿生长加速的单纯性羊水过多妊娠中，分娩并发症风险增加，但新生儿并发症风险不增加[27]。\n胎儿生长受限 — 胎儿生长受限(fetal growth restriction, FGR)合并羊水过多时，并发症发生率和死亡率较高。一项纳入153例FGR合并羊水过多妊娠的研究发现了4类潜在病因：染色体异常(41.8%，n=64)、复杂畸形综合征(24.1%，n=37)、孤立性畸形(15.7%，n=24)、肌肉骨骼疾病(9.2%，n=14)；另有9.2%(n=14)在产前未检出异常[28]。\n双胎输血综合征 — 羊水过多病例中，多胎妊娠的占比多达10%。单绒毛膜多胎妊娠中，羊水过多/羊水过少序列征对双胎输血综合征(twin-twin transfusion syndrome, TTTS)最具有提示意义。(参见 “双胎输血综合征的筛查、发病率、病理生理学及诊断”)\n非整倍体 — 非整倍体是羊水过多的不常见原因[19]。FGR合并羊水过多提示18三体；通常也存在18三体的其他超声指标。此综合征的羊水过多可能与胎儿吞咽困难或肠道异常有关。(参见 “胎儿非整倍体相关超声表现”，关于‘18-三体(Edward综合征)’一节)\n其他非整倍体也与羊水过多有关，最常为21三体，可能与十二指肠闭锁有关。(参见 “胎儿非整倍体相关超声表现”，关于‘21-三体(唐氏综合征)’一节)\n在一项纳入623例单纯羊水过多单胎妊娠的回顾性队列研究中，3.1%(19/623)存在有临床意义的染色体微阵列(chromosomal microarray, CMA)检测异常，而超声检查正常的对照组中该比例为1.4%(78/5541)[29]。不过，158例轻度羊水过多(AFI 25-29.9，或SDP 8-11.9cm)患者的CMA结果异常风险与超声检查正常者的风险相近。在119例非单纯性羊水过多病例中，CMA结果异常率为6.7%，主要是可检测到的核型异常。最常见的伴发异常涉及心血管系统(26.1%)和脑(15.1%)。\n心脏高输出量状态 — 胎儿心输出量高可导致胎儿尿液增加，但不常见[19]。胎儿贫血是心脏高输出量状态的常见病因，可能由以下疾病导致：同种异体免疫反应、细小病毒B19感染、大量或长期胎母输血、α-地中海贫血、葡萄糖-6-磷酸脱氢酶缺乏症的继发性溶血，以及其他疾病[30]。\n心脏高输出量状态也可由快速性心律失常和动静脉分流(如，骶尾部畸胎瘤、TTTS、绒毛膜血管瘤)所致。'}], '孕妇知识库': [{'source': 'dataset/pregnant_mother/3/chat/chat_3_pregnant_mother_967c973a-2e0b-4744-b7df-75b9d0d52634.json', 'priority': 3, 'content': '标题：\n描述：'}, {'source': 'dataset/pregnant_mother/3/chat/chat_3_pregnant_mother_967c973a-2e0b-4744-b7df-75b9d0d52634.json', 'priority': 3, 'content': '标题：\n描述：'}, {'source': 'dataset/pregnant_mother/3/chat/chat_3_pregnant_mother_967c973a-2e0b-4744-b7df-75b9d0d52634.json', 'priority': 3, 'content': '标题：\n描述：'}]}2025-09-29 11:10:40,707 - backend.workflow.test - INFO - 检索智能体处理成功：检索到3条专家知识库结果，3条孕妇知识库结果
+2025-09-29 11:10:40,708 - backend.workflow.test - INFO - 医学上下文处理完成，总长度：4478字符（限制：6000），包含3个部分, 耗时: 0.00秒
+2025-09-29 11:10:41,528 - qwen_api_debug - DEBUG - === Qwen API 流式请求开始 ===
+2025-09-29 11:10:41,528 - qwen_api_debug - DEBUG - === Qwen API 流式请求开始 ===
+2025-09-29 11:10:41,529 - qwen_api_debug - DEBUG - 模型名称: qwen-plus-2025-09-11
+2025-09-29 11:10:41,529 - qwen_api_debug - DEBUG - 模型名称: qwen-plus-2025-09-11
+2025-09-29 11:10:42,360 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-29 11:10:42,368 - qwen_api_debug - DEBUG - 流式输出chunk 2: '亲爱的'
+2025-09-29 11:10:42,368 - qwen_api_debug - DEBUG - 流式输出chunk 2: '亲爱的'
+2025-09-29 11:10:42,381 - qwen_api_debug - DEBUG - 流式输出chunk 3: '准妈妈，您好'
+2025-09-29 11:10:42,381 - qwen_api_debug - DEBUG - 流式输出chunk 3: '准妈妈，您好'
+2025-09-29 11:10:42,397 - qwen_api_debug - DEBUG - 流式输出chunk 4: '呀～  
+首先'
+2025-09-29 11:10:42,397 - qwen_api_debug - DEBUG - 流式输出chunk 4: '呀～  
+首先'
+2025-09-29 11:10:42,435 - qwen_api_debug - DEBUG - 流式输出chunk 5: '，我想'
+2025-09-29 11:10:42,435 - qwen_api_debug - DEBUG - 流式输出chunk 5: '，我想'
+2025-09-29 11:10:42,440 - qwen_api_debug - DEBUG - 流式输出chunk 6: '轻轻抱抱您'
+2025-09-29 11:10:42,440 - qwen_api_debug - DEBUG - 流式输出chunk 6: '轻轻抱抱您'
+2025-09-29 11:10:42,468 - qwen_api_debug - DEBUG - 流式输出chunk 7: '，告诉您：'
+2025-09-29 11:10:42,468 - qwen_api_debug - DEBUG - 流式输出chunk 7: '，告诉您：'
+2025-09-29 11:10:42,522 - qwen_api_debug - DEBUG - 流式输出chunk 8: '**您不是一个人在面对这个问题'
+2025-09-29 11:10:42,522 - qwen_api_debug - DEBUG - 流式输出chunk 8: '**您不是一个人在面对这个问题'
+2025-09-29 11:10:42,541 - qwen_api_debug - DEBUG - 流式输出chunk 9: '，羊水过多虽然'
+2025-09-29 11:10:42,541 - qwen_api_debug - DEBUG - 流式输出chunk 9: '，羊水过多虽然'
+2025-09-29 11:10:42,608 - qwen_api_debug - DEBUG - 流式输出chunk 10: '听起来让人紧张，但绝大多数'
+2025-09-29 11:10:42,608 - qwen_api_debug - DEBUG - 流式输出chunk 10: '听起来让人紧张，但绝大多数'
+2025-09-29 11:10:42,621 - qwen_api_debug - DEBUG - 流式输出chunk 11: '情况下，经过科学'
+2025-09-29 11:10:42,621 - qwen_api_debug - DEBUG - 流式输出chunk 11: '情况下，经过科学'
+2025-09-29 11:10:42,686 - qwen_api_debug - DEBUG - 流式输出chunk 12: '监测和细心管理，妈妈'
+2025-09-29 11:10:42,686 - qwen_api_debug - DEBUG - 流式输出chunk 12: '监测和细心管理，妈妈'
+2025-09-29 11:10:42,690 - qwen_api_debug - DEBUG - 流式输出chunk 13: '和宝宝都能平安'
+2025-09-29 11:10:42,690 - qwen_api_debug - DEBUG - 流式输出chunk 13: '和宝宝都能平安'
+2025-09-29 11:10:42,714 - qwen_api_debug - DEBUG - 流式输出chunk 14: '健康地迎来分娩'
+2025-09-29 11:10:42,714 - qwen_api_debug - DEBUG - 流式输出chunk 14: '健康地迎来分娩'
+2025-09-29 11:10:42,797 - qwen_api_debug - DEBUG - 流式输出chunk 15: '的那一天。**'
+2025-09-29 11:10:42,797 - qwen_api_debug - DEBUG - 流式输出chunk 15: '的那一天。**'
+2025-09-29 11:10:42,801 - qwen_api_debug - DEBUG - 流式输出chunk 16: ' 您能主动来问，'
+2025-09-29 11:10:42,801 - qwen_api_debug - DEBUG - 流式输出chunk 16: ' 您能主动来问，'
+2025-09-29 11:10:42,861 - qwen_api_debug - DEBUG - 流式输出chunk 17: '说明您是一位非常用心'
+2025-09-29 11:10:42,861 - qwen_api_debug - DEBUG - 流式输出chunk 17: '说明您是一位非常用心'
+2025-09-29 11:10:42,863 - qwen_api_debug - DEBUG - 流式输出chunk 18: '、负责任的妈妈'
+2025-09-29 11:10:42,863 - qwen_api_debug - DEBUG - 流式输出chunk 18: '、负责任的妈妈'
+2025-09-29 11:10:42,909 - qwen_api_debug - DEBUG - 流式输出chunk 19: '，这本身就已经很棒了！
+
+'
+2025-09-29 11:10:42,909 - qwen_api_debug - DEBUG - 流式输出chunk 19: '，这本身就已经很棒了！
+
+'
+2025-09-29 11:10:42,953 - qwen_api_debug - DEBUG - 流式输出chunk 20: '---
+
+### ✅ **'
+2025-09-29 11:10:42,953 - qwen_api_debug - DEBUG - 流式输出chunk 20: '---
+
+### ✅ **'
+2025-09-29 11:10:42,988 - qwen_api_debug - DEBUG - 流式输出chunk 21: '先跟您说说'
+2025-09-29 11:10:42,988 - qwen_api_debug - DEBUG - 流式输出chunk 21: '先跟您说说'
+2025-09-29 11:10:42,991 - qwen_api_debug - DEBUG - 流式输出chunk 22: '“羊水过多'
+2025-09-29 11:10:42,991 - qwen_api_debug - DEBUG - 流式输出chunk 22: '“羊水过多'
+2025-09-29 11:10:43,032 - qwen_api_debug - DEBUG - 流式输出chunk 23: '”是怎么回事？**
+
+'
+2025-09-29 11:10:43,032 - qwen_api_debug - DEBUG - 流式输出chunk 23: '”是怎么回事？**
+
+'
+2025-09-29 11:10:43,060 - qwen_api_debug - DEBUG - 流式输出chunk 24: '我们把羊水想象'
+2025-09-29 11:10:43,060 - qwen_api_debug - DEBUG - 流式输出chunk 24: '我们把羊水想象'
+2025-09-29 11:10:43,126 - qwen_api_debug - DEBUG - 流式输出chunk 25: '成宝宝在子宫里的“'
+2025-09-29 11:10:43,126 - qwen_api_debug - DEBUG - 流式输出chunk 25: '成宝宝在子宫里的“'
+2025-09-29 11:10:43,128 - qwen_api_debug - DEBUG - 流式输出chunk 26: '小游泳池”——它'
+2025-09-29 11:10:43,128 - qwen_api_debug - DEBUG - 流式输出chunk 26: '小游泳池”——它'
+2025-09-29 11:10:43,176 - qwen_api_debug - DEBUG - 流式输出chunk 27: '保护宝宝、帮'
+2025-09-29 11:10:43,176 - qwen_api_debug - DEBUG - 流式输出chunk 27: '保护宝宝、帮'
+2025-09-29 11:10:43,251 - qwen_api_debug - DEBUG - 流式输出chunk 28: '宝宝发育、缓冲'
+2025-09-29 11:10:43,251 - qwen_api_debug - DEBUG - 流式输出chunk 28: '宝宝发育、缓冲'
+2025-09-29 11:10:43,257 - qwen_api_debug - DEBUG - 流式输出chunk 29: '外界压力。  
+正常'
+2025-09-29 11:10:43,257 - qwen_api_debug - DEBUG - 流式输出chunk 29: '外界压力。  
+正常'
+2025-09-29 11:10:43,293 - qwen_api_debug - DEBUG - 流式输出chunk 30: '情况下，羊水量'
+2025-09-29 11:10:43,293 - qwen_api_debug - DEBUG - 流式输出chunk 30: '情况下，羊水量'
+2025-09-29 11:10:43,296 - qwen_api_debug - DEBUG - 流式输出chunk 31: '在**孕晚期'
+2025-09-29 11:10:43,296 - qwen_api_debug - DEBUG - 流式输出chunk 31: '在**孕晚期'
+2025-09-29 11:10:43,315 - qwen_api_debug - DEBUG - 流式输出chunk 32: '**（28周以后'
+2025-09-29 11:10:43,315 - qwen_api_debug - DEBUG - 流式输出chunk 32: '**（28周以后'
+2025-09-29 11:10:43,490 - qwen_api_debug - DEBUG - 流式输出chunk 33: '）的**羊水指数'
+2025-09-29 11:10:43,490 - qwen_api_debug - DEBUG - 流式输出chunk 33: '）的**羊水指数'
+2025-09-29 11:10:43,499 - qwen_api_debug - DEBUG - 流式输出chunk 34: '（AFI）'
+2025-09-29 11:10:43,499 - qwen_api_debug - DEBUG - 流式输出chunk 34: '（AFI）'
+2025-09-29 11:10:43,509 - qwen_api_debug - DEBUG - 流式输出chunk 35: '** 是 **8～'
+2025-09-29 11:10:43,509 - qwen_api_debug - DEBUG - 流式输出chunk 35: '** 是 **8～'
+2025-09-29 11:10:43,599 - qwen_api_debug - DEBUG - 流式输出chunk 36: '25厘米**。  
+如果'
+2025-09-29 11:10:43,599 - qwen_api_debug - DEBUG - 流式输出chunk 36: '25厘米**。  
+如果'
+2025-09-29 11:10:43,617 - qwen_api_debug - DEBUG - 流式输出chunk 37: '**超过25厘米**'
+2025-09-29 11:10:43,617 - qwen_api_debug - DEBUG - 流式输出chunk 37: '**超过25厘米**'
+2025-09-29 11:10:43,670 - qwen_api_debug - DEBUG - 流式输出chunk 38: '，我们就说“羊水过多'
+2025-09-29 11:10:43,670 - qwen_api_debug - DEBUG - 流式输出chunk 38: '，我们就说“羊水过多'
+2025-09-29 11:10:43,672 - qwen_api_debug - DEBUG - 流式输出chunk 39: '”了。
+
+👉'
+2025-09-29 11:10:43,672 - qwen_api_debug - DEBUG - 流式输出chunk 39: '”了。
+
+👉'
+2025-09-29 11:10:43,721 - qwen_api_debug - DEBUG - 流式输出chunk 40: ' **您不用慌'
+2025-09-29 11:10:43,721 - qwen_api_debug - DEBUG - 流式输出chunk 40: ' **您不用慌'
+2025-09-29 11:10:43,846 - qwen_api_debug - DEBUG - 流式输出chunk 41: '**，羊水过多分为'
+2025-09-29 11:10:43,846 - qwen_api_debug - DEBUG - 流式输出chunk 41: '**，羊水过多分为'
+2025-09-29 11:10:43,850 - qwen_api_debug - DEBUG - 流式输出chunk 42: '：
+- **轻度'
+2025-09-29 11:10:43,850 - qwen_api_debug - DEBUG - 流式输出chunk 42: '：
+- **轻度'
+2025-09-29 11:10:43,910 - qwen_api_debug - DEBUG - 流式输出chunk 43: '**：AFI '
+2025-09-29 11:10:43,910 - qwen_api_debug - DEBUG - 流式输出chunk 43: '**：AFI '
+2025-09-29 11:10:43,914 - qwen_api_debug - DEBUG - 流式输出chunk 44: '25～3'
+2025-09-29 11:10:43,914 - qwen_api_debug - DEBUG - 流式输出chunk 44: '25～3'
+2025-09-29 11:10:43,915 - qwen_api_debug - DEBUG - 流式输出chunk 45: '0cm，多数'
+2025-09-29 11:10:43,915 - qwen_api_debug - DEBUG - 流式输出chunk 45: '0cm，多数'
+2025-09-29 11:10:43,970 - qwen_api_debug - DEBUG - 流式输出chunk 46: '无明显不适；
+- **中'
+2025-09-29 11:10:43,970 - qwen_api_debug - DEBUG - 流式输出chunk 46: '无明显不适；
+- **中'
+2025-09-29 11:10:44,122 - qwen_api_debug - DEBUG - 流式输出chunk 47: '重度**：AF'
+2025-09-29 11:10:44,122 - qwen_api_debug - DEBUG - 流式输出chunk 47: '重度**：AF'
+2025-09-29 11:10:44,135 - qwen_api_debug - DEBUG - 流式输出chunk 48: 'I >30'
+2025-09-29 11:10:44,135 - qwen_api_debug - DEBUG - 流式输出chunk 48: 'I >30'
+2025-09-29 11:10:44,210 - qwen_api_debug - DEBUG - 流式输出chunk 49: 'cm，可能感觉肚子胀得'
+2025-09-29 11:10:44,210 - qwen_api_debug - DEBUG - 流式输出chunk 49: 'cm，可能感觉肚子胀得'
+2025-09-29 11:10:44,212 - qwen_api_debug - DEBUG - 流式输出chunk 50: '厉害、呼吸有点'
+2025-09-29 11:10:44,212 - qwen_api_debug - DEBUG - 流式输出chunk 50: '厉害、呼吸有点'
+2025-09-29 11:10:44,230 - qwen_api_debug - DEBUG - 流式输出chunk 51: '闷、走路吃'
+2025-09-29 11:10:44,230 - qwen_api_debug - DEBUG - 流式输出chunk 51: '闷、走路吃'
+2025-09-29 11:10:44,294 - qwen_api_debug - DEBUG - 流式输出chunk 52: '力。
+
+**判断依据**：'
+2025-09-29 11:10:44,294 - qwen_api_debug - DEBUG - 流式输出chunk 52: '力。
+
+**判断依据**：'
+2025-09-29 11:10:44,295 - qwen_api_debug - DEBUG - 流式输出chunk 53: '医生是通过**B'
+2025-09-29 11:10:44,295 - qwen_api_debug - DEBUG - 流式输出chunk 53: '医生是通过**B'
+2025-09-29 11:10:44,331 - qwen_api_debug - DEBUG - 流式输出chunk 54: '超**测量羊'
+2025-09-29 11:10:44,331 - qwen_api_debug - DEBUG - 流式输出chunk 54: '超**测量羊'
+2025-09-29 11:10:44,386 - qwen_api_debug - DEBUG - 流式输出chunk 55: '水池深度和羊水'
+2025-09-29 11:10:44,386 - qwen_api_debug - DEBUG - 流式输出chunk 55: '水池深度和羊水'
+2025-09-29 11:10:44,390 - qwen_api_debug - DEBUG - 流式输出chunk 56: '指数来判断的'
+2025-09-29 11:10:44,390 - qwen_api_debug - DEBUG - 流式输出chunk 56: '指数来判断的'
+2025-09-29 11:10:44,417 - qwen_api_debug - DEBUG - 流式输出chunk 57: '，不是靠“'
+2025-09-29 11:10:44,417 - qwen_api_debug - DEBUG - 流式输出chunk 57: '，不是靠“'
+2025-09-29 11:10:44,680 - qwen_api_debug - DEBUG - 流式输出chunk 58: '肚子大不大”来'
+2025-09-29 11:10:44,680 - qwen_api_debug - DEBUG - 流式输出chunk 58: '肚子大不大”来'
+2025-09-29 11:10:44,693 - qwen_api_debug - DEBUG - 流式输出chunk 59: '猜的哦！
+
+---
+
+###'
+2025-09-29 11:10:44,693 - qwen_api_debug - DEBUG - 流式输出chunk 59: '猜的哦！
+
+---
+
+###'
+2025-09-29 11:10:44,774 - qwen_api_debug - DEBUG - 流式输出chunk 60: ' 💡 **1.'
+2025-09-29 11:10:44,774 - qwen_api_debug - DEBUG - 流式输出chunk 60: ' 💡 **1.'
+2025-09-29 11:10:44,777 - qwen_api_debug - DEBUG - 流式输出chunk 61: ' 明确病因 —'
+2025-09-29 11:10:44,777 - qwen_api_debug - DEBUG - 流式输出chunk 61: ' 明确病因 —'
+2025-09-29 11:10:44,881 - qwen_api_debug - DEBUG - 流式输出chunk 62: ' 为什么会出现羊水过多？'
+2025-09-29 11:10:44,881 - qwen_api_debug - DEBUG - 流式输出chunk 62: ' 为什么会出现羊水过多？'
+2025-09-29 11:10:44,887 - qwen_api_debug - DEBUG - 流式输出chunk 63: '**
+
+别担心，我们一起来'
+2025-09-29 11:10:44,887 - qwen_api_debug - DEBUG - 流式输出chunk 63: '**
+
+别担心，我们一起来'
+2025-09-29 11:10:44,920 - qwen_api_debug - DEBUG - 流式输出chunk 64: '找原因，就像'
+2025-09-29 11:10:44,920 - qwen_api_debug - DEBUG - 流式输出chunk 64: '找原因，就像'
+2025-09-29 11:10:44,967 - qwen_api_debug - DEBUG - 流式输出chunk 65: '医生在“侦探'
+2025-09-29 11:10:44,967 - qwen_api_debug - DEBUG - 流式输出chunk 65: '医生在“侦探'
+2025-09-29 11:10:44,983 - qwen_api_debug - DEBUG - 流式输出chunk 66: '破案”：
+
+'
+2025-09-29 11:10:44,983 - qwen_api_debug - DEBUG - 流式输出chunk 66: '破案”：
+
+'
+2025-09-29 11:10:45,048 - qwen_api_debug - DEBUG - 流式输出chunk 67: '| 可能的原因'
+2025-09-29 11:10:45,048 - qwen_api_debug - DEBUG - 流式输出chunk 67: '| 可能的原因'
+2025-09-29 11:10:45,062 - qwen_api_debug - DEBUG - 流式输出chunk 68: ' | 通俗解释 |
+|'
+2025-09-29 11:10:45,062 - qwen_api_debug - DEBUG - 流式输出chunk 68: ' | 通俗解释 |
+|'
+2025-09-29 11:10:45,119 - qwen_api_debug - DEBUG - 流式输出chunk 69: '------------|----------|
+| **'
+2025-09-29 11:10:45,119 - qwen_api_debug - DEBUG - 流式输出chunk 69: '------------|----------|
+| **'
+2025-09-29 11:10:45,123 - qwen_api_debug - DEBUG - 流式输出chunk 70: '妊娠期糖尿病**'
+2025-09-29 11:10:45,123 - qwen_api_debug - DEBUG - 流式输出chunk 70: '妊娠期糖尿病**'
+2025-09-29 11:10:45,187 - qwen_api_debug - DEBUG - 流式输出chunk 71: ' | 最常见的“'
+2025-09-29 11:10:45,187 - qwen_api_debug - DEBUG - 流式输出chunk 71: ' | 最常见的“'
+2025-09-29 11:10:45,193 - qwen_api_debug - DEBUG - 流式输出chunk 72: '真凶”！'
+2025-09-29 11:10:45,193 - qwen_api_debug - DEBUG - 流式输出chunk 72: '真凶”！'
+2025-09-29 11:10:45,246 - qwen_api_debug - DEBUG - 流式输出chunk 73: '妈妈血糖高，宝宝'
+2025-09-29 11:10:45,246 - qwen_api_debug - DEBUG - 流式输出chunk 73: '妈妈血糖高，宝宝'
+2025-09-29 11:10:45,437 - qwen_api_debug - DEBUG - 流式输出chunk 74: '也血糖高，宝宝尿'
+2025-09-29 11:10:45,437 - qwen_api_debug - DEBUG - 流式输出chunk 74: '也血糖高，宝宝尿'
+2025-09-29 11:10:45,476 - qwen_api_debug - DEBUG - 流式输出chunk 75: '得多，羊水就多了'
+2025-09-29 11:10:45,476 - qwen_api_debug - DEBUG - 流式输出chunk 75: '得多，羊水就多了'
+2025-09-29 11:10:45,528 - qwen_api_debug - DEBUG - 流式输出chunk 76: '。 |
+| **胎儿'
+2025-09-29 11:10:45,528 - qwen_api_debug - DEBUG - 流式输出chunk 76: '。 |
+| **胎儿'
+2025-09-29 11:10:45,703 - qwen_api_debug - DEBUG - 流式输出chunk 77: '结构异常** |'
+2025-09-29 11:10:45,703 - qwen_api_debug - DEBUG - 流式输出chunk 77: '结构异常** |'
+2025-09-29 11:10:45,744 - qwen_api_debug - DEBUG - 流式输出chunk 78: ' 少数情况，'
+2025-09-29 11:10:45,744 - qwen_api_debug - DEBUG - 流式输出chunk 78: ' 少数情况，'
+2025-09-29 11:10:45,823 - qwen_api_debug - DEBUG - 流式输出chunk 79: '比如宝宝食道闭'
+2025-09-29 11:10:45,823 - qwen_api_debug - DEBUG - 流式输出chunk 79: '比如宝宝食道闭'
+2025-09-29 11:10:45,837 - qwen_api_debug - DEBUG - 流式输出chunk 80: '锁、脑部发育问题'
+2025-09-29 11:10:45,837 - qwen_api_debug - DEBUG - 流式输出chunk 80: '锁、脑部发育问题'
+2025-09-29 11:10:45,897 - qwen_api_debug - DEBUG - 流式输出chunk 81: '，吞不下羊水，'
+2025-09-29 11:10:45,897 - qwen_api_debug - DEBUG - 流式输出chunk 81: '，吞不下羊水，'
+2025-09-29 11:10:45,945 - qwen_api_debug - DEBUG - 流式输出chunk 82: '导致积多。 |
+| **'
+2025-09-29 11:10:45,945 - qwen_api_debug - DEBUG - 流式输出chunk 82: '导致积多。 |
+| **'
+2025-09-29 11:10:45,981 - qwen_api_debug - DEBUG - 流式输出chunk 83: '双胎输血'
+2025-09-29 11:10:45,981 - qwen_api_debug - DEBUG - 流式输出chunk 83: '双胎输血'
+2025-09-29 11:10:45,986 - qwen_api_debug - DEBUG - 流式输出chunk 84: '综合征** | 如果'
+2025-09-29 11:10:45,986 - qwen_api_debug - DEBUG - 流式输出chunk 84: '综合征** | 如果'
+2025-09-29 11:10:46,001 - qwen_api_debug - DEBUG - 流式输出chunk 85: '是双胞胎'
+2025-09-29 11:10:46,001 - qwen_api_debug - DEBUG - 流式输出chunk 85: '是双胞胎'
+2025-09-29 11:10:46,055 - qwen_api_debug - DEBUG - 流式输出chunk 86: '，一个宝宝“'
+2025-09-29 11:10:46,055 - qwen_api_debug - DEBUG - 流式输出chunk 86: '，一个宝宝“'
+2025-09-29 11:10:46,084 - qwen_api_debug - DEBUG - 流式输出chunk 87: '抢”了太多'
+2025-09-29 11:10:46,084 - qwen_api_debug - DEBUG - 流式输出chunk 87: '抢”了太多'
+2025-09-29 11:10:46,145 - qwen_api_debug - DEBUG - 流式输出chunk 88: '血液，尿得多，羊水'
+2025-09-29 11:10:46,145 - qwen_api_debug - DEBUG - 流式输出chunk 88: '血液，尿得多，羊水'
+2025-09-29 11:10:46,181 - qwen_api_debug - DEBUG - 流式输出chunk 89: '就多。 |
+'
+2025-09-29 11:10:46,181 - qwen_api_debug - DEBUG - 流式输出chunk 89: '就多。 |
+'
+2025-09-29 11:10:46,186 - qwen_api_debug - DEBUG - 流式输出chunk 90: '| **母儿'
+2025-09-29 11:10:46,186 - qwen_api_debug - DEBUG - 流式输出chunk 90: '| **母儿'
+2025-09-29 11:10:46,201 - qwen_api_debug - DEBUG - 流式输出chunk 91: '血型不合**'
+2025-09-29 11:10:46,201 - qwen_api_debug - DEBUG - 流式输出chunk 91: '血型不合**'
+2025-09-29 11:10:46,241 - qwen_api_debug - DEBUG - 流式输出chunk 92: ' | 比'
+2025-09-29 11:10:46,241 - qwen_api_debug - DEBUG - 流式输出chunk 92: ' | 比'
+2025-09-29 11:10:46,257 - qwen_api_debug - DEBUG - 流式输出chunk 93: '如Rh血型不合，'
+2025-09-29 11:10:46,257 - qwen_api_debug - DEBUG - 流式输出chunk 93: '如Rh血型不合，'
+2025-09-29 11:10:46,314 - qwen_api_debug - DEBUG - 流式输出chunk 94: '宝宝可能轻微水肿'
+2025-09-29 11:10:46,314 - qwen_api_debug - DEBUG - 流式输出chunk 94: '宝宝可能轻微水肿'
+2025-09-29 11:10:46,357 - qwen_api_debug - DEBUG - 流式输出chunk 95: '，液体多，羊水也'
+2025-09-29 11:10:46,357 - qwen_api_debug - DEBUG - 流式输出chunk 95: '，液体多，羊水也'
+2025-09-29 11:10:46,424 - qwen_api_debug - DEBUG - 流式输出chunk 96: '跟着多。 |
+| **'
+2025-09-29 11:10:46,424 - qwen_api_debug - DEBUG - 流式输出chunk 96: '跟着多。 |
+| **'
+2025-09-29 11:10:46,432 - qwen_api_debug - DEBUG - 流式输出chunk 97: '特发性（'
+2025-09-29 11:10:46,432 - qwen_api_debug - DEBUG - 流式输出chunk 97: '特发性（'
+2025-09-29 11:10:46,436 - qwen_api_debug - DEBUG - 流式输出chunk 98: '原因不明）**'
+2025-09-29 11:10:46,436 - qwen_api_debug - DEBUG - 流式输出chunk 98: '原因不明）**'
+2025-09-29 11:10:46,477 - qwen_api_debug - DEBUG - 流式输出chunk 99: ' | 很多妈妈'
+2025-09-29 11:10:46,477 - qwen_api_debug - DEBUG - 流式输出chunk 99: ' | 很多妈妈'
+2025-09-29 11:10:46,504 - qwen_api_debug - DEBUG - 流式输出chunk 100: '查来查去，找不到'
+2025-09-29 11:10:46,504 - qwen_api_debug - DEBUG - 流式输出chunk 100: '查来查去，找不到'
+2025-09-29 11:10:46,536 - qwen_api_debug - DEBUG - 流式输出chunk 101: '明确原因，但'
+2025-09-29 11:10:46,536 - qwen_api_debug - DEBUG - 流式输出chunk 101: '明确原因，但'
+2025-09-29 11:10:46,685 - qwen_api_debug - DEBUG - 流式输出chunk 102: '宝宝一切正常——'
+2025-09-29 11:10:46,685 - qwen_api_debug - DEBUG - 流式输出chunk 102: '宝宝一切正常——'
+2025-09-29 11:10:46,686 - qwen_api_debug - DEBUG - 流式输出chunk 103: '这叫“特'
+2025-09-29 11:10:46,686 - qwen_api_debug - DEBUG - 流式输出chunk 103: '这叫“特'
+2025-09-29 11:10:46,688 - qwen_api_debug - DEBUG - 流式输出chunk 104: '发性羊水'
+2025-09-29 11:10:46,688 - qwen_api_debug - DEBUG - 流式输出chunk 104: '发性羊水'
+2025-09-29 11:10:46,724 - qwen_api_debug - DEBUG - 流式输出chunk 105: '过多”，**并'
+2025-09-29 11:10:46,724 - qwen_api_debug - DEBUG - 流式输出chunk 105: '过多”，**并'
+2025-09-29 11:10:46,726 - qwen_api_debug - DEBUG - 流式输出chunk 106: '不可怕**，'
+2025-09-29 11:10:46,726 - qwen_api_debug - DEBUG - 流式输出chunk 106: '不可怕**，'
+2025-09-29 11:10:46,729 - qwen_api_debug - DEBUG - 流式输出chunk 107: '只要定期监测就好'
+2025-09-29 11:10:46,729 - qwen_api_debug - DEBUG - 流式输出chunk 107: '只要定期监测就好'
+2025-09-29 11:10:46,757 - qwen_api_debug - DEBUG - 流式输出chunk 108: '！ |
+
+> 🌟'
+2025-09-29 11:10:46,757 - qwen_api_debug - DEBUG - 流式输出chunk 108: '！ |
+
+> 🌟'
+2025-09-29 11:10:46,764 - qwen_api_debug - DEBUG - 流式输出chunk 109: ' **重点提醒**'
+2025-09-29 11:10:46,764 - qwen_api_debug - DEBUG - 流式输出chunk 109: ' **重点提醒**'
+2025-09-29 11:10:46,832 - qwen_api_debug - DEBUG - 流式输出chunk 110: '：您不需要自己'
+2025-09-29 11:10:46,832 - qwen_api_debug - DEBUG - 流式输出chunk 110: '：您不需要自己'
+2025-09-29 11:10:46,862 - qwen_api_debug - DEBUG - 流式输出chunk 111: '吓自己！**超过'
+2025-09-29 11:10:46,862 - qwen_api_debug - DEBUG - 流式输出chunk 111: '吓自己！**超过'
+2025-09-29 11:10:46,895 - qwen_api_debug - DEBUG - 流式输出chunk 112: '70%的羊'
+2025-09-29 11:10:46,895 - qwen_api_debug - DEBUG - 流式输出chunk 112: '70%的羊'
+2025-09-29 11:10:46,941 - qwen_api_debug - DEBUG - 流式输出chunk 113: '水过多，是因为'
+2025-09-29 11:10:46,941 - qwen_api_debug - DEBUG - 流式输出chunk 113: '水过多，是因为'
+2025-09-29 11:10:46,945 - qwen_api_debug - DEBUG - 流式输出chunk 114: '妊娠期糖尿病或'
+2025-09-29 11:10:46,945 - qwen_api_debug - DEBUG - 流式输出chunk 114: '妊娠期糖尿病或'
+2025-09-29 11:10:46,994 - qwen_api_debug - DEBUG - 流式输出chunk 115: '原因不明，胎儿'
+2025-09-29 11:10:46,994 - qwen_api_debug - DEBUG - 流式输出chunk 115: '原因不明，胎儿'
+2025-09-29 11:10:47,080 - qwen_api_debug - DEBUG - 流式输出chunk 116: '是健康的！**
+
+'
+2025-09-29 11:10:47,080 - qwen_api_debug - DEBUG - 流式输出chunk 116: '是健康的！**
+
+'
+2025-09-29 11:10:47,084 - qwen_api_debug - DEBUG - 流式输出chunk 117: '---
+
+###'
+2025-09-29 11:10:47,084 - qwen_api_debug - DEBUG - 流式输出chunk 117: '---
+
+###'
+2025-09-29 11:10:47,121 - qwen_api_debug - DEBUG - 流式输出chunk 118: ' 🛠️ **2'
+2025-09-29 11:10:47,121 - qwen_api_debug - DEBUG - 流式输出chunk 118: ' 🛠️ **2'
+2025-09-29 11:10:47,131 - qwen_api_debug - DEBUG - 流式输出chunk 119: '. 针'
+2025-09-29 11:10:47,131 - qwen_api_debug - DEBUG - 流式输出chunk 119: '. 针'
+2025-09-29 11:10:47,133 - qwen_api_debug - DEBUG - 流式输出chunk 120: '对性处理措施'
+2025-09-29 11:10:47,133 - qwen_api_debug - DEBUG - 流式输出chunk 120: '对性处理措施'
+2025-09-29 11:10:47,222 - qwen_api_debug - DEBUG - 流式输出chunk 121: ' — 我们该'
+2025-09-29 11:10:47,222 - qwen_api_debug - DEBUG - 流式输出chunk 121: ' — 我们该'
+2025-09-29 11:10:47,225 - qwen_api_debug - DEBUG - 流式输出chunk 122: '怎么做？**
+
+我会'
+2025-09-29 11:10:47,225 - qwen_api_debug - DEBUG - 流式输出chunk 122: '怎么做？**
+
+我会'
+2025-09-29 11:10:47,258 - qwen_api_debug - DEBUG - 流式输出chunk 123: '根据您的具体情况，给出'
+2025-09-29 11:10:47,258 - qwen_api_debug - DEBUG - 流式输出chunk 123: '根据您的具体情况，给出'
+2025-09-29 11:10:47,295 - qwen_api_debug - DEBUG - 流式输出chunk 124: '“温柔而有力”的建议'
+2025-09-29 11:10:47,295 - qwen_api_debug - DEBUG - 流式输出chunk 124: '“温柔而有力”的建议'
+2025-09-29 11:10:47,296 - qwen_api_debug - DEBUG - 流式输出chunk 125: '：
+
+#### ✅'
+2025-09-29 11:10:47,296 - qwen_api_debug - DEBUG - 流式输出chunk 125: '：
+
+#### ✅'
+2025-09-29 11:10:47,313 - qwen_api_debug - DEBUG - 流式输出chunk 126: ' 如果是**妊娠期糖尿病'
+2025-09-29 11:10:47,313 - qwen_api_debug - DEBUG - 流式输出chunk 126: ' 如果是**妊娠期糖尿病'
+2025-09-29 11:10:47,352 - qwen_api_debug - DEBUG - 流式输出chunk 127: '**引起的：
+-'
+2025-09-29 11:10:47,352 - qwen_api_debug - DEBUG - 流式输出chunk 127: '**引起的：
+-'
+2025-09-29 11:10:47,374 - qwen_api_debug - DEBUG - 流式输出chunk 128: ' **第一步**：控制血糖'
+2025-09-29 11:10:47,374 - qwen_api_debug - DEBUG - 流式输出chunk 128: ' **第一步**：控制血糖'
+2025-09-29 11:10:47,456 - qwen_api_debug - DEBUG - 流式输出chunk 129: '！每天记录饮食、监测'
+2025-09-29 11:10:47,456 - qwen_api_debug - DEBUG - 流式输出chunk 129: '！每天记录饮食、监测'
+2025-09-29 11:10:47,468 - qwen_api_debug - DEBUG - 流式输出chunk 130: '空腹和餐后血糖。
+'
+2025-09-29 11:10:47,468 - qwen_api_debug - DEBUG - 流式输出chunk 130: '空腹和餐后血糖。
+'
+2025-09-29 11:10:47,519 - qwen_api_debug - DEBUG - 流式输出chunk 131: '- **第二步**：三'
+2025-09-29 11:10:47,519 - qwen_api_debug - DEBUG - 流式输出chunk 131: '- **第二步**：三'
+2025-09-29 11:10:47,549 - qwen_api_debug - DEBUG - 流式输出chunk 132: '餐规律，少吃多'
+2025-09-29 11:10:47,549 - qwen_api_debug - DEBUG - 流式输出chunk 132: '餐规律，少吃多'
+2025-09-29 11:10:47,580 - qwen_api_debug - DEBUG - 流式输出chunk 133: '餐，减少甜'
+2025-09-29 11:10:47,580 - qwen_api_debug - DEBUG - 流式输出chunk 133: '餐，减少甜'
+2025-09-29 11:10:47,649 - qwen_api_debug - DEBUG - 流式输出chunk 134: '食、精制碳水（'
+2025-09-29 11:10:47,649 - qwen_api_debug - DEBUG - 流式输出chunk 134: '食、精制碳水（'
+2025-09-29 11:10:47,652 - qwen_api_debug - DEBUG - 流式输出chunk 135: '白米饭、白'
+2025-09-29 11:10:47,652 - qwen_api_debug - DEBUG - 流式输出chunk 135: '白米饭、白'
+2025-09-29 11:10:47,712 - qwen_api_debug - DEBUG - 流式输出chunk 136: '面包）。
+- **第三'
+2025-09-29 11:10:47,712 - qwen_api_debug - DEBUG - 流式输出chunk 136: '面包）。
+- **第三'
+2025-09-29 11:10:47,716 - qwen_api_debug - DEBUG - 流式输出chunk 137: '步**：每天'
+2025-09-29 11:10:47,716 - qwen_api_debug - DEBUG - 流式输出chunk 137: '步**：每天'
+2025-09-29 11:10:47,718 - qwen_api_debug - DEBUG - 流式输出chunk 138: '散步30分钟'
+2025-09-29 11:10:47,718 - qwen_api_debug - DEBUG - 流式输出chunk 138: '散步30分钟'
+2025-09-29 11:10:47,815 - qwen_api_debug - DEBUG - 流式输出chunk 139: '，帮助身体用'
+2025-09-29 11:10:47,815 - qwen_api_debug - DEBUG - 流式输出chunk 139: '，帮助身体用'
+2025-09-29 11:10:47,824 - qwen_api_debug - DEBUG - 流式输出chunk 140: '掉多余糖分。
+-'
+2025-09-29 11:10:47,824 - qwen_api_debug - DEBUG - 流式输出chunk 140: '掉多余糖分。
+-'
+2025-09-29 11:10:47,846 - qwen_api_debug - DEBUG - 流式输出chunk 141: ' **第四步**'
+2025-09-29 11:10:47,846 - qwen_api_debug - DEBUG - 流式输出chunk 141: ' **第四步**'
+2025-09-29 11:10:47,849 - qwen_api_debug - DEBUG - 流式输出chunk 142: '：如果饮食+'
+2025-09-29 11:10:47,849 - qwen_api_debug - DEBUG - 流式输出chunk 142: '：如果饮食+'
+2025-09-29 11:10:48,051 - qwen_api_debug - DEBUG - 流式输出chunk 143: '运动控制不好，医生会考虑'
+2025-09-29 11:10:48,051 - qwen_api_debug - DEBUG - 流式输出chunk 143: '运动控制不好，医生会考虑'
+2025-09-29 11:10:48,066 - qwen_api_debug - DEBUG - 流式输出chunk 144: '使用**胰岛素'
+2025-09-29 11:10:48,066 - qwen_api_debug - DEBUG - 流式输出chunk 144: '使用**胰岛素'
+2025-09-29 11:10:48,080 - qwen_api_debug - DEBUG - 流式输出chunk 145: '**（安全无'
+2025-09-29 11:10:48,080 - qwen_api_debug - DEBUG - 流式输出chunk 145: '**（安全无'
+2025-09-29 11:10:48,156 - qwen_api_debug - DEBUG - 流式输出chunk 146: '害，不是“'
+2025-09-29 11:10:48,156 - qwen_api_debug - DEBUG - 流式输出chunk 146: '害，不是“'
+2025-09-29 11:10:48,168 - qwen_api_debug - DEBUG - 流式输出chunk 147: '打针上瘾”，'
+2025-09-29 11:10:48,168 - qwen_api_debug - DEBUG - 流式输出chunk 147: '打针上瘾”，'
+2025-09-29 11:10:48,258 - qwen_api_debug - DEBUG - 流式输出chunk 148: '只是帮您渡'
+2025-09-29 11:10:48,258 - qwen_api_debug - DEBUG - 流式输出chunk 148: '只是帮您渡'
+2025-09-29 11:10:48,290 - qwen_api_debug - DEBUG - 流式输出chunk 149: '过难关）。
+
+'
+2025-09-29 11:10:48,290 - qwen_api_debug - DEBUG - 流式输出chunk 149: '过难关）。
+
+'
+2025-09-29 11:10:48,310 - qwen_api_debug - DEBUG - 流式输出chunk 150: '👉 **好消息**：血糖'
+2025-09-29 11:10:48,310 - qwen_api_debug - DEBUG - 流式输出chunk 150: '👉 **好消息**：血糖'
+2025-09-29 11:10:48,345 - qwen_api_debug - DEBUG - 流式输出chunk 151: '控制好了，羊'
+2025-09-29 11:10:48,345 - qwen_api_debug - DEBUG - 流式输出chunk 151: '控制好了，羊'
+2025-09-29 11:10:48,363 - qwen_api_debug - DEBUG - 流式输出chunk 152: '水会慢慢恢复正常'
+2025-09-29 11:10:48,363 - qwen_api_debug - DEBUG - 流式输出chunk 152: '水会慢慢恢复正常'
+2025-09-29 11:10:48,419 - qwen_api_debug - DEBUG - 流式输出chunk 153: '！
+
+#### ✅ 如果'
+2025-09-29 11:10:48,419 - qwen_api_debug - DEBUG - 流式输出chunk 153: '！
+
+#### ✅ 如果'
+2025-09-29 11:10:48,420 - qwen_api_debug - DEBUG - 流式输出chunk 154: '是**胎儿结构'
+2025-09-29 11:10:48,420 - qwen_api_debug - DEBUG - 流式输出chunk 154: '是**胎儿结构'
+2025-09-29 11:10:48,456 - qwen_api_debug - DEBUG - 流式输出chunk 155: '异常**（概率'
+2025-09-29 11:10:48,456 - qwen_api_debug - DEBUG - 流式输出chunk 155: '异常**（概率'
+2025-09-29 11:10:48,490 - qwen_api_debug - DEBUG - 流式输出chunk 156: '低）：
+我们会'
+2025-09-29 11:10:48,490 - qwen_api_debug - DEBUG - 流式输出chunk 156: '低）：
+我们会'
+2025-09-29 11:10:48,523 - qwen_api_debug - DEBUG - 流式输出chunk 157: '安排更详细的**高'
+2025-09-29 11:10:48,523 - qwen_api_debug - DEBUG - 流式输出chunk 157: '安排更详细的**高'
+2025-09-29 11:10:48,562 - qwen_api_debug - DEBUG - 流式输出chunk 158: '分辨率B超**'
+2025-09-29 11:10:48,562 - qwen_api_debug - DEBUG - 流式输出chunk 158: '分辨率B超**'
+2025-09-29 11:10:48,569 - qwen_api_debug - DEBUG - 流式输出chunk 159: '、**胎儿心脏'
+2025-09-29 11:10:48,569 - qwen_api_debug - DEBUG - 流式输出chunk 159: '、**胎儿心脏'
+2025-09-29 11:10:48,595 - qwen_api_debug - DEBUG - 流式输出chunk 160: '彩超**，'
+2025-09-29 11:10:48,595 - qwen_api_debug - DEBUG - 流式输出chunk 160: '彩超**，'
+2025-09-29 11:10:48,648 - qwen_api_debug - DEBUG - 流式输出chunk 161: '甚至做**无'
+2025-09-29 11:10:48,648 - qwen_api_debug - DEBUG - 流式输出chunk 161: '甚至做**无'
+2025-09-29 11:10:48,661 - qwen_api_debug - DEBUG - 流式输出chunk 162: '创DNA或羊水穿'
+2025-09-29 11:10:48,661 - qwen_api_debug - DEBUG - 流式输出chunk 162: '创DNA或羊水穿'
+2025-09-29 11:10:48,675 - qwen_api_debug - DEBUG - 流式输出chunk 163: '刺**，明确'
+2025-09-29 11:10:48,675 - qwen_api_debug - DEBUG - 流式输出chunk 163: '刺**，明确'
+2025-09-29 11:10:48,728 - qwen_api_debug - DEBUG - 流式输出chunk 164: '宝宝有没有问题。  
+→'
+2025-09-29 11:10:48,728 - qwen_api_debug - DEBUG - 流式输出chunk 164: '宝宝有没有问题。  
+→'
+2025-09-29 11:10:48,755 - qwen_api_debug - DEBUG - 流式输出chunk 165: ' 如果宝宝只是轻微异常，很多'
+2025-09-29 11:10:48,755 - qwen_api_debug - DEBUG - 流式输出chunk 165: ' 如果宝宝只是轻微异常，很多'
+2025-09-29 11:10:48,824 - qwen_api_debug - DEBUG - 流式输出chunk 166: '是可以出生后手术'
+2025-09-29 11:10:48,824 - qwen_api_debug - DEBUG - 流式输出chunk 166: '是可以出生后手术'
+2025-09-29 11:10:48,853 - qwen_api_debug - DEBUG - 流式输出chunk 167: '治疗的；  
+→ 如果是'
+2025-09-29 11:10:48,853 - qwen_api_debug - DEBUG - 流式输出chunk 167: '治疗的；  
+→ 如果是'
+2025-09-29 11:10:48,885 - qwen_api_debug - DEBUG - 流式输出chunk 168: '严重问题，我们会'
+2025-09-29 11:10:48,885 - qwen_api_debug - DEBUG - 流式输出chunk 168: '严重问题，我们会'
+2025-09-29 11:10:48,897 - qwen_api_debug - DEBUG - 流式输出chunk 169: '和您一起，'
+2025-09-29 11:10:48,897 - qwen_api_debug - DEBUG - 流式输出chunk 169: '和您一起，'
+2025-09-29 11:10:48,931 - qwen_api_debug - DEBUG - 流式输出chunk 170: '**用爱和'
+2025-09-29 11:10:48,931 - qwen_api_debug - DEBUG - 流式输出chunk 170: '**用爱和'
+2025-09-29 11:10:49,031 - qwen_api_debug - DEBUG - 流式输出chunk 171: '理性做最合适的'
+2025-09-29 11:10:49,031 - qwen_api_debug - DEBUG - 流式输出chunk 171: '理性做最合适的'
+2025-09-29 11:10:49,032 - qwen_api_debug - DEBUG - 流式输出chunk 172: '决定**，您不是一个人做'
+2025-09-29 11:10:49,032 - qwen_api_debug - DEBUG - 流式输出chunk 172: '决定**，您不是一个人做'
+2025-09-29 11:10:49,094 - qwen_api_debug - DEBUG - 流式输出chunk 173: '选择。
+
+#### ✅'
+2025-09-29 11:10:49,094 - qwen_api_debug - DEBUG - 流式输出chunk 173: '选择。
+
+#### ✅'
+2025-09-29 11:10:49,101 - qwen_api_debug - DEBUG - 流式输出chunk 174: ' 如果是**特'
+2025-09-29 11:10:49,101 - qwen_api_debug - DEBUG - 流式输出chunk 174: ' 如果是**特'
+2025-09-29 11:10:49,102 - qwen_api_debug - DEBUG - 流式输出chunk 175: '发性羊水'
+2025-09-29 11:10:49,102 - qwen_api_debug - DEBUG - 流式输出chunk 175: '发性羊水'
+2025-09-29 11:10:49,170 - qwen_api_debug - DEBUG - 流式输出chunk 176: '过多**（没有'
+2025-09-29 11:10:49,170 - qwen_api_debug - DEBUG - 流式输出chunk 176: '过多**（没有'
+2025-09-29 11:10:49,175 - qwen_api_debug - DEBUG - 流式输出chunk 177: '明显原因）：
+-'
+2025-09-29 11:10:49,175 - qwen_api_debug - DEBUG - 流式输出chunk 177: '明显原因）：
+-'
+2025-09-29 11:10:49,217 - qwen_api_debug - DEBUG - 流式输出chunk 178: ' **每周一次B超**：'
+2025-09-29 11:10:49,217 - qwen_api_debug - DEBUG - 流式输出chunk 178: ' **每周一次B超**：'
+2025-09-29 11:10:49,220 - qwen_api_debug - DEBUG - 流式输出chunk 179: '监测羊水量和'
+2025-09-29 11:10:49,220 - qwen_api_debug - DEBUG - 流式输出chunk 179: '监测羊水量和'
+2025-09-29 11:10:49,277 - qwen_api_debug - DEBUG - 流式输出chunk 180: '宝宝生长情况；
+- **电子'
+2025-09-29 11:10:49,277 - qwen_api_debug - DEBUG - 流式输出chunk 180: '宝宝生长情况；
+- **电子'
+2025-09-29 11:10:49,279 - qwen_api_debug - DEBUG - 流式输出chunk 181: '胎心监护**'
+2025-09-29 11:10:49,279 - qwen_api_debug - DEBUG - 流式输出chunk 181: '胎心监护**'
+2025-09-29 11:10:49,304 - qwen_api_debug - DEBUG - 流式输出chunk 182: '：每2周做'
+2025-09-29 11:10:49,304 - qwen_api_debug - DEBUG - 流式输出chunk 182: '：每2周做'
+2025-09-29 11:10:49,357 - qwen_api_debug - DEBUG - 流式输出chunk 183: '一次，确保宝宝'
+2025-09-29 11:10:49,357 - qwen_api_debug - DEBUG - 流式输出chunk 183: '一次，确保宝宝'
+2025-09-29 11:10:49,393 - qwen_api_debug - DEBUG - 流式输出chunk 184: '在肚子里“心情'
+2025-09-29 11:10:49,393 - qwen_api_debug - DEBUG - 流式输出chunk 184: '在肚子里“心情'
+2025-09-29 11:10:49,441 - qwen_api_debug - DEBUG - 流式输出chunk 185: '好、呼吸稳'
+2025-09-29 11:10:49,441 - qwen_api_debug - DEBUG - 流式输出chunk 185: '好、呼吸稳'
+2025-09-29 11:10:49,485 - qwen_api_debug - DEBUG - 流式输出chunk 186: '”；
+- **'
+2025-09-29 11:10:49,485 - qwen_api_debug - DEBUG - 流式输出chunk 186: '”；
+- **'
+2025-09-29 11:10:49,491 - qwen_api_debug - DEBUG - 流式输出chunk 187: '必要时，放羊水**'
+2025-09-29 11:10:49,491 - qwen_api_debug - DEBUG - 流式输出chunk 187: '必要时，放羊水**'
+2025-09-29 11:10:49,542 - qwen_api_debug - DEBUG - 流式输出chunk 188: '：如果肚子胀得喘'
+2025-09-29 11:10:49,542 - qwen_api_debug - DEBUG - 流式输出chunk 188: '：如果肚子胀得喘'
+2025-09-29 11:10:49,555 - qwen_api_debug - DEBUG - 流式输出chunk 189: '不过气、走路都'
+2025-09-29 11:10:49,555 - qwen_api_debug - DEBUG - 流式输出chunk 189: '不过气、走路都'
+2025-09-29 11:10:49,576 - qwen_api_debug - DEBUG - 流式输出chunk 190: '困难，医生会在'
+2025-09-29 11:10:49,576 - qwen_api_debug - DEBUG - 流式输出chunk 190: '困难，医生会在'
+2025-09-29 11:10:49,640 - qwen_api_debug - DEBUG - 流式输出chunk 191: 'B超引导下，**用'
+2025-09-29 11:10:49,640 - qwen_api_debug - DEBUG - 流式输出chunk 191: 'B超引导下，**用'
+2025-09-29 11:10:49,662 - qwen_api_debug - DEBUG - 流式输出chunk 192: '一根细针安全'
+2025-09-29 11:10:49,662 - qwen_api_debug - DEBUG - 流式输出chunk 192: '一根细针安全'
+2025-09-29 11:10:49,690 - qwen_api_debug - DEBUG - 流式输出chunk 193: '放出少量羊水**'
+2025-09-29 11:10:49,690 - qwen_api_debug - DEBUG - 流式输出chunk 193: '放出少量羊水**'
+2025-09-29 11:10:49,759 - qwen_api_debug - DEBUG - 流式输出chunk 194: '（就像给气球放点'
+2025-09-29 11:10:49,759 - qwen_api_debug - DEBUG - 流式输出chunk 194: '（就像给气球放点'
+2025-09-29 11:10:49,810 - qwen_api_debug - DEBUG - 流式输出chunk 195: '气），让妈妈舒服一点'
+2025-09-29 11:10:49,810 - qwen_api_debug - DEBUG - 流式输出chunk 195: '气），让妈妈舒服一点'
+2025-09-29 11:10:49,838 - qwen_api_debug - DEBUG - 流式输出chunk 196: '，**不会伤害'
+2025-09-29 11:10:49,838 - qwen_api_debug - DEBUG - 流式输出chunk 196: '，**不会伤害'
+2025-09-29 11:10:50,017 - qwen_api_debug - DEBUG - 流式输出chunk 197: '宝宝**！
+
+>'
+2025-09-29 11:10:50,017 - qwen_api_debug - DEBUG - 流式输出chunk 197: '宝宝**！
+
+>'
+2025-09-29 11:10:50,239 - qwen_api_debug - DEBUG - 流式输出chunk 198: ' 💬 **温馨'
+2025-09-29 11:10:50,239 - qwen_api_debug - DEBUG - 流式输出chunk 198: ' 💬 **温馨'
+2025-09-29 11:10:50,242 - qwen_api_debug - DEBUG - 流式输出chunk 199: '提醒**：放'
+2025-09-29 11:10:50,242 - qwen_api_debug - DEBUG - 流式输出chunk 199: '提醒**：放'
+2025-09-29 11:10:50,245 - qwen_api_debug - DEBUG - 流式输出chunk 200: '羊水不是“'
+2025-09-29 11:10:50,245 - qwen_api_debug - DEBUG - 流式输出chunk 200: '羊水不是“'
+2025-09-29 11:10:50,263 - qwen_api_debug - DEBUG - 流式输出chunk 201: '抽水”那么简单，全程'
+2025-09-29 11:10:50,263 - qwen_api_debug - DEBUG - 流式输出chunk 201: '抽水”那么简单，全程'
+2025-09-29 11:10:50,267 - qwen_api_debug - DEBUG - 流式输出chunk 202: '有胎心监护、'
+2025-09-29 11:10:50,267 - qwen_api_debug - DEBUG - 流式输出chunk 202: '有胎心监护、'
+2025-09-29 11:10:50,273 - qwen_api_debug - DEBUG - 流式输出chunk 203: '镇静剂、'
+2025-09-29 11:10:50,273 - qwen_api_debug - DEBUG - 流式输出chunk 203: '镇静剂、'
+2025-09-29 11:10:50,283 - qwen_api_debug - DEBUG - 流式输出chunk 204: '预防宫缩，**安全性'
+2025-09-29 11:10:50,283 - qwen_api_debug - DEBUG - 流式输出chunk 204: '预防宫缩，**安全性'
+2025-09-29 11:10:50,286 - qwen_api_debug - DEBUG - 流式输出chunk 205: '很高**，很多'
+2025-09-29 11:10:50,286 - qwen_api_debug - DEBUG - 流式输出chunk 205: '很高**，很多'
+2025-09-29 11:10:50,349 - qwen_api_debug - DEBUG - 流式输出chunk 206: '妈妈做完当天就能'
+2025-09-29 11:10:50,349 - qwen_api_debug - DEBUG - 流式输出chunk 206: '妈妈做完当天就能'
+2025-09-29 11:10:50,383 - qwen_api_debug - DEBUG - 流式输出chunk 207: '回家休息。
+
+####'
+2025-09-29 11:10:50,383 - qwen_api_debug - DEBUG - 流式输出chunk 207: '回家休息。
+
+####'
+2025-09-29 11:10:50,417 - qwen_api_debug - DEBUG - 流式输出chunk 208: ' ✅ 如果孕'
+2025-09-29 11:10:50,417 - qwen_api_debug - DEBUG - 流式输出chunk 208: ' ✅ 如果孕'
+2025-09-29 11:10:50,430 - qwen_api_debug - DEBUG - 流式输出chunk 209: '周接近34周以上'
+2025-09-29 11:10:50,430 - qwen_api_debug - DEBUG - 流式输出chunk 209: '周接近34周以上'
+2025-09-29 11:10:50,466 - qwen_api_debug - DEBUG - 流式输出chunk 210: '，宝宝肺发育'
+2025-09-29 11:10:50,466 - qwen_api_debug - DEBUG - 流式输出chunk 210: '，宝宝肺发育'
+2025-09-29 11:10:50,497 - qwen_api_debug - DEBUG - 流式输出chunk 211: '成熟了：
+我们会'
+2025-09-29 11:10:50,497 - qwen_api_debug - DEBUG - 流式输出chunk 211: '成熟了：
+我们会'
+2025-09-29 11:10:50,512 - qwen_api_debug - DEBUG - 流式输出chunk 212: '和您商量：'
+2025-09-29 11:10:50,512 - qwen_api_debug - DEBUG - 流式输出chunk 212: '和您商量：'
+2025-09-29 11:10:50,531 - qwen_api_debug - DEBUG - 流式输出chunk 213: '**是否可以提前'
+2025-09-29 11:10:50,531 - qwen_api_debug - DEBUG - 流式输出chunk 213: '**是否可以提前'
+2025-09-29 11:10:50,584 - qwen_api_debug - DEBUG - 流式输出chunk 214: '分娩**？因为'
+2025-09-29 11:10:50,584 - qwen_api_debug - DEBUG - 流式输出chunk 214: '分娩**？因为'
+2025-09-29 11:10:50,594 - qwen_api_debug - DEBUG - 流式输出chunk 215: '羊水太多，容易'
+2025-09-29 11:10:50,594 - qwen_api_debug - DEBUG - 流式输出chunk 215: '羊水太多，容易'
+2025-09-29 11:10:50,610 - qwen_api_debug - DEBUG - 流式输出chunk 216: '早产、胎'
+2025-09-29 11:10:50,610 - qwen_api_debug - DEBUG - 流式输出chunk 216: '早产、胎'
+2025-09-29 11:10:50,661 - qwen_api_debug - DEBUG - 流式输出chunk 217: '盘早剥、脐'
+2025-09-29 11:10:50,661 - qwen_api_debug - DEBUG - 流式输出chunk 217: '盘早剥、脐'
+2025-09-29 11:10:50,666 - qwen_api_debug - DEBUG - 流式输出chunk 218: '带脱垂。'
+2025-09-29 11:10:50,666 - qwen_api_debug - DEBUG - 流式输出chunk 218: '带脱垂。'
+2025-09-29 11:10:50,715 - qwen_api_debug - DEBUG - 流式输出chunk 219: '  
+→ 如果宝宝成熟'
+2025-09-29 11:10:50,715 - qwen_api_debug - DEBUG - 流式输出chunk 219: '  
+→ 如果宝宝成熟'
+2025-09-29 11:10:50,729 - qwen_api_debug - DEBUG - 流式输出chunk 220: '了，顺产或'
+2025-09-29 11:10:50,729 - qwen_api_debug - DEBUG - 流式输出chunk 220: '了，顺产或'
+2025-09-29 11:10:50,743 - qwen_api_debug - DEBUG - 流式输出chunk 221: '剖宫产都是'
+2025-09-29 11:10:50,743 - qwen_api_debug - DEBUG - 流式输出chunk 221: '剖宫产都是'
+2025-09-29 11:10:50,814 - qwen_api_debug - DEBUG - 流式输出chunk 222: '安全的，**不是'
+2025-09-29 11:10:50,814 - qwen_api_debug - DEBUG - 流式输出chunk 222: '安全的，**不是'
+2025-09-29 11:10:50,828 - qwen_api_debug - DEBUG - 流式输出chunk 223: '“早产危险'
+2025-09-29 11:10:50,828 - qwen_api_debug - DEBUG - 流式输出chunk 223: '“早产危险'
+2025-09-29 11:10:50,847 - qwen_api_debug - DEBUG - 流式输出chunk 224: '”，而是“适时'
+2025-09-29 11:10:50,847 - qwen_api_debug - DEBUG - 流式输出chunk 224: '”，而是“适时'
+2025-09-29 11:10:50,902 - qwen_api_debug - DEBUG - 流式输出chunk 225: '迎接”**！
+
+'
+2025-09-29 11:10:50,902 - qwen_api_debug - DEBUG - 流式输出chunk 225: '迎接”**！
+
+'
+2025-09-29 11:10:50,947 - qwen_api_debug - DEBUG - 流式输出chunk 226: '---
+
+### 🌿 **3'
+2025-09-29 11:10:50,947 - qwen_api_debug - DEBUG - 流式输出chunk 226: '---
+
+### 🌿 **3'
+2025-09-29 11:10:50,951 - qwen_api_debug - DEBUG - 流式输出chunk 227: '. 孕妇'
+2025-09-29 11:10:50,951 - qwen_api_debug - DEBUG - 流式输出chunk 227: '. 孕妇'
+2025-09-29 11:10:50,977 - qwen_api_debug - DEBUG - 流式输出chunk 228: '注意事项 — 您可以'
+2025-09-29 11:10:50,977 - qwen_api_debug - DEBUG - 流式输出chunk 228: '注意事项 — 您可以'
+2025-09-29 11:10:51,011 - qwen_api_debug - DEBUG - 流式输出chunk 229: '这样照顾自己**
+
+'
+2025-09-29 11:10:51,011 - qwen_api_debug - DEBUG - 流式输出chunk 229: '这样照顾自己**
+
+'
+2025-09-29 11:10:51,028 - qwen_api_debug - DEBUG - 流式输出chunk 230: '亲爱的，您不是'
+2025-09-29 11:10:51,028 - qwen_api_debug - DEBUG - 流式输出chunk 230: '亲爱的，您不是'
+2025-09-29 11:10:51,059 - qwen_api_debug - DEBUG - 流式输出chunk 231: '病人，您是'
+2025-09-29 11:10:51,059 - qwen_api_debug - DEBUG - 流式输出chunk 231: '病人，您是'
+2025-09-29 11:10:51,142 - qwen_api_debug - DEBUG - 流式输出chunk 232: '正在用爱守护'
+2025-09-29 11:10:51,142 - qwen_api_debug - DEBUG - 流式输出chunk 232: '正在用爱守护'
+2025-09-29 11:10:51,144 - qwen_api_debug - DEBUG - 流式输出chunk 233: '宝宝的超人妈妈'
+2025-09-29 11:10:51,144 - qwen_api_debug - DEBUG - 流式输出chunk 233: '宝宝的超人妈妈'
+2025-09-29 11:10:51,192 - qwen_api_debug - DEBUG - 流式输出chunk 234: '！请记住这'
+2025-09-29 11:10:51,192 - qwen_api_debug - DEBUG - 流式输出chunk 234: '！请记住这'
+2025-09-29 11:10:51,222 - qwen_api_debug - DEBUG - 流式输出chunk 235: '几点：
+
+| 注意'
+2025-09-29 11:10:51,222 - qwen_api_debug - DEBUG - 流式输出chunk 235: '几点：
+
+| 注意'
+2025-09-29 11:10:51,226 - qwen_api_debug - DEBUG - 流式输出chunk 236: '事项 | 为什么'
+2025-09-29 11:10:51,226 - qwen_api_debug - DEBUG - 流式输出chunk 236: '事项 | 为什么'
+2025-09-29 11:10:51,311 - qwen_api_debug - DEBUG - 流式输出chunk 237: '重要？ | 您可以'
+2025-09-29 11:10:51,311 - qwen_api_debug - DEBUG - 流式输出chunk 237: '重要？ | 您可以'
+2025-09-29 11:10:51,313 - qwen_api_debug - DEBUG - 流式输出chunk 238: '怎么做？ |
+|'
+2025-09-29 11:10:51,313 - qwen_api_debug - DEBUG - 流式输出chunk 238: '怎么做？ |
+|'
+2025-09-29 11:10:51,342 - qwen_api_debug - DEBUG - 流式输出chunk 239: '----------|--------------|----------------'
+2025-09-29 11:10:51,342 - qwen_api_debug - DEBUG - 流式输出chunk 239: '----------|--------------|----------------'
+2025-09-29 11:10:51,348 - qwen_api_debug - DEBUG - 流式输出chunk 240: '|
+| **避免'
+2025-09-29 11:10:51,348 - qwen_api_debug - DEBUG - 流式输出chunk 240: '|
+| **避免'
+2025-09-29 11:10:51,415 - qwen_api_debug - DEBUG - 流式输出chunk 241: '剧烈活动** |'
+2025-09-29 11:10:51,415 - qwen_api_debug - DEBUG - 流式输出chunk 241: '剧烈活动** |'
+2025-09-29 11:10:51,417 - qwen_api_debug - DEBUG - 流式输出chunk 242: ' 羊水多，子宫'
+2025-09-29 11:10:51,417 - qwen_api_debug - DEBUG - 流式输出chunk 242: ' 羊水多，子宫'
+2025-09-29 11:10:51,532 - qwen_api_debug - DEBUG - 流式输出chunk 243: '像充气气'
+2025-09-29 11:10:51,532 - qwen_api_debug - DEBUG - 流式输出chunk 243: '像充气气'
+2025-09-29 11:10:51,600 - qwen_api_debug - DEBUG - 流式输出chunk 244: '球，容易刺激'
+2025-09-29 11:10:51,600 - qwen_api_debug - DEBUG - 流式输出chunk 244: '球，容易刺激'
+2025-09-29 11:10:51,603 - qwen_api_debug - DEBUG - 流式输出chunk 245: '宫缩 |'
+2025-09-29 11:10:51,603 - qwen_api_debug - DEBUG - 流式输出chunk 245: '宫缩 |'
+2025-09-29 11:10:51,605 - qwen_api_debug - DEBUG - 流式输出chunk 246: ' 少提重物、少'
+2025-09-29 11:10:51,605 - qwen_api_debug - DEBUG - 流式输出chunk 246: ' 少提重物、少'
+2025-09-29 11:10:51,628 - qwen_api_debug - DEBUG - 流式输出chunk 247: '爬楼梯，走路'
+2025-09-29 11:10:51,628 - qwen_api_debug - DEBUG - 流式输出chunk 247: '爬楼梯，走路'
+2025-09-29 11:10:51,632 - qwen_api_debug - DEBUG - 流式输出chunk 248: '慢一点，累了'
+2025-09-29 11:10:51,632 - qwen_api_debug - DEBUG - 流式输出chunk 248: '慢一点，累了'
+2025-09-29 11:10:51,705 - qwen_api_debug - DEBUG - 流式输出chunk 249: '就坐下休息 |
+| **'
+2025-09-29 11:10:51,705 - qwen_api_debug - DEBUG - 流式输出chunk 249: '就坐下休息 |
+| **'
+2025-09-29 11:10:51,711 - qwen_api_debug - DEBUG - 流式输出chunk 250: '左侧卧位休息'
+2025-09-29 11:10:51,711 - qwen_api_debug - DEBUG - 流式输出chunk 250: '左侧卧位休息'
+2025-09-29 11:10:51,729 - qwen_api_debug - DEBUG - 流式输出chunk 251: '** | 改善胎'
+2025-09-29 11:10:51,729 - qwen_api_debug - DEBUG - 流式输出chunk 251: '** | 改善胎'
+2025-09-29 11:10:51,804 - qwen_api_debug - DEBUG - 流式输出chunk 252: '盘血流，帮'
+2025-09-29 11:10:51,804 - qwen_api_debug - DEBUG - 流式输出chunk 252: '盘血流，帮'
+2025-09-29 11:10:51,805 - qwen_api_debug - DEBUG - 流式输出chunk 253: '宝宝呼吸更顺畅'
+2025-09-29 11:10:51,805 - qwen_api_debug - DEBUG - 流式输出chunk 253: '宝宝呼吸更顺畅'
+2025-09-29 11:10:51,832 - qwen_api_debug - DEBUG - 流式输出chunk 254: ' | 睡觉'
+2025-09-29 11:10:51,832 - qwen_api_debug - DEBUG - 流式输出chunk 254: ' | 睡觉'
+2025-09-29 11:10:51,915 - qwen_api_debug - DEBUG - 流式输出chunk 255: '、休息时，'
+2025-09-29 11:10:51,915 - qwen_api_debug - DEBUG - 流式输出chunk 255: '、休息时，'
+2025-09-29 11:10:51,934 - qwen_api_debug - DEBUG - 流式输出chunk 256: '尽量左侧躺，腿'
+2025-09-29 11:10:51,934 - qwen_api_debug - DEBUG - 流式输出chunk 256: '尽量左侧躺，腿'
+2025-09-29 11:10:51,949 - qwen_api_debug - DEBUG - 流式输出chunk 257: '下垫个枕头'
+2025-09-29 11:10:51,949 - qwen_api_debug - DEBUG - 流式输出chunk 257: '下垫个枕头'
+2025-09-29 11:10:52,012 - qwen_api_debug - DEBUG - 流式输出chunk 258: ' |
+| **每天'
+2025-09-29 11:10:52,012 - qwen_api_debug - DEBUG - 流式输出chunk 258: ' |
+| **每天'
+2025-09-29 11:10:52,028 - qwen_api_debug - DEBUG - 流式输出chunk 259: '数胎动** |'
+2025-09-29 11:10:52,028 - qwen_api_debug - DEBUG - 流式输出chunk 259: '数胎动** |'
+2025-09-29 11:10:52,047 - qwen_api_debug - DEBUG - 流式输出chunk 260: ' 宝宝动'
+2025-09-29 11:10:52,047 - qwen_api_debug - DEBUG - 流式输出chunk 260: ' 宝宝动'
+2025-09-29 11:10:52,099 - qwen_api_debug - DEBUG - 流式输出chunk 261: '得少，可能是'
+2025-09-29 11:10:52,099 - qwen_api_debug - DEBUG - 流式输出chunk 261: '得少，可能是'
+2025-09-29 11:10:52,135 - qwen_api_debug - DEBUG - 流式输出chunk 262: '“求救信号” |'
+2025-09-29 11:10:52,135 - qwen_api_debug - DEBUG - 流式输出chunk 262: '“求救信号” |'
+2025-09-29 11:10:52,151 - qwen_api_debug - DEBUG - 流式输出chunk 263: ' 每天'
+2025-09-29 11:10:52,151 - qwen_api_debug - DEBUG - 流式输出chunk 263: ' 每天'
+2025-09-29 11:10:52,373 - qwen_api_debug - DEBUG - 流式输出chunk 264: '早中晚各1小时'
+2025-09-29 11:10:52,373 - qwen_api_debug - DEBUG - 流式输出chunk 264: '早中晚各1小时'
+2025-09-29 11:10:52,402 - qwen_api_debug - DEBUG - 流式输出chunk 265: '，数胎动≥'
+2025-09-29 11:10:52,402 - qwen_api_debug - DEBUG - 流式输出chunk 265: '，数胎动≥'
+2025-09-29 11:10:52,408 - qwen_api_debug - DEBUG - 流式输出chunk 266: '10次为'
+2025-09-29 11:10:52,408 - qwen_api_debug - DEBUG - 流式输出chunk 266: '10次为'
+2025-09-29 11:10:52,478 - qwen_api_debug - DEBUG - 流式输出chunk 267: '正常，少于5'
+2025-09-29 11:10:52,478 - qwen_api_debug - DEBUG - 流式输出chunk 267: '正常，少于5'
+2025-09-29 11:10:52,512 - qwen_api_debug - DEBUG - 流式输出chunk 268: '次请立即就医'
+2025-09-29 11:10:52,512 - qwen_api_debug - DEBUG - 流式输出chunk 268: '次请立即就医'
+2025-09-29 11:10:52,529 - qwen_api_debug - DEBUG - 流式输出chunk 269: ' |
+| **别'
+2025-09-29 11:10:52,529 - qwen_api_debug - DEBUG - 流式输出chunk 269: ' |
+| **别'
+2025-09-29 11:10:52,623 - qwen_api_debug - DEBUG - 流式输出chunk 270: '自己乱吃药** |'
+2025-09-29 11:10:52,623 - qwen_api_debug - DEBUG - 流式输出chunk 270: '自己乱吃药** |'
+2025-09-29 11:10:52,626 - qwen_api_debug - DEBUG - 流式输出chunk 271: ' 有些药会让'
+2025-09-29 11:10:52,626 - qwen_api_debug - DEBUG - 流式输出chunk 271: ' 有些药会让'
+2025-09-29 11:10:52,666 - qwen_api_debug - DEBUG - 流式输出chunk 272: '羊水更少或'
+2025-09-29 11:10:52,666 - qwen_api_debug - DEBUG - 流式输出chunk 272: '羊水更少或'
+2025-09-29 11:10:52,739 - qwen_api_debug - DEBUG - 流式输出chunk 273: '更多 | 不要吃吲'
+2025-09-29 11:10:52,739 - qwen_api_debug - DEBUG - 流式输出chunk 273: '更多 | 不要吃吲'
+2025-09-29 11:10:52,743 - qwen_api_debug - DEBUG - 流式输出chunk 274: '哚美辛（'
+2025-09-29 11:10:52,743 - qwen_api_debug - DEBUG - 流式输出chunk 274: '哚美辛（'
+2025-09-29 11:10:52,795 - qwen_api_debug - DEBUG - 流式输出chunk 275: '如消炎痛'
+2025-09-29 11:10:52,795 - qwen_api_debug - DEBUG - 流式输出chunk 275: '如消炎痛'
+2025-09-29 11:10:52,856 - qwen_api_debug - DEBUG - 流式输出chunk 276: '）、阿司匹林等'
+2025-09-29 11:10:52,856 - qwen_api_debug - DEBUG - 流式输出chunk 276: '）、阿司匹林等'
+2025-09-29 11:10:52,861 - qwen_api_debug - DEBUG - 流式输出chunk 277: '，除非医生开'
+2025-09-29 11:10:52,861 - qwen_api_debug - DEBUG - 流式输出chunk 277: '，除非医生开'
+2025-09-29 11:10:52,922 - qwen_api_debug - DEBUG - 流式输出chunk 278: ' |
+| **保持'
+2025-09-29 11:10:52,922 - qwen_api_debug - DEBUG - 流式输出chunk 278: ' |
+| **保持'
+2025-09-29 11:10:52,923 - qwen_api_debug - DEBUG - 流式输出chunk 279: '心情放松** |'
+2025-09-29 11:10:52,923 - qwen_api_debug - DEBUG - 流式输出chunk 279: '心情放松** |'
+2025-09-29 11:10:52,941 - qwen_api_debug - DEBUG - 流式输出chunk 280: ' 焦虑会让'
+2025-09-29 11:10:52,941 - qwen_api_debug - DEBUG - 流式输出chunk 280: ' 焦虑会让'
+2025-09-29 11:10:53,009 - qwen_api_debug - DEBUG - 流式输出chunk 281: '身体紧张，反而'
+2025-09-29 11:10:53,009 - qwen_api_debug - DEBUG - 流式输出chunk 281: '身体紧张，反而'
+2025-09-29 11:10:53,102 - qwen_api_debug - DEBUG - 流式输出chunk 282: '影响宫内环境 |'
+2025-09-29 11:10:53,102 - qwen_api_debug - DEBUG - 流式输出chunk 282: '影响宫内环境 |'
+2025-09-29 11:10:53,118 - qwen_api_debug - DEBUG - 流式输出chunk 283: ' 听轻音乐、看'
+2025-09-29 11:10:53,118 - qwen_api_debug - DEBUG - 流式输出chunk 283: ' 听轻音乐、看'
+2025-09-29 11:10:53,150 - qwen_api_debug - DEBUG - 流式输出chunk 284: '萌娃视频、和'
+2025-09-29 11:10:53,150 - qwen_api_debug - DEBUG - 流式输出chunk 284: '萌娃视频、和'
+2025-09-29 11:10:53,198 - qwen_api_debug - DEBUG - 流式输出chunk 285: '老公聊聊天，'
+2025-09-29 11:10:53,198 - qwen_api_debug - DEBUG - 流式输出chunk 285: '老公聊聊天，'
+2025-09-29 11:10:53,271 - qwen_api_debug - DEBUG - 流式输出chunk 286: '您开心，宝宝'
+2025-09-29 11:10:53,271 - qwen_api_debug - DEBUG - 流式输出chunk 286: '您开心，宝宝'
+2025-09-29 11:10:53,283 - qwen_api_debug - DEBUG - 流式输出chunk 287: '更安心 |
+| **按时'
+2025-09-29 11:10:53,283 - qwen_api_debug - DEBUG - 流式输出chunk 287: '更安心 |
+| **按时'
+2025-09-29 11:10:53,354 - qwen_api_debug - DEBUG - 流式输出chunk 288: '产检，别拖延'
+2025-09-29 11:10:53,354 - qwen_api_debug - DEBUG - 流式输出chunk 288: '产检，别拖延'
+2025-09-29 11:10:53,358 - qwen_api_debug - DEBUG - 流式输出chunk 289: '** | 早发现，'
+2025-09-29 11:10:53,358 - qwen_api_debug - DEBUG - 流式输出chunk 289: '** | 早发现，'
+2025-09-29 11:10:53,414 - qwen_api_debug - DEBUG - 流式输出chunk 290: '早安心 | 每周'
+2025-09-29 11:10:53,414 - qwen_api_debug - DEBUG - 流式输出chunk 290: '早安心 | 每周'
+2025-09-29 11:10:53,428 - qwen_api_debug - DEBUG - 流式输出chunk 291: '一次B超+'
+2025-09-29 11:10:53,428 - qwen_api_debug - DEBUG - 流式输出chunk 291: '一次B超+'
+2025-09-29 11:10:53,476 - qwen_api_debug - DEBUG - 流式输出chunk 292: '胎监，是您'
+2025-09-29 11:10:53,476 - qwen_api_debug - DEBUG - 流式输出chunk 292: '胎监，是您'
+2025-09-29 11:10:53,513 - qwen_api_debug - DEBUG - 流式输出chunk 293: '和宝宝的“'
+2025-09-29 11:10:53,513 - qwen_api_debug - DEBUG - 流式输出chunk 293: '和宝宝的“'
+2025-09-29 11:10:53,559 - qwen_api_debug - DEBUG - 流式输出chunk 294: '安全守护计划” |
+
+---
+
+###'
+2025-09-29 11:10:53,559 - qwen_api_debug - DEBUG - 流式输出chunk 294: '安全守护计划” |
+
+---
+
+###'
+2025-09-29 11:10:53,561 - qwen_api_debug - DEBUG - 流式输出chunk 295: ' ❤️ 最后，我想对'
+2025-09-29 11:10:53,561 - qwen_api_debug - DEBUG - 流式输出chunk 295: ' ❤️ 最后，我想对'
+2025-09-29 11:10:53,596 - qwen_api_debug - DEBUG - 流式输出chunk 296: '您说：
+
+>'
+2025-09-29 11:10:53,596 - qwen_api_debug - DEBUG - 流式输出chunk 296: '您说：
+
+>'
+2025-09-29 11:10:53,612 - qwen_api_debug - DEBUG - 流式输出chunk 297: ' **“羊水过多”'
+2025-09-29 11:10:53,612 - qwen_api_debug - DEBUG - 流式输出chunk 297: ' **“羊水过多”'
+2025-09-29 11:10:53,690 - qwen_api_debug - DEBUG - 流式输出chunk 298: '不是判决书，而是一'
+2025-09-29 11:10:53,690 - qwen_api_debug - DEBUG - 流式输出chunk 298: '不是判决书，而是一'
+2025-09-29 11:10:53,711 - qwen_api_debug - DEBUG - 流式输出chunk 299: '封来自宝宝的信'
+2025-09-29 11:10:53,711 - qwen_api_debug - DEBUG - 流式输出chunk 299: '封来自宝宝的信'
+2025-09-29 11:10:53,758 - qwen_api_debug - DEBUG - 流式输出chunk 300: '：他正在努力'
+2025-09-29 11:10:53,758 - qwen_api_debug - DEBUG - 流式输出chunk 300: '：他正在努力'
+2025-09-29 11:10:53,811 - qwen_api_debug - DEBUG - 流式输出chunk 301: '长大，只是需要我们'
+2025-09-29 11:10:53,811 - qwen_api_debug - DEBUG - 流式输出chunk 301: '长大，只是需要我们'
+2025-09-29 11:10:53,825 - qwen_api_debug - DEBUG - 流式输出chunk 302: '多一点耐心和温柔。**
+
+'
+2025-09-29 11:10:53,825 - qwen_api_debug - DEBUG - 流式输出chunk 302: '多一点耐心和温柔。**
+
+'
+2025-09-29 11:10:53,900 - qwen_api_debug - DEBUG - 流式输出chunk 303: '您已经做得很好了——'
+2025-09-29 11:10:53,900 - qwen_api_debug - DEBUG - 流式输出chunk 303: '您已经做得很好了——'
+2025-09-29 11:10:53,909 - qwen_api_debug - DEBUG - 流式输出chunk 304: '您在关注、在提问'
+2025-09-29 11:10:53,909 - qwen_api_debug - DEBUG - 流式输出chunk 304: '您在关注、在提问'
+2025-09-29 11:10:53,956 - qwen_api_debug - DEBUG - 流式输出chunk 305: '、在寻求帮助。这'
+2025-09-29 11:10:53,956 - qwen_api_debug - DEBUG - 流式输出chunk 305: '、在寻求帮助。这'
+2025-09-29 11:10:53,972 - qwen_api_debug - DEBUG - 流式输出chunk 306: '说明您对宝宝的爱，'
+2025-09-29 11:10:53,972 - qwen_api_debug - DEBUG - 流式输出chunk 306: '说明您对宝宝的爱，'
+2025-09-29 11:10:54,092 - qwen_api_debug - DEBUG - 流式输出chunk 307: '比任何医学指标'
+2025-09-29 11:10:54,092 - qwen_api_debug - DEBUG - 流式输出chunk 307: '比任何医学指标'
+2025-09-29 11:10:54,096 - qwen_api_debug - DEBUG - 流式输出chunk 308: '都更珍贵。
+
+**'
+2025-09-29 11:10:54,096 - qwen_api_debug - DEBUG - 流式输出chunk 308: '都更珍贵。
+
+**'
+2025-09-29 11:10:54,105 - qwen_api_debug - DEBUG - 流式输出chunk 309: '请相信：**  
+-'
+2025-09-29 11:10:54,105 - qwen_api_debug - DEBUG - 流式输出chunk 309: '请相信：**  
+-'
+2025-09-29 11:10:54,111 - qwen_api_debug - DEBUG - 流式输出chunk 310: ' 90%'
+2025-09-29 11:10:54,111 - qwen_api_debug - DEBUG - 流式输出chunk 310: ' 90%'
+2025-09-29 11:10:54,120 - qwen_api_debug - DEBUG - 流式输出chunk 311: '以上的羊水过多'
+2025-09-29 11:10:54,120 - qwen_api_debug - DEBUG - 流式输出chunk 311: '以上的羊水过多'
+2025-09-29 11:10:54,206 - qwen_api_debug - DEBUG - 流式输出chunk 312: '妈妈，最终都顺利'
+2025-09-29 11:10:54,206 - qwen_api_debug - DEBUG - 流式输出chunk 312: '妈妈，最终都顺利'
+2025-09-29 11:10:54,208 - qwen_api_debug - DEBUG - 流式输出chunk 313: '生下了健康可爱的'
+2025-09-29 11:10:54,208 - qwen_api_debug - DEBUG - 流式输出chunk 313: '生下了健康可爱的'
+2025-09-29 11:10:54,250 - qwen_api_debug - DEBUG - 流式输出chunk 314: '宝宝；  
+-'
+2025-09-29 11:10:54,250 - qwen_api_debug - DEBUG - 流式输出chunk 314: '宝宝；  
+-'
+2025-09-29 11:10:54,268 - qwen_api_debug - DEBUG - 流式输出chunk 315: ' 您不是“高'
+2025-09-29 11:10:54,268 - qwen_api_debug - DEBUG - 流式输出chunk 315: ' 您不是“高'
+2025-09-29 11:10:54,300 - qwen_api_debug - DEBUG - 流式输出chunk 316: '危”，您只是'
+2025-09-29 11:10:54,300 - qwen_api_debug - DEBUG - 流式输出chunk 316: '危”，您只是'
+2025-09-29 11:10:54,353 - qwen_api_debug - DEBUG - 流式输出chunk 317: '“需要多一点关注”；'
+2025-09-29 11:10:54,353 - qwen_api_debug - DEBUG - 流式输出chunk 317: '“需要多一点关注”；'
+2025-09-29 11:10:54,368 - qwen_api_debug - DEBUG - 流式输出chunk 318: '  
+- 我会'
+2025-09-29 11:10:54,368 - qwen_api_debug - DEBUG - 流式输出chunk 318: '  
+- 我会'
+2025-09-29 11:10:54,416 - qwen_api_debug - DEBUG - 流式输出chunk 319: '一直在这里陪着您，每'
+2025-09-29 11:10:54,416 - qwen_api_debug - DEBUG - 流式输出chunk 319: '一直在这里陪着您，每'
+2025-09-29 11:10:54,447 - qwen_api_debug - DEBUG - 流式输出chunk 320: '一步，都不孤单'
+2025-09-29 11:10:54,447 - qwen_api_debug - DEBUG - 流式输出chunk 320: '一步，都不孤单'
+2025-09-29 11:10:54,488 - qwen_api_debug - DEBUG - 流式输出chunk 321: '。
+
+如果您愿意，'
+2025-09-29 11:10:54,488 - qwen_api_debug - DEBUG - 流式输出chunk 321: '。
+
+如果您愿意，'
+2025-09-29 11:10:54,530 - qwen_api_debug - DEBUG - 流式输出chunk 322: '可以告诉我：
+-'
+2025-09-29 11:10:54,530 - qwen_api_debug - DEBUG - 流式输出chunk 322: '可以告诉我：
+-'
+2025-09-29 11:10:54,536 - qwen_api_debug - DEBUG - 流式输出chunk 323: ' 您现在是几'
+2025-09-29 11:10:54,536 - qwen_api_debug - DEBUG - 流式输出chunk 323: ' 您现在是几'
+2025-09-29 11:10:54,587 - qwen_api_debug - DEBUG - 流式输出chunk 324: '周了？
+- '
+2025-09-29 11:10:54,587 - qwen_api_debug - DEBUG - 流式输出chunk 324: '周了？
+- '
+2025-09-29 11:10:54,598 - qwen_api_debug - DEBUG - 流式输出chunk 325: '有没有做过糖耐量试验？
+'
+2025-09-29 11:10:54,598 - qwen_api_debug - DEBUG - 流式输出chunk 325: '有没有做过糖耐量试验？
+'
+2025-09-29 11:10:54,661 - qwen_api_debug - DEBUG - 流式输出chunk 326: '- 肚子'
+2025-09-29 11:10:54,661 - qwen_api_debug - DEBUG - 流式输出chunk 326: '- 肚子'
+2025-09-29 11:10:54,664 - qwen_api_debug - DEBUG - 流式输出chunk 327: '胀得厉害吗'
+2025-09-29 11:10:54,664 - qwen_api_debug - DEBUG - 流式输出chunk 327: '胀得厉害吗'
+2025-09-29 11:10:54,710 - qwen_api_debug - DEBUG - 流式输出chunk 328: '？能平躺睡觉'
+2025-09-29 11:10:54,710 - qwen_api_debug - DEBUG - 流式输出chunk 328: '？能平躺睡觉'
+2025-09-29 11:10:54,841 - qwen_api_debug - DEBUG - 流式输出chunk 329: '吗？
+
+我会根据'
+2025-09-29 11:10:54,841 - qwen_api_debug - DEBUG - 流式输出chunk 329: '吗？
+
+我会根据'
+2025-09-29 11:10:54,847 - qwen_api_debug - DEBUG - 流式输出chunk 330: '您的具体情况，给您'
+2025-09-29 11:10:54,847 - qwen_api_debug - DEBUG - 流式输出chunk 330: '您的具体情况，给您'
+2025-09-29 11:10:54,859 - qwen_api_debug - DEBUG - 流式输出chunk 331: '更贴心的建议'
+2025-09-29 11:10:54,859 - qwen_api_debug - DEBUG - 流式输出chunk 331: '更贴心的建议'
+2025-09-29 11:10:54,861 - qwen_api_debug - DEBUG - 流式输出chunk 332: ' 😊
+
+**'
+2025-09-29 11:10:54,861 - qwen_api_debug - DEBUG - 流式输出chunk 332: ' 😊
+
+**'
+2025-09-29 11:10:54,862 - qwen_api_debug - DEBUG - 流式输出chunk 333: '您不是一个人在'
+2025-09-29 11:10:54,862 - qwen_api_debug - DEBUG - 流式输出chunk 333: '您不是一个人在'
+2025-09-29 11:10:54,876 - qwen_api_debug - DEBUG - 流式输出chunk 334: '战斗，我们一家人'
+2025-09-29 11:10:54,876 - qwen_api_debug - DEBUG - 流式输出chunk 334: '战斗，我们一家人'
+2025-09-29 11:10:54,891 - qwen_api_debug - DEBUG - 流式输出chunk 335: '（医生、您'
+2025-09-29 11:10:54,891 - qwen_api_debug - DEBUG - 流式输出chunk 335: '（医生、您'
+2025-09-29 11:10:54,907 - qwen_api_debug - DEBUG - 流式输出chunk 336: '、宝宝）都在'
+2025-09-29 11:10:54,907 - qwen_api_debug - DEBUG - 流式输出chunk 336: '、宝宝）都在'
+2025-09-29 11:10:54,973 - qwen_api_debug - DEBUG - 流式输出chunk 337: '并肩前行。**  
+'
+2025-09-29 11:10:54,973 - qwen_api_debug - DEBUG - 流式输出chunk 337: '并肩前行。**  
+'
+2025-09-29 11:10:55,019 - qwen_api_debug - DEBUG - 流式输出chunk 338: '**安心休息，明天'
+2025-09-29 11:10:55,019 - qwen_api_debug - DEBUG - 流式输出chunk 338: '**安心休息，明天'
+2025-09-29 11:10:55,132 - qwen_api_debug - DEBUG - 流式输出chunk 339: '又是充满希望的一天❤'
+2025-09-29 11:10:55,132 - qwen_api_debug - DEBUG - 流式输出chunk 339: '又是充满希望的一天❤'
+2025-09-29 11:10:55,134 - qwen_api_debug - DEBUG - 流式输出chunk 340: '️**'
+2025-09-29 11:10:55,134 - qwen_api_debug - DEBUG - 流式输出chunk 340: '️**'
+2025-09-29 11:10:55,164 - qwen_api_debug - DEBUG - 流式响应总chunk数: 341
+2025-09-29 11:10:55,164 - qwen_api_debug - DEBUG - 流式响应总chunk数: 341
+2025-09-29 11:10:55,214 - pregnant-workflow-api - INFO - [req_1ac0c925] 流式工作流完成 - 耗时: 23.31s, chunks: 339
+
+/root/project2/backend/prompt_engineering/templates/pregnant_mother/pregnant_mother_symptom.yaml
+2025-09-29 11:10:55,220 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-09-29 11:10:55,220 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-09-29 11:10:55,222 INFO sqlalchemy.engine.Engine SELECT maternal_dialogue.id AS maternal_dialogue_id, maternal_dialogue.maternal_id AS maternal_dialogue_maternal_id, maternal_dialogue.chat_id AS maternal_dialogue_chat_id, maternal_dialogue.dialogue_content AS maternal_dialogue_dialogue_content, maternal_dialogue.vector_store_path AS maternal_dialogue_vector_store_path, maternal_dialogue.created_at AS maternal_dialogue_created_at 
 FROM maternal_dialogue 
 WHERE maternal_dialogue.chat_id = %(chat_id_1)s 
  LIMIT %(param_1)s
-2025-09-26 14:17:02,128 - sqlalchemy.engine.Engine - INFO - SELECT maternal_dialogue.id AS maternal_dialogue_id, maternal_dialogue.maternal_id AS maternal_dialogue_maternal_id, maternal_dialogue.chat_id AS maternal_dialogue_chat_id, maternal_dialogue.dialogue_content AS maternal_dialogue_dialogue_content, maternal_dialogue.vector_store_path AS maternal_dialogue_vector_store_path, maternal_dialogue.created_at AS maternal_dialogue_created_at 
+2025-09-29 11:10:55,222 - sqlalchemy.engine.Engine - INFO - SELECT maternal_dialogue.id AS maternal_dialogue_id, maternal_dialogue.maternal_id AS maternal_dialogue_maternal_id, maternal_dialogue.chat_id AS maternal_dialogue_chat_id, maternal_dialogue.dialogue_content AS maternal_dialogue_dialogue_content, maternal_dialogue.vector_store_path AS maternal_dialogue_vector_store_path, maternal_dialogue.created_at AS maternal_dialogue_created_at 
 FROM maternal_dialogue 
 WHERE maternal_dialogue.chat_id = %(chat_id_1)s 
  LIMIT %(param_1)s
-2025-09-26 14:17:02,128 INFO sqlalchemy.engine.Engine [generated in 0.00028s] {'chat_id_1': 'chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40', 'param_1': 1}
-2025-09-26 14:17:02,128 - sqlalchemy.engine.Engine - INFO - [generated in 0.00028s] {'chat_id_1': 'chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40', 'param_1': 1}
-2025-09-26 14:17:02,130 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:17:02,130 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-2025-09-26 14:17:02,131 - backend.agents.MeMAgent.retrieval_memory - INFO - 历史检索完成: 未找到相关历史对话
-2025-09-26 14:17:02,131 - backend.workflow.test - INFO - 检索式记忆处理完成: 未找到相关历史对话, 耗时: 0.05秒 (检索调用: 0.05秒)
-2025-09-26 14:17:02,151 INFO sqlalchemy.engine.Engine select pg_catalog.version()
-2025-09-26 14:17:02,151 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
-2025-09-26 14:17:02,152 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 14:17:02,152 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
-2025-09-26 14:17:02,153 INFO sqlalchemy.engine.Engine select current_schema()
-2025-09-26 14:17:02,153 - sqlalchemy.engine.Engine - INFO - select current_schema()
-2025-09-26 14:17:02,153 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 14:17:02,153 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
-2025-09-26 14:17:02,154 INFO sqlalchemy.engine.Engine show standard_conforming_strings
-2025-09-26 14:17:02,154 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
-2025-09-26 14:17:02,154 INFO sqlalchemy.engine.Engine [raw sql] {}
-2025-09-26 14:17:02,154 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
-2025-09-26 14:17:02,155 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:17:02,155 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:17:02,163 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,163 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,163 INFO sqlalchemy.engine.Engine [generated in 0.00028s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,163 - sqlalchemy.engine.Engine - INFO - [generated in 0.00028s] {'table_name': 'user', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,165 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,165 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,165 INFO sqlalchemy.engine.Engine [cached since 0.002509s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,165 - sqlalchemy.engine.Engine - INFO - [cached since 0.002509s ago] {'table_name': 'maternal_info', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,166 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,166 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,167 INFO sqlalchemy.engine.Engine [cached since 0.003713s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,167 - sqlalchemy.engine.Engine - INFO - [cached since 0.003713s ago] {'table_name': 'maternal_pregnancy_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,167 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,167 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,168 INFO sqlalchemy.engine.Engine [cached since 0.004742s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,168 - sqlalchemy.engine.Engine - INFO - [cached since 0.004742s ago] {'table_name': 'maternal_health_condition', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,168 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,168 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,169 INFO sqlalchemy.engine.Engine [cached since 0.005732s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,169 - sqlalchemy.engine.Engine - INFO - [cached since 0.005732s ago] {'table_name': 'maternal_medical_files', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,169 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,169 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
-FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
-WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
-2025-09-26 14:17:02,170 INFO sqlalchemy.engine.Engine [cached since 0.006783s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,170 - sqlalchemy.engine.Engine - INFO - [cached since 0.006783s ago] {'table_name': 'maternal_dialogue', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
-2025-09-26 14:17:02,170 INFO sqlalchemy.engine.Engine COMMIT
-2025-09-26 14:17:02,170 - sqlalchemy.engine.Engine - INFO - COMMIT
-2025-09-26 14:17:02,172 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-09-26 14:17:02,172 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
-2025-09-26 14:17:02,173 INFO sqlalchemy.engine.Engine SELECT maternal_dialogue.id AS maternal_dialogue_id, maternal_dialogue.maternal_id AS maternal_dialogue_maternal_id, maternal_dialogue.chat_id AS maternal_dialogue_chat_id, maternal_dialogue.dialogue_content AS maternal_dialogue_dialogue_content, maternal_dialogue.vector_store_path AS maternal_dialogue_vector_store_path, maternal_dialogue.created_at AS maternal_dialogue_created_at 
-FROM maternal_dialogue 
-WHERE maternal_dialogue.maternal_id = %(maternal_id_1)s AND maternal_dialogue.chat_id = %(chat_id_1)s
-2025-09-26 14:17:02,173 - sqlalchemy.engine.Engine - INFO - SELECT maternal_dialogue.id AS maternal_dialogue_id, maternal_dialogue.maternal_id AS maternal_dialogue_maternal_id, maternal_dialogue.chat_id AS maternal_dialogue_chat_id, maternal_dialogue.dialogue_content AS maternal_dialogue_dialogue_content, maternal_dialogue.vector_store_path AS maternal_dialogue_vector_store_path, maternal_dialogue.created_at AS maternal_dialogue_created_at 
-FROM maternal_dialogue 
-WHERE maternal_dialogue.maternal_id = %(maternal_id_1)s AND maternal_dialogue.chat_id = %(chat_id_1)s
-2025-09-26 14:17:02,173 INFO sqlalchemy.engine.Engine [generated in 0.00022s] {'maternal_id_1': 2, 'chat_id_1': 'chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40'}
-2025-09-26 14:17:02,173 - sqlalchemy.engine.Engine - INFO - [generated in 0.00022s] {'maternal_id_1': 2, 'chat_id_1': 'chat_2_pregnant_mother_db60e15b-f2a5-4bb4-9af2-242203ed9f40'}
-2025-09-26 14:17:02,175 INFO sqlalchemy.engine.Engine ROLLBACK
-2025-09-26 14:17:02,175 - sqlalchemy.engine.Engine - INFO - ROLLBACK
-2025-09-26 14:17:03,129 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: ./data/models/embed/models--BAAI--bge-large-zh-v1.5/snapshots/79e7739b6ab944e86d6171e44d24c997fc1e0116
-2025-09-26 14:17:06,810 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-2025-09-26 14:18:33,996 - unstructured - INFO - convert /root/project2/data/raw_manuals/孕前和孕期保健指南.doc as a Writer document -> /tmp/tmp527poruc/孕前和孕期保健指南.docx using filter : MS Word 2007 XML
-2025-09-26 14:18:34,592 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: ./data/models/embed/models--BAAI--bge-large-zh-v1.5/snapshots/79e7739b6ab944e86d6171e44d24c997fc1e0116
-2025-09-26 14:18:37,900 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-2025-09-26 14:19:22,988 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: ./data/models/embed/models--BAAI--bge-large-zh-v1.5/snapshots/79e7739b6ab944e86d6171e44d24c997fc1e0116
+2025-09-29 11:10:55,222 INFO sqlalchemy.engine.Engine [generated in 0.00031s] {'chat_id_1': 'chat_3_pregnant_mother_967c973a-2e0b-4744-b7df-75b9d0d52634', 'param_1': 1}
+2025-09-29 11:10:55,222 - sqlalchemy.engine.Engine - INFO - [generated in 0.00031s] {'chat_id_1': 'chat_3_pregnant_mother_967c973a-2e0b-4744-b7df-75b9d0d52634', 'param_1': 1}
+2025-09-29 11:10:55,228 INFO sqlalchemy.engine.Engine ROLLBACK
+2025-09-29 11:10:55,228 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-09-29 11:10:55,240 - pregnant-workflow-api - INFO - 答案已保存到JSON文件: dataset/pregnant_mother/3/chat/chat_3_pregnant_mother_967c973a-2e0b-4744-b7df-75b9d0d52634.json
+2025-09-29 11:10:55,243 - pregnant-workflow-api - INFO - [req_1ac0c925] 请求成功完成，耗时: 23.96s
+2025-09-29 11:10:55,243 - pregnant-workflow-api - INFO - [req_1ac0c925] 请求处理完成 - 当前活跃请求: 0
+2025-09-29 11:10:55,243 - pregnant-workflow-api - INFO - [req_1ac0c925] 性能快照 - 成功率: 100.0%, 平均响应时间: 23.96s, 可用信号量: 20, 队列大小: 0

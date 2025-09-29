@@ -375,26 +375,62 @@ def gen_synth_node(state: PrengantState) -> PrengantState:
 # 新增：流式版本的孕妇工作流
 async def prengant_workflow_stream(state: PrengantState):
     """
-    流式孕妇工作流 - 实时返回AI生成内容
-    只有最后的AI生成阶段是流式的，前面的检索等步骤仍然是批处理
+    异步流式孕妇工作流 - 保持专家知识库质量，解决多用户并发阻塞
+    将所有检索操作异步化，支持真正的高并发
     """
     try:
-        # 1. 记忆处理（非流式）- 修复：正确合并更新到state
-        memory_updates = memory_processing_node(state)
-        state.update(memory_updates)
+        # 使用线程池异步化所有阻塞操作
+        from concurrent.futures import ThreadPoolExecutor
+        import asyncio
 
-        # 2. 并行处理：文件处理和检索（非流式）
-        # 这些步骤需要完整结果才能进行下一步，所以保持非流式
-        mix_updates = mix_node(state)
-        state.update(mix_updates)
+        # 创建专用线程池（如果不存在）
+        if not hasattr(prengant_workflow_stream, '_thread_pool'):
+            prengant_workflow_stream._thread_pool = ThreadPoolExecutor(
+                max_workers=20,
+                thread_name_prefix="workflow_async_"
+            )
 
-        retr_updates = retr_node(state)
-        state.update(retr_updates)
+        thread_pool = prengant_workflow_stream._thread_pool
 
-        # 3. 上下文整合（非流式）- 修复：proc_context直接修改state并返回
-        state = proc_context(state)
+        # 1. 异步并行处理：记忆、文件处理和检索
+        async def async_memory_processing():
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(thread_pool, memory_processing_node, state)
 
-        # 4. 流式生成回答（这是用户最关心的部分）
+        async def async_file_processing():
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(thread_pool, mix_node, state)
+
+        async def async_retrieval_processing():
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(thread_pool, retr_node, state)
+
+        # 并行执行所有处理步骤（不阻塞事件循环）
+        memory_result, file_result, retrieval_result = await asyncio.gather(
+            async_memory_processing(),
+            async_file_processing(),
+            async_retrieval_processing(),
+            return_exceptions=True
+        )
+
+        # 2. 整合结果
+        if not isinstance(memory_result, Exception):
+            state.update(memory_result)
+
+        if not isinstance(file_result, Exception):
+            state.update(file_result)
+
+        if not isinstance(retrieval_result, Exception):
+            state.update(retrieval_result)
+
+        # 3. 异步上下文整合
+        async def async_context_processing():
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(thread_pool, proc_context, state)
+
+        state = await async_context_processing()
+
+        # 4. 流式生成回答（基于完整的专家知识）
         from backend.agents.GenSynthAgent.core import gen_synth_node_stream, GenSynthAgentState
 
         # 构造生成智能体的输入
@@ -407,7 +443,7 @@ async def prengant_workflow_stream(state: PrengantState):
             "error": None,
         }
 
-        # 流式生成并yield每个chunk
+        # 流式生成并yield每个chunk（基于专家知识库检索结果）
         async for chunk in gen_synth_node_stream(gen_synth_input):
             yield chunk
 
